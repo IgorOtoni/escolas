@@ -29,7 +29,7 @@
                     <div class="single-post-details-area">
                         <div class="post-content">
                             <h2 class="post-title mb-30">{{$sermao->nome}}</h2>
-                            <iframe frameborder="0" src="{{$sermao->link}}"></iframe>
+                            <iframe style="width: 100%; min-height: 400px;" frameborder="0" src="{{$sermao->link}}"></iframe>
                             <h6>Publicado {{\Carbon\Carbon::parse($sermao->created_at)->diffForHumans()}}</h6>
                             <?php
                             if($sermao->updated_at != null && $sermao->updated_at != $sermao->created_at){
