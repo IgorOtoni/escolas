@@ -14,6 +14,7 @@ class Tbl_Igrejas_Seeder extends Seeder
         DB::table('tbl_igrejas')->insert([
             'id'=>1,
             'nome'=>'Colégio CEPSMA',
+            'cnpj'=>'999.999.999/9999-99',
             'estado' => 'MG',
             'cidade' => 'Coronel Fabriciano',
             'bairro' => 'Centro',
