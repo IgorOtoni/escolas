@@ -13,7 +13,7 @@ class Tbl_Perfis_Seeder extends Seeder
     {
         DB::table('tbl_perfis')->insert([
             'id'=>1,
-            'nome'=>'ADM Eglise',
+            'nome'=>'ADM Plataforma',
             'descricao'=>'Administrador da plataforma.',
             'status'=> true,
             'id_igreja'=>null,
@@ -22,7 +22,7 @@ class Tbl_Perfis_Seeder extends Seeder
         DB::table('tbl_perfis')->insert([
             'id'=>2,
             'nome'=>'ADM Site',
-            'descricao'=>'Administrador do site da igreja.',
+            'descricao'=>'Administrador do site da escola.',
             'id_igreja'=>1,
         ]);
     }

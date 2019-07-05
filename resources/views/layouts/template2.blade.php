@@ -106,7 +106,7 @@
                     <!-- Copywrite Text -->
                     <div class="col-12 col-md-6">
                         <div class="copywrite-text">
-                            <p>{{$igreja->nome}}</p>
+                            <p>{{$igreja->nome}} - <b> powered by hotsystems</b></p>
                         </div>
                     </div>
 

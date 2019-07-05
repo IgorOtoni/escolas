@@ -45,15 +45,21 @@ $('#modal-galeria').on('show.bs.modal', function (event) {
             <?php foreach($galerias as $galeria){ ?>
                 <h4>{{$galeria->nome}}</h4>
                 <div class="col-12">
+                    <h5><i class="fa fa-calendar"></i> {{\Carbon\Carbon::parse($galeria->data)->diffForHumans()}}</h5>
+                </div>
+                <div class="col-12">
                     <div class="donate-slides owl-carousel">
                         <?php $fotos_ = $fotos[$galeria->id];
                             foreach($fotos_ as $foto){ ?>
                             <!-- Single Donate Slide Area -->
                             <a href="#" data-foto="{{$foto->foto}}" data-toggle="modal" data-target="#modal-galeria"><div class="single-donate-slide">
-                                <img src="/carrega_imagem_/480,320,galerias,{{$foto->foto}}" alt="">
+                                <img width="255" height="255" src="/storage/galerias/{{$foto->foto}}" alt="">
                             </div></a>
                         <?php } ?>
                     </div>
+                </div>
+                <div class="col-12">
+                    <p>{{$galeria->descricao}}</p>
                 </div>
             <?php } ?>
         </div>

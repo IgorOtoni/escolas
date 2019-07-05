@@ -16,6 +16,7 @@ class CreateTblIgrejasTable extends Migration
         Schema::create('tbl_igrejas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
+            $table->string('cnpj');
             $table->string('cep');
             $table->string('estado')->nullable();
             $table->string('cidade')->nullable();

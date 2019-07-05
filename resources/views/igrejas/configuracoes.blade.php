@@ -1047,6 +1047,17 @@ $('#modal-editar-subsubmenu').on('show.bs.modal', function (event) {
 
     <div class="box">
         <div class="box-body">
+
+            <div class="row">
+            <div class="col-md-12">
+                <h4>Termo de compromisso:</h4> <a href="/gerar_termo_compromisso/{{$igreja->id}}" class="btn btn-primary" target="_blank">Gerar</a>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="box-body">
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">

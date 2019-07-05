@@ -238,7 +238,7 @@ $(function () {
     <div class="box-header with-border">
       <h3 class="box-title"></h3>
       <div class="pull-right">
-        <a class="btn btn-success" data-toggle="modal" data-target="#modal-incluir"><i class="fa fa-plus"></i>&nbspIncluír perfil</a>
+        <a class="btn btn-success" data-toggle="modal" data-target="#modal-incluir"><i class="fa fa-plus"></i>&nbspIncluir perfil</a>
       </div>
     </div>
     <div class="box-body table-responsive">

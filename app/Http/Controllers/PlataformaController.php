@@ -41,7 +41,8 @@ class PlataformaController extends Controller
 
     public function cadastro(Request $request){
         $igreja = new TblIgreja();
-        $igreja->nome = fistCharFromWord_toUpper($request->nome);        
+        $igreja->nome = fistCharFromWord_toUpper($request->nome);
+        $igreja->cnpj = $request->cnpj;
         $igreja->cep = $request->cep;
         $igreja->num = $request->num;
         $igreja->rua = $request->rua;

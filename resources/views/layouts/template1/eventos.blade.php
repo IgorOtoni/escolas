@@ -84,7 +84,8 @@ $('#modal-evento').on('show.bs.modal', function (event) {
         <ul class="timeline">
             <?php
             $x = 0;
-            foreach($eventos as $evento){
+            for($x_ = sizeof($eventos) - 1; $x_ >= 0; $x_--){
+                $evento = $eventos[$x_];
                 $class = ($x % 2 == 0) ? "timeline-inverted" : "";
                 $x++;
                 ?>

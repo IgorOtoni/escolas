@@ -108,7 +108,7 @@
                 <div class="row">
                     <!-- Footer Widget Area -->
                     <div class="col-6 col-sm-6 col-xl-6">
-                        <p>{{$igreja->nome}}</p>
+                        <p>{{$igreja->nome}} - <b> powered by hotsystems</b></p>
                     </div>
 
                     <div class="col-6 col-sm-6 col-xl-6">

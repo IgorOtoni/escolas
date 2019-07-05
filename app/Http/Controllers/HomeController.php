@@ -1206,6 +1206,7 @@ class HomeController extends Controller
 
             $igreja = TblIgreja::find($configuracao->id_igreja);
             $igreja->nome = fistCharFromWord_toUpper($request->nome);
+            $igreja->cnpj = $request->cnpj;
             $igreja->cep = $request->cep;
             $igreja->num = $request->num;
             $igreja->rua = $request->rua;
@@ -1352,7 +1353,7 @@ class HomeController extends Controller
         }else{ return view('error'); }
     }
 
-    public function atualizarEnvento(Request $request){
+    public function atualizarEvento(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.eventosg'), \Config::get('constants.permissoes.alterar'))[2] == true){
             $evento = TblEventos::find($id);
 
@@ -1452,7 +1453,7 @@ class HomeController extends Controller
             $publicacao->html = $request->html;
             $publicacao->save();
 
-            foreach($request->galeria as $f_){
+            if($request->galeria) foreach($request->galeria as $f_){
                 $foto = new TblPublicacaoFotos();
                 $foto->id_publicacao = $publicacao->id;
                 $foto->foto = "vazio";

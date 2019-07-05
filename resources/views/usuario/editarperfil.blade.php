@@ -111,7 +111,7 @@ $(function(){
                 <div class="col-md-12" id="list-area">
                     <div class="form-group has-feedback">
                     <label>Selecione quais módulos da igreja o perfil irá acessar:</label>
-                    <select id="select_2_modulos" name="modulos[]" data-placeholder="Selecione os módulos" class="form-control select2" style="width: 100%;" multiple="multiple" required></select>
+                    <select id="select_2_modulos" name="modulos[]" data-placeholder="Selecione os módulos" class="form-control select2" style="width: 100%;" multiple="multiple"></select>
                     <div class="help-block with-errors"></div>
                     </div>
                 </div>

@@ -63,6 +63,7 @@ $(function(){
                     <iframe src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($igreja->cep)}}&amp;t=m&amp;z=14&amp;output=embed"></iframe>
                     </div>
                     <div class="row">
+                    <h2>Envie uma mensagem</h2>
                     <form method="get" data-toggle="validator" id="contactform" name="contactform" action="/{{$igreja->url}}/enviaContato">
                         @csrf
                         <div class="col-md-6 margin-15">

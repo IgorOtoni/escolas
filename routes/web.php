@@ -335,3 +335,4 @@ Route::get('/{url}/galeria','IgrejaController@galeria')->name('igreja.galeria');
 Route::get('/{url}/publicacao/{id}','IgrejaController@publicacao')->name('igreja.publicacao');
 Route::get('/{url}/login','IgrejaController@login')->name('igreja.login');
 Route::get('/carrega_imagem/{largura},{altura},{pasta},{arquivo}','IgrejaController@carrega_imagem')->name('igreja.carrega_imagem');
+Route::get('/gerar_termo_compromisso/{id}','IgrejaController@gerar_termo_compromisso')->name('igreja.gerar_termo_compromisso');

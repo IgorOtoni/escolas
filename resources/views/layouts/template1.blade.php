@@ -88,7 +88,7 @@
             <div class="container">
             <div class="row">
                 <div class="copyrights-col-left col-md-6 col-sm-6">
-                <p>{{$igreja->nome}}</p>
+                <p>{{$igreja->nome}} - <b> powered by hotsystems</b></p>
                 </div>
                 <div class="copyrights-col-right col-md-6 col-sm-6">
                 <div class="social-icons"> 

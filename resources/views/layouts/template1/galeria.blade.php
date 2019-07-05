@@ -44,10 +44,13 @@
                 if(count($fotos[$galeria->id]) == 1){
                     $foto = $fotos[$galeria->id][0]; ?>
                     <li class="col-md-3 col-sm-3 grid-item post format-image"><h3>{{$galeria->nome}}</h3>
+                        <h4><i class="fa fa-calendar"></i> {{\Carbon\Carbon::parse($galeria->data)->diffForHumans()}}</h4>
                         <div class="grid-item-inner"> <a href="/storage/galerias/{{$foto->foto}}" data-rel="prettyPhoto" class="media-box"> <img src="/carrega_imagem/480,320,galerias,{{$foto->foto}}" alt=""> <!--<img src="/storage/galerias/{{$foto->foto}}" alt="">--> </a> </div>
+                        <p>{{$galeria->descricao}}</p>
                     </li>
                 <?php }else{ ?>
                     <li class="col-md-3 col-sm-3 grid-item post format-gallery"><h3>{{$galeria->nome}}</h3>
+                        <h4><i class="fa fa-calendar"></i> {{\Carbon\Carbon::parse($galeria->data)->diffForHumans()}}</h4>
                         <div class="grid-item-inner">
                         <div class="media-box">
                             <div class="flexslider" data-autoplay="yes" data-pagination="yes" data-arrows="yes" data-style="slide" data-pause="yes">
@@ -59,6 +62,7 @@
                             </ul>
                             </div>
                         </div>
+                        <p>{{$galeria->descricao}}</p>
                         </div>
                     </li>
                 <?php }

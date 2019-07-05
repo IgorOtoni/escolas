@@ -14,12 +14,12 @@
                 Plataforma para as escolas
                 <!--<small>Example 2.0</small>-->
             </h1>
-            <!--<h3>Temos uma forma fácil para você, líder, providenciar uma página de internet para sua igreja. Temos 10 modelos à sua disposição.  Com ela você irá manter seu público informado sobre as programações de sua igreja e usá-lo como um canal de evangelismo, postando suas mensagens e divulgando o evangelho de Cristo. Você poderá ainda usufruir de vários benefícios que estamos desenvolvendo para facilitar seu trabalho, como o controle do rol de membros, dízimos, etc.</h3>-->
+            <h3>Divulge sua escola pela nossa plataforma. Temos uma varideade de templates para agradar seu estilo. Possibilitamos que você apresente sua escola, divulgue contatos, notícias, vídeos, eventos e galerias para todo o público virtual.</h3>
             <a class="btn btn-primary btn-lg" href="{{route('plataforma.formulario')}}"><b>CLIQUE AQUI PARA SABER MAIS</b></a>
         </div>
-        <!--<div class="col-xs-12 col-md-6">
-            <center><img style="width: 60%;" src="/storage/bg-eglise.png"></center>
-        </div>-->
+        <div class="col-xs-12 col-md-6">
+            <center><img style="width: 85%;" src="/storage/bg-escolas.jpg"></center>
+        </div>
     </div>
 </div>
 <!-- /.container -->

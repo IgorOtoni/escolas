@@ -170,7 +170,7 @@ $(function () {
         <h3 class="box-title"></h3>
         <?php if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.publicacoesg'), \Config::get('constants.permissoes.incluir'))[2] == true){ ?>
             <div class="pull-right">
-            <a class="btn btn-success" data-toggle="modal" data-target="#modal-incluir"><i class="fa fa-plus"></i>&nbspIncluír publicação</a>
+            <a class="btn btn-success" data-toggle="modal" data-target="#modal-incluir"><i class="fa fa-plus"></i>&nbspIncluir publicação</a>
             </div>
         <?php } ?>
     </div>
@@ -233,7 +233,7 @@ $(function () {
                     <div class="col-md-12">
                         <div class="form-group has-feedback">
                             <label >Galeria</label>
-                            <input name="galeria[]" multiple type="file" id="galeria" required>
+                            <input name="galeria[]" multiple type="file" id="galeria">
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>

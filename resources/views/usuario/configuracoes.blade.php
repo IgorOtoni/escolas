@@ -916,7 +916,7 @@ $('#modal-editar-subsubmenu').on('show.bs.modal', function (event) {
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-    Configuração do site da igreja
+    Configuração do site da escola
     <!--<small>it all starts here</small>-->
     </h1>
 </section>
@@ -935,6 +935,14 @@ $('#modal-editar-subsubmenu').on('show.bs.modal', function (event) {
             <div class="form-group has-feedback">
                 <label >Nome</label>
                 <input name="nome" type="text" class="form-control" placeholder="Nome" value="{{$igreja->nome}}" required>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group has-feedback">
+                <label >CNPJ</label>
+                <input name="cnpj" type="text" class="form-control" placeholder="CNPJ" data-inputmask='"mask": "99.999.999/9999-99"' value="{{$igreja->cnpj}}" data-mask required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1069,6 +1077,17 @@ $('#modal-editar-subsubmenu').on('show.bs.modal', function (event) {
     </div>
 
     </form>
+
+    <div class="box">
+        <div class="box-body">
+
+            <div class="row">
+            <div class="col-md-12">
+                <h4>Termo de compromisso:</h4> <a href="/gerar_termo_compromisso/{{$igreja->id}}" class="btn btn-primary" target="_blank">Gerar</a>
+            </div>
+            </div>
+        </div>
+    </div>
 
     <div class="box">
         <div class="box-body">

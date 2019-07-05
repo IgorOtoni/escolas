@@ -281,6 +281,15 @@ class IgrejaController extends Controller
         $publicacao->html = str_replace("\\n","",$publicacao->html);
         return view('layouts.template' . $igreja->id_template . '.publicacao', compact('igreja', 'modulos', 'publicacao', 'galeria_publicacao', 'menus', 'submenus', 'subsubmenus'));
     }
+    public function gerar_termo_compromisso($id){
+        $igreja = TblIgreja::find($id);
+        $nome = $igreja->nome;
+        $cnpj = $igreja->cnpj;
+        $cep = $igreja->cep;
+        $rua = $igreja->rua;
+        $num = $igreja->num;
+        return view('termoCompromisso', compact('nome', 'cnpj', 'cep', 'rua', 'num'));
+    }
     public function carrega_imagem($largura,$altura,$pasta,$arquivo){
         return view('exemplo2', compact('largura', 'altura', 'pasta', 'arquivo'));
     }

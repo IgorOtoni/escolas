@@ -167,7 +167,7 @@ $(function () {
       <h3 class="box-title"></h3>
         <?php if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.usuariosg'), \Config::get('constants.permissoes.incluir'))[2] == true){ ?>
             <div class="pull-right">
-                <a class="btn btn-success" data-toggle="modal" data-target="#modal-incluir"><i class="fa fa-plus"></i>&nbspIncluír usuário</a>
+                <a class="btn btn-success" data-toggle="modal" data-target="#modal-incluir"><i class="fa fa-plus"></i>&nbspIncluir usuário</a>
             </div>
         <?php } ?>
     </div>

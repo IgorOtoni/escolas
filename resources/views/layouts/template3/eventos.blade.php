@@ -67,7 +67,8 @@ $('#modal-evento').on('show.bs.modal', function (event) {
 
                     <?php 
                     $x = 0;
-                    foreach($eventos as $evento){
+                    for($x_ = sizeof($eventos) - 1; $x_ >= 0; $x_--){
+                        $evento = $eventos[$x_];
                         ?>
 
                         <!-- Single Upcoming Events -->

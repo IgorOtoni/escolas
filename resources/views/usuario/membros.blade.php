@@ -208,8 +208,8 @@ $(function(){
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-    Membros
-    <small>Lista de todas os membros da congregação</small>
+    Equipe
+    <small>Lista de todos os membros da equipe</small>
     </h1>
 </section>
 

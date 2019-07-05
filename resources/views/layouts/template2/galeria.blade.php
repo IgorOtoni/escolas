@@ -42,6 +42,9 @@
 
         <?php foreach($galerias as $galeria){ ?>
             <h3>{{$galeria->nome}}</h3>
+            <div class="col-12">
+                <h4><i class="fa fa-calendar"></i> {{\Carbon\Carbon::parse($galeria->data)->diffForHumans()}}</h4>
+            </div>
             <!-- ##### Gallery Area Start ##### -->
             <div class="gallery-area d-flex flex-wrap">
                 <?php $fotos_ = $fotos[$galeria->id];
@@ -53,6 +56,9 @@
                         </a>
                     </div>
                 <?php } ?>
+            </div>
+            <div class="col-12">
+                <p>{{$galeria->descricao}}</p>
             </div>
         <?php } ?>
 

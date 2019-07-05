@@ -13,7 +13,7 @@ class Tbl_Igrejas_Seeder extends Seeder
     {
         DB::table('tbl_igrejas')->insert([
             'id'=>1,
-            'nome'=>'Escola CEPSMA',
+            'nome'=>'Colégio CEPSMA',
             'estado' => 'MG',
             'cidade' => 'Coronel Fabriciano',
             'bairro' => 'Centro',
