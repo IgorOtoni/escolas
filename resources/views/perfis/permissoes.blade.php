@@ -36,7 +36,7 @@ $(document).ready(function() {
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label >{{$modulo->nome}}</label>&nbsp;<input type="checkbox" name="selecao" class="selecao" id="selecao_{{$modulo->id}}" style="margin: 0px 800px 2px 6px;">
+                                <label >{{$modulo->nome}}</label>&nbsp;<input type="checkbox" class="selecao" id="selecao_{{$modulo->id}}" style="margin: 0px 800px 2px 6px;">
                                 <br>
                                 @foreach ($permissoes[$modulo->id]['todas'] as $permissao)
                                   <?php
