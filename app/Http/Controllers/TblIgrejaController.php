@@ -5,6 +5,8 @@ use Image;
 use DataTables;
 use App\TblIgreja;
 use App\TblConfiguracoes;
+use App\TblPerfisPermissoes;
+use App\TblPerfisIgrejasModulos;
 use App\TblIgrejasModulos;
 use App\TblModulo;
 use App\TblMenu;
@@ -200,16 +202,34 @@ class TblIgrejaController extends Controller
 
             $igreja->save();
 
-            TblIgrejasModulos::where('id_igreja', '=',  $request->id)->delete();
+            $imsb = TblIgrejasModulos::where('id_igreja', '=',  $request->id)->get();
+            $modulos_ingorados = null;
+            $x = 0;
+
+            foreach($imsb as $imb){
+                if(in_array($imb->id_modulo, $request->modulos)){
+                    $modulos_ingorados[$x] = $imb->id_modulo;
+                    $x++;
+                }else{
+                    $pimsb = TblPerfisIgrejasModulos::where('id_modulo_igreja', '=', $imb->id)->get();
+                    foreach($pimsb as $pimb){
+                        TblPerfisPermissoes::where('id_perfil_igreja_modulo', '=', $pimb->id)->delete();
+                        $pimb->delete();
+                    }
+                    $imb->delete();
+                }
+            }
 
             $modulo = new TblIgrejasModulos();
 
             foreach ($request->modulos as $key => $value) {
-                $data = [
-                    'id_igreja' => $igreja->id,
-                    'id_modulo' => $value
-                ];
-                $modulo->create($data);
+                if($modulos_ingorados == null || !in_array($value, $modulos_ingorados)){
+                    $data = [
+                        'id_igreja' => $igreja->id,
+                        'id_modulo' => $value
+                    ];
+                    $modulo->create($data);
+                }
             }
 
             $notification = array(

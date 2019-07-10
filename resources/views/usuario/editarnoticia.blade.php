@@ -18,7 +18,6 @@ $(function(){
         language: "pt-BR",
         //minImageCount: 0,
         //maxImageCount: 1,
-        ,
         initialPreview: [
             <?php if($noticia->foto != null){ ?>
                 "{{'/storage/noticias/'.$noticia->foto}}",

@@ -79,6 +79,46 @@ class PlataformaController extends Controller
                     $igreja_modulo = new TblIgrejasModulos();
                     $igreja_modulo->id_igreja = $igreja->id;
                     $igreja_modulo->id_modulo = $modulo->id;
+                    if($modulo->gerencial){
+                        switch($modulo->id){
+                            case 13:
+                                $igreja_modulo->icone = "fa fa-child";
+                                break;
+                            case 14:
+                                $igreja_modulo->icone = "fa fa-users";
+                                break;
+                            case 15:
+                                $igreja_modulo->icone = "fa fa-file-image-o";
+                                break;
+                            case 16:
+                                $igreja_modulo->icone = "fa fa-calendar";
+                                break;
+                            case 17:
+                                $igreja_modulo->icone = "fa fa-clock-o";
+                                break;
+                            case 18:
+                                $igreja_modulo->icone = "fa fa-newspaper-o";
+                                break;
+                                case 19:
+                                $igreja_modulo->icone = "fa fa-play";
+                                break;
+                            case 20:
+                                $igreja_modulo->icone = "fa fa-microphone";
+                                break;
+                            case 21:
+                                $igreja_modulo->icone = "fa fa-thumbs-o-up";
+                                break;
+                            case 22:
+                                $igreja_modulo->icone = "fa fa-cogs";
+                                break;
+                            case 24:
+                                $igreja_modulo->icone = "fa fa-tags";
+                                break;
+                            case 25:
+                                $igreja_modulo->icone = "fa fa-user-plus";
+                                break;
+                        }
+                    }
                     $igreja_modulo->save();
                     $igreja_modulos[$x] = $igreja_modulo;
                     if($modulo->gerencial) $igreja_modulos_g[$x] = $igreja_modulo;
@@ -202,6 +242,8 @@ class PlataformaController extends Controller
                 $usuario->status = true;
                 $usuario->save();
                 // ===========================================================================
+
+                // disparar email com novo usuário e senha
 
                 $notification = array(
                     'message' => 'Bem vindo(a)! Seu site e usuário já estão configurados.', 

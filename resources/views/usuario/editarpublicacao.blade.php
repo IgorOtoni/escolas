@@ -36,7 +36,7 @@ $(function(){
                 {caption: "{{$foto->foto}}", extra: {id: {{$foto->id}}, foto: "{{$foto->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirFotoPublicacao", key: {{$x}}},
             <?php } ?>
         ],
-        //overwriteInitial: false,
+        overwriteInitial: false,
         //purifyHtml: true,
     }).on('filebeforedelete', function() {
             return new Promise(function(resolve, reject) {
@@ -119,9 +119,9 @@ $(function(){
                 <div class="row">
                 <div class="col-md-12">
                     <div class="form-group has-feedback">
-                        <label >Fotos</label>
+                        <label >Galeria</label>
                         <input type="hidden" id="csrf_token" name="_token" value="{{ csrf_token() }}">
-                        <input name="fotos[]" type="file" id="input_img" multiple>
+                        <input name="galeria[]" type="file" id="input_img" multiple>
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>

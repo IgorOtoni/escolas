@@ -303,8 +303,8 @@ class HomeController extends Controller
                 $menu->link = $request->url;
             }
             if($request->foto){
-                \Image::make($request->foto)->save(public_path('storage/banners/').'banner-'.$banner->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
-                $banner->foto = 'banner-'.$banner->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
+                \Image::make($request->foto)->save(public_path('storage/banners/').'banner-'.$banner->id.'-'.$banner->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
+                $banner->foto = 'banner-'.$banner->id.'-'.$banner->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
             }
             $banner->save();
 
@@ -508,8 +508,8 @@ class HomeController extends Controller
                 $foto->foto = "vazio";
                 $foto->save();
 
-                \Image::make($f_)->save(public_path('storage/galerias/').'foto-'.$foto->id.'-'.$galeria->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension(),90);
-                $foto->foto = 'foto-'.$foto->id.'-'.$galeria->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension();
+                \Image::make($f_)->save(public_path('storage/galerias/').'foto-'.$foto->id.'-'.$galeria->id.'-'.$galeria->id_igreja.'.'.$f_->getClientOriginalExtension(),90);
+                $foto->foto = 'foto-'.$foto->id.'-'.$galeria->id.'-'.$galeria->id_igreja.'.'.$f_->getClientOriginalExtension();
                 $foto->save();
             }
                 
@@ -620,8 +620,8 @@ class HomeController extends Controller
             $eventofixo->save();
 
             if($request->foto){
-                \Image::make($request->foto)->save(public_path('storage/eventos/').'evento-'.$eventofixo->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
-                $eventofixo->foto = 'evento-'.$eventofixo->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
+                \Image::make($request->foto)->save(public_path('storage/eventos/').'evento-'.$eventofixo->id.'-'.$eventofixo->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
+                $eventofixo->foto = 'evento-'.$eventofixo->id.'-'.$eventofixo->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
                 $eventofixo->save();
             }
 
@@ -747,8 +747,8 @@ class HomeController extends Controller
             $noticia->save();
 
             if($request->foto){
-                \Image::make($request->foto)->save(public_path('storage/noticias/').'noticia-'.$noticia->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
-                $noticia->foto = 'noticia-'.$noticia->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
+                \Image::make($request->foto)->save(public_path('storage/noticias/').'noticia-'.$noticia->id.'-'.$noticia->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
+                $noticia->foto = 'noticia-'.$noticia->id.'-'.$noticia->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
                 $noticia->save();
             }
 
@@ -1398,12 +1398,23 @@ class HomeController extends Controller
 
     public function excluirEvento($id){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.eventosg'), \Config::get('constants.permissoes.desativar'))[2] == true){
-            $eventofixo = TblEventos::find($id);
-            if($eventofixo->foto != null) File::delete(public_path().'/storage/timeline/'.$eventofixo->foto);
-            $eventofixo->delete();
+            $evento = TblEventos::find($id);
+
+            $incricoes = TblIncricoes::where('id_evento', $id)->get();
+
+            if($incricoes != null && sizeof($incricoes) > 0) foreach($incricoes as $incricao){
+                if(Carbon::now()->gt($evento->dados_horario_inicio)){
+                    // disparar emails cancelando evento por email
+                }
+
+                $incricao->delete();
+            }
+
+            if($evento->foto != null) File::delete(public_path().'/storage/timeline/'.$evento->foto);
+            $evento->delete();
 
             $notification = array(
-                'message' => 'Evento "' . $eventofixo->nome . '" foi excluído com sucesso!', 
+                'message' => 'Evento "' . $evento->nome . '" foi excluído com sucesso!', 
                 'alert-type' => 'success'
             );
 
@@ -1497,8 +1508,8 @@ class HomeController extends Controller
                 $foto->foto = "vazio";
                 $foto->save();
 
-                \Image::make($f_)->save(public_path('storage/galerias-publicacoes/').'foto-'.$foto->id.'-'.$publicacao->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension(),90);
-                $foto->foto = 'foto-'.$foto->id.'-'.$publicacao->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension();
+                \Image::make($f_)->save(public_path('storage/galerias-publicacoes/').'foto-'.$foto->id.'-'.$publicacao->id.'-'.$publicacao->id_igreja.'.'.$f_->getClientOriginalExtension(),90);
+                $foto->foto = 'foto-'.$foto->id.'-'.$publicacao->id.'-'.$publicacao->id_igreja.'.'.$f_->getClientOriginalExtension();
                 $foto->save();
             }
                 
@@ -2114,9 +2125,11 @@ class HomeController extends Controller
 
     public function excluirFuncao($id){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.funcoesg'), \Config::get('constants.permissoes.desativar'))[2] == true){
+            
+            TblMembros::where('id_funcao', $id)->update(['id_funcao' => null]);
+
             $funcao = TblFuncoes::find($id);
             $funcao->delete();
-
             $notification = array(
                 'message' => 'Função "' . $funcao->nome . '" foi excluída com sucesso!', 
                 'alert-type' => 'success'
@@ -2274,11 +2287,14 @@ class HomeController extends Controller
 
     public function excluirMembro($id){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.membrosg'), \Config::get('constants.permissoes.desativar'))[2] == true){
+            
+            Users::where('id_membro', $id)->update(['id_membro' => null]);
+
             $membro = TblMembros::find($id);
             $foto = $membro->foto;
             $membro->delete();
             if($foto != null) File::delete(public_path().'/storage/membros/'.$foto);
-
+            
             $notification = array(
                 'message' => 'Membro ' . $membro->nome . ' foi excluído com sucesso!', 
                 'alert-type' => 'success'
@@ -2290,7 +2306,7 @@ class HomeController extends Controller
     ////////////////////////////////////////////////////////////////////////////////////////
 
     // COMUNIDADE AREA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public function comunidades()
+    /*public function comunidades()
     {
         if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg')) == false){
             return view('error');
@@ -2532,6 +2548,6 @@ class HomeController extends Controller
 
             return redirect()->route('usuario.comunidades')->with($notification);
         }else{ return view('error'); }
-    }
+    }*/
     ////////////////////////////////////////////////////////////////////////////////////////
 }

@@ -139,7 +139,7 @@ class Tbl_Modulos_Seeder extends Seeder
         ]);
         DB::table('tbl_modulos')->insert([
             'id'=>12,
-            'nome'=>'Sermões',
+            'nome'=>'Vídeos',
             'descricao'=>'Funcionalidade do site apresentativo.',
             'rota'=>'sermoes',
         ]);

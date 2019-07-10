@@ -44,7 +44,7 @@ $(function(){
                 {caption: "{{$foto->foto}}", extra: {id: {{$foto->id}}, foto: "{{$foto->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirFotoGaleria", key: {{$x}}},
             <?php } ?>
         ],
-        //overwriteInitial: false,
+        overwriteInitial: false,
         //purifyHtml: true,
     }).on('filebeforedelete', function() {
             return new Promise(function(resolve, reject) {
