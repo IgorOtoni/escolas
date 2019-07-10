@@ -13,7 +13,7 @@ class CreateTblMembrosComunidadesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_membros_comunidades', function (Blueprint $table) {
+        /*Schema::create('tbl_membros_comunidades', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->boolean('ativo')->default(true);
             $table->boolean('lider');
@@ -22,7 +22,7 @@ class CreateTblMembrosComunidadesTable extends Migration
             $table->bigInteger('id_comunidade')->unsigned();
             $table->foreign('id_comunidade')->references('id')->on('tbl_comunidades');
             $table->timestamps();
-        });
+        });*/
     }
 
     /**
@@ -32,6 +32,6 @@ class CreateTblMembrosComunidadesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_membros_comunidades');
+        //Schema::dropIfExists('tbl_membros_comunidades');
     }
 }

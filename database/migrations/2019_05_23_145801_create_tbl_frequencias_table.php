@@ -13,7 +13,7 @@ class CreateTblFrequenciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_frequencias', function (Blueprint $table) {
+        /*Schema::create('tbl_frequencias', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->boolean('ausente');
             $table->bigInteger('id_membro_comunidade')->unsigned();
@@ -21,7 +21,7 @@ class CreateTblFrequenciasTable extends Migration
             $table->bigInteger('id_reuniao')->unsigned();
             $table->foreign('id_reuniao')->references('id')->on('tbl_reunioes');
             $table->timestamps();
-        });
+        });*/
     }
 
     /**
@@ -31,6 +31,6 @@ class CreateTblFrequenciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_frequencias');
+        //Schema::dropIfExists('tbl_frequencias');
     }
 }

@@ -183,7 +183,7 @@ $(function () {
           <th>#</th>
           <th>Nome</th>
           <th>Perfil</th>
-          <th>Igreja</th>
+          <th>Escola</th>
           <th>Situação</th>
           <th>Ações</th>
       </tr>

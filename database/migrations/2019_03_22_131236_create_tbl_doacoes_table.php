@@ -13,10 +13,10 @@ class CreateTblDoacoesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_doacoes', function (Blueprint $table) {
+        /*Schema::create('tbl_doacoes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-        });
+        });*/
     }
 
     /**
@@ -26,6 +26,6 @@ class CreateTblDoacoesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_doacoes');
+        //Schema::dropIfExists('tbl_doacoes');
     }
 }

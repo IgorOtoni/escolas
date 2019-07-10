@@ -247,7 +247,7 @@ $(function () {
           <th></th>
           <th>#</th>
           <th>Nome</th>
-          <th>Congregação</th>
+          <th>Escola</th>
           <th>Ações</th>
       </tr>
       </thead>

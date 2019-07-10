@@ -102,7 +102,8 @@ function muda_data_tempo($data){
     $split_ = explode(' ', $retorno);
     $split = explode('-', $split_[0]);
     return $split[2] . '-' . $split[1] . '-' . $split[0] . ' ' . $split_[1];
-}function muda_data_tempo_($data){
+}
+function muda_data_tempo_($data){
     $retorno = str_replace("/", "-", $data);
     $split_ = explode(' ', $retorno);
     $split = explode('-', $split_[0]);
@@ -147,6 +148,17 @@ function verifica_link($link, $igreja){
     }
 }
 // ÁREA DE AUTENTICAÇÃO E VALIDAÇÃO DE MÓDULOS E PERMISSÕES !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+function obter_modulos_perfil($perfil){
+    $modulos = \DB::table('tbl_perfis_igrejas_modulos')
+        ->leftJoin('tbl_igrejas_modulos', 'tbl_perfis_igrejas_modulos.id_modulo_igreja', '=', 'tbl_igrejas_modulos.id')
+        ->leftJoin('tbl_modulos', 'tbl_igrejas_modulos.id_modulo', '=', 'tbl_modulos.id')
+        ->select('tbl_igrejas_modulos.id_modulo', 'tbl_modulos.*')
+        ->where('tbl_perfis_igrejas_modulos.id_perfil','=',$perfil->id)
+        ->where('tbl_modulos.sistema','like','%web%')
+        ->orderBy('tbl_modulos.nome', 'ASC')
+        ->get();
+    return $modulos;
+}
 function valida_modulo($id_perfil, $id_modulo){
     $retorno = null;
     $perfil = TblPerfil::find($id_perfil);
@@ -165,17 +177,6 @@ function valida_modulo($id_perfil, $id_modulo){
         $retorno = true;
     }
     return $retorno;
-}
-function obter_modulos_perfil($perfil){
-    $modulos = \DB::table('tbl_perfis_igrejas_modulos')
-        ->leftJoin('tbl_igrejas_modulos', 'tbl_perfis_igrejas_modulos.id_modulo_igreja', '=', 'tbl_igrejas_modulos.id')
-        ->leftJoin('tbl_modulos', 'tbl_igrejas_modulos.id_modulo', '=', 'tbl_modulos.id')
-        ->select('tbl_igrejas_modulos.id_modulo', 'tbl_modulos.*')
-        ->where('tbl_perfis_igrejas_modulos.id_perfil','=',$perfil->id)
-        ->where('tbl_modulos.sistema','like','%web%')
-        ->orderBy('tbl_modulos.nome', 'ASC')
-        ->get();
-    return $modulos;
 }
 function valida_permissao($id_perfil, $id_modulo, $id_permissao){
     $retorno = null;

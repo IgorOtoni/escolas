@@ -13,14 +13,14 @@ class CreateTblLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_logs', function (Blueprint $table) {
+        /*Schema::create('tbl_logs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('tipo');
             $table->text('descricao');
             $table->bigInteger('id_usuario')->unsigned();
             $table->foreign('id_usuario')->references('id')->on('users');
             $table->timestamps();
-        });
+        });*/
     }
 
     /**
@@ -30,6 +30,6 @@ class CreateTblLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_logs');
+        //Schema::dropIfExists('tbl_logs');
     }
 }

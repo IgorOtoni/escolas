@@ -126,7 +126,7 @@ $config['accessControl'][] = array(
 /*================================ Other Settings =====================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html
 
-$config['overwriteOnUpload'] = false;
+$config['overwriteOnUpload'] = true;
 $config['checkDoubleExtension'] = true;
 $config['disallowUnsafeCharacters'] = false;
 $config['secureImageUploads'] = true;

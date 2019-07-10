@@ -13,7 +13,7 @@ class CreateTblReunioesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_reunioes', function (Blueprint $table) {
+        /*Schema::create('tbl_reunioes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('descricao');
             $table->text('observacao')->nullable();
@@ -28,7 +28,7 @@ class CreateTblReunioesTable extends Migration
             $table->bigInteger('id_comunidade')->unsigned();
             $table->foreign('id_comunidade')->references('id')->on('tbl_comunidades');
             $table->timestamps();
-        });
+        });*/
     }
 
     /**
@@ -38,6 +38,6 @@ class CreateTblReunioesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_reunioes');
+        //Schema::dropIfExists('tbl_reunioes');
     }
 }
