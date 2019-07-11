@@ -38,7 +38,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-heading white text-center mx-auto">
-                    <img src="{{asset('/template_igreja/template-escuro/img/core-img/cross.png')}}" alt="">
+                    <!-- <img src="{{asset('/template_igreja/template-escuro/img/core-img/cross.png')}}" alt=""> -->
                     <h3>Equipe</h3>
                 </div>
             </div>

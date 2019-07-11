@@ -1319,11 +1319,11 @@ class HomeController extends Controller
     public function editarEvento($id){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.eventosg'), \Config::get('constants.permissoes.alterar'))[2] == true){
             $evento = TblEventos::find($id);
-            $incricoes = TblInscricoes::where('id_evento','=',$evento->id)->get();
+            $inscricoes = TblInscricoes::where('id_evento','=',$evento->id)->get();
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
             $igreja = obter_dados_igreja_id($perfil->id_igreja);
             $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editarevento', compact('evento','igreja','modulos_igreja','incricoes'));
+            return view('usuario.editarevento', compact('evento','igreja','modulos_igreja','inscricoes'));
         }else{ return view('error'); }
     }
 
@@ -1355,7 +1355,7 @@ class HomeController extends Controller
 
     public function atualizarEvento(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.eventosg'), \Config::get('constants.permissoes.alterar'))[2] == true){
-            $evento = TblEventos::find($id);
+            $evento = TblEventos::find($request->id);
 
             $evento->nome = $request->nome;
             $evento->descricao = $request->descricao;
@@ -2301,6 +2301,17 @@ class HomeController extends Controller
             );
 
             return redirect()->route('usuario.membros')->with($notification);
+        }else{ return view('error'); }
+    }
+
+    public function excluirFotoMembro(Request $request){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.membrosg'), \Config::get('constants.permissoes.desativar'))[2] == true){
+            $foto = $request['foto'];
+            $banner = TblMembros::find($request->id);
+            $banner->foto = "vazio";
+            $banner->save();
+            File::delete(public_path().'/storage/membros/'.$foto);
+            return \Response::json(['message' => 'File successfully delete'], 200);
         }else{ return view('error'); }
     }
     ////////////////////////////////////////////////////////////////////////////////////////

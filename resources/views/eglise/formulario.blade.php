@@ -234,7 +234,7 @@ $('div.setup-panel div a.btn-success').trigger('click');
                     <h3>I - DOS OBJETIVOS:</h3>
  
                     <p>
-                        O objetivo do presente instrumento é a contratação da utilização pelo LICENCIADO do Site Eclesiástico hospedado em nossos servidores, bem como os serviços de manutenção e suporte a ele associados.
+                        O objetivo do presente instrumento é a contratação da utilização pelo LICENCIADO do Site Escolar hospedado em nossos servidores, bem como os serviços de manutenção e suporte a ele associados.
                     </p> 
                          
                     <h3>
@@ -242,7 +242,7 @@ $('div.setup-panel div a.btn-success').trigger('click');
                     </h3>
                          
                     <p>
-                        Mediante o presente instrumento, o LICENCIADO obtém da HotSystems o direito de utilizar o Site Eclesiástico com as funcionalidades nele implementadas bem como obter a execução do seguinte escopo de serviços:
+                        Mediante o presente instrumento, o LICENCIADO obtém da HotSystems o direito de utilizar o Site Escolar com as funcionalidades nele implementadas bem como obter a execução do seguinte escopo de serviços:
                     </p>
                         
                     <ol type="A">

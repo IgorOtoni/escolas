@@ -59,7 +59,7 @@ $(function(){
     <section class="content-header">
         <h1>
         Linha do tempo
-        <small>Lista de todos os eventos da congregação</small>
+        <small>Lista de todos os eventos da escola</small>
         </h1>
     </section>
 

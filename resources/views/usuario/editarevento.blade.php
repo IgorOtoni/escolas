@@ -74,7 +74,7 @@ $(function(){
                 {caption: "{{$evento->foto}}", extra: {id: {{$evento->id}}, foto: "{{$evento->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirFotoEvento", key: 1},
             <?php } ?>
         ],
-        //overwriteInitial: false,
+        overwriteInitial: true,
         //purifyHtml: true,
     }).on('filebeforedelete', function() {
             return new Promise(function(resolve, reject) {
@@ -185,6 +185,7 @@ $(function(){
             <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
         </div>
     </div>
+    </form>
 
     <form id="editarInscricoesFormulario" data-toggle="validator" method="POST" role="form" action="{{route('usuario.atualizarInscricoes')}}" enctype="multipart/form-data">
     @csrf
@@ -211,7 +212,7 @@ $(function(){
                             <td>{{$inscricao->id}}</td>
                             <td>{{$inscricao->email}}</td>
                             <td>{{$inscricao->telefone}}</td>
-                            <td><input name="inscricoes[]" value="{{$membro->id}}" type="checkbox" {{($inscricao->cancelada) ? "checked" : ""}}></td>
+                            <td><input name="inscricoes[]" value="{{$inscricao->id}}" type="checkbox" {{($inscricao->cancelada) ? "checked" : ""}}></td>
                         <?php
                     }
                     ?>

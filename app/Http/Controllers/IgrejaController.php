@@ -142,7 +142,7 @@ class IgrejaController extends Controller
         $funcoes = TblFuncoes::where('id_igreja','=',$igreja->id)->where('apresentar','=',true)->get();
         $membros = null;
         foreach($funcoes as $funcao){
-            $membros[$funcao->id] = TblMembros::where('id_funcao','=',$funcao->id)->where('id_igreja','=',$funcao->id_igreja)->get();
+            $membros[$funcao->id] = TblMembros::where('id_funcao','=',$funcao->id)->where('ativo','=',true)->where('id_igreja','=',$funcao->id_igreja)->get();
         }
         $menus = $retorno[0];
         $submenus = $retorno[1];
