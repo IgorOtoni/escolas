@@ -13,6 +13,8 @@ use App\TblSubSubMenu;
 use App\TblPerfil;
 use App\TblPerfisIgrejasModulos;
 use App\User;
+use App\Mail\SendMailuser;
+
 class PlataformaController extends Controller
 {
     public function index(){
@@ -243,15 +245,15 @@ class PlataformaController extends Controller
                 $usuario->save();
                 // ===========================================================================
 
-                // disparar email com novo usuário e senha
+                \Mail::to($igreja->email)
+                    ->send(new SendMailUser($usuario->nome, "administrador"));
 
                 $notification = array(
                     'message' => 'Bem vindo(a)! Seu site e usuário já estão configurados.', 
                     'alert-type' => 'success'
                 );
 
-                //return view('igrejas.index')->with($notification);
-                return redirect($configuracao->url)/*->route('plataforma.congregacoes')*/->with($notification);
+                return redirect($configuracao->url)->with($notification);
             }else{
                 $notification = array(
                     'message' => 'Já existe uma escola com essa URL, por favor escolha outra URL.', 

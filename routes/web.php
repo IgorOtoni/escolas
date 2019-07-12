@@ -292,28 +292,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/excluirMembro/{id}', 'HomeController@excluirMembro')->name('usuario.excluirMembro');
         Route::get('/switchStatusMembro/{id}', 'HomeController@switchStatusMembro')->name('usuario.switchStatusMembro');
         //////////////////////////////////////////////////////////////////////////////////////////
-
-        // CRUD COMUNIDADES ==========================================================================
-        Route::get('/comunidades', 'HomeController@comunidades')->name('usuario.comunidades');
-        Route::get('/tbl_comunidades', 'HomeController@tbl_comunidades')->name('usuario.tbl_comunidades');
-        Route::post('/incluirComunidade', 'HomeController@incluirComunidade')->name('usuario.incluirComunidade');
-        Route::get('/editarComunidade/{id}', 'HomeController@editarComunidade')->name('usuario.editarComunidade');
-        Route::post('/atualizarComunidade', 'HomeController@atualizarComunidade')->name('usuario.atualizarComunidade');
-        Route::get('/excluirComunidade/{id}', 'HomeController@excluirComunidade')->name('usuario.excluirComunidade');
-        Route::get('/listarReunioes/{id}', 'HomeController@listarReunioes')->name('usuario.listarReunioes');
-        Route::get('/tbl_reunioes/', 'HomeController@tbl_reunioes')->name('usuario.tbl_reunioes');
-        Route::get('/listarPresencas/{id}', 'HomeController@listarPresencas')->name('usuario.listarPresencas');
-        Route::get('/tbl_presencas/', 'HomeController@tbl_presencas')->name('usuario.tbl_presencas');
-        //////////////////////////////////////////////////////////////////////////////////////////
-
-        // CRUD REUNIOES ==========================================================================
-        Route::get('/reunioes', 'HomeController@reunioes')->name('usuario.reunioes');
-        Route::get('/tbl_reunioes', 'HomeController@tbl_reunioes')->name('usuario.tbl_reunioes');
-        Route::post('/incluirReuniao', 'HomeController@incluirReuniao')->name('usuario.incluirReuniao');
-        Route::get('/editarReuniao/{id}', 'HomeController@editarReuniao')->name('usuario.editarReuniao');
-        Route::post('/atualizarReuniao', 'HomeController@atualizarReuniao')->name('usuario.atualizarReuniao');
-        Route::get('/excluirReuniao/{id}', 'HomeController@excluirReuniao')->name('usuario.excluirReuniao');
-        //////////////////////////////////////////////////////////////////////////////////////////
     });
 });
 
