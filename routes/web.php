@@ -296,7 +296,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 $appRoutes = function() {
-        //Route::get('/', 'IgrejaController@index')->name('igreja.index');
+        Route::get('/', 'IgrejaController@index')->name('igreja.index');
         Route::get('/home/', 'IgrejaController@index')->name('igreja.index');
         Route::get('/contato', 'IgrejaController@contato')->name('igreja.contato');
         Route::get('/enviaContato', 'IgrejaController@enviaContato')->name('igreja.enviaContato');
