@@ -10,6 +10,23 @@ use App\TblIgrejas;
 use App\TblModulos;
 use App\TblPermissoes;
 
+function urlParser($request){
+  $str = explode('.',$request->url());
+  $url = str_replace("http://", "", $str[0]);
+  return $url;
+}
+
+function urlExplode($request){
+  $params = explode('.',$request->url());
+  $params[0] = str_replace("http://", "", $params[0]);
+  return $params;
+}
+
+function strExplode($request){
+  $params = explode('/',$request);
+  return $params;
+}
+
 function fistCharFromWord_toUpper($string)
 {
     $st = '';
@@ -19,7 +36,7 @@ function fistCharFromWord_toUpper($string)
         $str =  mb_substr($str, 1, mb_strlen($str, "UTF-8"), "UTF-8");
         $st = $st.' '.$first_letter.$str;
     }
-    return $st;   
+    return $st;
 }
 function obter_dados_igreja_id($id){
     $igreja = \DB::table('tbl_igrejas')
@@ -140,11 +157,11 @@ function limpa_html($html){
 }
 function verifica_link($link, $igreja){
     if($link == null || empty($link) || trim($link) == ""){
-        return "/".$igreja->url;
+        return "/";
     }else if(substr($link, 0, 4) == "http"){
         return $link;
     }else{
-        return "/".$igreja->url."/".$link;
+        return "/".$link;
     }
 }
 // ÁREA DE AUTENTICAÇÃO E VALIDAÇÃO DE MÓDULOS E PERMISSÕES !!!!!!!!!!!!!!!!!!!!!!!!!!!!

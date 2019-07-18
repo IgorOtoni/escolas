@@ -12,9 +12,11 @@ use App\TblFuncoes;
 use Symfony\Component\HttpFoundation\Response;
 class IgrejaController extends Controller
 {
-    public function index($url)
+    public function index(Request $request)
     {
+        $url = urlParser($request);
         $igreja = obter_dados_igreja($url);
+        
         $modulos = obter_modulos_apresentativos_igreja($igreja);
         $banners = \DB::table('tbl_banners')
             ->where('id_igreja', '=', $igreja->id)
@@ -55,8 +57,9 @@ class IgrejaController extends Controller
         $subsubmenus = $retorno[2];
         return view('layouts.template' . $igreja->id_template . '.index', compact('igreja', 'modulos', 'banners', 'eventos', 'noticias', 'galerias', 'fotos', 'menus', 'submenus', 'subsubmenus'));
     }
-    public function ministros($url)
+    public function ministros(Request $request)
     {
+        $url = urlParser($request);
         $igreja = obter_dados_igreja($url);
         $modulos = obter_modulos_apresentativos_igreja($igreja);
         $retorno = obter_menus_configuracao($igreja->id_configuracao);
@@ -65,8 +68,9 @@ class IgrejaController extends Controller
         $subsubmenus = $retorno[2];
         return view('layouts.template' . $igreja->id_template . '.ministros', compact('igreja', 'modulos', 'menus', 'submenus', 'subsubmenus'));
     }
-    public function noticias($url)
+    public function noticias(Request $request)
     {
+        $url = urlParser($request);
         $igreja = obter_dados_igreja($url);
         $modulos = obter_modulos_apresentativos_igreja($igreja);
         $noticias = \DB::table('tbl_noticias')
@@ -79,8 +83,12 @@ class IgrejaController extends Controller
         $subsubmenus = $retorno[2];
         return view('layouts.template' . $igreja->id_template . '.noticias', compact('igreja', 'modulos', 'noticias', 'menus', 'submenus', 'subsubmenus'));
     }
-    public function noticia($url,$id)
+    public function noticia(Request $request)//$url,$id
     {
+        $param = urlExplode($request);
+        $url = $param[0];
+        $id = strExplode($param[1])[2];
+
         $igreja = obter_dados_igreja($url);
         $modulos = obter_modulos_apresentativos_igreja($igreja);
         $retorno = obter_menus_configuracao($igreja->id_configuracao);
@@ -95,8 +103,9 @@ class IgrejaController extends Controller
         $noticia = $noticia[0];
         return view('layouts.template' . $igreja->id_template . '.noticiadetalhada', compact('igreja', 'modulos', 'noticia', 'menus', 'submenus', 'subsubmenus'));
     }
-    public function sermoes($url)
+    public function sermoes(Request $request)
     {
+        $url = urlParser($request);
         $igreja = obter_dados_igreja($url);
         $modulos = obter_modulos_apresentativos_igreja($igreja);
         $retorno = obter_menus_configuracao($igreja->id_configuracao);
@@ -109,8 +118,12 @@ class IgrejaController extends Controller
             ->paginate(4);
         return view('layouts.template' . $igreja->id_template . '.sermoes', compact('igreja', 'modulos', 'sermoes', 'menus', 'submenus', 'subsubmenus'));
     }
-    public function sermao($url,$id)
+    public function sermao(Request $request)//$url,$id
     {
+        $param = urlExplode($request);
+        $url = $param[0];
+        $id = strExplode($param[1])[2];
+
         $igreja = obter_dados_igreja($url);
         $modulos = obter_modulos_apresentativos_igreja($igreja);
         $retorno = obter_menus_configuracao($igreja->id_configuracao);
@@ -124,8 +137,9 @@ class IgrejaController extends Controller
         $sermao = $sermao[0];
         return view('layouts.template' . $igreja->id_template . '.sermaodetalhado', compact('igreja', 'modulos', 'sermao', 'menus', 'submenus', 'subsubmenus'));
     }
-    public function contato($url)
+    public function contato(Request $request)
     {
+        $url = urlParser($request);
         $igreja = obter_dados_igreja($url);
         $modulos = obter_modulos_apresentativos_igreja($igreja);
         $retorno = obter_menus_configuracao($igreja->id_configuracao);
@@ -134,8 +148,9 @@ class IgrejaController extends Controller
         $subsubmenus = $retorno[2];
         return view('layouts.template' . $igreja->id_template . '.contato', compact('igreja', 'modulos', 'menus', 'submenus', 'subsubmenus'));
     }
-    public function apresentacao($url)
+    public function apresentacao(Request $request)
     {
+        $url = urlParser($request);
         $igreja = obter_dados_igreja($url);
         $modulos = obter_modulos_apresentativos_igreja($igreja);
         $retorno = obter_menus_configuracao($igreja->id_configuracao);
@@ -149,8 +164,9 @@ class IgrejaController extends Controller
         $subsubmenus = $retorno[2];
         return view('layouts.template' . $igreja->id_template . '.apresentacao', compact('igreja', 'funcoes', 'membros', 'modulos', 'menus', 'submenus', 'subsubmenus'));
     }
-    public function eventosfixos($url)
+    public function eventosfixos(Request $request)
     {
+        $url = urlParser($request);
         $igreja = obter_dados_igreja($url);
         $modulos = obter_modulos_apresentativos_igreja($igreja);
         $retorno = obter_menus_configuracao($igreja->id_configuracao);
@@ -172,8 +188,12 @@ class IgrejaController extends Controller
         }
         return view('layouts.template' . $igreja->id_template . '.eventosfixos', compact('igreja', 'modulos', 'eventos_fixos', 'menus', 'submenus', 'subsubmenus'));
     }
-    public function eventofixo($url,$id)
+    public function eventofixo(Request $request)//$url,$id
     {
+        $param = urlExplode($request);
+        $url = $param[0];
+        $id = strExplode($param[1])[2];
+
         $igreja = obter_dados_igreja($url);
         $modulos = obter_modulos_apresentativos_igreja($igreja);
         $retorno = obter_menus_configuracao($igreja->id_configuracao);
@@ -187,8 +207,9 @@ class IgrejaController extends Controller
         $eventofixo = $eventofixo[0];
         return view('layouts.template' . $igreja->id_template . '.eventofixodetalhado', compact('igreja', 'modulos', 'eventofixo', 'menus', 'submenus', 'subsubmenus'));
     }
-    public function eventos($url)
+    public function eventos(Request $request)
     {
+        $url = urlParser($request);
         $igreja = obter_dados_igreja($url);
         $modulos = obter_modulos_apresentativos_igreja($igreja);
         $retorno = obter_menus_configuracao($igreja->id_configuracao);
@@ -216,8 +237,12 @@ class IgrejaController extends Controller
         }
         return view('layouts.template' . $igreja->id_template . '.eventos', compact('igreja', 'modulos', 'eventos', 'menus', 'submenus', 'subsubmenus'));
     }
-    public function evento($url,$id)
+    public function evento(Request $request)//$url,$id
     {
+        $param = urlExplode($request);
+        $url = $param[0];
+        $id = strExplode($param[1])[2];
+
         $igreja = obter_dados_igreja($url);
         $modulos = obter_modulos_apresentativos_igreja($igreja);
         $retorno = obter_menus_configuracao($igreja->id_configuracao);
@@ -231,13 +256,15 @@ class IgrejaController extends Controller
         $evento = $evento[0];
         return view('layouts.template' . $igreja->id_template . '.eventodetalhado', compact('igreja', 'modulos', 'evento', 'menus', 'submenus', 'subsubmenus'));
     }
-    public function login($url)
+    public function login(Request $request)
     {
+        $url = urlParser($request);
         $igreja = obter_dados_igreja($url);
         return view('auth.login',compact('igreja'));
     }
-    public function galeria($url)
+    public function galeria(Request $request)
     {
+        $url = urlParser($request);
         $igreja = obter_dados_igreja($url);
         $modulos = obter_modulos_apresentativos_igreja($igreja);
         $retorno = obter_menus_configuracao($igreja->id_configuracao);
@@ -259,7 +286,12 @@ class IgrejaController extends Controller
         }
         return view('layouts.template' . $igreja->id_template . '.galeria', compact('igreja', 'modulos', 'galerias', 'fotos', 'menus', 'submenus', 'subsubmenus'));
     }
-    public function publicacao($url,$id){
+    public function publicacao(Request $request){//$url,$id
+
+        $param = urlExplode($request);
+        $url = $param[0];
+        $id = strExplode($param[1])[2];
+
         $igreja = obter_dados_igreja($url);
         $modulos = obter_modulos_apresentativos_igreja($igreja);
         $retorno = obter_menus_configuracao($igreja->id_configuracao);

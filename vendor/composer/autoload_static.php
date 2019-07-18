@@ -452,6 +452,14 @@ class ComposerStaticInit564996520d96a55fda414f3d2ba873aa
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Libs\\Canvas' => __DIR__ . '/../..' . '/app/Libs/Canvas.php',
+        'App\\Libs\\html2pdf\\HTML2PDF' => __DIR__ . '/../..' . '/app/Libs/html2pdf/HTML2PDF.php',
+        'App\\Libs\\html2pdf\\classes\\HTML2PDF_exception' => __DIR__ . '/../..' . '/app/Libs/html2pdf/classes/HTML2PDF_exception.php',
+        'App\\Libs\\html2pdf\\classes\\HTML2PDF_locale' => __DIR__ . '/../..' . '/app/Libs/html2pdf/classes/HTML2PDF_locale.php',
+        'App\\Libs\\html2pdf\\classes\\HTML2PDF_myPdf' => __DIR__ . '/../..' . '/app/Libs/html2pdf/classes/HTML2PDF_myPdf.php',
+        'App\\Libs\\html2pdf\\classes\\HTML2PDF_parsingCss' => __DIR__ . '/../..' . '/app/Libs/html2pdf/classes/HTML2PDF_parsingCss.php',
+        'App\\Libs\\html2pdf\\classes\\HTML2PDF_parsingHtml' => __DIR__ . '/../..' . '/app/Libs/html2pdf/classes/HTML2PDF_parsingHtml.php',
+        'App\\Libs\\html2pdf\\tcpdf\\TCPDF' => __DIR__ . '/../..' . '/app/Libs/html2pdf/tcpdf/TCPDF.php',
+        'App\\Mail\\SendMailUser' => __DIR__ . '/../..' . '/app/Mail/SendMailUser.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -4059,6 +4067,7 @@ class ComposerStaticInit564996520d96a55fda414f3d2ba873aa
         'Tbl_Igrejas_Modulos_Seeder' => __DIR__ . '/../..' . '/database/seeds/Tbl_Igrejas_Modulos_Seeder.php',
         'Tbl_Igrejas_Seeder' => __DIR__ . '/../..' . '/database/seeds/Tbl_Igrejas_Seeder.php',
         'Tbl_Membros_Seeder' => __DIR__ . '/../..' . '/database/seeds/Tbl_Membros_Seeder.php',
+        'Tbl_Menus_Android_Seeder' => __DIR__ . '/../..' . '/database/seeds/Tbl_Menus_Android_Seeder.php',
         'Tbl_Menus_Seeder' => __DIR__ . '/../..' . '/database/seeds/Tbl_Menus_Seeder.php',
         'Tbl_Modulos_Seeder' => __DIR__ . '/../..' . '/database/seeds/Tbl_Modulos_Seeder.php',
         'Tbl_Noticias_Seeder' => __DIR__ . '/../..' . '/database/seeds/Tbl_Noticias_Seeder.php',
@@ -4197,7 +4206,6 @@ class ComposerStaticInit564996520d96a55fda414f3d2ba873aa
         'phpDocumentor\\Reflection\\Types\\String_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/String_.php',
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
-        'tbl_menus_android_Seeder' => __DIR__ . '/../..' . '/database/seeds/Tbl_Menus_Android_Seeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

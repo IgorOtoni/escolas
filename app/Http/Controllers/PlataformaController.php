@@ -17,7 +17,11 @@ use App\Mail\SendMailuser;
 
 class PlataformaController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+      $app_domain = env("APP_URL");
+      if($request->url() != $app_domain){
+        return redirect()->route('igreja.index');
+      }
         return view('eglise.index');
     }
 
@@ -249,23 +253,23 @@ class PlataformaController extends Controller
                     ->send(new SendMailUser($usuario->nome, "administrador"));
 
                 $notification = array(
-                    'message' => 'Bem vindo(a)! Seu site e usuário já estão configurados.', 
+                    'message' => 'Bem vindo(a)! Seu site e usuário já estão configurados.',
                     'alert-type' => 'success'
                 );
 
                 return redirect($configuracao->url)->with($notification);
             }else{
                 $notification = array(
-                    'message' => 'Já existe uma escola com essa URL, por favor escolha outra URL.', 
+                    'message' => 'Já existe uma escola com essa URL, por favor escolha outra URL.',
                     'alert-type' => 'error'
                 );
-    
+
                 return back()->with($notification);
             }
         }else{
 
             $notification = array(
-                'message' => 'Já existe uma escola com esse nome, por favor escolha outro nome.', 
+                'message' => 'Já existe uma escola com esse nome, por favor escolha outro nome.',
                 'alert-type' => 'error'
             );
 
