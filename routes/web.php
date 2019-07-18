@@ -136,7 +136,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('publicacoes', 'TblPublicacoesController@index')->name('publicacoes');
         Route::post('publicacoes/incluir', 'TblPublicacoesController@store')->name('publicacoes.incluir');
 
-        Route::get('permissoes/json_permissoes', 'TblPermissaoController@json_permissoes')->name('permissoes.json_permissoes');
+        Route::get('permissoes/json_permissoes', 'TblPermissaoController@json_permissoes')->name('permissoes.json_permissoes');       
 
         Route::get('usuarios', 'TblUsuariosController@index')->name('usuarios');
         Route::post('usuarios/incluir', 'TblUsuariosController@store')->name('usuarios.incluir');
@@ -203,7 +203,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         // CONFIGURACOES SITE ==========================================================================
         Route::get('/configuracoes', 'HomeController@configuracoes')->name('usuario.configuracoes');
-        Route::post('/salvarConfiguracoes', 'HomeController@salvarConfiguracoes')->name('usuario.salvarConfiguracoes');
+        Route::post('/salvarConfiguracoes', 'HomeController@salvarConfiguracoes')->name('usuario.salvarConfiguracoes');        
         Route::post('/excluirLogo', 'HomeController@excluirLogo')->name('usuario.excluirLogo');
         Route::post('/adicionarMenu', 'HomeController@adicionarMenu')->name('usuario.adicionarMenu');
         Route::post('/editarMenu', 'HomeController@editarMenu')->name('usuario.editarMenu');
@@ -245,7 +245,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/excluirFotoPublicacao', 'HomeController@excluirFotoPublicacao')->name('usuario.excluirFotoPublicacao');
         Route::get('/excluirPublicacao/{id}', 'HomeController@excluirPublicacao')->name('usuario.excluirPublicacao');
         //////////////////////////////////////////////////////////////////////////////////////////
-
+    
         // ALTERAR CONTA =========================================================================
         Route::get('usuarios/conta', 'HomeController@conta')->name('account');
         Route::post('usuarios/atualizarConta', 'HomeController@atualizarConta')->name('account.atualizar');
@@ -295,6 +295,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 
+<<<<<<< HEAD
 $appRoutes = function() {
         Route::get('/', 'IgrejaController@index')->name('igreja.index');
         Route::get('/home/', 'IgrejaController@index')->name('igreja.index');
@@ -321,3 +322,24 @@ Route::group(array('domain' => 'cepsma.localhost'), $appRoutes);
 Route::group(array('domain' => 'ethos.localhost'), $appRoutes);
 Route::group(array('domain' => 'iepg.localhost'), $appRoutes);
 Route::group(array('domain' => 'iepa.localhost'), $appRoutes);
+=======
+Route::get('/{url}', 'IgrejaController@index')->name('igreja.index');
+Route::get('/{url}/home/', 'IgrejaController@index')->name('igreja.index');
+Route::get('/{url}/contato', 'IgrejaController@contato')->name('igreja.contato');
+Route::get('/{url}/enviaContato', 'IgrejaController@enviaContato')->name('igreja.enviaContato');
+Route::get('/{url}/eventos', 'IgrejaController@eventos')->name('igreja.eventos');
+Route::get('/{url}/evento/{id}', 'IgrejaController@evento')->name('igreja.evento');
+Route::get('/{url}/inscreveEnvento', 'IgrejaController@inscreveEnvento')->name('igreja.inscreveEnvento');
+Route::get('/{url}/eventosfixos', 'IgrejaController@eventosfixos')->name('igreja.eventosfixos');
+Route::get('/{url}/eventofixo/{id}', 'IgrejaController@eventofixo')->name('igreja.eventofixo');
+Route::get('/{url}/noticias', 'IgrejaController@noticias')->name('igreja.noticias');
+Route::get('/{url}/noticia/{id}', 'IgrejaController@noticia')->name('igreja.noticia');
+Route::get('/{url}/apresentacao', 'IgrejaController@apresentacao')->name('igreja.apresentacao');
+Route::get('/{url}/sermoes', 'IgrejaController@sermoes')->name('igreja.sermoes');
+Route::get('/{url}/sermao/{id}', 'IgrejaController@sermao')->name('igreja.sermao');
+Route::get('/{url}/galeria','IgrejaController@galeria')->name('igreja.galeria');
+Route::get('/{url}/publicacao/{id}','IgrejaController@publicacao')->name('igreja.publicacao');
+Route::get('/{url}/login','IgrejaController@login')->name('igreja.login');
+Route::get('/carrega_imagem/{largura},{altura},{pasta},{arquivo}','IgrejaController@carrega_imagem')->name('igreja.carrega_imagem');
+Route::get('/gerar_termo_compromisso/{id}','IgrejaController@gerar_termo_compromisso')->name('igreja.gerar_termo_compromisso');
+>>>>>>> parent of 5d900660... 14° commit - subdomains
