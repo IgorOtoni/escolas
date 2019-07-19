@@ -2,14 +2,14 @@
 @push('script')
 <script>
 $(document).ready(function() {
-      $(".selecao").on("change", function () {
-          if($(this).is(':checked')){
-            $(this).closest('.row').find('[type=checkbox]').prop('checked', true);
-          }else{
-            $(this).closest('.row').find('[type=checkbox]').prop('checked', false);
-          }
-      });
-  });
+    $(".selecao").on("change", function () {
+        if($(this).is(':checked')){
+          $(this).closest('.row').find('[type=checkbox]').prop('checked', true);
+        }else{
+          $(this).closest('.row').find('[type=checkbox]').prop('checked', false);
+        }
+    });
+});
 </script>
 @endpush
 @section('content')

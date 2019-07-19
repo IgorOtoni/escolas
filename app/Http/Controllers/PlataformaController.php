@@ -130,7 +130,7 @@ class PlataformaController extends Controller
                 $configuracao = new TblConfiguracoes();
                 $configuracao->id_igreja = $igreja->id;
                 $configuracao->url = $request->url;
-                $configuracao->cor = 'white';
+                $configuracao->cor = 'black';
                 $configuracao->id_template = $request->template;
                 $configuracao->save();
 
