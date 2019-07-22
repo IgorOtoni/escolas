@@ -74,7 +74,7 @@ class HomeController extends Controller
             $quadros[$x]['title'] = 'Total de usuários online';
             $quadros[$x]['icon'] = 'fa-users';
             $quadros[$x]['color'] = 'green';
-            $quadros[$x]['link'] = 'igrejas';
+            $quadros[$x]['link'] = 'usuarios';
             $x++;
 
             $quadros[$x]['info'] = $qtd_congregacoes;
@@ -88,7 +88,7 @@ class HomeController extends Controller
             $quadros[$x]['title'] = 'Total de usuários ativos';
             $quadros[$x]['icon'] = 'fa-child';
             $quadros[$x]['color'] = 'green';
-            $quadros[$x]['link'] = 'igrejas';
+            $quadros[$x]['link'] = 'usuarios';
             $x++;
 
             return view('home', compact('quadros'));

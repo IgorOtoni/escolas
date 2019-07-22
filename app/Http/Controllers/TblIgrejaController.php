@@ -26,7 +26,7 @@ class TblIgrejaController extends Controller
     public function index()
     {
         
-        return view('igrejas.index');
+        return view('admin.igrejas.index');
     }
 
     public function modulos_igreja($id){
@@ -168,7 +168,7 @@ class TblIgrejaController extends Controller
     {
         $igreja = TblIgreja::findOrfail($id);
         $modulos_igreja = TblIgrejasModulos::where('id_igreja', '=', $id)->get();
-        return view('igrejas.edit', compact('igreja','modulos_igreja'));
+        return view('admin.igrejas.edit', compact('igreja','modulos_igreja'));
     }
 
     /**
@@ -267,7 +267,7 @@ class TblIgrejaController extends Controller
         $menus = $retorno[0];
         $submenus = $retorno[1];
         $subsubmenus = $retorno[2];
-        return view('igrejas.configuracoes', compact('igreja','modulos_igreja','menus','submenus','subsubmenus'));
+        return view('admin.igrejas.configuracoes', compact('igreja','modulos_igreja','menus','submenus','subsubmenus'));
     }
 
     public function adicionarMenu(Request $request){

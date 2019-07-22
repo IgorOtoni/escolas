@@ -53,7 +53,7 @@ class IgrejaController extends Controller
         $menus = $retorno[0];
         $submenus = $retorno[1];
         $subsubmenus = $retorno[2];
-        return view('layouts.template' . $igreja->id_template . '.index', compact('igreja', 'modulos', 'banners', 'eventos', 'noticias', 'galerias', 'fotos', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.index', compact('igreja', 'modulos', 'banners', 'eventos', 'noticias', 'galerias', 'fotos', 'menus', 'submenus', 'subsubmenus'));
     }
     public function ministros($url)
     {
@@ -63,7 +63,7 @@ class IgrejaController extends Controller
         $menus = $retorno[0];
         $submenus = $retorno[1];
         $subsubmenus = $retorno[2];
-        return view('layouts.template' . $igreja->id_template . '.ministros', compact('igreja', 'modulos', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.ministros', compact('igreja', 'modulos', 'menus', 'submenus', 'subsubmenus'));
     }
     public function noticias($url)
     {
@@ -77,7 +77,7 @@ class IgrejaController extends Controller
         $menus = $retorno[0];
         $submenus = $retorno[1];
         $subsubmenus = $retorno[2];
-        return view('layouts.template' . $igreja->id_template . '.noticias', compact('igreja', 'modulos', 'noticias', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.noticias', compact('igreja', 'modulos', 'noticias', 'menus', 'submenus', 'subsubmenus'));
     }
     public function noticia($url,$id)
     {
@@ -93,7 +93,7 @@ class IgrejaController extends Controller
             ->orderBy('created_at', 'DESC')
             ->paginate(3);
         $noticia = $noticia[0];
-        return view('layouts.template' . $igreja->id_template . '.noticiadetalhada', compact('igreja', 'modulos', 'noticia', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.noticiadetalhada', compact('igreja', 'modulos', 'noticia', 'menus', 'submenus', 'subsubmenus'));
     }
     public function sermoes($url)
     {
@@ -107,7 +107,7 @@ class IgrejaController extends Controller
             ->where('id_igreja', '=', $igreja->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(4);
-        return view('layouts.template' . $igreja->id_template . '.sermoes', compact('igreja', 'modulos', 'sermoes', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.sermoes', compact('igreja', 'modulos', 'sermoes', 'menus', 'submenus', 'subsubmenus'));
     }
     public function sermao($url,$id)
     {
@@ -122,7 +122,7 @@ class IgrejaController extends Controller
             ->where('id_igreja', '=', $igreja->id)
             ->get();
         $sermao = $sermao[0];
-        return view('layouts.template' . $igreja->id_template . '.sermaodetalhado', compact('igreja', 'modulos', 'sermao', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.sermaodetalhado', compact('igreja', 'modulos', 'sermao', 'menus', 'submenus', 'subsubmenus'));
     }
     public function contato($url)
     {
@@ -132,7 +132,7 @@ class IgrejaController extends Controller
         $menus = $retorno[0];
         $submenus = $retorno[1];
         $subsubmenus = $retorno[2];
-        return view('layouts.template' . $igreja->id_template . '.contato', compact('igreja', 'modulos', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.contato', compact('igreja', 'modulos', 'menus', 'submenus', 'subsubmenus'));
     }
     public function apresentacao($url)
     {
@@ -147,7 +147,7 @@ class IgrejaController extends Controller
         $menus = $retorno[0];
         $submenus = $retorno[1];
         $subsubmenus = $retorno[2];
-        return view('layouts.template' . $igreja->id_template . '.apresentacao', compact('igreja', 'funcoes', 'membros', 'modulos', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.apresentacao', compact('igreja', 'funcoes', 'membros', 'modulos', 'menus', 'submenus', 'subsubmenus'));
     }
     public function eventosfixos($url)
     {
@@ -170,7 +170,7 @@ class IgrejaController extends Controller
                 ->where('id_igreja', '=', $igreja->id)
                 ->paginate(4);
         }
-        return view('layouts.template' . $igreja->id_template . '.eventosfixos', compact('igreja', 'modulos', 'eventos_fixos', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.eventosfixos', compact('igreja', 'modulos', 'eventos_fixos', 'menus', 'submenus', 'subsubmenus'));
     }
     public function eventofixo($url,$id)
     {
@@ -185,7 +185,7 @@ class IgrejaController extends Controller
             ->where('id_igreja', '=', $igreja->id)
             ->get();
         $eventofixo = $eventofixo[0];
-        return view('layouts.template' . $igreja->id_template . '.eventofixodetalhado', compact('igreja', 'modulos', 'eventofixo', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.eventofixodetalhado', compact('igreja', 'modulos', 'eventofixo', 'menus', 'submenus', 'subsubmenus'));
     }
     public function eventos($url)
     {
@@ -214,7 +214,7 @@ class IgrejaController extends Controller
                 ->orderBy('dados_horario_inicio', 'DESC')
                 ->get();
         }
-        return view('layouts.template' . $igreja->id_template . '.eventos', compact('igreja', 'modulos', 'eventos', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.eventos', compact('igreja', 'modulos', 'eventos', 'menus', 'submenus', 'subsubmenus'));
     }
     public function evento($url,$id)
     {
@@ -229,7 +229,7 @@ class IgrejaController extends Controller
             ->where('id_igreja', '=', $igreja->id)
             ->get();
         $evento = $evento[0];
-        return view('layouts.template' . $igreja->id_template . '.eventodetalhado', compact('igreja', 'modulos', 'evento', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.eventodetalhado', compact('igreja', 'modulos', 'evento', 'menus', 'submenus', 'subsubmenus'));
     }
     public function login($url)
     {
@@ -257,7 +257,7 @@ class IgrejaController extends Controller
                 ->get();
             $fotos[$galeria->id] = $fotos_;
         }
-        return view('layouts.template' . $igreja->id_template . '.galeria', compact('igreja', 'modulos', 'galerias', 'fotos', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.galeria', compact('igreja', 'modulos', 'galerias', 'fotos', 'menus', 'submenus', 'subsubmenus'));
     }
     public function publicacao($url,$id){
         $igreja = obter_dados_igreja($url);
@@ -279,7 +279,7 @@ class IgrejaController extends Controller
         $publicacao->html = str_replace("\\r","",$publicacao->html);
         $publicacao->html = str_replace("\\t","",$publicacao->html);
         $publicacao->html = str_replace("\\n","",$publicacao->html);
-        return view('layouts.template' . $igreja->id_template . '.publicacao', compact('igreja', 'modulos', 'publicacao', 'galeria_publicacao', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.publicacao', compact('igreja', 'modulos', 'publicacao', 'galeria_publicacao', 'menus', 'submenus', 'subsubmenus'));
     }
     public function gerar_termo_compromisso($id){
         $igreja = TblIgreja::find($id);
@@ -310,7 +310,7 @@ class IgrejaController extends Controller
         $inscricao->id_evento = $request->id_evento;
         $inscricao->save();
 
-        return view('layouts.template' . $igreja->id_template . '.confirmacaoDados', compact('igreja', 'modulos', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.confirmacaoDados', compact('igreja', 'modulos', 'menus', 'submenus', 'subsubmenus'));
     }
     public function enviaContato($url, Request $request){
         $igreja = obter_dados_igreja($url);
@@ -328,6 +328,6 @@ class IgrejaController extends Controller
         $contato->id_igreja = $igreja->id;
         $contato->save();
 
-        return view('layouts.template' . $igreja->id_template . '.confirmacaoDados', compact('igreja', 'modulos', 'menus', 'submenus', 'subsubmenus'));
+        return view('template' . $igreja->id_template . '.confirmacaoDados', compact('igreja', 'modulos', 'menus', 'submenus', 'subsubmenus'));
     }
 }

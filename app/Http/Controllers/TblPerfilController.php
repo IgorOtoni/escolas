@@ -20,7 +20,7 @@ class TblPerfilController extends Controller
      */
     public function index()
     {
-        return view('perfis.index');
+        return view('admin.perfis.index');
     }
 
     public function tbl_perfis()
@@ -84,7 +84,7 @@ class TblPerfilController extends Controller
                 ->get();
             $permissoes[$modulo->id]['todas'] = $permissoes_todas;
         }
-        return view('perfis.permissoes', compact('perfil','modulos', 'permissoes'));
+        return view('admin.perfis.permissoes', compact('perfil','modulos', 'permissoes'));
     }
 
     public function atualizarPermissoes(Request $request){
@@ -201,7 +201,7 @@ class TblPerfilController extends Controller
     {
         $perfil = TblPerfil::find($id);
         $modulos = obter_modulos_perfil($perfil);
-        return view('perfis.edit', compact('perfil','modulos'));
+        return view('admin.perfis.edit', compact('perfil','modulos'));
     }
 
     /**
