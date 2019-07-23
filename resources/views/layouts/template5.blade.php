@@ -95,7 +95,8 @@
     </div><!-- end header -->
 
     @yield('content')
-    
+
+    <div class="l-page-width clearfix">
     <div id="footer">
     
         <div id="sub-footer" class="clearfix">
@@ -113,9 +114,10 @@
                 <?php } ?>
             </ul>
                     
-        </div><!-- end sub-footer -->
+        </div>
 
-    </div><!-- end footer -->
+    </div>
+    </div>
     
 </body>
 </html>

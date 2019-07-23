@@ -834,7 +834,7 @@ ul.subfooter-menu li a {
 /*---------------- Big slider */
 #big-slider {
 	height: 303px;
-	width: 656px;
+	width: 100%;
 	overflow: hidden;
 	position:relative;
 	z-index: 5px;
@@ -842,14 +842,15 @@ ul.subfooter-menu li a {
 #big-slider #slider-items li {
     height: 293px;
     overflow: hidden;
-    width: 650px;
+    width: 100%;
     margin-left: 2px;
 }
 .slider-mask {
     background: url("images/slider-mask1.png") no-repeat 0 0 transparent;
+	background-size: 100% 100%;
     height: 308px;
     position: absolute;
-    width: 656px;
+    width: 100%;
     margin-top: -1px;
     z-index: 51;
 }
@@ -1024,9 +1025,11 @@ br {
 /*---------------- MIDDLE SECTION --------------- */
 #container-middle{
     position: relative;
-    min-height: 381px;
-    margin-top : -10px;
-    padding : 42px 0 0 0;
+    min-height: 100%;
+    /*margin-top : -10px;*/
+	margin-bottom : -10px;
+    padding: 5% 0 5% 0;
+    margin : 5% 0 5% 0;
     z-index: 5;
 }
 #container-middle h3{

@@ -85,7 +85,7 @@ span.next:hover { background-position: 6px -30px; }
 .clock{ background: url(clock.png) no-repeat 0 0 scroll transparent; }
 .phone{ background: url(phone.png) no-repeat 0 0 scroll transparent; }
 
-#container-middle{ background : url(homepage-string-middle.png) repeat-x top left scroll transparent; }
+#container-middle{ background : url(homepage-string-middle.png) repeat-x top left scroll transparent; background-size: 15% 100%; }
 #container-middle h4{ color: #f55029; }
 #container-middle .read-more  {color: #f55029;}
 #container-middle .read-more span.circle-arrow{ background: url("btn-read-more.png") no-repeat scroll left 0px transparent; }

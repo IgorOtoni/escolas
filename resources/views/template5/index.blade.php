@@ -19,7 +19,7 @@
                         if($banner->link != null){
                             ?> <a href="{{verifica_link($banner->link, $igreja)}}"> <?php
                         }
-                        ?> <img src="/storage/banners/{{$banner->foto}}" width="650" height="293" alt="Slider Image" title="" /> <?php
+                        ?> <img src="/storage/banners/{{$banner->foto}}" width="98%" height="293" alt="Slider Image" title="" /> <?php
                         if($banner->link != null){
                             ?> </a> <?php
                         }
@@ -47,6 +47,7 @@
     if($noticias != null && sizeof($noticias) != 0){
         ?>
         <div id="container-middle">
+        <div class="l-page-width clearfix">
         <div class="wrap">
             <h1 style="font-family: TOONISH,Georgia,'Times New Roman',Times,serif;
             text-transform: uppercase;
@@ -81,8 +82,9 @@
             }
             ?>
                     
-        </div><!-- end wrap -->         
-        </div> <!-- end container-middle -->
+        </div>
+        </div>
+        </div>
         <?php
     }
     ?>
@@ -90,54 +92,58 @@
     <?php
     if($eventos != null && sizeof($eventos) != 0){
         ?>
-        <div class="wrap">
-            <br/><h1 style="font-family: TOONISH,Georgia,'Times New Roman',Times,serif;
-            text-transform: uppercase;
-            color: #f55029;">Últimos eventos</h1>
-        </div>
-        <div class="wrap">
-            <div class="c-12 divider">
-            
-                <div class="post-list blog-posts">
-                    
-                    <?php 
-                    $x = 0;
-                    foreach($eventos as $evento){
-                        if($x < 3){
-                            ?>
-
-                            <div class="post" style="min-height: 225px;">
-                                <a href="{{($evento->foto != null) ? "/storage/timeline/".$evento->foto : "/storage/no-event.jpg"}}" class="image" rel="example_group">
-                                    <span class="post-image-mask"></span>
-                                    <img src="{{($evento->foto != null) ? "/storage/timeline/".$evento->foto : "/storage/no-event.jpg"}}" width="172" height="140" alt="" title="" />
-                                </a>
-                                <h2 class="title"><a href="">{{$evento->nome}}</a></h2>
-                                <p class="meta">
-                                    <span>Date: <a class="date" title="" href="#">{{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YY h:mm A')}}</a></span>
-                                    <span>Local: <a class="author" title="" href="#">{{$evento->dados_local}}</a></span>
-                                </p>
-                                <div class="excerpt">
-                                    <p>{{$evento->descricao}}
-                                    </p>
-                                </div>
-                                <p class="actions">
-                                    <a class="read-more">Detalhes<span class="circle-arrow"></span></a>
-                                </p>
-                            </div><!-- end post -->
-
-                            <?php
-                        }else{
-                            break;
-                        }
-                        $x++;
-                    }
-                    ?>
-                    
-                </div><!-- end post-list -->
-                
+        <div class="kids_bottom_container">
+        <div class="l-page-width clearfix">
+            <div class="wrap">
+                <br/><h1 style="font-family: TOONISH,Georgia,'Times New Roman',Times,serif;
+                text-transform: uppercase;
+                color: #f55029;">Últimos eventos</h1>
             </div>
+            <div class="wrap">
+                <div class="c-12 divider">
+                
+                    <div class="post-list blog-posts">
+                        
+                        <?php 
+                        $x = 0;
+                        foreach($eventos as $evento){
+                            if($x < 3){
+                                ?>
 
-        </div><!-- end wrap -->
+                                <div class="post" style="min-height: 225px;">
+                                    <a href="{{($evento->foto != null) ? "/storage/timeline/".$evento->foto : "/storage/no-event.jpg"}}" class="image" rel="example_group">
+                                        <span class="post-image-mask"></span>
+                                        <img src="{{($evento->foto != null) ? "/storage/timeline/".$evento->foto : "/storage/no-event.jpg"}}" width="172" height="140" alt="" title="" />
+                                    </a>
+                                    <h2 class="title"><a href="">{{$evento->nome}}</a></h2>
+                                    <p class="meta">
+                                        <span>Data: <a class="date" title="" href="#">{{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YY h:mm A')}}</a></span>
+                                        <span>Local: <a class="author" title="" href="#">{{$evento->dados_local}}</a></span>
+                                    </p>
+                                    <div class="excerpt">
+                                        <p>{{$evento->descricao}}
+                                        </p>
+                                    </div>
+                                    <p class="actions">
+                                        <a class="read-more">Detalhes<span class="circle-arrow"></span></a>
+                                    </p>
+                                </div><!-- end post -->
+
+                                <?php
+                            }else{
+                                break;
+                            }
+                            $x++;
+                        }
+                        ?>
+                        
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+        </div>
         <?php
     }
     ?>
@@ -145,36 +151,40 @@
     <?php
     if($galerias != null && sizeof($galerias) != 0){
         ?>
-        <div class="wrap">
-            <h1 style="font-family: TOONISH,Georgia,'Times New Roman',Times,serif;
-            text-transform: uppercase;
-            color: #f55029;">Últimos álbums</h1>
-        </div>
-        <div class="wrap">
-            <div class="c-12">
+        <div class="kids_bottom_container">
+        <div class="l-page-width clearfix">
+            <div class="wrap">
+                <h1 style="font-family: TOONISH,Georgia,'Times New Roman',Times,serif;
+                text-transform: uppercase;
+                color: #f55029;">Últimos álbums</h1>
+            </div>
+            <div class="wrap">
+                <div class="c-12">
+                    
+                    <ul class="portfolio-menu">
+                        <?php foreach($galerias as $galeria){
+                            $fotos_ = $fotos[$galeria->id];
+                            $x = 0;
+                            foreach($fotos_ as $foto){ ?>
+
+                                <li class="c-6 two-column {{($x % 2 == 0) ? 'clearfix' : ''}}" style="min-height: 200px;">
+                                    <p class="image">
+                                        <a href="/storage/galerias/{{$foto->foto}}" rel="example_group">
+                                            <span class="gallery-2col-mask"></span>
+                                            <img height="182" width="446" title="" alt="" src="/storage/galerias/{{$foto->foto}}" />
+                                        </a>
+                                    </p>
+                                </li>
+
+                                <?php $x++;
+                            }
+                        } ?>
+                    </ul>
                 
-                <ul class="portfolio-menu">
-                    <?php foreach($galerias as $galeria){
-                        $fotos_ = $fotos[$galeria->id];
-                        $x = 0;
-                        foreach($fotos_ as $foto){ ?>
-
-                            <li class="c-6 two-column {{($x % 2 == 0) ? 'clearfix' : ''}}" style="min-height: 200px;">
-                                <p class="image">
-                                    <a href="/storage/galerias/{{$foto->foto}}" rel="example_group">
-                                        <span class="gallery-2col-mask"></span>
-                                        <img height="182" width="446" title="" alt="" src="/storage/galerias/{{$foto->foto}}" />
-                                    </a>
-                                </p>
-                            </li>
-
-                            <?php $x++;
-                        }
-                    } ?>
-                </ul>
-            
-            </div>    
-        </div><!-- end wrap -->
+                </div>    
+            </div>
+        </div>
+        </div>
         <?php
     }
     ?>

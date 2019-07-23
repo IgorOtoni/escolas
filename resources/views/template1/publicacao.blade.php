@@ -22,7 +22,7 @@
 <div class="container">
     <div class="row">
     <div class="col-md-12">
-        <h1>Publicação: {{$publicacao->nome}}</h1>
+        <h1>{{$publicacao->nome}}</h1>
     </div>
     </div>
 </div>

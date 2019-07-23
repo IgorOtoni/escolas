@@ -21,27 +21,27 @@
 					
 					<div class="l-grid-9 l-float-left">
 
-						<form action="#" id="contactform" class="contactForm">
+						<form action="/{{$igreja->url}}/enviaContato" id="contactform" class="contactForm">
 							
 							<fieldset>
 								<div class="row"> 
 									<label for="wname">Nome:</label>
-									<input name="nome" id="wname" type="text">
+									<input name="nome" id="wname" type="text" required>
 								</div>
 								
 								<div class="row">
 									<label for="wmail">Email:</label>
-									<input name="email" id="wmail" type="text">
+									<input name="email" id="wmail" type="text" required>
 								</div>
 
 								<div class="row">
 									<label for="wtel">Telefone:</label>
-									<input name="Telefone" id="wtel" type="text">
+									<input name="Telefone" id="wtel" type="text" required>
 								</div>
 								
 								<div class="row">
 									<label for="wmessage">Message:</label>
-									<textarea name="mensagem" id="wmessage" cols="60" rows="10"></textarea>		
+									<textarea name="mensagem" id="wmessage" cols="60" rows="10" required></textarea>		
 								</div>
 								
 								<div class="row">

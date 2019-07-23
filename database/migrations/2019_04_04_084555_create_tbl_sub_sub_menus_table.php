@@ -18,7 +18,7 @@ class CreateTblSubSubMenusTable extends Migration
             $table->string('nome');
             $table->bigInteger('id_submenu')->unsigned();
             $table->foreign('id_submenu')->references('id')->on('tbl_sub_menus');
-            $table->string('link');
+            $table->string('link')->nullable();
             $table->bigInteger('ordem');
             $table->timestamps();
         });

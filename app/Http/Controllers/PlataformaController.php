@@ -23,17 +23,13 @@ class PlataformaController extends Controller
 
     public function eglise()
     {
-        //$igrejas = TblIgreja::all();
         $igrejas_e_configuracoes = \DB::table('tbl_igrejas')->leftJoin('tbl_configuracoes','tbl_igrejas.id','=','tbl_configuracoes.id_igreja')->paginate(6);
-        //dd($igrejas_e_configuracoes);
         return view('eglise.igrejas', compact('igrejas_e_configuracoes'));
     }
 
     public function filtrarIgreja(Request $request)
     {
-        //$igrejas = TblIgreja::all();
         $igrejas_e_configuracoes = \DB::table('tbl_igrejas')->where('tbl_igrejas.nome','like', '%'.$request->nome.'%')->leftJoin('tbl_configuracoes','tbl_igrejas.id','=','tbl_configuracoes.id_igreja')->paginate(6);
-        //dd($igrejas_e_configuracoes);
         return view('eglise.igrejas', compact('igrejas_e_configuracoes'));
     }
 
@@ -245,8 +241,8 @@ class PlataformaController extends Controller
                 $usuario->save();
                 // ===========================================================================
 
-                \Mail::to($igreja->email)
-                    ->send(new SendMailUser($usuario->nome, "administrador"));
+                /*\Mail::to($igreja->email)
+                    ->send(new SendMailUser($usuario->nome, "administrador"));*/
 
                 $notification = array(
                     'message' => 'Bem vindo(a)! Seu site e usuário já estão configurados.', 
@@ -271,6 +267,98 @@ class PlataformaController extends Controller
 
             return back()->with($notification);
 
+        }
+    }
+
+    public function login(){
+        return view('auth.login');
+    }
+
+    public function autenticar(Request $request){
+        $user = User::where('email','=',$request->email)->get();
+        if($user != null && sizeof($user) == 1){
+          $user = $user[0];
+
+          if (\Hash::check($request->password, $user->password)){
+
+            \Auth::login($user);
+
+            $notification = array(
+                'message' => 'Bem vindo '.$user->nome.'!',
+                'alert-type' => 'success'
+            );
+
+            if(\Auth::user()->status == true){
+                // VERIFICAÇÃO BÁSICA 1: PARA AUTENTICAR O USUÁRIO PRECISA ESTAR ATIVO
+                if (\Auth::user()->id_perfil == null || \Auth::user()->id_perfil == 1){
+                    // SE O USUÁRIO NÃO TÊM UM PERFIL OU ESSE É IGUAL A 1 ELE É UM ADMINISTRADOR
+                    return redirect()->route('admin.home')->with($notification);
+                }else if(\Auth::user()->id_perfil != null && \Auth::user()->id_perfil != 1){
+                    // SE O USUÁRIO TÊM UM PERFIL E ESSE É DIFERENTE DE 1 ELE NÃO É UM AMINISTRADOR
+                    $perfil = TblPerfil::find(\Auth::user()->id_perfil);
+                    if($perfil->status == true){
+                        // VERIFICAÇÃO BÁSICA 2: PARA AUTENTICAR O PERFIL PRECISA ESTAR ATIVO
+                        $igreja = TblIgreja::find($perfil->id_igreja);
+                        if($igreja->status == true){
+                            // VERIFICAÇÃO BÁSICA 3: PARA AUTENTICAR A CONGREGAÇÃO PRECISA ESTAR ATIVO
+                            return redirect()->route('usuario.home')->with($notification);
+                        }else{
+                            auth()->logout();
+
+                            $notification = array(
+                                'message' => 'O serviço de sua congregação está inativo.',
+                                'alert-type' => 'error'
+                            );
+
+                            return redirect('login')->with($notification);
+                        }
+                    }else{
+                        auth()->logout();
+
+                        $notification = array(
+                            'message' => 'Seu perfil está desativado.',
+                            'alert-type' => 'error'
+                        );
+
+                        return redirect('login')->with($notification);
+                    }
+                }
+                auth()->logout();
+
+                $notification = array(
+                    'message' => 'Seu perfil não foi encontrado.',
+                    'alert-type' => 'error'
+                );
+
+                return redirect('login')->with($notification);
+            }else{
+                auth()->logout();
+
+                $notification = array(
+                    'message' => 'Dados inválidos',
+                    'alert-type' => 'error'
+                );
+
+                return redirect('login')->with($notification);
+            }
+
+          }else{
+
+            $notification = array(
+                'message' => 'Dados inválidos.',
+                'alert-type' => 'error'
+            );
+
+            return back()->with($notification);
+          }
+        }else{
+
+          $notification = array(
+              'message' => 'Dados inválidos.',
+              'alert-type' => 'error'
+          );
+
+          return back()->with($notification);
         }
     }
 }

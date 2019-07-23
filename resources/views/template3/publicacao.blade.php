@@ -32,7 +32,7 @@ $('#modal-galeria').on('show.bs.modal', function (event) {
         <div class="row">
             <div class="col-12">
                 <div class="section-heading text-center mx-auto">
-                    <h3>Publicação: {{$publicacao->nome}}</h3>
+                    <h3>{{$publicacao->nome}}</h3>
                 </div>
             </div>
         </div>

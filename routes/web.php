@@ -26,19 +26,19 @@ Route::get('admin', function () {
 //Auth::routes();
 
 // Authentication Routes...
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\HomeController@logout')->name('logout');
+Route::get('/login', 'PlataformaController@login')->name('login');
+Route::post('/autenticar', 'PlataformaController@autenticar')->name('autenticar');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+//Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+//Route::post('register', 'Auth\RegisterController@register');
 
 // Password Reset Routes...
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+/*Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');*/
 
 Route::get('/formulario', 'PlataformaController@formulario')->name('plataforma.formulario');
 Route::post('/cadastro', 'PlataformaController@cadastro')->name('plataforma.incluirIgreja');
@@ -50,7 +50,7 @@ Route::get('/', 'PlataformaController@index')->name('plataforma.home');
 //Route::get('/eglise', 'PlataformaController@eglise')->name('eglise');
 
 // VALIDAÇÃO DE AUTENTICAÇÃO FEITA AQUI: PRIMEIRA A SER EXECUTADA
-Route::get('/autenticar', function () {
+/*Route::get('/autenticar', function () {
     if(Auth::user()->status == true){
         // VERIFICAÇÃO BÁSICA 1: PARA AUTENTICAR O USUÁRIO PRECISA ESTAR ATIVO
         if (Auth::user()->id_perfil == null || Auth::user()->id_perfil == 1){
@@ -80,7 +80,8 @@ Route::get('/autenticar', function () {
         auth()->logout();
         return redirect('login')->with('message', 'Seu usuário está desativado.');
     }
-});
+});*/
+
 Route::get('error', function () {
     return view('error');
 });

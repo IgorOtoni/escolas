@@ -29,7 +29,7 @@
             <!-- Section Heading -->
             <div class="col-12">
                 <div class="section-heading">
-                    <h2>Publicação: {{$publicacao->nome}}</h2>
+                    <h2>{{$publicacao->nome}}</h2>
                 </div>
             </div>
         </div>
