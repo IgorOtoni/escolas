@@ -24,7 +24,9 @@
 	                    <h2 class="title"><a href="/{{$igreja->url}}/noticia/{{$noticia->id}}">{{$noticia->nome}}</a></h2>
 	                    <p class="meta">
 	                        <span>Publicada: <a class="date" title="" href="#"> {{\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()}}</a></span>
-                            <span>Atualizada: <a class="date" title="" href="#"> {{\Carbon\Carbon::parse($noticia->updated_at)->diffForHumans()}}</a></span>
+                            <?php if($noticia->updated_at != null){ ?>
+                            	<span>Atualizada: <a class="date" title="" href="#"> {{\Carbon\Carbon::parse($noticia->updated_at)->diffForHumans()}}</a></span>
+                        	<?php } ?>
 	                    </p>
 	                    <div class="excerpt">
 	                        <p>{{$noticia->descricao}}</p>

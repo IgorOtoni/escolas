@@ -21,7 +21,7 @@
 					
 					<div class="l-grid-9 l-float-left">
 
-						<form action="/{{$igreja->url}}/enviaContato" id="contactform" class="contactForm">
+						<form method="get" action="/{{$igreja->url}}/enviaContato" id="contactform" class="contactForm">
 							
 							<fieldset>
 								<div class="row"> 
@@ -45,7 +45,7 @@
 								</div>
 								
 								<div class="row">
-									<button type="submit" class="button medium button-style1 l-float-right-send" value="send">send</button>
+									<button type="submit" class="button medium button-style1 l-float-right-send">Enviar</button>
 									<div class="clear"></div>
 								</div>
 								

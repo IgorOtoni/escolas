@@ -161,7 +161,7 @@ class IgrejaController extends Controller
             $eventos_fixos = \DB::table('tbl_eventos_fixos')
                 ->where('id_igreja', '=', $igreja->id)
                 ->get();
-        }else if($igreja->id_template == 1){
+        }else if($igreja->id_template == 1 || $igreja->id_template == 6){
             $eventos_fixos = \DB::table('tbl_eventos_fixos')
                 ->where('id_igreja', '=', $igreja->id)
                 ->paginate(3);
@@ -244,11 +244,20 @@ class IgrejaController extends Controller
         $menus = $retorno[0];
         $submenus = $retorno[1];
         $subsubmenus = $retorno[2];
-        $galerias = \DB::table('tbl_galerias')
-            ->where('id_igreja', '=', $igreja->id)
-            ->orderBy('data', 'DESC')
-            ->orderBy('created_at', 'DESC')
-            ->paginate(4);
+        $galerias = null;
+        if($igreja->id_template == 6){
+            $galerias = \DB::table('tbl_galerias')
+                ->where('id_igreja', '=', $igreja->id)
+                ->orderBy('data', 'DESC')
+                ->orderBy('created_at', 'DESC')
+                ->paginate(2);
+        }else{
+            $galerias = \DB::table('tbl_galerias')
+                ->where('id_igreja', '=', $igreja->id)
+                ->orderBy('data', 'DESC')
+                ->orderBy('created_at', 'DESC')
+                ->paginate(4);
+        }
         $fotos = array();
         foreach($galerias as $galeria){
             $fotos_ = \DB::table('tbl_fotos')

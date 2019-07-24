@@ -57,6 +57,39 @@
 
 					</div>
 
+					<h3>Inscrição</h3>
+
+					<div class="entry-container">
+					
+					<div class="l-grid-9 l-float-left">
+
+						<form method="get" action="/{{$igreja->url}}/inscreveEnvento" id="contactform" class="contactForm">
+							
+							<fieldset>
+								
+								<div class="row">
+									<label for="wmail">Email:</label>
+									<input name="email" id="wmail" type="text" required>
+								</div>
+
+								<div class="row">
+									<label for="wtel">Telefone:</label>
+									<input name="Telefone" id="wtel" type="text" required>
+								</div>
+								
+								<div class="row">
+									<button type="submit" class="button medium button-style1 l-float-right-send">Inscrever</button>
+									<div class="clear"></div>
+								</div>
+								
+							</fieldset>
+							
+						</form><!--/ #contactform-->
+						
+					</div><!--/ .l-grid-9-->
+
+					</div>
+
 				</div>
 
 			</section>

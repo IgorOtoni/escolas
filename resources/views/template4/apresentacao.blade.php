@@ -36,8 +36,8 @@
 	                            
 	                            <div class="border-shadow">
 	                                <figure>
-	                                    <a target="_blank" class="prettyPhoto kids_picture" href="/storage/membros/{{$membro->foto}}">
-	                                        <img width="202" height="138" src="/storage/membros/{{$membro->foto}}" alt="" />
+	                                    <a target="_blank" class="prettyPhoto kids_picture" href="{{($membro->foto != null) ? '/storage/no-foto.png' : '/storage/membros/'.$membro->foto}}">
+	                                        <img width="202" height="138" src="{{($membro->foto != null) ? '/storage/no-foto.png' : '/storage/membros/'.$membro->foto}}" alt="" />
 	                                    </a>										
 	                                </figure>
 	                            </div>

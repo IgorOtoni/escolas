@@ -23,7 +23,8 @@
 	                    </a>
 	                    <h2 class="title"><a href="/{{$igreja->url}}/evento/{{$evento->id}}">{{$evento->nome}}</a></h2>
 	                    <p class="meta">
-	                        <span>Data: <a class="date" title="" href="#">{{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YY h:mm A')}}</a></span>
+	                        <span>Início: <a class="date" title="" href="#">{{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YY h:mm A')}}</a></span>
+	                        <span>Fim: <a class="date" title="" href="#">{{\Carbon\Carbon::parse($evento->dados_horario_fim, 'UTC')->isoFormat('Do MMMM YY h:mm A')}}</a></span>
                             <span>Local: <a class="author" title="" href="#">{{$evento->dados_local}}</a></span>
 	                    </p>
 	                    <div class="excerpt">

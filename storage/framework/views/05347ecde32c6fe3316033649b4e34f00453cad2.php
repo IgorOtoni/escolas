@@ -15,7 +15,7 @@
     <div class="wrap">
         <div class="c-8">
             <div class="page">
-                <form method="post" action="/<?php echo e($igreja->url); ?>/enviaContato" id="contactform">
+                <form method="get" action="/<?php echo e($igreja->url); ?>/enviaContato" id="contactform">
                     <div class="send-form">   
 	                      <p>
 	                      	<label>Nome:</label>

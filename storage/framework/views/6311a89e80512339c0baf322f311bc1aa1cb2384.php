@@ -1,10 +1,11 @@
+<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/template6.blade.php */ ?>
 <!DOCTYPE HTML>
 <html class="no-js">
 <head>
 <!-- Basic Page Needs
   ================================================== -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>{{$igreja->nome}}</title>
+<title><?php echo e($igreja->nome); ?></title>
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
@@ -14,18 +15,18 @@
 <meta name="format-detection" content="telephone=no">
 <!-- CSS
   ================================================== -->
-<link href="{{asset('template_igreja/template-branco/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('template_igreja/template-branco/css/bootstrap-theme.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('template_igreja/template-branco/css/style.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('template_igreja/template-branco/vendor/prettyphoto/css/prettyPhoto.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('template_igreja/template-branco/vendor/mediaelement/mediaelementplayer.css')}}" rel="stylesheet" type="text/css">
+<link href="<?php echo e(asset('template_igreja/template-branco/css/bootstrap.css')); ?>" rel="stylesheet" type="text/css">
+<link href="<?php echo e(asset('template_igreja/template-branco/css/bootstrap-theme.css')); ?>" rel="stylesheet" type="text/css">
+<link href="<?php echo e(asset('template_igreja/template-branco/css/style.css')); ?>" rel="stylesheet" type="text/css">
+<link href="<?php echo e(asset('template_igreja/template-branco/vendor/prettyphoto/css/prettyPhoto.css')); ?>" rel="stylesheet" type="text/css">
+<link href="<?php echo e(asset('template_igreja/template-branco/vendor/mediaelement/mediaelementplayer.css')); ?>" rel="stylesheet" type="text/css">
 <!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" media="screen" /><![endif]-->
-<link href="{{asset('template_igreja/template-branco/css/custom.css')}}" rel="stylesheet" type="text/css"><!-- CUSTOM STYLESHEET FOR STYLING -->
+<link href="<?php echo e(asset('template_igreja/template-branco/css/custom.css')); ?>" rel="stylesheet" type="text/css"><!-- CUSTOM STYLESHEET FOR STYLING -->
 <!-- Color Style -->
-<link href="{{asset('template_igreja/template-branco/colors/color1.css')}}" rel="stylesheet" type="text/css">
+<link href="<?php echo e(asset('template_igreja/template-branco/colors/color1.css')); ?>" rel="stylesheet" type="text/css">
 <!-- SCRIPTS
   ================================================== -->
-<script src="{{asset('template_igreja/template-branco/js/modernizr.js')}}"></script><!-- Modernizr -->
+<script src="<?php echo e(asset('template_igreja/template-branco/js/modernizr.js')); ?>"></script><!-- Modernizr -->
 </head>
 <body class="header-style2">
 <!--[if lt IE 7]>
@@ -37,9 +38,9 @@
     	<div class="container for-navi">
         	<div class="site-logo">
             <h1>
-                <a href="/{{$igreja->url}}">
-                    <img style="witdh: 120px; height: 50px;" src="{{asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))}}" alt="" />
-                    <span class="logo-text"><span>{{$igreja->nome}}</span></span>
+                <a href="/<?php echo e($igreja->url); ?>">
+                    <img style="witdh: 120px; height: 50px;" src="<?php echo e(asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))); ?>" alt="" />
+                    <span class="logo-text"><span><?php echo e($igreja->nome); ?></span></span>
                     <span class="logo-tagline"></span>
                 </a>
             </h1>
@@ -49,15 +50,15 @@
                 <ul class="sf-menu">
                     <?php
                     foreach($menus as $menu){
-                        ?><li><a href="{{verifica_link($menu->link, $igreja)}}">{{$menu->nome}}</a><?php
+                        ?><li><a href="<?php echo e(verifica_link($menu->link, $igreja)); ?>"><?php echo e($menu->nome); ?></a><?php
                             if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
                                 <ul class="dropdown">
                                     <?php foreach($submenus[$menu->id] as $submenu){
-                                        ?><li><a href="{{verifica_link($submenu->link, $igreja)}}">{{$submenu->nome}}</a><?php
+                                        ?><li><a href="<?php echo e(verifica_link($submenu->link, $igreja)); ?>"><?php echo e($submenu->nome); ?></a><?php
                                         if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
                                             <ul class="dropdown">
                                                 <?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-                                                    ?> <li><a href="/{{verifica_link($subsubmenu->link, $igreja)}}">{{$subsubmenu->nome}}</a></li> <?php
+                                                    ?> <li><a href="/<?php echo e(verifica_link($subsubmenu->link, $igreja)); ?>"><?php echo e($subsubmenu->nome); ?></a></li> <?php
                                                 } ?>
                                             </ul>
                                         <?php
@@ -76,9 +77,9 @@
     	</div>
 	</header>
     <!-- End Site Header -->
-    @yield('banner')
+    <?php echo $__env->yieldContent('banner'); ?>
     
-    @yield('content')
+    <?php echo $__env->yieldContent('content'); ?>
     
     <!-- Start site footer -->
     <footer class="site-footer">
@@ -87,19 +88,20 @@
         		<div class="site-footer-bottom">
             		<div class="row">
                 		<div class="col-md-6 col-sm-6 copyrights-coll">
-        					{{$igreja->nome}}
+        					<?php echo e($igreja->nome); ?>
+
             			</div>
                 		<div class="col-md-6 col-sm-6 copyrights-colr">
         					<nav class="footer-nav" role="navigation">
                         		<ul>
                                     <?php if($igreja->twitter != null){ ?>
-                                        <li><a href="{{$igreja->twitter}}" title="Twitter">Twitter</a></li>
+                                        <li><a href="<?php echo e($igreja->twitter); ?>" title="Twitter">Twitter</a></li>
                                     <?php } ?>
                                     <?php if($igreja->facebook != null){ ?>
-                                        <li><a href="{{$igreja->facebook}}" title="Facebook">Facebook</a></li>
+                                        <li><a href="<?php echo e($igreja->facebook); ?>" title="Facebook">Facebook</a></li>
                                     <?php } ?>
                                     <?php if($igreja->youtube != null){ ?>
-                                        <li><a href="{{$igreja->youtube}}" title="Youtube">Youtube</a></li>
+                                        <li><a href="<?php echo e($igreja->youtube); ?>" title="Youtube">Youtube</a></li>
                                     <?php } ?>
                             	</ul>
                         	</nav>
@@ -226,14 +228,14 @@
         </div>
    	</div>
 </div>
-<script src="{{asset('template_igreja/template-branco/js/jquery-2.0.0.min.js')}}"></script> <!-- Jquery Library Call -->
-<script src="{{asset('template_igreja/template-branco/vendor/prettyphoto/js/prettyphoto.js')}}"></script> <!-- PrettyPhoto Plugin -->
-<script src="{{asset('template_igreja/template-branco/js/helper-plugins.js')}}"></script> <!-- Helper Plugins -->
-<script src="{{asset('template_igreja/template-branco/js/bootstrap.js')}}"></script> <!-- UI -->
-<script src="{{asset('template_igreja/template-branco/js/init.js')}}"></script> <!-- All Scripts -->
-<script src="{{asset('template_igreja/template-branco/vendor/flexslider/js/jquery.flexslider.js')}}"></script> <!-- FlexSlider -->
-<script src="{{asset('template_igreja/template-branco/vendor/countdown/js/jquery.countdown.min.js')}}"></script> <!-- Jquery Timer -->
-<script src="{{asset('template_igreja/template-branco/vendor/mediaelement/mediaelement-and-player.min.js')}}"></script> <!-- MediaElements -->
-@stack('script')
+<script src="<?php echo e(asset('template_igreja/template-branco/js/jquery-2.0.0.min.js')); ?>"></script> <!-- Jquery Library Call -->
+<script src="<?php echo e(asset('template_igreja/template-branco/vendor/prettyphoto/js/prettyphoto.js')); ?>"></script> <!-- PrettyPhoto Plugin -->
+<script src="<?php echo e(asset('template_igreja/template-branco/js/helper-plugins.js')); ?>"></script> <!-- Helper Plugins -->
+<script src="<?php echo e(asset('template_igreja/template-branco/js/bootstrap.js')); ?>"></script> <!-- UI -->
+<script src="<?php echo e(asset('template_igreja/template-branco/js/init.js')); ?>"></script> <!-- All Scripts -->
+<script src="<?php echo e(asset('template_igreja/template-branco/vendor/flexslider/js/jquery.flexslider.js')); ?>"></script> <!-- FlexSlider -->
+<script src="<?php echo e(asset('template_igreja/template-branco/vendor/countdown/js/jquery.countdown.min.js')); ?>"></script> <!-- Jquery Timer -->
+<script src="<?php echo e(asset('template_igreja/template-branco/vendor/mediaelement/mediaelement-and-player.min.js')); ?>"></script> <!-- MediaElements -->
+<?php echo $__env->yieldPushContent('script'); ?>
 </body>
 </html>

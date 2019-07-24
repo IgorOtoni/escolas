@@ -6,7 +6,7 @@
 <div id="intro">
     <div class="wrap">
         <div class="c-12">
-        	<h1>Evento fixo detalhado</h1>
+        	<h1>Detalhes do evento fixo</h1>
         </div>
     </div>
 </div>

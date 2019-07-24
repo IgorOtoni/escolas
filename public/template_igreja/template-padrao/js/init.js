@@ -3,44 +3,6 @@ jQuery(function($){
 var NATIVE = window.NATIVE || {};
 
 /* ==================================================
-	Contact Form Validations
-================================================== */
-	NATIVE.ContactForm = function(){
-		$('.contact-form').each(function(){
-			var formInstance = $(this);
-			formInstance.submit(function(){
-		
-			var action = $(this).attr('action');
-		
-			$("#message").slideUp(750,function() {
-			$('#message').hide();
-		
-			$('#submit')
-				.after('<img src="images/assets/ajax-loader.gif" class="loader" />')
-				.attr('disabled','disabled');
-		
-			$.post(action, {
-				name: $('#name').val(),
-				email: $('#email').val(),
-				phone: $('#phone').val(),
-				comments: $('#comments').val()
-			},
-				function(data){
-					document.getElementById('message').innerHTML = data;
-					$('#message').slideDown('slow');
-					$('.contact-form img.loader').fadeOut('slow',function(){$(this).remove()});
-					$('#submit').removeAttr('disabled');
-					if(data.match('success') != null) $('.contact-form').slideUp('slow');
-		
-				}
-			);
-			});
-			return false;
-		});
-		});
-	}
-
-/* ==================================================
 	Responsive Nav Menu
 ================================================== */
 	NATIVE.navMenu = function() {

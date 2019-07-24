@@ -15,7 +15,7 @@
     <div class="wrap">
         <div class="c-8">
             <div class="page">
-                <form method="post" action="/{{$igreja->url}}/enviaContato" id="contactform">
+                <form method="get" action="/{{$igreja->url}}/enviaContato" id="contactform">
                     <div class="send-form">   
 	                      <p>
 	                      	<label>Nome:</label>
@@ -37,10 +37,10 @@
 	                      	<input type="submit" name="" class="submit" value="Enviar" />
 	                      </p>
                  	</div>
-                 	</form>
-                 	<div class="google-map">
-	                    <iframe width="100%" height="400px" id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($igreja->cep)}}&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
-                 	</div>
+             	</form>
+             	<div class="google-map">
+                    <iframe width="100%" height="400px" id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($igreja->cep)}}&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
+             	</div>
             </div>
         </div>
         <div class="c-4 sidebar">
