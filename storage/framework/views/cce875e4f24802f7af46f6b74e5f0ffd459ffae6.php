@@ -94,6 +94,23 @@
 <script src="<?php echo e(asset('template_adm/dist/js/adminlte.min.js')); ?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo e(asset('template_adm/dist/js/demo.js')); ?>"></script>
+<script>
+  url = window.location.href;
+  achou = false;
+  $('li a').each(function(index) {
+    if($(this).attr('href') === url){
+      $(this).parent().addClass('active');
+      achou = true;
+    }
+  });
+  if(achou == false){
+    $('li a').each(function(index) {
+      if(url.indexOf($(this).attr('href')) >= 0){
+        $(this).parent().addClass('active');
+      }
+    });
+  }
+</script>
 <?php echo $__env->yieldPushContent('script'); ?>
 </body>
 

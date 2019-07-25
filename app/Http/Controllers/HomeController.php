@@ -1458,29 +1458,38 @@ class HomeController extends Controller
 
     public function incluirPublicacao(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.publicacoesg'), \Config::get('constants.permissoes.incluir'))[2] == true){
-            $publicacao = new TblPublicacoes();
-            $publicacao->id_igreja = $request->igreja;
-            $publicacao->nome = $request->nome;
-            $publicacao->html = $request->html;
-            $publicacao->save();
+            if($request->html != null){
+                $publicacao = new TblPublicacoes();
+                $publicacao->id_igreja = $request->igreja;
+                $publicacao->nome = $request->nome;
+                $publicacao->html = $request->html;
+                $publicacao->save();
 
-            if($request->galeria) foreach($request->galeria as $f_){
-                $foto = new TblPublicacaoFotos();
-                $foto->id_publicacao = $publicacao->id;
-                $foto->foto = "vazio";
-                $foto->save();
+                if($request->galeria) foreach($request->galeria as $f_){
+                    $foto = new TblPublicacaoFotos();
+                    $foto->id_publicacao = $publicacao->id;
+                    $foto->foto = "vazio";
+                    $foto->save();
 
-                \Image::make($f_)->save(public_path('storage/galerias-publicacoes/').'foto-'.$foto->id.'-'.$publicacao->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension(),90);
-                $foto->foto = 'foto-'.$foto->id.'-'.$publicacao->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension();
-                $foto->save();
+                    \Image::make($f_)->save(public_path('storage/galerias-publicacoes/').'foto-'.$foto->id.'-'.$publicacao->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension(),90);
+                    $foto->foto = 'foto-'.$foto->id.'-'.$publicacao->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension();
+                    $foto->save();
+                }
+                    
+                $notification = array(
+                    'message' => 'Publicação "' . $publicacao->nome . '" foi adicionada com sucesso!', 
+                    'alert-type' => 'success'
+                );
+
+                return redirect()->route('usuario.publicacoes')->with($notification);
+            }else{
+                $notification = array(
+                    'message' => 'O texto da publicação não pode ficar em branco!', 
+                    'alert-type' => 'error'
+                );
+
+                return redirect()->back()->with($notification);
             }
-                
-            $notification = array(
-                'message' => 'Publicação "' . $publicacao->nome . '" foi adicionada com sucesso!', 
-                'alert-type' => 'success'
-            );
-
-            return redirect()->route('usuario.publicacoes')->with($notification);
         }else{ return view('error'); }
     }
 

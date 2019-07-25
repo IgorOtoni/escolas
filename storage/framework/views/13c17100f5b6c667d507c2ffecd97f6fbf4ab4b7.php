@@ -138,16 +138,6 @@
     <script src="<?php echo e(asset('template_igreja/template-padrao/plugins/countdown/js/jquery.countdown.min.js')); ?>"></script> 
     <!-- Bootstrap Validator -->
     <script src="<?php echo e(asset('template_adm/plugins/bootstrap-validator/validator.js')); ?>"></script>
-    <script>
-        $(document).ready(function () {
-            url = window.location.href;
-            $('li a').each(function(index) {
-              if($(this).attr('href') === url || url.indexOf($(this).attr('href')) >= 0){
-                $(this).parent().addClass('active');
-              }
-            });
-        });
-    </script>
     <?php echo $__env->yieldPushContent('script'); ?>
 </body>
 </html>
