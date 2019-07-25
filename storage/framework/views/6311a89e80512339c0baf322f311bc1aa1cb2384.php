@@ -236,6 +236,16 @@
 <script src="<?php echo e(asset('template_igreja/template-branco/vendor/flexslider/js/jquery.flexslider.js')); ?>"></script> <!-- FlexSlider -->
 <script src="<?php echo e(asset('template_igreja/template-branco/vendor/countdown/js/jquery.countdown.min.js')); ?>"></script> <!-- Jquery Timer -->
 <script src="<?php echo e(asset('template_igreja/template-branco/vendor/mediaelement/mediaelement-and-player.min.js')); ?>"></script> <!-- MediaElements -->
+<script>
+    $(document).ready(function () {
+        url = window.location.href;
+        $('li a').each(function(index) {
+          if($(this).attr('href') === url || url.indexOf($(this).attr('href')) >= 0){
+            $(this).parent().addClass('active');
+          }
+        });
+    });
+</script>
 <?php echo $__env->yieldPushContent('script'); ?>
 </body>
 </html>

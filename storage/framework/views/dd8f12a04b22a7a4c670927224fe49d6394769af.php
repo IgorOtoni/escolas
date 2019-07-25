@@ -38,9 +38,9 @@
 	                		<li class="c-6 two-column <?php echo e(($x % 2 == 0) ? 'clearfix' : ''); ?>" style="min-height: 200px;">
 	                			<h3><?php echo e($membro->nome); ?> (<?php echo e($funcao->nome); ?>)</h3>
 	                            <p class="image" style="width: 210">
-	                                <a href="/storage/membros/<?php echo e($membro->foto); ?>" rel="example_group">
+	                                <a href="<?php echo e(($membro->foto != null) ? '/storage/no-foto.png' : '/storage/membros/'.$membro->foto); ?>" rel="example_group">
 	                                    <span class="gallery-2col-mask"></span>
-	                                    <img height="182" width="250" title="" alt="" src="/storage/membros/<?php echo e($membro->foto); ?>" />
+	                                    <img height="182" width="250" title="" alt="" src="<?php echo e(($membro->foto != null) ? '/storage/no-foto.png' : '/storage/membros/'.$membro->foto); ?>" />
 	                                </a>
 	                            </p>
 	                            <p><?php echo e($membro->descricao); ?></p>

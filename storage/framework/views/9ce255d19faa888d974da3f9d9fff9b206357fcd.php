@@ -42,13 +42,12 @@
 
                     	</ul>
                     <?php } ?>
-                    <!--/ gl_col_4-->
     
                     <div class="kids_clear"></div>
     
-                </div><!-- .gl_col_4 -->
+                </div>
     
-            </section><!-- .bottom_content_container -->
+            </section>
     
         </div>
 

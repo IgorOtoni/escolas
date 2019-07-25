@@ -43,7 +43,7 @@ if($galerias != null && sizeof($galerias) != 0){
 
                         <?php $x++;
                     }
-                     ?>
+                    ?>
                 </ul>
             
             </div>    

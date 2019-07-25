@@ -132,8 +132,37 @@
 <script src="{{asset('template_adm/plugins/bootstrap-validator/validator.js')}}"></script>
 <script>
   $(document).ready(function () {
-    $('.sidebar-menu').tree()
+    $('.sidebar-menu').tree();
+
+    url = window.location.href;
+    $('li a').each(function(index) {
+      if($(this).attr('href') === url || url.indexOf($(this).attr('href')) >= 0){
+        $(this).parent().addClass('active');
+      }
+    });
+
+    x = localStorage.getItem("menu");
+    if(x == null || x == 'off'){
+      $('body').removeClass('sidebar-collapse');
+      localStorage.setItem("menu", x);
+    }else{
+      $('body').addClass('sidebar-collapse');
+      localStorage.setItem("menu", x);
+    }
   })
+
+  $('.sidebar-toggle').on('click', function(){
+    x = localStorage.getItem("menu");
+    if(x == null || x == 'off'){
+      //$('body').addClass('sidebar-collapse');
+      x = 'on';
+      localStorage.setItem("menu", x);
+    }else{
+      //$('body').removeClass('sidebar-collapse');
+      x = 'off';
+      localStorage.setItem("menu", x);
+    }
+  });
 </script>
 
 @stack('script')

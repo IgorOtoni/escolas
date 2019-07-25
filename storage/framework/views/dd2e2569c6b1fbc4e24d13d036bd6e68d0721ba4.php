@@ -109,6 +109,16 @@
     <script src="<?php echo e(asset('template_igreja/template-azul/js/jquery.flexnav.min.js')); ?>"></script>
     <script src="<?php echo e(asset('template_igreja/template-azul/js/jquery.prettyPhoto.js')); ?>"></script>
 	<script src="<?php echo e(asset('template_igreja/template-azul/js/scripts.js')); ?>"></script>
+	<script>
+	    $(document).ready(function () {
+	        url = window.location.href;
+	        $('li a').each(function(index) {
+	          if(($(this).attr('href') === url || url.indexOf($(this).attr('href')) >= 0) && $(this).attr('href') !== '/<?php echo e($igreja->url); ?>'){
+	            $(this).parent().addClass('current-menu-item');
+	          }
+	        });
+	    });
+	</script>
 
     </body>
 </html>

@@ -46,7 +46,16 @@
 				return false;
 			});
 		});
-	</script>
+        
+        $j(document).ready(function () {
+            url = window.location.href;
+            $j('li a').each(function(index) {
+              if(($j(this).attr('href') === url || url.indexOf($j(this).attr('href')) >= 0) && $j(this).attr('href') !== '/<?php echo e($igreja->url); ?>'){
+                $j(this).parent().addClass('current-menu-item');
+              }
+            });
+        });
+    </script>
 
 </head>
 <body>
@@ -120,6 +129,8 @@
 
     </div>
     </div>
+
+    <?php echo $__env->yieldPushContent('script'); ?>
     
 </body>
 </html>

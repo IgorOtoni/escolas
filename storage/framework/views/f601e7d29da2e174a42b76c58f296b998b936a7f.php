@@ -8,22 +8,6 @@
 <?php $__env->startSection('content'); ?>
 <div id="kids_middle_container">
 
-	<!--<div class="kids_top_content">
-
-		<div class="kids_top_content_head">
-			<div class="kids_top_content_head_body"></div>
-		</div>
-
-		<div class="kids_top_content_middle">
-
-			<div class="l-page-width"></div>
-
-		</div>
-
-		<div class="kids_top_content_footer"></div>
-
-	</div>-->
-
 	<div class="bg-level-2-full-width-container kids_bottom_content">
 
 		<div class="bg-level-2-page-width-container l-page-width no-padding">
