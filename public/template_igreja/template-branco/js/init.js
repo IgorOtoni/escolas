@@ -376,7 +376,6 @@ var ADORE = window.ADORE || {};
    Init Functions
 ================================================== */
 $(document).ready(function(){
-	ADORE.ContactForm();
 	ADORE.scrollToTop();
 	ADORE.accordion();
 	ADORE.toggle();

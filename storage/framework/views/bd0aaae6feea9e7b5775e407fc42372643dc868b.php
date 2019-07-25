@@ -136,7 +136,7 @@
     $('.sidebar-menu').tree();
 
     url = window.location.href;
-    $('a').each(function(index) {
+    $('li a').each(function(index) {
       if($(this).attr('href') === url || url.indexOf($(this).attr('href')) >= 0){
         $(this).parent().addClass('active');
       }
@@ -145,12 +145,12 @@
     x = localStorage.getItem("menu");
     if(x == null || x == 'off'){
       $('body').removeClass('sidebar-collapse');
-      localStorage.setItem("menu", x);
+      localStorage.setItem("menu", 'off');
     }else{
       $('body').addClass('sidebar-collapse');
-      localStorage.setItem("menu", x);
+      localStorage.setItem("menu", 'on');
     }
-  })
+  });
 
   $('.sidebar-toggle').on('click', function(){
     x = localStorage.getItem("menu");

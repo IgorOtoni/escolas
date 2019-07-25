@@ -144,12 +144,12 @@
     x = localStorage.getItem("menu");
     if(x == null || x == 'off'){
       $('body').removeClass('sidebar-collapse');
-      localStorage.setItem("menu", x);
+      localStorage.setItem("menu", 'off');
     }else{
       $('body').addClass('sidebar-collapse');
-      localStorage.setItem("menu", x);
+      localStorage.setItem("menu", 'on');
     }
-  })
+  });
 
   $('.sidebar-toggle').on('click', function(){
     x = localStorage.getItem("menu");

@@ -13,7 +13,7 @@ class TblUsuariosController extends Controller
 {
     public function index()
     {
-        return view('usuarios.index');
+        return view('admin.usuarios.index');
     }
 
     public function tbl_usuarios(){
@@ -51,12 +51,12 @@ class TblUsuariosController extends Controller
 
     public function edit($id){
         $usuario = User::find($id);
-        return view('usuarios.edit', compact('usuario'));
+        return view('admin.usuarios.edit', compact('usuario'));
     }
 
     public function autoEdit(){
         $usuario = User::find(\Auth::user()->id);
-        return view('usuarios.autoEdit', compact('usuario'));
+        return view('admin.usuarios.autoEdit', compact('usuario'));
     }
 
     public function switchStatus(Request $request){

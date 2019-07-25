@@ -342,7 +342,6 @@ var NATIVE = window.NATIVE || {};
    Init Functions
 ================================================== */
 $(document).ready(function(){
-	NATIVE.ContactForm();
 	NATIVE.scrollToTop();
 	NATIVE.accordion();
 	NATIVE.toggle();
