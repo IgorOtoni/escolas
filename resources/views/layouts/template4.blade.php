@@ -88,7 +88,7 @@
 
 		<div class="l-page-width clearfix">
 					
-			<h3 class="widget-title">{{$igreja->nome}}</h3>
+			<h3 class="widget-title">{{$igreja->nome}} - <b> powered by hotsystems</b></h3>
 
 		</div><!--/ l-page-width-->
 

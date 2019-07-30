@@ -281,39 +281,48 @@ class HomeController extends Controller
     public function atualizarBanner(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.bannersg'), \Config::get('constants.permissoes.alterar'))[2] == true){
             $banner = TblBanner::find($request->id);
-            $banner->nome = $request->nome;
-            $banner->ordem = $request->ordem;
-            $banner->descricao = $request->descricao;
-            if($request->link == 1){
-                $modulo = TblModulo::find($request->modulo);
-                $menu->link = $modulo->rota;
-            }else if($request->link == 2){
-                $menu->link = 'publicacao/'.$request->publicacao;
-            }else if($request->link == 3){
-                $menu->link = 'evento/'.$request->evento;
-            }else if($request->link == 4){
-                $menu->link = 'eventofixo/'.$request->eventofixo;
-            }else if($request->link == 5){
-                $menu->link = 'noticia/'.$request->noticia;
-            }else if($request->link == 6){
-                $menu->link = 'sermao/'.$request->sermao;
-            }else if($request->link == 7){
-                $menu->link = 'galeria/'.$request->galeria;
-            }else if($request->link == 8){
-                $menu->link = $request->url;
-            }
-            if($request->foto){
-                \Image::make($request->foto)->save(public_path('storage/banners/').'banner-'.$banner->id.'-'.$banner->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
-                $banner->foto = 'banner-'.$banner->id.'-'.$banner->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
-            }
-            $banner->save();
+            if(!$request->foto && ($banner->foto == 'vazio' || $banner->foto == null)){
+                $banner->nome = $request->nome;
+                $banner->ordem = $request->ordem;
+                $banner->descricao = $request->descricao;
+                if($request->link == 1){
+                    $modulo = TblModulo::find($request->modulo);
+                    $menu->link = $modulo->rota;
+                }else if($request->link == 2){
+                    $menu->link = 'publicacao/'.$request->publicacao;
+                }else if($request->link == 3){
+                    $menu->link = 'evento/'.$request->evento;
+                }else if($request->link == 4){
+                    $menu->link = 'eventofixo/'.$request->eventofixo;
+                }else if($request->link == 5){
+                    $menu->link = 'noticia/'.$request->noticia;
+                }else if($request->link == 6){
+                    $menu->link = 'sermao/'.$request->sermao;
+                }else if($request->link == 7){
+                    $menu->link = 'galeria/'.$request->galeria;
+                }else if($request->link == 8){
+                    $menu->link = $request->url;
+                }
+                if($request->foto){
+                    \Image::make($request->foto)->save(public_path('storage/banners/').'banner-'.$banner->id.'-'.$banner->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
+                    $banner->foto = 'banner-'.$banner->id.'-'.$banner->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
+                }
+                $banner->save();
 
-            $notification = array(
-                'message' => 'Banner ' . $banner->nome . ' foi alterado com sucesso!', 
-                'alert-type' => 'success'
-            );
+                $notification = array(
+                    'message' => 'Banner ' . $banner->nome . ' foi alterado com sucesso!', 
+                    'alert-type' => 'success'
+                );
 
-            return redirect()->route('usuario.banners')->with($notification);
+                return redirect()->route('usuario.banners')->with($notification);
+            }else{
+                $notification = array(
+                    'message' => 'O banner não pode ficar sem imagem!', 
+                    'alert-type' => 'error'
+                );
+
+                return back()->with($notification);
+            }
         }else{ return view('error'); }
     }
 

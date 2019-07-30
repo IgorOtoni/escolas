@@ -87,7 +87,7 @@
         		<div class="site-footer-bottom">
             		<div class="row">
                 		<div class="col-md-6 col-sm-6 copyrights-coll">
-        					{{$igreja->nome}}
+        					{{$igreja->nome}} - <b> powered by hotsystems</b>
             			</div>
                 		<div class="col-md-6 col-sm-6 copyrights-colr">
         					<nav class="footer-nav" role="navigation">

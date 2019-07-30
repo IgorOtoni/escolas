@@ -110,7 +110,7 @@
     
         <div id="sub-footer" class="clearfix">
             
-            <p id="copyright">{{$igreja->nome}}</p>
+            <p id="copyright">{{$igreja->nome}} - <b> powered by hotsystems</b></p>
             <ul class="subfooter-menu">
                 <?php if($igreja->twitter != null){ ?>
                     <li><a href="{{$igreja->twitter}}" title="Twitter">Twitter</a></li>

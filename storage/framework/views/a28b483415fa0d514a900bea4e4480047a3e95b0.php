@@ -107,7 +107,7 @@
                     <!-- Copywrite Text -->
                     <div class="col-12 col-md-6">
                         <div class="copywrite-text">
-                            <p><?php echo e($igreja->nome); ?></p>
+                            <p><?php echo e($igreja->nome); ?> - <b> powered by hotsystems</b></p>
                         </div>
                     </div>
 
