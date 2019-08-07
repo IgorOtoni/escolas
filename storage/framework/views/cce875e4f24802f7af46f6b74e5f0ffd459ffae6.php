@@ -47,7 +47,7 @@
       <div class="container">
         <div style="min-height: 55px; vertical-align: center; margin: 15px;">
           <div class="navbar-header">
-            <a href="#" class="navbar-brand"><b>Escolas</b></a>
+            <a href="#" class="navbar-brand"><b>Sites</b></a>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
               <i class="fa fa-bars"></i>
             </button>
@@ -74,7 +74,7 @@
   <footer class="main-footer">
     <div class="container">
         <div class="pull-right hidden-xs">
-        <b>Escolas</b>
+        <b>Sites - powered by hotsystems</b>
         </div>
     </div>
     <!-- /.container -->

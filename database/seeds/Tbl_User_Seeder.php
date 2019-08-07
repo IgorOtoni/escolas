@@ -28,5 +28,13 @@ class Tbl_User_Seeder extends Seeder
             'password'=>bcrypt('123456'),
             'status'=> true,
         ]);
+
+        DB::table('users')->insert([
+            'nome'=>'Mrs. Comprador',
+            'email'=>'comprador@teste.com',
+            'id_perfil'=>100,
+            'password'=>bcrypt('123456'),
+            'status'=> true,
+        ]);
     }
 }

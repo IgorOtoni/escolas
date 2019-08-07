@@ -114,6 +114,14 @@ class Tbl_Modulos_Seeder extends Seeder
             'sistema'=>'web',
         ]);
         DB::table('tbl_modulos')->insert([
+            'id'=>27,
+            'nome'=>'Carrinho',
+            'descricao'=>'Funcionalidade do site gerencial.',
+            'rota'=>'carrinho',
+            'gerencial'=>true,
+            'sistema'=>'web',
+        ]);
+        DB::table('tbl_modulos')->insert([
             'id'=>5,
             'nome'=>'Eventos Fixos',
             'descricao'=>'Funcionalidade do site apresentativo.',
@@ -142,6 +150,12 @@ class Tbl_Modulos_Seeder extends Seeder
             'nome'=>'Vídeos',
             'descricao'=>'Funcionalidade do site apresentativo.',
             'rota'=>'sermoes',
+        ]);
+        DB::table('tbl_modulos')->insert([
+            'id'=>28,
+            'nome'=>'Carrinho',
+            'descricao'=>'Funcionalidade do site apresentativo.',
+            'rota'=>'carrinho',
         ]);
     }
 }

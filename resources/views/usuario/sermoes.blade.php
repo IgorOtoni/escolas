@@ -140,7 +140,7 @@ $(function(){
 <section class="content-header">
     <h1>
     Vídeos
-    <small>Lista de todos os vídeos da congregação</small>
+    <small>Lista de todos os vídeos</small>
     </h1>
 </section>
 

@@ -28,7 +28,9 @@ Route::get('admin', function () {
 // Authentication Routes...
 Route::get('/login', 'PlataformaController@login')->name('login');
 Route::post('/autenticar', 'PlataformaController@autenticar')->name('autenticar');
+Route::post('/{url}/autenticar', 'PlataformaController@autenticar')->name('autenticar_');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::post('/{url}/logout', 'Auth\LoginController@logout')->name('logout_');
 
 // Registration Routes...
 //Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
@@ -47,49 +49,31 @@ Route::get('/congregacoes', 'PlataformaController@eglise')->name('plataforma.con
 Route::get('/filtrarIgreja', 'PlataformaController@filtrarIgreja')->name('plataforma.filtrarIgreja');
 
 Route::get('/', 'PlataformaController@index')->name('plataforma.home');
-//Route::get('/eglise', 'PlataformaController@eglise')->name('eglise');
-
-// VALIDAÇÃO DE AUTENTICAÇÃO FEITA AQUI: PRIMEIRA A SER EXECUTADA
-/*Route::get('/autenticar', function () {
-    if(Auth::user()->status == true){
-        // VERIFICAÇÃO BÁSICA 1: PARA AUTENTICAR O USUÁRIO PRECISA ESTAR ATIVO
-        if (Auth::user()->id_perfil == null || Auth::user()->id_perfil == 1){
-            // SE O USUÁRIO NÃO TÊM UM PERFIL OU ESSE É IGUAL A 1 ELE É UM ADMINISTRADOR
-            return redirect()->route('admin.home');
-        }else if(Auth::user()->id_perfil != null && Auth::user()->id_perfil != 1){
-            // SE O USUÁRIO TÊM UM PERFIL E ESSE É DIFERENTE DE 1 ELE NÃO É UM AMINISTRADOR
-            $perfil = TblPerfil::find(Auth::user()->id_perfil);
-            if($perfil->status == true){
-                // VERIFICAÇÃO BÁSICA 2: PARA AUTENTICAR O PERFIL PRECISA ESTAR ATIVO
-                $igreja = TblIgreja::find($perfil->id_igreja);
-                if($igreja->status == true){
-                    // VERIFICAÇÃO BÁSICA 3: PARA AUTENTICAR A CONGREGAÇÃO PRECISA ESTAR ATIVO
-                    return redirect()->route('usuario.home');
-                }else{
-                    auth()->logout();
-                    return redirect('login')->with('message', 'O serviço de sua congregação está inativo.');
-                }
-            }else{
-                auth()->logout();
-                return redirect('login')->with('message', 'Seu perfil está desativado.');
-            }
-        }
-        auth()->logout();
-        return redirect('login')->with('message', 'Seu perfil não foi encontrado.');
-    }else{
-        auth()->logout();
-        return redirect('login')->with('message', 'Seu usuário está desativado.');
-    }
-});*/
 
 Route::get('error', function () {
     return view('error');
 });
 
 Route::get('/logout', function () {
-    //Session::flush();
-    auth()->logout();
-    return redirect('login');
+    if(\Auth::user()->id_perfil != 100){
+        auth()->logout();
+
+        $notification = array(
+            'message' => 'Até mais!', 
+            'alert-type' => 'warning'
+        );
+
+        return redirect('login')->with($notification);
+    }else{
+        auth()->logout();
+
+        $notification = array(
+            'message' => 'Até mais!', 
+            'alert-type' => 'warning'
+        );
+
+        return redirect()->back()->with($notification);
+    }
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -172,7 +156,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/excluirBanner/{id}', 'HomeController@excluirBanner')->name('usuario.excluirBanner');
         //////////////////////////////////////////////////////////////////////////////////////////
 
-        // CRUD GALERIAS ==========================================================================
+        // CRUD GALERIAS =========================================================================
         Route::get('/galerias', 'HomeController@galerias')->name('usuario.galerias');
         Route::get('/tbl_galerias', 'HomeController@tbl_galerias')->name('usuario.tbl_galerias');
         Route::post('/incluirGaleria', 'HomeController@incluirGaleria')->name('usuario.incluirGaleria');
@@ -182,7 +166,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/excluirGaleria/{id}', 'HomeController@excluirGaleria')->name('usuario.excluirGaleria');
         //////////////////////////////////////////////////////////////////////////////////////////
 
-        // CRUD EVENTOS FIXOS ==========================================================================
+        // CRUD EVENTOS FIXOS ====================================================================
         Route::get('/eventosfixos', 'HomeController@eventosfixos')->name('usuario.eventosfixos');
         Route::get('/tbl_eventosfixos', 'HomeController@tbl_eventosfixos')->name('usuario.tbl_eventosfixos');
         Route::post('/incluirEventoFixo', 'HomeController@incluirEventoFixo')->name('usuario.incluirEventoFixo');
@@ -192,7 +176,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/excluirEventoFixo/{id}', 'HomeController@excluirEventoFixo')->name('usuario.excluirEventoFixo');
         //////////////////////////////////////////////////////////////////////////////////////////
 
-        // CRUD NOTICIAS ==========================================================================
+        // CRUD NOTICIAS =========================================================================
         Route::get('/noticias', 'HomeController@noticias')->name('usuario.noticias');
         Route::get('/tbl_noticias', 'HomeController@tbl_noticias')->name('usuario.tbl_noticias');
         Route::post('/incluirNoticia', 'HomeController@incluirNoticia')->name('usuario.incluirNoticia');
@@ -202,7 +186,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/excluirNoticia/{id}', 'HomeController@excluirNoticia')->name('usuario.excluirNoticia');
         //////////////////////////////////////////////////////////////////////////////////////////
 
-        // CONFIGURACOES SITE ==========================================================================
+        // CONFIGURACOES SITE ====================================================================
         Route::get('/configuracoes', 'HomeController@configuracoes')->name('usuario.configuracoes');
         Route::post('/salvarConfiguracoes', 'HomeController@salvarConfiguracoes')->name('usuario.salvarConfiguracoes');        
         Route::post('/excluirLogo', 'HomeController@excluirLogo')->name('usuario.excluirLogo');
@@ -252,7 +236,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('usuarios/atualizarConta', 'HomeController@atualizarConta')->name('account.atualizar');
         //////////////////////////////////////////////////////////////////////////////////////////
 
-        // CRUD USUARIOS ==========================================================================
+        // CRUD USUARIOS =========================================================================
         Route::get('/usuarios', 'HomeController@usuarios')->name('usuario.usuarios');
         Route::get('/tbl_usuarios', 'HomeController@tbl_usuarios')->name('usuario.tbl_usuarios');
         Route::post('/incluirUsuario', 'HomeController@incluirUsuario')->name('usuario.incluirUsuario');
@@ -293,6 +277,42 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/excluirMembro/{id}', 'HomeController@excluirMembro')->name('usuario.excluirMembro');
         Route::get('/switchStatusMembro/{id}', 'HomeController@switchStatusMembro')->name('usuario.switchStatusMembro');
         //////////////////////////////////////////////////////////////////////////////////////////
+
+        // CRUD CARRINHO =========================================================================
+        // CATEGORIAS
+        Route::get('/categorias', 'HomeController@categorias')->name('usuario.categorias');
+        Route::get('/tbl_categorias', 'HomeController@tbl_categorias')->name('usuario.tbl_categorias');
+        Route::post('/incluirCategoria', 'HomeController@incluirCategoria')->name('usuario.incluirCategoria');
+        Route::get('/editarCategoria/{id}', 'HomeController@editarCategoria')->name('usuario.editarCategoria');
+        Route::post('/atualizarCategoria', 'HomeController@atualizarCategoria')->name('usuario.atualizarCategoria');
+        Route::get('/excluirCategoria/{id}', 'HomeController@excluirCategoria')->name('usuario.excluirCategoria');
+
+        // OFERTAS
+        Route::get('/ofertas', 'HomeController@ofertas')->name('usuario.ofertas');
+        Route::get('/tbl_ofertas', 'HomeController@tbl_ofertas')->name('usuario.tbl_ofertas');
+        Route::post('/incluirOferta', 'HomeController@incluirOferta')->name('usuario.incluirOferta');
+        Route::get('/editarOferta/{id}', 'HomeController@editarOferta')->name('usuario.editarOferta');
+        Route::post('/atualizarOferta', 'HomeController@atualizarOferta')->name('usuario.atualizarOferta');
+        Route::get('/excluirOferta/{id}', 'HomeController@excluirOferta')->name('usuario.excluirOferta');
+
+        // PRODUTOS
+        Route::get('/produtos', 'HomeController@produtos')->name('usuario.produtos');
+        Route::get('/tbl_produtos', 'HomeController@tbl_produtos')->name('usuario.tbl_produtos');
+        Route::post('/incluirProduto', 'HomeController@incluirProduto')->name('usuario.incluirProduto');
+        Route::get('/editarProduto/{id}', 'HomeController@editarProduto')->name('usuario.editarProduto');
+        Route::post('/atualizarProduto', 'HomeController@atualizarProduto')->name('usuario.atualizarProduto');
+        Route::post('/excluirIconeProduto', 'HomeController@excluirIconeProduto')->name('usuario.excluirIconeProduto');
+        Route::post('/excluirFotoProduto', 'HomeController@excluirFotoProduto')->name('usuario.excluirFotoProduto');
+        Route::get('/excluirProduto/{id}', 'HomeController@excluirProduto')->name('usuario.excluirProduto');
+
+        // VENDAS
+        Route::get('/vendas', 'HomeController@vendas')->name('usuario.vendas');
+        Route::get('/tbl_vendas', 'HomeController@tbl_vendas')->name('usuario.tbl_vendas');
+        Route::post('/incluirVenda', 'HomeController@incluirVenda')->name('usuario.incluirVenda');
+        Route::get('/editarVenda/{id}', 'HomeController@editarVenda')->name('usuario.editarVenda');
+        Route::post('/atualizarVenda', 'HomeController@atualizarVenda')->name('usuario.atualizarVenda');
+        Route::get('/excluirVenda/{id}', 'HomeController@excluirVenda')->name('usuario.excluirVenda');
+        //////////////////////////////////////////////////////////////////////////////////////////
     });
 });
 
@@ -315,3 +335,19 @@ Route::get('/{url}/publicacao/{id}','IgrejaController@publicacao')->name('igreja
 Route::get('/{url}/login','IgrejaController@login')->name('igreja.login');
 Route::get('/carrega_imagem/{largura},{altura},{pasta},{arquivo}','IgrejaController@carrega_imagem')->name('igreja.carrega_imagem');
 Route::get('/gerar_termo_compromisso/{id}','IgrejaController@gerar_termo_compromisso')->name('igreja.gerar_termo_compromisso');
+// ===============================================================================================
+Route::get('/{url}/produtos', 'IgrejaController@produtos')->name('igreja.produtos');
+Route::get('/{url}/filtrarProdutos', 'IgrejaController@filtrarProdutos')->name('igreja.filtrarProdutos');
+Route::get('/{url}/adicionarProduto', 'IgrejaController@adicionarProduto')->name('igreja.adicionarProduto');
+Route::get('/{url}/alterarProduto', 'IgrejaController@alterarProduto')->name('igreja.alterarProduto');
+Route::get('/{url}/removerProduto', 'IgrejaController@removerProduto')->name('igreja.removerProduto');
+Route::get('/{url}/limparCarrinho', 'IgrejaController@limparCarrinho')->name('igreja.limparCarrinho');
+Route::get('/{url}/carrinho', 'IgrejaController@carrinho')->name('igreja.carrinho');
+Route::get('/{url}/finalizarCompra', 'IgrejaController@finalizarCompra')->name('igreja.finalizarCompra');
+Route::post('/{url}/salvarCompra', 'IgrejaController@salvarCompra')->name('igreja.salvarCompra');
+Route::get('/{url}/salvarCompra', 'IgrejaController@salvarCompra')->name('igreja.salvarCompra');
+Route::get('/nota_encomenda/{id}','IgrejaController@nota_encomenda')->name('igreja.nota_encomenda');
+
+Route::get('/{url}/conta', 'IgrejaController@conta')->name('comprador.conta');
+Route::get('/{url}/desativar_conta', 'IgrejaController@desativar_conta')->name('comprador.desativar_conta');
+Route::get('/{url}/compras', 'IgrejaController@compras')->name('comprador.compras');

@@ -165,7 +165,7 @@ $(function(){
 <section class="content-header">
     <h1>
     Comunidades
-    <small>Lista de todas as comunidades da congregação</small>
+    <small>Lista de todas as comunidades</small>
     </h1>
 </section>
 

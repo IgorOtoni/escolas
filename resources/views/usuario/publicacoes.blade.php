@@ -158,7 +158,7 @@ $(function () {
 <section class="content-header">
     <h1>
     Publicações
-    <small>Lista de todas as publicações da congregação</small>
+    <small>Lista de todas as publicações</small>
     </h1>
 </section>
 

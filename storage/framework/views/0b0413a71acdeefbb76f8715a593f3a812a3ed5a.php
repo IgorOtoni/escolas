@@ -240,7 +240,7 @@ $(function(){
 <section class="content-header">
     <h1>
     Banners
-    <small>Lista de todos os banners da congregação</small>
+    <small>Lista de todos os banners</small>
     </h1>
 </section>
 

@@ -916,7 +916,7 @@ $('#modal-editar-subsubmenu').on('show.bs.modal', function (event) {
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-    Configuração do site da escola
+    Configuração do site
     <!--<small>it all starts here</small>-->
     </h1>
 </section>

@@ -9,6 +9,13 @@ use App\TblContatos;
 use App\TblInscricoes;
 use App\TblMembros;
 use App\TblFuncoes;
+use App\TblProdutos;
+use App\TblOfertasProdutos;
+use App\TblCategoriasProdutos;
+use App\TblTurnosEntregas;
+use App\TblVendas;
+use App\TblVendasProdutos;
+use App\User;
 use Symfony\Component\HttpFoundation\Response;
 class IgrejaController extends Controller
 {
@@ -338,5 +345,315 @@ class IgrejaController extends Controller
         $contato->save();
 
         return view('template' . $igreja->id_template . '.confirmacaoDados', compact('igreja', 'modulos', 'menus', 'submenus', 'subsubmenus'));
+    }
+    /////////////////////////////////////////////////////////////////////////////////////
+    public function produtos($url){
+        $igreja = obter_dados_igreja($url);
+        $categorias = TblCategoriasProdutos::where('id_igreja','=',$igreja->id)
+            ->orderBy('nome', 'ASC')
+            ->get();
+        $produtos = TblProdutos::where('id_igreja','=',$igreja->id)
+            ->where('situacao','=',true)
+            ->orderBy('nome', 'ASC')
+            ->paginate(8);
+        $ofertas = null;
+        foreach($produtos as $produto){
+            $ofertas_ = TblOfertasProdutos::where('id_produto','=',$produto->id)
+                ->where('id_igreja','=',$igreja->id)
+                ->where('data_inicio','<=', \Carbon\Carbon::parse(time())->format('Y-m-d'))
+                ->where('data_fim','>=', \Carbon\Carbon::parse(time())->format('Y-m-d'))
+                ->get();
+            if($ofertas_ != null && sizeof($ofertas_) > 0){
+                $ofertas[$produto->id] = $ofertas_[0];
+            }
+        }
+        return view('carrinho.produtos', compact('igreja','produtos','ofertas','categorias'));
+    }
+    public function carrinho($url){
+        $igreja = obter_dados_igreja($url);
+        $produtos = null;
+        if(null !== \Session()->get('carrinho') && is_array(\Session()->get('carrinho'))) for($x = 0; $x < sizeof(\Session()->get('carrinho')) ; $x++){
+            $produtos[$x] = TblProdutos::find(\Session()->get('carrinho')[$x]);
+        }
+        $ofertas = null;
+        if($produtos != null) foreach($produtos as $produto){
+            $ofertas_ = TblOfertasProdutos::where('id_produto','=',$produto->id)
+                ->where('id_igreja','=',$igreja->id)
+                ->where('data_inicio','<=', \Carbon\Carbon::parse(time())->format('Y-m-d'))
+                ->where('data_fim','>=', \Carbon\Carbon::parse(time())->format('Y-m-d'))
+                ->get();
+            if($ofertas_ != null && sizeof($ofertas_) > 0){
+                $ofertas[$produto->id] = $ofertas_[0];
+            }
+        }
+        return view('carrinho.carrinho', compact('igreja','produtos','ofertas'));
+    }
+    public function adicionarProduto($url, Request $request){
+        $igreja = obter_dados_igreja($url);
+        $produto = TblProdutos::find($request->id);
+        if(null !== \Session()->get('carrinho')){
+            $pos = sizeof(\Session()->get('carrinho'));
+            $produtos = \Session()->get('carrinho');
+            $produtos_qtd = \Session()->get('carrinho_qtd');
+
+            $produtos[$pos] = $produto->id;
+            $produtos_qtd[$pos] = 1;
+
+            \Session()->put('carrinho', $produtos);
+            \Session()->put('carrinho_qtd', $produtos_qtd);
+        }else{
+            \Session()->put('carrinho', array($produto->id));
+            \Session()->put('carrinho_qtd', array(1));
+        }
+
+        $notification = array(
+            'message' => 'Produto adicionado!', 
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+    public function limparCarrinho($url, Request $request){
+        $igreja = obter_dados_igreja($url);
+
+        \Session()->put('carrinho', null);
+        \Session()->put('carrinho_qtd', null);
+
+        $notification = array(
+            'message' => 'Produtos removidos!', 
+            'alert-type' => 'error'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+    public function removerProduto($url, Request $request){
+        $igreja = obter_dados_igreja($url);
+
+        $produtos_ = null;
+        $produtos_qtd_ = null;
+        
+        $produtos = \Session()->get('carrinho');
+        $produtos_qtd = \Session()->get('carrinho_qtd');
+
+        $x = 0;
+        $tam = sizeof(\Session()->get('carrinho'));
+        for($pos = 0; $pos < $tam; $pos++){
+            if(\Session()->get('carrinho')[$pos] != $request->id){
+                $produtos_[$x] = $produtos[$pos];
+                $produtos_qtd_[$x] = $produtos_qtd[$pos];
+                $x++;
+            }
+        }
+
+        \Session()->put('carrinho', $produtos_);
+        \Session()->put('carrinho_qtd', $produtos_qtd_);
+
+        $notification = array(
+            'message' => 'Produto removido!', 
+            'alert-type' => 'error'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+    public function alterarProduto($url, Request $request){
+        $igreja = obter_dados_igreja($url);
+
+        $produtos = \Session()->get('carrinho');
+        $produtos_qtd = \Session()->get('carrinho_qtd');
+
+        $x = 0;
+        $tam = sizeof(\Session()->get('carrinho'));
+        for($pos = 0; $pos < $tam; $pos++){
+            if(\Session()->get('carrinho')[$pos] == $request->id){
+                $produtos_qtd[$pos] = $request->qtd;
+                \Session()->put('carrinho_qtd', $produtos_qtd);
+                break;
+            }
+        }
+
+        $notification = array(
+            'message' => 'Produto alterado!', 
+            'alert-type' => 'warning'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+    public function filtrarProdutos($url, Request $request){
+        $igreja = obter_dados_igreja($url);
+
+        if(isset($request->nome)){
+            $nome = trim($request->nome);
+            if(strlen($nome) > 0){
+                $produtos = TblProdutos::where('id_igreja','=',$igreja->id)
+                    ->where('situacao','=',true)
+                    ->where('nome', 'like', '%'.$nome.'%')
+                    ->orderBy('nome', 'ASC')
+                    ->paginate(8);
+            }else{
+                $produtos = TblProdutos::where('id_igreja','=',$igreja->id)
+                    ->where('situacao','=',true)
+                    ->orderBy('nome', 'ASC')
+                    ->paginate(8);
+            }
+        }else if(isset($request->categoria)){
+            $produtos = TblProdutos::where('id_igreja','=',$igreja->id)
+                ->where('situacao','=',true)
+                ->where('id_categoria', '=', $request->categoria)
+                ->orderBy('nome', 'ASC')
+                ->paginate(8);
+        }else{
+            $produtos = TblProdutos::where('id_igreja','=',$igreja->id)
+                ->where('situacao','=',true)
+                ->orderBy('nome', 'ASC')
+                ->paginate(8);
+        }
+
+        $categorias = TblCategoriasProdutos::where('id_igreja','=',$igreja->id)
+            ->orderBy('nome', 'ASC')
+            ->get();
+        
+        $ofertas = null;
+        foreach($produtos as $produto){
+            $ofertas_ = TblOfertasProdutos::where('id_produto','=',$produto->id)
+                ->where('id_igreja','=',$igreja->id)
+                ->where('data_inicio','<=', \Carbon\Carbon::parse(time())->format('Y-m-d'))
+                ->where('data_fim','>=', \Carbon\Carbon::parse(time())->format('Y-m-d'))
+                ->get();
+            if($ofertas_ != null && sizeof($ofertas_) > 0){
+                $ofertas[$produto->id] = $ofertas_[0];
+            }
+        }
+        return view('carrinho.produtos', compact('igreja','produtos','ofertas','categorias'));
+    }
+    public function finalizarCompra($url, Request $request){
+        $igreja = obter_dados_igreja($url);
+        if(isset(\Auth::user()->id) && \Auth::user()->id_perfil == 100){
+            $turnos = TblTurnosEntregas::all();
+            return view('carrinho.finalizar', compact('igreja','turnos'));
+        }else{
+            return redirect()->route('igreja.produtos', $igreja->url);
+        }
+    }
+    public function salvarCompra($url, Request $request){
+        $igreja = obter_dados_igreja($url);
+
+        if(isset(\Auth::user()->id) && \Auth::user()->id_perfil == 100){
+            $produtos_vendas = null;
+            $valor_total = 0;
+            $produtos = null;
+            $produtos_qtd = null;
+            if(null !== \Session()->get('carrinho') && is_array(\Session()->get('carrinho'))) for($x = 0; $x < sizeof(\Session()->get('carrinho')) ; $x++){
+                $produtos[$x] = TblProdutos::find(\Session()->get('carrinho')[$x]);
+                $produtos_qtd[$x] = \Session()->get('carrinho_qtd')[$x];
+            }
+            $ofertas = null;
+            if($produtos != null) foreach($produtos as $produto){
+                $ofertas_ = TblOfertasProdutos::where('id_produto','=',$produto->id)
+                    ->where('id_igreja','=',$igreja->id)
+                    ->where('data_inicio','<=', \Carbon\Carbon::parse(time())->format('Y-m-d'))
+                    ->where('data_fim','>=', \Carbon\Carbon::parse(time())->format('Y-m-d'))
+                    ->get();
+                if($ofertas_ != null && sizeof($ofertas_) > 0){
+                    $ofertas[$produto->id] = $ofertas_[0];
+                }
+            }
+
+            $x = 0;
+            foreach($produtos as $produto){
+                $produto_venda = new TblVendasProdutos();
+                $produto_venda->qtd = $produtos_qtd[$x];
+                $produto_venda->id_produto = $produto->id;
+                $produto_venda->valor = $produto->valor;
+                $produto_venda->id_tipo_venda = $produto->id_tipo_venda;
+
+                $oferta = ($ofertas != null && array_key_exists($produto->id, $ofertas)) ? $ofertas[$produto->id] : null;
+                if($oferta != null){
+                    $produto_venda->oferta = $oferta->valor;
+                    $valor_total += $produtos_qtd[$x] * ($produto->valor - $produto->valor*$oferta->desconto/100);
+                }else{
+                    $produto_venda->oferta = 0;
+                    $valor_total += $produtos_qtd[$x] * $produto->valor;
+                }
+                $produtos_vendas[$x] = $produto_venda;
+                $x++;
+            }
+
+            $venda = new TblVendas();
+            $venda->id_usuario = \Auth::user()->id;
+            $venda->id_igreja = $igreja->id;
+            $venda->data = $request->dtentrega;
+            $venda->cep = $request->cep;
+            $venda->cidade = $request->cidade;
+            $venda->bairro = $request->bairro;
+            $venda->rua = $request->rua;
+            $venda->complemento = $request->complemento;
+            $venda->num = $request->num;
+            $venda->id_turno = $request->turno;
+            $venda->id_situacao = 1; // 1 == PENDENTE
+            $venda->valor_total = $valor_total;
+            $venda->save();
+
+            foreach($produtos_vendas as $produto_venda){
+                $produto_venda->id_venda = $venda->id;
+                $produto_venda->save();
+            }
+
+            \Session()->put('carrinho', null);
+            \Session()->put('carrinho_qtd', null);
+
+            $notification = array(
+                'message' => 'Compra realizada!', 
+                'alert-type' => 'success'
+            );
+            \Session()->put($notification);
+
+            return view('carrinho.compraFinalizada', compact('igreja','venda'));
+        }else{
+            return redirect()->route('igreja.produtos', $igreja->url);
+        }
+    }
+    public function nota_encomenda($id){
+        $venda = TblVendas::find($id);
+        $comprador = User::find($venda->id_usuario);
+        $vendedor = TblIgreja::find($venda->id_igreja);
+        $turno = TblTurnosEntregas::find($venda->id_turno);
+        $produtos_vendas = \DB::table('tbl_vendas_produtos')
+            ->select('tbl_vendas_produtos.*','tbl_produtos.nome','tbl_tipos_vendas.nome as tipo')
+            ->leftJoin('tbl_produtos','tbl_vendas_produtos.id_produto','=','tbl_produtos.id')
+            ->leftJoin('tbl_tipos_vendas','tbl_vendas_produtos.id_tipo_venda','=','tbl_tipos_vendas.id')
+            ->where('tbl_vendas_produtos.id_venda','=', $venda->id)
+            ->orderBy('tbl_produtos.nome','ASC')
+            ->get();
+        return view('notaEncomenda', compact('venda', 'turno', 'vendedor', 'comprador', 'produtos_vendas'));
+    }
+    public function conta($url){
+
+    }
+    public function desativar_conta($url){
+
+    }
+    public function compras($url){
+        $igreja = obter_dados_igreja($url);
+
+        if(isset(\Auth::user()->id) && \Auth::user()->id_perfil == 100){
+            /*$compras = \DB::table('tbl_vendas')
+                ->where('id_usuario','=',\Auth::user()->id)
+                ->orderBy('data','ASC')
+                ->paginate(10);*/
+            $compras = TblVendas::where('id_usuario','=',\Auth::user()->id)
+                ->orderBy('data','ASC')
+                ->paginate(10);
+
+            foreach($compras as $compra){
+                if(\Carbon\Carbon::parse($compra->data)->diffInDays(\Carbon\Carbon::parse(time())) > 0 && $compra->id_situacao == 1){
+                    $compra->id_situacao = 2;
+                    $compra->save();
+                }
+            }
+
+            return view('carrinho.compras', compact('igreja', 'compras'));
+        }else{
+            return redirect()->route('igreja.produtos', $igreja->url);
+        }
     }
 }

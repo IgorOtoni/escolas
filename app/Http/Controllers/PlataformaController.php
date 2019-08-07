@@ -115,6 +115,9 @@ class PlataformaController extends Controller
                             case 25:
                                 $igreja_modulo->icone = "fa fa-user-plus";
                                 break;
+                            case 27:
+                                $igreja_modulo->icone = "fa fa-cart-plus";
+                                break;
                         }
                     }
                     $igreja_modulo->save();
@@ -212,6 +215,13 @@ class PlataformaController extends Controller
                 $submenu->link = "eventos";
                 $submenu->save();
 
+                $menu = new TblMenu();
+                $menu->id_configuracao = $configuracao->id;
+                $menu->nome = "Produtos";
+                $menu->link = "produtos";
+                $menu->ordem = 6;
+                $menu->save();
+
                 $perfil = new TblPerfil();
                 $perfil->nome = "Administrador";
                 $perfil->descricao = "Perfil dos administradores da escola.";
@@ -274,7 +284,7 @@ class PlataformaController extends Controller
         return view('auth.login');
     }
 
-    public function autenticar(Request $request){
+    public function autenticar($url = null, Request $request){
         $user = User::where('email','=',$request->email)->get();
         if($user != null && sizeof($user) == 1){
           $user = $user[0];
@@ -293,6 +303,9 @@ class PlataformaController extends Controller
                 if (\Auth::user()->id_perfil == null || \Auth::user()->id_perfil == 1){
                     // SE O USUÁRIO NÃO TÊM UM PERFIL OU ESSE É IGUAL A 1 ELE É UM ADMINISTRADOR
                     return redirect()->route('admin.home')->with($notification);
+                }else if (\Auth::user()->id_perfil == 100){
+                    // SE O USUÁRIO TÊM UM PERFIL E ESSE É IGUAL A 100 ELE É UM COMPRADOR
+                    return redirect()->back()->with($notification);
                 }else if(\Auth::user()->id_perfil != null && \Auth::user()->id_perfil != 1){
                     // SE O USUÁRIO TÊM UM PERFIL E ESSE É DIFERENTE DE 1 ELE NÃO É UM AMINISTRADOR
                     $perfil = TblPerfil::find(\Auth::user()->id_perfil);
@@ -306,11 +319,11 @@ class PlataformaController extends Controller
                             auth()->logout();
 
                             $notification = array(
-                                'message' => 'O serviço de sua congregação está inativo.',
+                                'message' => 'O serviço desse site está inativo.',
                                 'alert-type' => 'error'
                             );
 
-                            return redirect('login')->with($notification);
+                            return back()->with($notification);
                         }
                     }else{
                         auth()->logout();
@@ -320,7 +333,7 @@ class PlataformaController extends Controller
                             'alert-type' => 'error'
                         );
 
-                        return redirect('login')->with($notification);
+                        return back()->with($notification);
                     }
                 }
                 auth()->logout();
@@ -330,16 +343,16 @@ class PlataformaController extends Controller
                     'alert-type' => 'error'
                 );
 
-                return redirect('login')->with($notification);
+                return back()->with($notification);
             }else{
                 auth()->logout();
 
                 $notification = array(
-                    'message' => 'Dados inválidos',
+                    'message' => 'Dados inválidos.',
                     'alert-type' => 'error'
                 );
 
-                return redirect('login')->with($notification);
+                return back()->with($notification);
             }
 
           }else{

@@ -145,7 +145,7 @@ $(function(){
 <section class="content-header">
     <h1>
     Funções
-    <small>Lista de todas as funções da congregação</small>
+    <small>Lista de todas as funções</small>
     </h1>
 </section>
 

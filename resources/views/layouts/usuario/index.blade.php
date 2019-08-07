@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Language" content="pt-br">
-  <title>Escolas</title>
+  <title>{{$igreja->nome}}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -58,9 +58,9 @@ $igreja = obter_dados_igreja_id($perfil->id_igreja);
     <!-- Logo -->
     <a href="/usuario/home" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>Escolas</b></span>
+      <span class="logo-mini"><b>Sites</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"> <b>Escolas</b></span>
+      <span class="logo-lg"> <b>Sites</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -129,11 +129,48 @@ $igreja = obter_dados_igreja_id($perfil->id_igreja);
             ->get();
 
         foreach($modulos as $modulo){
-          ?> <li><a href="{{route('usuario.'.$modulo->rota)}}">
+          if($modulo->id != 27){
+            ?>
+            <li><a href="{{route('usuario.'.$modulo->rota)}}">
             <?php if($modulo->icone != null){ ?> 
               <i class="{{$modulo->icone}}"></i>
             <?php } ?>
-            <span>{{$modulo->nome}}</span></a></li> <?php
+            <span>{{$modulo->nome}}</span></a></li>
+            <?php
+          }else{
+            ?>
+            <li class="treeview">
+              <a>
+                <?php if($modulo->icone != null){ ?> 
+                  <i class="{{$modulo->icone}}"></i>
+                <?php } ?>
+                <span>{{$modulo->nome}}</span>
+              </a>
+              <ul class="treeview-menu">
+                <li>
+                  <a href="/usuario/categorias">
+                    <span>Categorias</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/usuario/ofertas">
+                    <span>Ofertas</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/usuario/produtos">
+                    <span>Produtos</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/usuario/vendas">
+                    <span>Vendas</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <?php
+          }
         }
         ?>
       </ul>
@@ -172,6 +209,9 @@ $igreja = obter_dados_igreja_id($perfil->id_igreja);
     $('li a').each(function(index) {
       if($(this).attr('href') === url || url.indexOf($(this).attr('href')) >= 0){
         $(this).parent().addClass('active');
+        if($(this).parent().parent().parent().is( "li" )){
+          $(this).parent().parent().parent().addClass('active menu-open');
+        }
       }
     });
 

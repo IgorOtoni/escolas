@@ -9,16 +9,16 @@
     </section>
 
     <div class="row" style="margin-top: 50px;">
-        <div class="col-xs-12 col-md-6 text-justify" style="margin-bottom: 30px;">
+        <div class="col-xs-12 col-md-5 text-justify" style="margin-bottom: 30px;">
             <h1>
-                Plataforma para as escolas
+                Plataforma Sites
                 <!--<small>Example 2.0</small>-->
             </h1>
-            <h3>Divulge sua escola pela nossa plataforma. Temos uma variedade de templates para agradar seu estilo. Possibilitamos que você apresente sua escola, divulgue contatos, notícias, vídeos, eventos e galerias para todo o público virtual.</h3>
+            <h3>Adquira já seu site e aplicativo, para divulgar seus eventos, notícias, vídeos, galerias, publicações, realizar vendas on line e controles de frequências.</h3>
             <a class="btn btn-primary btn-lg" href="{{route('plataforma.formulario')}}"><b>CLIQUE AQUI PARA SABER MAIS</b></a>
         </div>
-        <div class="col-xs-12 col-md-6">
-            <center><img style="width: 85%;" src="/storage/bg-escolas.jpg"></center>
+        <div class="col-xs-12 col-md-7">
+            <center><img style="width: 100%;" src="/storage/bg-sites.png"></center>
         </div>
     </div>
 </div>

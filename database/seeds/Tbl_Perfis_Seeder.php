@@ -25,5 +25,62 @@ class Tbl_Perfis_Seeder extends Seeder
             'descricao'=>'Administrador do site da escola.',
             'id_igreja'=>1,
         ]);
+
+        DB::table('tbl_perfis')->insert([
+            'id'=>100,
+            'nome'=>'Comprador',
+            'descricao'=>'Usuário que pode realizar compras na plataforma.',
+            'status'=> true,
+            'id_igreja'=>null,
+        ]);
+
+        DB::table('tbl_turnos_entregas')->insert([
+            'id'=>1,
+            'nome'=>'Manhã',
+            'descricao'=>'De 6h as 12h.',
+        ]);
+        DB::table('tbl_turnos_entregas')->insert([
+            'id'=>2,
+            'nome'=>'Tarde',
+            'descricao'=>'De 13h as 17h.',
+        ]);
+        DB::table('tbl_turnos_entregas')->insert([
+            'id'=>3,
+            'nome'=>'Noite',
+            'descricao'=>'De 17h as 22h.',
+        ]);
+
+        DB::table('tbl_situacoes_entregas')->insert([
+            'id'=>1,
+            'nome'=>'Pendente',
+        ]);
+        DB::table('tbl_situacoes_entregas')->insert([
+            'id'=>2,
+            'nome'=>'Atrasada',
+        ]);
+        DB::table('tbl_situacoes_entregas')->insert([
+            'id'=>3,
+            'nome'=>'Realizada',
+        ]);
+        DB::table('tbl_situacoes_entregas')->insert([
+            'id'=>4,
+            'nome'=>'Cancelada',
+        ]);
+
+        DB::table('tbl_tipos_vendas')->insert([
+            'id'=>1,
+            'nome'=>'Unidade',
+        ]);
+
+        DB::table('tbl_categorias_produtos')->insert([
+            'id'=>1,
+            'nome'=>'Teste 1',
+            'id_igreja'=>1,
+        ]);
+        DB::table('tbl_categorias_produtos')->insert([
+            'id'=>2,
+            'nome'=>'Teste 2',
+            'id_igreja'=>1,
+        ]);
     }
 }

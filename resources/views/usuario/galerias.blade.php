@@ -151,7 +151,7 @@ $(function(){
 <section class="content-header">
     <h1>
     Galerias
-    <small>Lista de todas as galerias da congregação</small>
+    <small>Lista de todas as galerias</small>
     </h1>
 </section>
 
@@ -230,7 +230,6 @@ $(function(){
                     </div>
                     <input name="data" type="text" class="form-control pull-right" id="datepicker">
                     </div>
-                    <!--<input id="data" name="data" type="date" class="form-control" placeholder="Ordem">-->
                     </div>
                 </div>
                 <div class="col-md-12">
