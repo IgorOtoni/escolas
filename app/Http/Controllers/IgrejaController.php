@@ -10,6 +10,7 @@ use App\TblInscricoes;
 use App\TblMembros;
 use App\TblFuncoes;
 use App\TblProdutos;
+use App\TblProdutosFotos;
 use App\TblOfertasProdutos;
 use App\TblCategoriasProdutos;
 use App\TblTurnosEntregas;
@@ -369,6 +370,19 @@ class IgrejaController extends Controller
         }
         return view('carrinho.produtos', compact('igreja','produtos','ofertas','categorias'));
     }
+    public function produto($url, $id){
+        $igreja = obter_dados_igreja($url);
+        $produto = TblProdutos::find($id);
+        $categoria = TblCategoriasProdutos::find($produto->id_categoria);
+        $oferta = TblOfertasProdutos::where('id_produto','=',$produto->id)
+            ->where('id_igreja','=',$igreja->id)
+            ->where('data_inicio','<=', \Carbon\Carbon::parse(time())->format('Y-m-d'))
+            ->where('data_fim','>=', \Carbon\Carbon::parse(time())->format('Y-m-d'))
+            ->get();
+        $oferta = ($oferta != null && sizeof($oferta) == 1) ? $oferta[0] : null;
+        $fotos = TblProdutosFotos::where('id_produto','=',$produto->id)->get();
+        return view('carrinho.produto', compact('igreja','produto','oferta','categoria','fotos'));
+    }
     public function carrinho($url){
         $igreja = obter_dados_igreja($url);
         $produtos = null;
@@ -627,10 +641,63 @@ class IgrejaController extends Controller
         return view('notaEncomenda', compact('venda', 'turno', 'vendedor', 'comprador', 'produtos_vendas'));
     }
     public function conta($url){
+        $igreja = obter_dados_igreja($url);
 
+        if(isset(\Auth::user()->id) && \Auth::user()->id_perfil == 100){
+            return view('carrinho.conta', compact('igreja'));
+        }else{
+            return redirect()->route('igreja.produtos', $igreja->url);
+        }
+    }
+    public function alterar_conta($url){
+        $igreja = obter_dados_igreja($url);
+
+        if(isset(\Auth::user()->id) && \Auth::user()->id_perfil == 100){
+            if($request->password_confirmation == $request->password && strlen($request->password) > 0){
+                $teste = User::where('email','=',$request->email)->count();
+                if($teste == 0){
+                    \Auth::user()->nome = $request->nome;
+                    \Auth::user()->email = $request->email;
+                    \Auth::user()->password = bcrypt($request->password);
+                    $user->save();
+
+                    $notification = array(
+                        'message' => 'Conta alterada!',
+                        'alert-type' => 'success'
+                    );
+
+                    return back()->with($notification);
+                }else{
+
+                    $notification = array(
+                        'message' => 'Esse email não está disponível.',
+                        'alert-type' => 'error'
+                    );
+
+                    return back()->with($notification);
+
+                }
+            }else{
+
+                $notification = array(
+                    'message' => 'A senha não confere.',
+                    'alert-type' => 'error'
+                );
+
+                return back()->with($notification);
+
+            }
+        }else{
+            return redirect()->route('igreja.produtos', $igreja->url);
+        }
     }
     public function desativar_conta($url){
+        $igreja = obter_dados_igreja($url);
 
+        \Auth::user()->status = false;
+        \Auth::user()->save();
+
+        return redirect()->route('logout', $igreja->url);
     }
     public function compras($url){
         $igreja = obter_dados_igreja($url);
@@ -654,6 +721,54 @@ class IgrejaController extends Controller
             return view('carrinho.compras', compact('igreja', 'compras'));
         }else{
             return redirect()->route('igreja.produtos', $igreja->url);
+        }
+    }
+    public function cadastro($url){
+        $igreja = obter_dados_igreja($url);
+
+        return view('carrinho.cadastro', compact('igreja'));
+    }
+    public function cadastrar($url, Request $request){
+        $igreja = obter_dados_igreja($url);
+
+        if($request->password_confirmation == $request->password && strlen($request->password) > 0){
+            $teste = User::where('email','=',$request->email)->count();
+            if($teste == 0){
+                $user = new User();
+                $user->nome = $request->nome;
+                $user->email = $request->email;
+                $user->password = bcrypt($request->password);
+                $user->id_perfil = 100;
+                $user->status = true;
+                $user->save();
+
+                \Auth::login($user);
+
+                $notification = array(
+                    'message' => 'Cadastro realizado com sucesso!',
+                    'alert-type' => 'success'
+                );
+
+                return redirect()->route('igreja.produtos', $igreja->url)->with($notification);
+            }else{
+
+                $notification = array(
+                    'message' => 'Esse email não está disponível.',
+                    'alert-type' => 'error'
+                );
+
+                return back()->with($notification);
+
+            }
+        }else{
+
+            $notification = array(
+                'message' => 'A senha não confere.',
+                'alert-type' => 'error'
+            );
+
+            return back()->with($notification);
+
         }
     }
 }

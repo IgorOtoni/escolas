@@ -66,7 +66,7 @@ echo "<table class='table'>";
             echo '<span class="label label-primary">Em oferta: '.$oferta->desconto.'% de desconto!</span>';
             echo '<br>';
         }
-        echo "<strong><a href='index.php?pg=site_produtoINF&id=".$produto->id."'>+ Informações</a></strong>";
+        echo "<strong><a href='/".$igreja->url."/produto/".$produto->id."'>+ Informações</a></strong>";
 
         $botaoAdd = true;
         if(null !== \Session()->get('carrinho') && is_array(\Session()->get('carrinho'))){

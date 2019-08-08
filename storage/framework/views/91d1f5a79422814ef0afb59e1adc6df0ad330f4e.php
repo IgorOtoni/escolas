@@ -1,16 +1,16 @@
-@extends('layouts.usuario.index')
-@push('script')
+<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/usuario/vendas.blade.php */ ?>
+<?php $__env->startPush('script'); ?>
 <!-- DataTables -->
-<script src="{{asset('template_adm/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('template_adm/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script src="<?php echo e(asset('template_adm/bower_components/datatables.net/js/jquery.dataTables.min.js')); ?>"></script>
+<script src="<?php echo e(asset('template_adm/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')); ?>"></script>
 <!-- DataTables Plugins -->
-<script src="{{asset('template_adm/bower_components/datatables.plugins/dataTables.buttons.min.js') }}"></script>
-<script src="{{asset('template_adm/bower_components/datatables.plugins/buttons.html5.min.js') }}"></script>
-<script src="{{asset('template_adm/bower_components/datatables.plugins/jszip.min.js') }}"></script>
-<script src="{{asset('template_adm/bower_components/datatables.plugins/pdfmake.min.js') }}"></script>
-<script src="{{asset('template_adm/bower_components/datatables.plugins/vfs_fonts.js') }}"></script>
-<script src="{{asset('template_adm/bower_components/datatables.plugins/buttons.colVis.min.js') }}"></script>
-<script src="{{asset('template_adm/bower_components/datatables.plugins/buttons.bootstrap.min.js') }}"></script>
+<script src="<?php echo e(asset('template_adm/bower_components/datatables.plugins/dataTables.buttons.min.js')); ?>"></script>
+<script src="<?php echo e(asset('template_adm/bower_components/datatables.plugins/buttons.html5.min.js')); ?>"></script>
+<script src="<?php echo e(asset('template_adm/bower_components/datatables.plugins/jszip.min.js')); ?>"></script>
+<script src="<?php echo e(asset('template_adm/bower_components/datatables.plugins/pdfmake.min.js')); ?>"></script>
+<script src="<?php echo e(asset('template_adm/bower_components/datatables.plugins/vfs_fonts.js')); ?>"></script>
+<script src="<?php echo e(asset('template_adm/bower_components/datatables.plugins/buttons.colVis.min.js')); ?>"></script>
+<script src="<?php echo e(asset('template_adm/bower_components/datatables.plugins/buttons.bootstrap.min.js')); ?>"></script>
 
 <style>
 td.details-control {
@@ -93,7 +93,7 @@ $(function(){
         'processing': true,
         'autoWidth': false,
         //'serverSide': false,
-        'ajax': '{{route('usuario.tbl_vendas')}}',
+        'ajax': '<?php echo e(route('usuario.tbl_vendas')); ?>',
         'columns': [
                 {
                 "className":      'details-control',
@@ -132,8 +132,8 @@ $(function(){
 
 });
 </script>
-@endpush
-@section('content')
+<?php $__env->stopPush(); ?>
+<?php $__env->startSection('content'); ?>
 <div class="content-wrapper">
 <section class="content-header">
     <h1>
@@ -176,4 +176,5 @@ $(function(){
 </section>
 
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.usuario.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

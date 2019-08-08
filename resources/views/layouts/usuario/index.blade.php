@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php
+$id_perfil = Auth::user()->id_perfil;
+$perfil = \DB::table('tbl_perfis')
+  ->select('tbl_perfis.*')
+  ->where('id','=',$id_perfil)
+  ->get();
+$perfil = $perfil[0];
+$igreja = obter_dados_igreja_id($perfil->id_igreja);
+?>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,15 +50,6 @@
   <!-- Google Font URL: https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic -->
   <link rel="stylesheet" href="{{asset('css/fontes/font.css')}}">
 </head>
-<?php
-$id_perfil = Auth::user()->id_perfil;
-$perfil = \DB::table('tbl_perfis')
-  ->select('tbl_perfis.*')
-  ->where('id','=',$id_perfil)
-  ->get();
-$perfil = $perfil[0];
-$igreja = obter_dados_igreja_id($perfil->id_igreja);
-?>
 <body class="hold-transition skin-{{($igreja->cor != null) ? $igreja->cor : 'blue'}} sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
@@ -183,7 +183,7 @@ $igreja = obter_dados_igreja_id($perfil->id_igreja);
   @yield('content')
 
   <footer class="main-footer">
-    <strong>Plataforme Eglie - SGE
+    <strong>Sites</strong>
   </footer>
 
 </div>

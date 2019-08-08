@@ -5,14 +5,6 @@
 <!-- InputFilePTBR -->
 <script src="<?php echo e(asset('template_adm/bower_components/input.file.js/fileinput.js')); ?>"></script>
 <script src="<?php echo e(asset('template_adm/bower_components/input.file.js/locales/pt-BR.js')); ?>"></script>
-<!-- Select2 -->
-<link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/select2/dist/css/select2.min.css')); ?>">
-<!-- Select2 -->
-<script src="<?php echo e(asset('template_adm/bower_components/select2/dist/js/select2.full.min.js')); ?>"></script>
-<!-- bootstrap datepicker -->
-<link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')); ?>">
-<!-- bootstrap datepicker -->
-<script src="<?php echo e(asset('template_adm/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')); ?>"></script>
 <!-- DataTables -->
 <script src="<?php echo e(asset('template_adm/bower_components/datatables.net/js/jquery.dataTables.min.js')); ?>"></script>
 <script src="<?php echo e(asset('template_adm/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')); ?>"></script>
@@ -313,7 +305,7 @@ $(function(){
         		<div class="col-md-12">
                     <div class="form-group has-feedback">
                         <label >Fotos</label>
-                        <input name="fotos[]" type="file" id="input_img" multiple required>
+                        <input name="fotos[]" type="file" id="input_img" multiple>
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>

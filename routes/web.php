@@ -67,6 +67,9 @@ Route::get('/logout', function () {
     }else{
         auth()->logout();
 
+        \Session()->put('carrinho', null);
+        \Session()->put('carrinho_qtd', null);
+
         $notification = array(
             'message' => 'Até mais!', 
             'alert-type' => 'warning'
@@ -140,13 +143,13 @@ Route::group(['middleware' => 'auth'], function () {
         //Route::get('/', 'HomeController@index')->name('usuario.index');
         Route::get('/home', 'HomeController@index')->name('usuario.home');
 
-        // FUNÇÕES ===============================================================================
+        // FUNÇÕES ==================================================================
         Route::get('/carregarModulosIgreja/{id}', 'HomeController@modulos_igreja')->name('usuario.carregarModulosIgreja');
-        //////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
 
         Route::get('/doacoes', 'HomeController@index')->name('usuario.doacoes');
 
-        // CRUD BANNERS ==========================================================================
+        // CRUD BANNERS =============================================================
         Route::get('/banners', 'HomeController@banners')->name('usuario.banners');
         Route::get('/tbl_banners', 'HomeController@tbl_banners')->name('usuario.tbl_banners');
         Route::post('/incluirBanner', 'HomeController@incluirBanner')->name('usuario.incluirBanner');
@@ -154,9 +157,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/atualizarBanner', 'HomeController@atualizarBanner')->name('usuario.atualizarBanner');
         Route::post('/excluirFotoBanner', 'HomeController@excluirFotoBanner')->name('usuario.excluirFotoBanner');
         Route::get('/excluirBanner/{id}', 'HomeController@excluirBanner')->name('usuario.excluirBanner');
-        //////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
 
-        // CRUD GALERIAS =========================================================================
+        // CRUD GALERIAS ============================================================
         Route::get('/galerias', 'HomeController@galerias')->name('usuario.galerias');
         Route::get('/tbl_galerias', 'HomeController@tbl_galerias')->name('usuario.tbl_galerias');
         Route::post('/incluirGaleria', 'HomeController@incluirGaleria')->name('usuario.incluirGaleria');
@@ -164,9 +167,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/atualizarGaleria', 'HomeController@atualizarGaleria')->name('usuario.atualizarGaleria');
         Route::post('/excluirFotoGaleria', 'HomeController@excluirFotoGaleria')->name('usuario.excluirFotoGaleria');
         Route::get('/excluirGaleria/{id}', 'HomeController@excluirGaleria')->name('usuario.excluirGaleria');
-        //////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
 
-        // CRUD EVENTOS FIXOS ====================================================================
+        // CRUD EVENTOS FIXOS =======================================================
         Route::get('/eventosfixos', 'HomeController@eventosfixos')->name('usuario.eventosfixos');
         Route::get('/tbl_eventosfixos', 'HomeController@tbl_eventosfixos')->name('usuario.tbl_eventosfixos');
         Route::post('/incluirEventoFixo', 'HomeController@incluirEventoFixo')->name('usuario.incluirEventoFixo');
@@ -174,9 +177,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/atualizarEventoFixo', 'HomeController@atualizarEventoFixo')->name('usuario.atualizarEventoFixo');
         Route::post('/excluirFotoEventoFixo', 'HomeController@excluirFotoEventoFixo')->name('usuario.excluirFotoEventoFixo');
         Route::get('/excluirEventoFixo/{id}', 'HomeController@excluirEventoFixo')->name('usuario.excluirEventoFixo');
-        //////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
 
-        // CRUD NOTICIAS =========================================================================
+        // CRUD NOTICIAS ============================================================
         Route::get('/noticias', 'HomeController@noticias')->name('usuario.noticias');
         Route::get('/tbl_noticias', 'HomeController@tbl_noticias')->name('usuario.tbl_noticias');
         Route::post('/incluirNoticia', 'HomeController@incluirNoticia')->name('usuario.incluirNoticia');
@@ -184,9 +187,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/atualizarNoticia', 'HomeController@atualizarNoticia')->name('usuario.atualizarNoticia');
         Route::post('/excluirFotoNoticia', 'HomeController@excluirFotoNoticia')->name('usuario.excluirFotoNoticia');
         Route::get('/excluirNoticia/{id}', 'HomeController@excluirNoticia')->name('usuario.excluirNoticia');
-        //////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
 
-        // CONFIGURACOES SITE ====================================================================
+        // CONFIGURACOES SITE =======================================================
         Route::get('/configuracoes', 'HomeController@configuracoes')->name('usuario.configuracoes');
         Route::post('/salvarConfiguracoes', 'HomeController@salvarConfiguracoes')->name('usuario.salvarConfiguracoes');        
         Route::post('/excluirLogo', 'HomeController@excluirLogo')->name('usuario.excluirLogo');
@@ -199,18 +202,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/adicionarSubSubMenu', 'HomeController@adicionarSubSubMenu')->name('usuario.adicionarSubSubMenu');
         Route::post('/editarSubSubMenu', 'HomeController@editarSubSubMenu')->name('usuario.editarSubSubMenu');
         Route::get('/excluirSubSubMenu/{id}', 'HomeController@excluirSubSubMenu')->name('usuario.excluirSubSubMenu');
-        //////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
 
-        // CRUD SERMOES ==========================================================================
+        // CRUD SERMOES =============================================================
         Route::get('/sermoes', 'HomeController@sermoes')->name('usuario.sermoes');
         Route::get('/tbl_sermoes', 'HomeController@tbl_sermoes')->name('usuario.tbl_sermoes');
         Route::post('/incluirSermao', 'HomeController@incluirSermao')->name('usuario.incluirSermao');
         Route::get('/editarSermao/{id}', 'HomeController@editarSermao')->name('usuario.editarSermao');
         Route::post('/atualizarSermao', 'HomeController@atualizarSermao')->name('usuario.atualizarSermao');
         Route::get('/excluirSermao/{id}', 'HomeController@excluirSermao')->name('usuario.excluirSermao');
-        //////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
 
-        // CRUD EVENTOS ==========================================================================
+        // CRUD EVENTOS =============================================================
         Route::get('/eventos', 'HomeController@eventos')->name('usuario.eventos');
         Route::get('/tbl_eventos', 'HomeController@tbl_eventos')->name('usuario.tbl_eventos');
         Route::post('/incluirEvento', 'HomeController@incluirEvento')->name('usuario.incluirEvento');
@@ -219,9 +222,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/excluirFotoEvento', 'HomeController@excluirFotoEvento')->name('usuario.excluirFotoEvento');
         Route::get('/excluirEvento/{id}', 'HomeController@excluirEvento')->name('usuario.excluirEvento');
         Route::post('/atualizarInscricoes', 'HomeController@atualizarInscricoes')->name('usuario.atualizarInscricoes');
-        //////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
 
-        // CRUD PUBLICAÇÕES ======================================================================
+        // CRUD PUBLICAÇÕES =========================================================
         Route::get('/publicacoes', 'HomeController@publicacoes')->name('usuario.publicacoes');
         Route::get('/tbl_publicacoes', 'HomeController@tbl_publicacoes')->name('usuario.tbl_publicacoes');
         Route::post('/incluirPublicacao', 'HomeController@incluirPublicacao')->name('usuario.incluirPublicacao');
@@ -229,14 +232,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/atualizarPublicacao', 'HomeController@atualizarPublicacao')->name('usuario.atualizarPublicacao');
         Route::post('/excluirFotoPublicacao', 'HomeController@excluirFotoPublicacao')->name('usuario.excluirFotoPublicacao');
         Route::get('/excluirPublicacao/{id}', 'HomeController@excluirPublicacao')->name('usuario.excluirPublicacao');
-        //////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
     
-        // ALTERAR CONTA =========================================================================
+        // ALTERAR CONTA ============================================================
         Route::get('usuarios/conta', 'HomeController@conta')->name('account');
         Route::post('usuarios/atualizarConta', 'HomeController@atualizarConta')->name('account.atualizar');
-        //////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
 
-        // CRUD USUARIOS =========================================================================
+        // CRUD USUARIOS ============================================================
         Route::get('/usuarios', 'HomeController@usuarios')->name('usuario.usuarios');
         Route::get('/tbl_usuarios', 'HomeController@tbl_usuarios')->name('usuario.tbl_usuarios');
         Route::post('/incluirUsuario', 'HomeController@incluirUsuario')->name('usuario.incluirUsuario');
@@ -244,9 +247,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/atualizarUsuario', 'HomeController@atualizarUsuario')->name('usuario.atualizarUsuario');
         //Route::get('/excluirUsuario/{id}', 'HomeController@excluirUsuario')->name('usuario.excluirUsuario');
         Route::get('/switchStatusUsuario/{id}', 'HomeController@switchStatusUsuario')->name('usuario.switchStatusUsuario');
-        //////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
 
-        // CRUD PERFIS ==========================================================================
+        // CRUD PERFIS ==============================================================
         Route::get('/perfis', 'HomeController@perfis')->name('usuario.perfis');
         Route::get('/tbl_perfis', 'HomeController@tbl_perfis')->name('usuario.tbl_perfis');
         Route::post('/incluirPerfil', 'HomeController@incluirPerfil')->name('usuario.incluirPerfil');
@@ -256,18 +259,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/switchStatusPerfil/{id}', 'HomeController@switchStatusPerfil')->name('usuario.switchStatusPerfil');
         Route::get('/carregarPermissoesPerfil/{id}', 'HomeController@carregarPermissoesPerfil')->name('perfis.carregarPermissoesPerfil');
         Route::post('/atualizarPermissoesPerfil', 'HomeController@atualizarPermissoesPerfil')->name('usuario.atualizarPermissoesPerfil');
-        //////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
 
-        // CRUD FUNCOES ==========================================================================
+        // CRUD FUNCOES =============================================================
         Route::get('/funcoes', 'HomeController@funcoes')->name('usuario.funcoes');
         Route::get('/tbl_funcoes', 'HomeController@tbl_funcoes')->name('usuario.tbl_funcoes');
         Route::post('/incluirFuncao', 'HomeController@incluirFuncao')->name('usuario.incluirFuncao');
         Route::get('/editarFuncao/{id}', 'HomeController@editarFuncao')->name('usuario.editarFuncao');
         Route::post('/atualizarFuncao', 'HomeController@atualizarFuncao')->name('usuario.atualizarFuncao');
         Route::get('/excluirFuncao/{id}', 'HomeController@excluirFuncao')->name('usuario.excluirFuncao');
-        //////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
 
-        // CRUD MEMBROS ==========================================================================
+        // CRUD MEMBROS =============================================================
         Route::get('/membros', 'HomeController@membros')->name('usuario.membros');
         Route::get('/tbl_membros', 'HomeController@tbl_membros')->name('usuario.tbl_membros');
         Route::post('/incluirMembro', 'HomeController@incluirMembro')->name('usuario.incluirMembro');
@@ -276,9 +279,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/excluirFotoMembro', 'HomeController@excluirFotoMembro')->name('usuario.excluirFotoMembro');
         Route::get('/excluirMembro/{id}', 'HomeController@excluirMembro')->name('usuario.excluirMembro');
         Route::get('/switchStatusMembro/{id}', 'HomeController@switchStatusMembro')->name('usuario.switchStatusMembro');
-        //////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
 
-        // CRUD CARRINHO =========================================================================
+        // CRUD CARRINHO ============================================================
         // CATEGORIAS
         Route::get('/categorias', 'HomeController@categorias')->name('usuario.categorias');
         Route::get('/tbl_categorias', 'HomeController@tbl_categorias')->name('usuario.tbl_categorias');
@@ -308,11 +311,11 @@ Route::group(['middleware' => 'auth'], function () {
         // VENDAS
         Route::get('/vendas', 'HomeController@vendas')->name('usuario.vendas');
         Route::get('/tbl_vendas', 'HomeController@tbl_vendas')->name('usuario.tbl_vendas');
-        Route::post('/incluirVenda', 'HomeController@incluirVenda')->name('usuario.incluirVenda');
+        //Route::post('/incluirVenda', 'HomeController@incluirVenda')->name('usuario.incluirVenda');
         Route::get('/editarVenda/{id}', 'HomeController@editarVenda')->name('usuario.editarVenda');
         Route::post('/atualizarVenda', 'HomeController@atualizarVenda')->name('usuario.atualizarVenda');
-        Route::get('/excluirVenda/{id}', 'HomeController@excluirVenda')->name('usuario.excluirVenda');
-        //////////////////////////////////////////////////////////////////////////////////////////
+        //Route::get('/excluirVenda/{id}', 'HomeController@excluirVenda')->name('usuario.excluirVenda');
+        /////////////////////////////////////////////////////////////////////////////
     });
 });
 
@@ -335,8 +338,9 @@ Route::get('/{url}/publicacao/{id}','IgrejaController@publicacao')->name('igreja
 Route::get('/{url}/login','IgrejaController@login')->name('igreja.login');
 Route::get('/carrega_imagem/{largura},{altura},{pasta},{arquivo}','IgrejaController@carrega_imagem')->name('igreja.carrega_imagem');
 Route::get('/gerar_termo_compromisso/{id}','IgrejaController@gerar_termo_compromisso')->name('igreja.gerar_termo_compromisso');
-// ===============================================================================================
+// ==================================================================================
 Route::get('/{url}/produtos', 'IgrejaController@produtos')->name('igreja.produtos');
+Route::get('/{url}/produto/{id}', 'IgrejaController@produto')->name('igreja.produto');
 Route::get('/{url}/filtrarProdutos', 'IgrejaController@filtrarProdutos')->name('igreja.filtrarProdutos');
 Route::get('/{url}/adicionarProduto', 'IgrejaController@adicionarProduto')->name('igreja.adicionarProduto');
 Route::get('/{url}/alterarProduto', 'IgrejaController@alterarProduto')->name('igreja.alterarProduto');
@@ -347,7 +351,10 @@ Route::get('/{url}/finalizarCompra', 'IgrejaController@finalizarCompra')->name('
 Route::post('/{url}/salvarCompra', 'IgrejaController@salvarCompra')->name('igreja.salvarCompra');
 Route::get('/{url}/salvarCompra', 'IgrejaController@salvarCompra')->name('igreja.salvarCompra');
 Route::get('/nota_encomenda/{id}','IgrejaController@nota_encomenda')->name('igreja.nota_encomenda');
+Route::get('/{url}/cadastro', 'IgrejaController@cadastro')->name('igreja.cadastro');
+Route::post('/{url}/cadastrar', 'IgrejaController@cadastrar')->name('igreja.cadastrar');
 
 Route::get('/{url}/conta', 'IgrejaController@conta')->name('comprador.conta');
 Route::get('/{url}/desativar_conta', 'IgrejaController@desativar_conta')->name('comprador.desativar_conta');
+Route::get('/{url}/alterar_conta', 'IgrejaController@alterar_conta')->name('comprador.alterar_conta');
 Route::get('/{url}/compras', 'IgrejaController@compras')->name('comprador.compras');

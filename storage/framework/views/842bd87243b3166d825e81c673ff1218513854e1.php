@@ -1,18 +1,18 @@
-@extends('layouts.usuario.index')
-@push('script')
+<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/usuario/editarProduto.blade.php */ ?>
+<?php $__env->startPush('script'); ?>
 <!-- InputFilePTBR -->
-<link rel="stylesheet" href="{{asset('template_adm/bower_components/input.file.js/fileinput.min.css')}}">
+<link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/input.file.js/fileinput.min.css')); ?>">
 <!-- InputFilePTBR Confirm Dialog -->
-<link href="{{asset('template_adm/plugins/krajee.confirm/jquery-confirm.min.css')}}" rel="stylesheet" type="text/css" />
+<link href="<?php echo e(asset('template_adm/plugins/krajee.confirm/jquery-confirm.min.css')); ?>" rel="stylesheet" type="text/css" />
 <!-- InputFilePTBR -->
-<script src="{{asset('template_adm/bower_components/input.file.js/fileinput.js')}}"></script>
-<script src="{{asset('template_adm/bower_components/input.file.js/locales/pt-BR.js')}}"></script>
+<script src="<?php echo e(asset('template_adm/bower_components/input.file.js/fileinput.js')); ?>"></script>
+<script src="<?php echo e(asset('template_adm/bower_components/input.file.js/locales/pt-BR.js')); ?>"></script>
 <!-- InputFilePTBR Confirm Dialog -->
-<script src="{{asset('template_adm/plugins/krajee.confirm/jquery-confirm.min.js')}}"></script>
+<script src="<?php echo e(asset('template_adm/plugins/krajee.confirm/jquery-confirm.min.js')); ?>"></script>
 <!-- Select2 -->
-<link rel="stylesheet" href="{{asset('template_adm/bower_components/select2/dist/css/select2.min.css')}}">
+<link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/select2/dist/css/select2.min.css')); ?>">
 <!-- Select2 -->
-<script src="{{asset('template_adm/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+<script src="<?php echo e(asset('template_adm/bower_components/select2/dist/js/select2.full.min.js')); ?>"></script>
 
 <script>
 
@@ -23,16 +23,16 @@ $(function(){
         //maxImageCount: 1,
         initialPreview: [
             <?php if($produto->icone != null){ ?>
-                "{{'/storage/produtos/'.$produto->icone}}",
+                "<?php echo e('/storage/produtos/'.$produto->icone); ?>",
             <?php } ?>
         ],
-        deleteUrl: "{{'/storage'}}",
+        deleteUrl: "<?php echo e('/storage'); ?>",
         uploadExtraData:{'_token':$("#csrf_token").val()},
         initialPreviewAsData: true,
         //initialPreviewFileType: "image",
         initialPreviewConfig: [
             <?php if($produto->icone != null){ ?>
-                {caption: "{{$produto->icone}}", extra: {id: {{$produto->id}}, foto: "{{$produto->icone}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirIconeProduto", key: 1},
+                {caption: "<?php echo e($produto->icone); ?>", extra: {id: <?php echo e($produto->id); ?>, foto: "<?php echo e($produto->icone); ?>", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirIconeProduto", key: 1},
             <?php } ?>
         ],
         //overwriteInitial: false,
@@ -66,16 +66,16 @@ $(function(){
         allowedFileExtensions: ["jpeg", "jpg", "png", "gif"],
         initialPreview: [
             <?php foreach($fotos as $foto){ ?>
-                "{{'/storage/fotos-produtos/'.$foto->foto}}",
+                "<?php echo e('/storage/fotos-produtos/'.$foto->foto); ?>",
             <?php } ?>
         ],
-        //deleteUrl: "{{'/storage'}}",
+        //deleteUrl: "<?php echo e('/storage'); ?>",
         //uploadExtraData:{'_token':$("#csrf_token").val()},
         initialPreviewAsData: true,
         //initialPreviewFileType: "image",
         initialPreviewConfig: [
             <?php $x = 0; foreach($fotos as $foto){ $x++; ?>
-                {caption: "{{$foto->foto}}", extra: {id: {{$foto->id}}, foto: "{{$foto->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirFotoProduto", key: {{$x}}},
+                {caption: "<?php echo e($foto->foto); ?>", extra: {id: <?php echo e($foto->id); ?>, foto: "<?php echo e($foto->foto); ?>", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirFotoProduto", key: <?php echo e($x); ?>},
             <?php } ?>
         ],
         overwriteInitial: false,
@@ -104,8 +104,8 @@ $(function(){
 });
 
 </script>
-@endpush
-@section('content')
+<?php $__env->stopPush(); ?>
+<?php $__env->startSection('content'); ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 <!-- Content Header (Page header) -->
@@ -119,16 +119,16 @@ $(function(){
 <!-- Main content -->
 <section class="content">
 
-	<form id="editarProdutoFormulario" data-toggle="validator" method="POST" role="form" action="{{route('usuario.atualizarProduto')}}" enctype="multipart/form-data">
-    @csrf
-    <input type="hidden" name="id" id="id" value="{{$produto->id}}">
+	<form id="editarProdutoFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.atualizarProduto')); ?>" enctype="multipart/form-data">
+    <?php echo csrf_field(); ?>
+    <input type="hidden" name="id" id="id" value="<?php echo e($produto->id); ?>">
     <div class="box">
         <div class="box-body">
         	<div class="row">
             	<div class="col-md-12">
                     <div class="form-group has-feedback">
                         <label >Nome</label>
-                        <input name="nome" type="text" class="form-control" placeholder="Nome" value="{{$produto->nome}}" required>
+                        <input name="nome" type="text" class="form-control" placeholder="Nome" value="<?php echo e($produto->nome); ?>" required>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <div class="help-block with-errors"></div>
                     </div>
@@ -143,7 +143,7 @@ $(function(){
                 <div class="col-md-12">
                     <div class="form-group has-feedback">
                         <label >Descrição</label>
-                        <textarea name="descricao" class="form-control" rows="3" placeholder="Descrição">{{$produto->descricao}}</textarea>
+                        <textarea name="descricao" class="form-control" rows="3" placeholder="Descrição"><?php echo e($produto->descricao); ?></textarea>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <div class="help-block with-errors"></div>
                     </div>
@@ -151,7 +151,7 @@ $(function(){
                 <div class="col-md-12">
                     <div class="form-group has-feedback">
                         <label >Valor</label>
-                        <input name="valor" type="number" class="form-control" placeholder="Valor" min="1" max="100" step="0.01" value="{{$produto->valor}}" required>
+                        <input name="valor" type="number" class="form-control" placeholder="Valor" min="1" max="100" step="0.01" value="<?php echo e($produto->valor); ?>" required>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <div class="help-block with-errors"></div>
                     </div>
@@ -160,9 +160,9 @@ $(function(){
                     <div class="form-group has-feedback">
                 		<select id="categoria" name="categoria" class="form-control select2" style="width: 100%;" required>
 	                        <?php $categorias = App\TblCategoriasProdutos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-	                        @foreach ($categorias as $categoria)
-	                        <option value="{{$categoria->id}}" {{($produto->id_categoria == $categoria->id) ? 'selected' : ''}}>{{$categoria->nome}}</option>
-	                        @endforeach
+	                        <?php $__currentLoopData = $categorias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categoria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+	                        <option value="<?php echo e($categoria->id); ?>" <?php echo e(($produto->id_categoria == $categoria->id) ? 'selected' : ''); ?>><?php echo e($categoria->nome); ?></option>
+	                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                       	</select>
                         <div class="help-block with-errors"></div>
                     </div>
@@ -171,9 +171,9 @@ $(function(){
                     <div class="form-group has-feedback">
                 		<select id="tipo" name="tipo" class="form-control select2" style="width: 100%;" required>
 	                        <?php $tipos = App\TblTiposVendas::orderBy('nome','ASC')->get(); ?>
-	                        @foreach ($tipos as $tipo)
-	                        <option value="{{$tipo->id}}" {{($produto->id_tipo_venda == $tipo->id) ? 'selected' : ''}}>{{$tipo->nome}}</option>
-	                        @endforeach
+	                        <?php $__currentLoopData = $tipos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tipo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+	                        <option value="<?php echo e($tipo->id); ?>" <?php echo e(($produto->id_tipo_venda == $tipo->id) ? 'selected' : ''); ?>><?php echo e($tipo->nome); ?></option>
+	                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                       	</select>
                         <div class="help-block with-errors"></div>
                     </div>
@@ -183,7 +183,7 @@ $(function(){
                 		<label>Situação</label>
                 		<div class="checkbox">
 		                    <label>
-		                      	<input type="checkbox" name="situacao" id="situacao" value="option1" {{($produto->situacao == true) ? 'checked' : ''}}>
+		                      	<input type="checkbox" name="situacao" id="situacao" value="option1" <?php echo e(($produto->situacao == true) ? 'checked' : ''); ?>>
 		                      	Disnponível para venda
 		                    </label>
 	                  	</div>
@@ -209,4 +209,5 @@ $(function(){
 </section>
 
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.usuario.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

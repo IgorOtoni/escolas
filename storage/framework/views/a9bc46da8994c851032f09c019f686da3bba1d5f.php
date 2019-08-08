@@ -38,6 +38,9 @@
 								case 3:
 									echo '<span class="label label-success">Realizada</span>';
 									break;
+								case 4:
+									echo '<span class="label label-info">Cancelada</span>';
+									break;
 								default:
 									echo 'Não especificada';
 									break;

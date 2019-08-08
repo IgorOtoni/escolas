@@ -197,9 +197,12 @@ $(function(){
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
-                </div>
             </div>
-    	</div>
+        </div>
+        <div class="box-footer">
+            <a href="/usuario/produtos" class="btn btn-warning pull-left">Cancelar</a>
+            <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
+        </div>
 	</div>
 	</form>
 

@@ -1,13 +1,13 @@
-@extends('layouts.usuario.index')
-@push('script')
+<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/usuario/editarvenda.blade.php */ ?>
+<?php $__env->startPush('script'); ?>
 <!-- DataTables -->
-<script src="{{asset('template_adm/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('template_adm/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script src="<?php echo e(asset('template_adm/bower_components/datatables.net/js/jquery.dataTables.min.js')); ?>"></script>
+<script src="<?php echo e(asset('template_adm/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')); ?>"></script>
 
 <!-- InputMask -->
-<script src="{{asset('template_adm/plugins/input-mask/jquery.inputmask.js')}}"></script>
-<script src="{{asset('template_adm/plugins/input-mask/jquery.inputmask.date.extensions.js')}}"></script>
-<script src="{{asset('template_adm/plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
+<script src="<?php echo e(asset('template_adm/plugins/input-mask/jquery.inputmask.js')); ?>"></script>
+<script src="<?php echo e(asset('template_adm/plugins/input-mask/jquery.inputmask.date.extensions.js')); ?>"></script>
+<script src="<?php echo e(asset('template_adm/plugins/input-mask/jquery.inputmask.extensions.js')); ?>"></script>
 
 <script>
 $(function(){
@@ -47,8 +47,8 @@ $(function(){
 
 });
 </script>
-@endpush
-@section('content')
+<?php $__env->stopPush(); ?>
+<?php $__env->startSection('content'); ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 <!-- Content Header (Page header) -->
@@ -62,12 +62,12 @@ $(function(){
 <!-- Main content -->
 <section class="content">
 
-	<form id="editarVendaFormulario" data-toggle="validator" method="POST" role="form" action="{{route('usuario.atualizarVenda')}}" enctype="multipart/form-data">
-    @csrf
-    <input type="hidden" name="id" id="id" value="{{$venda->id}}">
+	<form id="editarVendaFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.atualizarVenda')); ?>" enctype="multipart/form-data">
+    <?php echo csrf_field(); ?>
+    <input type="hidden" name="id" id="id" value="<?php echo e($venda->id); ?>">
     <div class="box">
     	<div class="box-header with-border">
-    		<h3 class="box-title">Produtos: {{(isset($produtos)) ? sizeof($produtos) : "0"}}</h3>
+    		<h3 class="box-title">Produtos: <?php echo e((isset($produtos)) ? sizeof($produtos) : "0"); ?></h3>
 		</div>
         <div class="box-body">
         	<div class="row">
@@ -89,14 +89,15 @@ $(function(){
                     if(isset($produtos) && sizeof($produtos) > 0) foreach($produtos as $produto){
                         ?>
                         <tr>
-                            <td>{{$produto->id}}</td>
-                            <td>{{$produto->nome}}</td>
-                            <td>{{$produto->valor}}</td>
-                            <td>{{$produto->oferta}}</td>
-                            <td>{{$produto->qtd}}</td>
-                            <td>{{$produto->tipo}}</td>
+                            <td><?php echo e($produto->id); ?></td>
+                            <td><?php echo e($produto->nome); ?></td>
+                            <td><?php echo e($produto->valor); ?></td>
+                            <td><?php echo e($produto->oferta); ?></td>
+                            <td><?php echo e($produto->qtd); ?></td>
+                            <td><?php echo e($produto->tipo); ?></td>
                             <td>
-                            	{{($produto->oferta != null && $produto->oferta > 0) ? ($produto->qtd*($produto->valor-$produto->oferta*$produto->valor/100)) : $produto->qtd*$produto->valor}}
+                            	<?php echo e(($produto->oferta != null && $produto->oferta > 0) ? ($produto->qtd*($produto->valor-$produto->oferta*$produto->valor/100)) : $produto->qtd*$produto->valor); ?>
+
                             </td>
                         <?php
                     }
@@ -108,7 +109,7 @@ $(function(){
         </div>
     	<div class="box-footer">
     		<h3>
-    			R$ {{$venda->valor_total}} <?php if($venda->oferta != null && $venda->oferta > 0){ ?> - Com desconto: R$ {{$venda->valor_total-$venda->valor_total*$venda->oferta/100}} <?php } ?>
+    			R$ <?php echo e($venda->valor_total); ?> <?php if($venda->oferta != null && $venda->oferta > 0){ ?> - Com desconto: R$ <?php echo e($venda->valor_total-$venda->valor_total*$venda->oferta/100); ?> <?php } ?>
     		</h3>
     	</div>
     </div>
@@ -121,7 +122,7 @@ $(function(){
 			<div class="col-md-4">
 	            <div class="form-group has-feedback">
 	                <label >CEP</label>
-	                <input id="cep" name="cep" type="text" class="form-control" placeholder="CEP" data-inputmask='"mask": "99.999-999"' value="{{$venda->cep}}" data-mask required>
+	                <input id="cep" name="cep" type="text" class="form-control" placeholder="CEP" data-inputmask='"mask": "99.999-999"' value="<?php echo e($venda->cep); ?>" data-mask required>
 	                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 	                <div class="help-block with-errors"></div>
 	            </div>
@@ -129,7 +130,7 @@ $(function(){
 	        <div class="col-md-4">
 	            <div class="form-group has-feedback">
 	                <label >Cidade</label>
-	                <input id="cidade" name="cidade" type="text" class="form-control" placeholder="Cidade" value="{{$venda->cidade}}" required>
+	                <input id="cidade" name="cidade" type="text" class="form-control" placeholder="Cidade" value="<?php echo e($venda->cidade); ?>" required>
 	                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 	                <div class="help-block with-errors"></div>
 	            </div>
@@ -137,7 +138,7 @@ $(function(){
 	        <div class="col-md-4">
 	            <div class="form-group has-feedback">
 	                <label >Bairro</label>
-	                <input id="bairro" name="bairro" type="text" class="form-control" placeholder="Bairro" value="{{$venda->bairro}}" required>
+	                <input id="bairro" name="bairro" type="text" class="form-control" placeholder="Bairro" value="<?php echo e($venda->bairro); ?>" required>
 	                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 	                <div class="help-block with-errors"></div>
 	            </div>
@@ -145,7 +146,7 @@ $(function(){
 	        <div class="col-md-4">
 	            <div class="form-group has-feedback">
 	                <label >Rua</label>
-	                <input id="rua" name="rua" type="text" class="form-control" placeholder="Rua" value="{{$venda->rua}}" required>
+	                <input id="rua" name="rua" type="text" class="form-control" placeholder="Rua" value="<?php echo e($venda->rua); ?>" required>
 	                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 	                <div class="help-block with-errors"></div>
 	            </div>
@@ -153,13 +154,13 @@ $(function(){
 	        <div class="col-md-8">
 	            <div class="form-group">
 	                <label >Complemento</label>
-	                <input name="complemento" type="text" class="form-control" placeholder="Complemento" value="{{$venda->complemento}}">
+	                <input name="complemento" type="text" class="form-control" placeholder="Complemento" value="<?php echo e($venda->complemento); ?>">
 	            </div>
 	        </div>
 	        <div class="col-md-4">
 	            <div class="form-group has-feedback">
 	                <label >Número</label>
-	                <input name="num" type="number" class="form-control" placeholder="Número" value="{{$venda->num}}" required>
+	                <input name="num" type="number" class="form-control" placeholder="Número" value="<?php echo e($venda->num); ?>" required>
 	                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 	                <div class="help-block with-errors"></div>
 	            </div>
@@ -177,9 +178,9 @@ $(function(){
                 <div class="form-group has-feedback">
             		<select id="situacao" name="situacao" class="form-control select2" style="width: 100%;" required>
                         <?php $situacoes = App\TblSituacoesEntregas::orderBy('nome','ASC')->get(); ?>
-                        @foreach ($situacoes as $situacao)
-                        <option value="{{$situacao->id}}" {{$venda->id_situacao == $situacao->id ? "selected" : ""}}>{{$situacao->nome}}</option>
-                        @endforeach
+                        <?php $__currentLoopData = $situacoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $situacao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($situacao->id); ?>" <?php echo e($venda->id_situacao == $situacao->id ? "selected" : ""); ?>><?php echo e($situacao->nome); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   	</select>
                     <div class="help-block with-errors"></div>
                 </div>
@@ -187,7 +188,7 @@ $(function(){
             <div class="col-md-12">
                 <div class="form-group has-feedback">
                     <label >Desconto</label>
-                    <input name="desconto" type="number" class="form-control" placeholder="Desconto" min="1" max="100" value="{{$venda->desconto}}" required>
+                    <input name="desconto" type="number" class="form-control" placeholder="Desconto" min="1" max="100" value="<?php echo e($venda->desconto); ?>" required>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     <div class="help-block with-errors"></div>
                 </div>
@@ -205,4 +206,5 @@ $(function(){
 </section>
 
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.usuario.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

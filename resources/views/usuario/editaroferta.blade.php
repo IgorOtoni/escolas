@@ -14,10 +14,16 @@ $(function(){
 	$('.select2').select2();
 
 	//Date picker
-    $('.datepicker').datepicker({
+    $('#datepicker').datepicker({
         format: 'dd/mm/yyyy',
         autoclose: true
-    });
+    }).datepicker("update", "{{muda_data_($oferta->data_inicio)}}");
+
+    //Date picker
+    $('#datepicker_').datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true
+    }).datepicker("update", "{{muda_data_($oferta->data_fim)}}");
 });
 </script>
 @endpush
@@ -67,7 +73,7 @@ $(function(){
                 <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                 </div>
-                <input name="data_inicio" type="text" class="form-control pull-right datepicker" value="{{$oferta->data_inicio}}" id="datepicker">
+                <input name="data_inicio" type="text" class="form-control pull-right datepicker" id="datepicker">
                 </div>
                 </div>
             </div>
@@ -78,12 +84,16 @@ $(function(){
                 <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                 </div>
-                <input name="data_fim" type="text" class="form-control pull-right datepicker" value="{{$oferta->data_fim}}" id="datepicker">
+                <input name="data_fim" type="text" class="form-control pull-right datepicker" id="datepicker_">
                 </div>
                 </div>
             </div>
         	</div>
     	</div>
+        <div class="box-footer">
+            <a href="/usuario/ofertas" class="btn btn-warning pull-left">Cancelar</a>
+            <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
+        </div>
 	</div>
     </form>
 

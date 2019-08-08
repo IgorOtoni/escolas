@@ -79,7 +79,7 @@
 					              	<input type="password" placeholder="Senha" name="password" class="form-control" required>
 					            </div>
 					            <button type="submit" class="btn btn-success">Entrar</button>
-					            <button type="button" class="btn btn-info">Cadastrar</button>
+					            <a href="/{{ $igreja->url }}/cadastro" class="btn btn-info">Cadastrar</a>
 					        </form>
 				            <?php
 				        }else{

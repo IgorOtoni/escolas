@@ -40,6 +40,8 @@ use App\TblProdutosFotos;
 use App\TblVendas;
 use App\TblTiposVendas;
 use App\TblVendasProdutos;
+use App\TblTurnosEntregas;
+use App\TblSituacoesEntregas;
 use Carbon\Carbon;
 use Calendar;
 
@@ -102,6 +104,17 @@ class HomeController extends Controller
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
             $igreja = obter_dados_igreja_id($perfil->id_igreja);
+
+            $compras = TblVendas::where('id_igreja','=',$igreja->id)
+                ->orderBy('data','ASC')
+                ->paginate(10);
+
+            foreach($compras as $compra){
+                if(\Carbon\Carbon::parse($compra->data)->diffInDays(\Carbon\Carbon::parse(time())) > 0 && $compra->id_situacao == 1){
+                    $compra->id_situacao = 2;
+                    $compra->save();
+                }
+            }
 
             $x = 0;
 
@@ -2437,11 +2450,11 @@ class HomeController extends Controller
 
             if($request->icone){
                 \Image::make($request->icone)->save(public_path('storage/produtos/').'produto-'.$produto->id.'-'.$produto->id_igreja.'.'.strtolower($request->icone->getClientOriginalExtension()),90);
-                $produto->icone = 'banner-'.$produto->id.'-'.$produto->id_igreja.'.'.strtolower($request->icone->getClientOriginalExtension());
+                $produto->icone = 'produto-'.$produto->id.'-'.$produto->id_igreja.'.'.strtolower($request->icone->getClientOriginalExtension());
                 $produto->save();
             }
 
-            foreach($request->fotos as $f_){
+            if($request->fotos) foreach($request->fotos as $f_){
                 $foto = new TblProdutosFotos();
                 $foto->id_produto = $produto->id;
                 $foto->foto = "vazio";
@@ -2468,7 +2481,7 @@ class HomeController extends Controller
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
             $igreja = obter_dados_igreja_id($perfil->id_igreja);
             $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editarproduto', compact('produto','fotos','igreja','modulos_igreja'));
+            return view('usuario.editarProduto', compact('produto','fotos','igreja','modulos_igreja'));
         }else{ return view('error'); }
     }
 
@@ -2476,8 +2489,33 @@ class HomeController extends Controller
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.alterar'))[2] == true){
             $produto = TblProdutos::find($request->id);
             $produto->nome = $request->nome;
+            $produto->valor = $request->valor;
             $produto->descricao = $request->descricao;
+            $produto->id_categoria = $request->categoria;
+            $produto->id_tipo_venda = $request->tipo;
+            $produto->icone = 'vazio';
+            $produto->situacao = false;
+            if(isset($request->situacao)){
+                $produto->situacao = true;
+            }
             $produto->save();
+
+            if($request->icone){
+                \Image::make($request->icone)->save(public_path('storage/produtos/').'produto-'.$produto->id.'-'.$produto->id_igreja.'.'.strtolower($request->icone->getClientOriginalExtension()),90);
+                $produto->icone = 'produto-'.$produto->id.'-'.$produto->id_igreja.'.'.strtolower($request->icone->getClientOriginalExtension());
+                $produto->save();
+            }
+
+            if($request->fotos) foreach($request->fotos as $f_){
+                $foto = new TblProdutosFotos();
+                $foto->id_produto = $produto->id;
+                $foto->foto = "vazio";
+                $foto->save();
+
+                \Image::make($f_)->save(public_path('storage/fotos-produtos/').'foto-'.$foto->id.'-'.$produto->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension(),90);
+                $foto->foto = 'foto-'.$foto->id.'-'.$produto->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension();
+                $foto->save();
+            }
 
             $notification = array(
                 'message' => 'Produto "' . $produto->nome . '" foi atualizada com sucesso!', 
@@ -2717,6 +2755,136 @@ class HomeController extends Controller
     ////////////////////////////////////////////////////////////////////////////////
 
     // VENDAS AREA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public function vendas()
+    {
+        if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog')) == false){
+            return view('error');
+        }else{
+            $perfil = TblPerfil::find(\Auth::user()->id_perfil);
+            $igreja = obter_dados_igreja_id($perfil->id_igreja);
+            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
+            return view('usuario.vendas', compact('igreja','modulos_igreja'));
+        }
+    }
 
+    public function tbl_vendas(){
+        if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog')) == false){
+            return view('error');
+        }else{
+            $perfil = TblPerfil::find(\Auth::user()->id_perfil);
+            $venda = TblVendas::where('id_igreja','=',$perfil->id_igreja)->get();
+            return DataTables::of($venda)->addColumn('action',function($venda){
+                $btn_editar = '';
+                if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.alterar'))[2] == true){
+                    $btn_editar = '<a href="/usuario/editarVenda/'.$venda->id.'" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>';
+                }
+                /*$btn_excluir = '';
+                if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.desativar'))[2] == true){
+                    $btn_excluir = '<a href="/usuario/excluirVenda/'.$venda->id.'" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>';
+                }*/
+                return $btn_editar.'&nbsp'/*.$btn_excluir*/;
+            })->addColumn('qtd_produtos',function($venda){
+                $qtd_produtos = TblVendasProdutos::where('id_venda','=',$venda->id)->count();
+                return $qtd_produtos;
+            })->addColumn('turno',function($venda){
+                $turno = TblTurnosEntregas::find($venda->id_turno);
+                return $turno->nome;
+            })->addColumn('situacao',function($venda){
+                $situacao = TblSituacoesEntregas::find($venda->id_situacao);
+                if($venda->id_situacao == 1){
+                    return "<span class='label bg-yellow'>".$situacao->nome."</span>";
+                }else if($venda->id_situacao == 2){
+                    return "<span class='label bg-red'>".$situacao->nome."</span>";
+                }else if($venda->id_situacao == 3){
+                    return "<span class='label bg-green'>".$situacao->nome."</span>";
+                }else if($venda->id_situacao == 4){
+                    return "<span class='label bg-blue'>".$situacao->nome."</span>";
+                }
+            })->addColumn('comprador',function($venda){
+                $comprador = User::find($venda->id_usuario);
+                return $comprador->nome;
+            })->editColumn('data', function($venda) {
+                if($venda->data != null)
+                    return Carbon::parse($venda->data)->format('d/m/Y');
+                else
+                    return null;
+            })->editColumn('created_at', function($venda) {
+                if($venda->created_at != null)
+                    return Carbon::parse($venda->created_at)->format('d/m/Y');
+                else
+                    return null;
+            })->editColumn('updated_at', function($venda) {
+                if($venda->updated_at != null){
+                    $upd = Carbon::parse($venda->updated_at)->diffForHumans();
+                    return $upd;
+                }else
+                    return null;
+            })
+            ->rawColumns(['qtd_produtos', 'comprador', 'turno', 'situacao', 'action'])->make(true);
+        }
+    }
+
+    /*public function incluirVenda(Request $request){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.incluir'))[2] == true){
+            $venda = new TblVendas();
+            $venda->id_igreja = $request->igreja;
+            $venda->nome = $request->nome;
+            $venda->descricao = $request->descricao;
+            $venda->save();
+
+            $notification = array(
+                'message' => 'Venda "' . $venda->nome . '" foi adicionada com sucesso!', 
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route('usuario.vendas')->with($notification);
+        }else{ return view('error'); }
+    }*/
+
+    public function editarVenda($id){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.alterar'))[2] == true){
+            $venda = TblVendas::find($id);
+            $produtos = \DB::table('tbl_vendas_produtos')
+                ->select('tbl_vendas_produtos.*','tbl_produtos.nome','tbl_tipos_vendas.nome as tipo')
+                ->leftJoin('tbl_produtos','tbl_vendas_produtos.id_produto','=','tbl_produtos.id')
+                ->leftJoin('tbl_tipos_vendas','tbl_vendas_produtos.id_tipo_venda','=','tbl_tipos_vendas.id')
+                ->where('tbl_vendas_produtos.id','=',$venda->id)
+                ->orderBy('tbl_produtos.nome','ASC')->get();
+            $perfil = TblPerfil::find(\Auth::user()->id_perfil);
+            $igreja = obter_dados_igreja_id($perfil->id_igreja);
+            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
+            return view('usuario.editarvenda', compact('venda','produtos','igreja','modulos_igreja'));
+        }else{ return view('error'); }
+    }
+
+    public function atualizarVenda(Request $request){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.alterar'))[2] == true){
+            $venda = TblVendas::find($request->id);
+            $venda->id_situacao = $request->situacao;
+            $venda->oferta = $request->oferta;
+            $venda->save();
+
+            $notification = array(
+                'message' => 'Venda "' . $venda->nome . '" foi atualizada com sucesso!', 
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route('usuario.vendas')->with($notification);
+        }else{ return view('error'); }
+    }
+
+    /*public function excluirVenda($id){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.desativar'))[2] == true){
+            $venda = TblVendas::find($id);
+            $venda->delete();
+
+            $notification = array(
+                'message' => 'Venda "' . $venda->nome . '" foi excluída com sucesso!', 
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route('usuario.vendas')->with($notification);
+        }else{ return view('error'); }
+    }*/
     ////////////////////////////////////////////////////////////////////////////////
 }
