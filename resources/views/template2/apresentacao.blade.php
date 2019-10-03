@@ -23,7 +23,7 @@
         <div class="row align-items-center justify-content-between">
             <div class="col-12 col-lg-12">
                 <div class="about-content">
-                    <h2>Sobre nós</h2>
+                    <h2>Sobre nós/Visões e valores</h2>
                     <p>{{$igreja->texto_apresentativo}}</p>
                 </div>
             </div>

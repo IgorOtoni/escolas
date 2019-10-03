@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <ol class="breadcrumb">
         <li><a href="/{{$igreja->url}}/">Home</a></li>
-        <li class="active">Sobre nós</li>
+        <li class="active">Sobre nós/Visões e valores</li>
         </ol>
     </div>
     </div>

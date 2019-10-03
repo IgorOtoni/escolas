@@ -43,6 +43,8 @@ class CreateTblVendasTable extends Migration
             $table->string('complemento')->nullable();
             $table->string('num');
 
+            $table->integer('oferta');
+
             $table->timestamps();
         });
     }

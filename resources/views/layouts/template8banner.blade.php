@@ -81,7 +81,7 @@
 			<!-- Copyright -->
             <div class="copyright_wrap">
                 <div class="content_wrap">
-                    <p>© {{$igreja->nome}} - <b> powered by hotsystems</b></p>
+                    <p><?php echo strip_tags($igreja->nome) ?> - <b> powered by hotsystems</b></p>
                 </div>
             </div>
 			<!-- /Copyright -->

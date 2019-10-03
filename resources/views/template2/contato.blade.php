@@ -55,7 +55,7 @@ $(function(){
                                 <h4>Endereço</h4>
                                 <p>Cidade: {{$igreja->cidade}} - {{$igreja->estado}}</p>
                                 <p>Bairro: {{$igreja->bairro}}</p>
-                                <p>Rua: {{$igreja->rua}}, n°: {{$igreja->num}}</p>
+                                <p>Rua: {{$igreja->rua}}, {{$igreja->num}}</p>
                             </div>
                         </div>
                     </div>

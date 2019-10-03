@@ -52,7 +52,7 @@
                         <p>
                         	Cidade: {{$igreja->cidade}} - {{$igreja->estado}}<br />
                             Bairro: {{$igreja->bairro}}<br />
-                            Rua: {{$igreja->rua}}, n°: {{$igreja->num}}
+                            Rua: {{$igreja->rua}}, {{$igreja->num}}
                         </p>
                     </li>
                     <?php if($igreja->telefone != null){ ?>  

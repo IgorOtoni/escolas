@@ -31,7 +31,7 @@
 					</div>
 					<div class="address__inner">
 						<h2>Endereço</h2>
-						<p>Cidade: {{$igreja->cidade}} - {{$igreja->estado}}, bairro: {{$igreja->bairro}}, rua: {{$igreja->rua}}, n°: {{$igreja->num}}</p>
+						<p>Cidade: {{$igreja->cidade}} - {{$igreja->estado}}, bairro: {{$igreja->bairro}}, rua: {{$igreja->rua}}, {{$igreja->num}}</p>
 					</div>
 				</div>
 			</div>

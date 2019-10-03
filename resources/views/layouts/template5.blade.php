@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-	<title>{{$igreja->nome}}</title>
+	<title><?php echo strip_tags($igreja->nome) ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description" content="A small sentence describing your website's subject" />
 	<meta name="keywords" content="some, keywords, separated, by, comas" />
@@ -75,15 +75,15 @@
             <ul class="dd-menu">
                 <?php
                 foreach($menus as $menu){
-                    ?><li><a href="{{verifica_link($menu->link, $igreja)}}">{{$menu->nome}}</a><?php
+                    ?><li><a href="{{verifica_link($menu->link, $igreja)}}"><?php echo $menu->nome ?></a><?php
                         if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
                             <ul class="dropdown">
                                 <?php foreach($submenus[$menu->id] as $submenu){
-                                    ?><li><a href="{{verifica_link($submenu->link, $igreja)}}">{{$submenu->nome}}</a><?php
+                                    ?><li><a href="{{verifica_link($submenu->link, $igreja)}}"><?php echo $submenu->nome ?></a><?php
                                     if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
                                         <ul class="dropdown">
                                             <?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-                                                ?> <li><a href="/{{verifica_link($subsubmenu->link, $igreja)}}">{{$subsubmenu->nome}}</a></li> <?php
+                                                ?> <li><a href="{{verifica_link($subsubmenu->link, $igreja)}}"><?php echo $subsubmenu->nome ?></a></li> <?php
                                             } ?>
                                         </ul>
                                     <?php
@@ -110,7 +110,7 @@
     
         <div id="sub-footer" class="clearfix">
             
-            <p id="copyright">{{$igreja->nome}} - <b> powered by hotsystems</b></p>
+            <p id="copyright"><?php echo strip_tags($igreja->nome) ?> - <b> powered by hotsystems</b></p>
             <ul class="subfooter-menu">
                 <?php if($igreja->twitter != null){ ?>
                     <li><a href="{{$igreja->twitter}}" title="Twitter">Twitter</a></li>

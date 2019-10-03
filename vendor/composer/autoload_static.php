@@ -446,6 +446,7 @@ class ComposerStaticInit564996520d96a55fda414f3d2ba873aa
         'App\\Http\\Controllers\\TblTemplateFotosController' => __DIR__ . '/../..' . '/app/Http/Controllers/TblTemplateFotosController.php',
         'App\\Http\\Controllers\\TblTemplatesController' => __DIR__ . '/../..' . '/app/Http/Controllers/TblTemplatesController.php',
         'App\\Http\\Controllers\\TblTiposVendasController' => __DIR__ . '/../..' . '/app/Http/Controllers/TblTiposVendasController.php',
+        'App\\Http\\Controllers\\TblTurnosEntregasController' => __DIR__ . '/../..' . '/app/Http/Controllers/TblTurnosEntregasController.php',
         'App\\Http\\Controllers\\TblUsuariosController' => __DIR__ . '/../..' . '/app/Http/Controllers/TblUsuariosController.php',
         'App\\Http\\Controllers\\TblVendasController' => __DIR__ . '/../..' . '/app/Http/Controllers/TblVendasController.php',
         'App\\Http\\Controllers\\TblVendasPagamentosController' => __DIR__ . '/../..' . '/app/Http/Controllers/TblVendasPagamentosController.php',

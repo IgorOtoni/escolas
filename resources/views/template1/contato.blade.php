@@ -58,7 +58,7 @@ $(function(){
                     <h2 class="post-title">Nossa localização</h2>
                 </header>
                     <div class="post-content">
-                    <p>Cidade: {{$igreja->cidade}} - {{$igreja->estado}}, bairro: {{$igreja->bairro}}, rua: {{$igreja->rua}}, n°: {{$igreja->num}}</p>
+                    <p>Cidade: {{$igreja->cidade}} - {{$igreja->estado}}, bairro: {{$igreja->bairro}}, rua: {{$igreja->rua}}, {{$igreja->num}}</p>
                     <div id="gmap">
                     <iframe src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($igreja->cep)}}&amp;t=m&amp;z=14&amp;output=embed"></iframe>
                     </div>

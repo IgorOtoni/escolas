@@ -58,6 +58,7 @@ return array(
     'App\\Http\\Controllers\\TblTemplateFotosController' => $baseDir . '/app/Http/Controllers/TblTemplateFotosController.php',
     'App\\Http\\Controllers\\TblTemplatesController' => $baseDir . '/app/Http/Controllers/TblTemplatesController.php',
     'App\\Http\\Controllers\\TblTiposVendasController' => $baseDir . '/app/Http/Controllers/TblTiposVendasController.php',
+    'App\\Http\\Controllers\\TblTurnosEntregasController' => $baseDir . '/app/Http/Controllers/TblTurnosEntregasController.php',
     'App\\Http\\Controllers\\TblUsuariosController' => $baseDir . '/app/Http/Controllers/TblUsuariosController.php',
     'App\\Http\\Controllers\\TblVendasController' => $baseDir . '/app/Http/Controllers/TblVendasController.php',
     'App\\Http\\Controllers\\TblVendasPagamentosController' => $baseDir . '/app/Http/Controllers/TblVendasPagamentosController.php',

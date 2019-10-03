@@ -10,7 +10,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Salsa|Jockey+One' rel='stylesheet' type='text/css'>
     <meta charset="utf-8" />	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>{{$igreja->nome}}</title>
+    <title><?php echo strip_tags($igreja->nome) ?></title>
 
     <link rel="stylesheet" href="{{asset('template_igreja/template-azul/css/styles.css')}}" />
 	<link rel="stylesheet" href="{{asset('template_igreja/template-azul/css/camera.css')}}" />
@@ -37,7 +37,7 @@
 				<div id="kids_logo_block">
 					<a id="kids_logo_text" href="/{{$igreja->url}}" title="Happy Kids">
 						<img style="witdh: 120px; height: 50px;" src="{{asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))}}" alt="" />
-						<h3>{{$igreja->nome}}</h3>
+						<h3><?php echo $igreja->nome ?></h3>
 					</a>
 				</div><!--/ #kids_logo_block-->
 			
@@ -50,15 +50,15 @@
 					<ul class="clearfix flexnav" data-breakpoint="800">
 						<?php
 						foreach($menus as $menu){
-							?><li><a href="{{verifica_link($menu->link, $igreja)}}">{{$menu->nome}}</a><?php
+							?><li><a href="{{verifica_link($menu->link, $igreja)}}"><?php echo $menu->nome ?></a><?php
 								if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
 									<ul class="dropdown">
 										<?php foreach($submenus[$menu->id] as $submenu){
-											?><li><a href="{{verifica_link($submenu->link, $igreja)}}">{{$submenu->nome}}</a><?php
+											?><li><a href="{{verifica_link($submenu->link, $igreja)}}"><?php echo $submenu->nome ?></a><?php
 											if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
 												<ul class="dropdown">
 													<?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-														?> <li><a href="/{{verifica_link($subsubmenu->link, $igreja)}}">{{$subsubmenu->nome}}</a></li> <?php
+														?> <li><a href="{{verifica_link($subsubmenu->link, $igreja)}}"><?php echo $subsubmenu->nome ?></a></li> <?php
 													} ?>
 												</ul>
 											<?php
@@ -88,7 +88,7 @@
 
 		<div class="l-page-width clearfix">
 					
-			<h3 class="widget-title">{{$igreja->nome}} - <b> powered by hotsystems</b></h3>
+			<h3 class="widget-title"><?php echo strip_tags($igreja->nome) ?> - <b> powered by hotsystems</b></h3>
 
 		</div><!--/ l-page-width-->
 

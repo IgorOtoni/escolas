@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>{{ $igreja->nome }}</title>
+	<title><?php echo strip_tags($igreja->nome) ?></title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Favicons -->
@@ -55,15 +55,15 @@
                                     <ul class="mainmenu">
 					                    <?php
 					                    foreach($menus as $menu){
-					                        ?><li class="drop"><a href="{{verifica_link($menu->link, $igreja)}}">{{$menu->nome}}</a><?php
+					                        ?><li class="drop"><a href="{{verifica_link($menu->link, $igreja)}}"><?php echo $menu->nome ?></a><?php
 					                            if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
 					                                <ul class="dropdown__menu">
 					                                    <?php foreach($submenus[$menu->id] as $submenu){
-					                                        ?><li class="drop"><a href="{{verifica_link($submenu->link, $igreja)}}">{{$submenu->nome}}</a><?php
+					                                        ?><li class="drop"><a href="{{verifica_link($submenu->link, $igreja)}}"><?php echo $submenu->nome ?></a><?php
 					                                        if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
 					                                            <ul class="dropdown__menu">
 					                                                <?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-					                                                    ?> <li><a href="/{{verifica_link($subsubmenu->link, $igreja)}}">{{$subsubmenu->nome}}</a></li> <?php
+					                                                    ?> <li><a href="{{verifica_link($subsubmenu->link, $igreja)}}"><?php echo $subsubmenu->nome ?></a></li> <?php
 					                                                } ?>
 					                                            </ul>
 					                                        <?php
@@ -109,7 +109,7 @@
 				<div class="row align-items-center copyright__wrapper justify-content-center">
 					<div class="col-lg-12 col-sm-12 col-md-12">
 						<div class="coppy__right__inner text-center">
-							<p><i class="fa fa-copyright"></i>{{$igreja->nome}} - <b> powered by hotsystems</b></p>
+							<p><i class="fa fa-copyright"></i><?php echo strip_tags($igreja->nome) ?> - <b> powered by hotsystems</b></p>
 						</div>
 					</div>
 				</div>

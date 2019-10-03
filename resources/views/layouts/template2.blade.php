@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>{{$igreja->nome}}</title>
+    <title><?php echo strip_tags($igreja->nome) ?></title>
 
     <!-- Favicon -->
     <link rel="icon" href="{{asset('template_igreja/template-vermelho/img/core-img/favicon.ico')}}">
@@ -36,7 +36,7 @@
                     <nav class="classy-navbar justify-content-between" id="croseNav">
 
                         <!-- Nav brand -->
-                        <a href="/{{$igreja->url}}" class="nav-brand"><img style="witdh: 120px; height: 50px;" src="{{asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))}}" alt=""></a><h3>{{$igreja->nome}}</h3>
+                        <a href="/{{$igreja->url}}" class="nav-brand"><img style="witdh: 120px; height: 50px;" src="{{asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))}}" alt=""></a><h3><?php echo $igreja->nome ?></h3>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -64,7 +64,7 @@
                                                         if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
                                                             <ul class="dropdown">
                                                                 <?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-                                                                    ?> <li><a href="/{{verifica_link($subsubmenu->link, $igreja)}}">{{$subsubmenu->nome}}</a></li> <?php
+                                                                    ?> <li><a href="{{verifica_link($subsubmenu->link, $igreja)}}">{{$subsubmenu->nome}}</a></li> <?php
                                                                 } ?>
                                                             </ul>
                                                         <?php
@@ -106,7 +106,7 @@
                     <!-- Copywrite Text -->
                     <div class="col-12 col-md-6">
                         <div class="copywrite-text">
-                            <p>{{$igreja->nome}} - <b> powered by hotsystems</b></p>
+                            <p><?php echo strip_tags($igreja->nome) ?> - <b> powered by hotsystems</b></p>
                         </div>
                     </div>
 

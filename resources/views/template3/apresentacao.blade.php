@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-heading text-center mx-auto">
-                    <h3>Sobre nós</h3>
+                    <h3>Sobre nós/Visões e valores</h3>
                     <p>{{$igreja->texto_apresentativo}}</p>
                 </div>
             </div>

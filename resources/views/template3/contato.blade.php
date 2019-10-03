@@ -43,7 +43,7 @@ $(function(){
                                     <p>Endereço:</p>
                                     <span>Cidade: {{$igreja->cidade}} - {{$igreja->estado}}<br />
                                     Bairro: {{$igreja->bairro}}<br />
-                                    Rua: {{$igreja->rua}}, n°: {{$igreja->num}}</span>
+                                    Rua: {{$igreja->rua}}, {{$igreja->num}}</span>
                                 </div>
 
                                 <!-- Single Contact Area -->

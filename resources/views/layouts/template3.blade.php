@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>{{$igreja->nome}}</title>
+    <title><?php echo strip_tags($igreja->nome) ?></title>
 
     <!-- Favicon -->
     <link rel="icon" href="{{asset('template_igreja/template-escuro/img/core-img/favicon.ico')}}">
@@ -38,7 +38,7 @@
                     <nav class="classy-navbar justify-content-between" id="faithNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="/{{$igreja->url}}"><img style="witdh: 120px; height: 50px;" src="{{asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))}}" alt=""></a><h3>{{$igreja->nome}}</h3></a>
+                        <a class="nav-brand" href="/{{$igreja->url}}"><img style="witdh: 120px; height: 50px;" src="{{asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))}}" alt=""></a><h3><?php echo $igreja->nome ?></h3></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -58,15 +58,15 @@
                                 <ul>
                                     <?php
                                     foreach($menus as $menu){
-                                        ?><li><a href="{{verifica_link($menu->link, $igreja)}}">{{$menu->nome}}</a><?php
+                                        ?><li><a href="{{verifica_link($menu->link, $igreja)}}"><?php echo $menu->nome ?></a><?php
                                             if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
                                                 <ul class="dropdown">
                                                     <?php foreach($submenus[$menu->id] as $submenu){
-                                                        ?><li><a href="{{verifica_link($submenu->link, $igreja)}}">{{$submenu->nome}}</a><?php
+                                                        ?><li><a href="{{verifica_link($submenu->link, $igreja)}}"><?php echo $submenu->nome ?></a><?php
                                                         if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
                                                             <ul class="dropdown">
                                                                 <?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-                                                                    ?> <li><a href="/{{verifica_link($subsubmenu->link, $igreja)}}">{{$subsubmenu->nome}}</a></li> <?php
+                                                                    ?> <li><a href="{{verifica_link($subsubmenu->link, $igreja)}}"><?php echo $subsubmenu->nome ?></a></li> <?php
                                                                 } ?>
                                                             </ul>
                                                         <?php
@@ -108,7 +108,7 @@
                 <div class="row">
                     <!-- Footer Widget Area -->
                     <div class="col-6 col-sm-6 col-xl-6">
-                        <p>{{$igreja->nome}} - <b> powered by hotsystems</b></p>
+                        <p><?php echo strip_tags($igreja->nome ?> - <b> powered by hotsystems</b></p>
                     </div>
 
                     <div class="col-6 col-sm-6 col-xl-6">

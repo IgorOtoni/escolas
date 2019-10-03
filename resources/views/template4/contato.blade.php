@@ -74,7 +74,7 @@
 							<address>
                                 Cidade: {{$igreja->cidade}} - {{$igreja->estado}}<br />
                                 Bairro: {{$igreja->bairro}}<br />
-                                Rua: {{$igreja->rua}}, n°: {{$igreja->num}}
+                                Rua: {{$igreja->rua}}, {{$igreja->num}}
 							</address>
 							<address> 
 								<?php if($igreja->telefone != null){ ?> <span>{{$igreja->telefone}}</span> <?php } ?>

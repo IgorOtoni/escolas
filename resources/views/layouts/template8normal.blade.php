@@ -29,15 +29,15 @@
 							<ul id="menu_main" class="menu_main_nav">
 								<?php
 								foreach($menus as $menu){
-									?><li class="menu-item menu-item-has-children"><a href="{{verifica_link($menu->link, $igreja)}}">{{$menu->nome}}</a><?php
+									?><li class="menu-item menu-item-has-children"><a href="{{verifica_link($menu->link, $igreja)}}"><?php echo $menu->nome ?></a><?php
 										if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
 											<ul class="sub-menu">
 												<?php foreach($submenus[$menu->id] as $submenu){
-													?><li class="menu-item menu-item-has-children"><a href="{{verifica_link($submenu->link, $igreja)}}">{{$submenu->nome}}</a><?php
+													?><li class="menu-item menu-item-has-children"><a href="{{verifica_link($submenu->link, $igreja)}}"><?php echo $submenu->nome ?></a><?php
 													if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
 														<ul class="sub-menu">
 															<?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-																?> <li><a href="{{verifica_link($subsubmenu->link, $igreja)}}">{{$subsubmenu->nome}}</a></li> <?php
+																?> <li><a href="{{verifica_link($subsubmenu->link, $igreja)}}"><?php echo $subsubmenu->nome ?></a></li> <?php
 															} ?>
 														</ul>
 													<?php
@@ -79,7 +79,7 @@
 			<!-- Copyright -->
             <div class="copyright_wrap">
                 <div class="content_wrap">
-                    <p>© {{$igreja->nome}} - <b> powered by hotsystems</b></p>
+                    <p><?php echo strip_tags($igreja->nome) ?> - <b> powered by hotsystems</b></p>
                 </div>
             </div>
 			<!-- /Copyright -->

@@ -202,6 +202,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/adicionarSubSubMenu', 'HomeController@adicionarSubSubMenu')->name('usuario.adicionarSubSubMenu');
         Route::post('/editarSubSubMenu', 'HomeController@editarSubSubMenu')->name('usuario.editarSubSubMenu');
         Route::get('/excluirSubSubMenu/{id}', 'HomeController@excluirSubSubMenu')->name('usuario.excluirSubSubMenu');
+        Route::post('/adicionarMenuAplicativo', 'HomeController@adicionarMenuAplicativo')->name('usuario.adicionarMenuAplicativo');
+        Route::post('/editarMenuAplicativo', 'HomeController@editarMenuAplicativo')->name('usuario.editarMenuAplicativo');
+        Route::get('/excluirMenuAplicativo/{id}', 'HomeController@excluirMenuAplicativo')->name('usuario.excluirMenuAplicativo');
         /////////////////////////////////////////////////////////////////////////////
 
         // CRUD SERMOES =============================================================

@@ -4,7 +4,7 @@
 <!-- Basic Page Needs
   ================================================== -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>{{$igreja->nome}}</title>
+<title><?php echo strip_tags($igreja->nome) ?></title>
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
@@ -49,15 +49,15 @@
                 <ul class="sf-menu">
                     <?php
                     foreach($menus as $menu){
-                        ?><li><a href="{{verifica_link($menu->link, $igreja)}}">{{$menu->nome}}</a><?php
+                        ?><li><a href="{{verifica_link($menu->link, $igreja)}}"><?php echo $menu->nome ?></a><?php
                             if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
                                 <ul class="dropdown">
                                     <?php foreach($submenus[$menu->id] as $submenu){
-                                        ?><li><a href="{{verifica_link($submenu->link, $igreja)}}">{{$submenu->nome}}</a><?php
+                                        ?><li><a href="{{verifica_link($submenu->link, $igreja)}}"><?php echo $submenu->nome ?></a><?php
                                         if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
                                             <ul class="dropdown">
                                                 <?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-                                                    ?> <li><a href="/{{verifica_link($subsubmenu->link, $igreja)}}">{{$subsubmenu->nome}}</a></li> <?php
+                                                    ?> <li><a href="{{verifica_link($subsubmenu->link, $igreja)}}"><?php echo $subsubmenu->nome ?></a></li> <?php
                                                 } ?>
                                             </ul>
                                         <?php
@@ -87,7 +87,7 @@
         		<div class="site-footer-bottom">
             		<div class="row">
                 		<div class="col-md-6 col-sm-6 copyrights-coll">
-        					{{$igreja->nome}} - <b> powered by hotsystems</b>
+        					<?php echo strip_tags($igreja->nome) ?> - <b> powered by hotsystems</b>
             			</div>
                 		<div class="col-md-6 col-sm-6 copyrights-colr">
         					<nav class="footer-nav" role="navigation">

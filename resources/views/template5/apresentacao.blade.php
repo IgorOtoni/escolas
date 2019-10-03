@@ -15,7 +15,7 @@
     <div class="wrap">
         <div class="c-12">
             <div class="page">
-                <h2>Sobre nós</h2>
+                <h2>Sobre nós/Visões e valores</h2>
                 <p>
                 	{{$igreja->texto_apresentativo}}
                 </p>

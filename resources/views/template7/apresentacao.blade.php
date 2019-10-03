@@ -9,7 +9,7 @@
 		<div class="row">
 			<div class="col-lg-12 col-sm-12 col-md-12">
 				<div class="section__title text-center">
-					<h2 class="title__line">Sobre nós</h2>
+					<h2 class="title__line">Sobre nós/Visões e valores</h2>
 					<p>{{ $igreja->texto_apresentativo }}</p>
 				</div>
 			</div>

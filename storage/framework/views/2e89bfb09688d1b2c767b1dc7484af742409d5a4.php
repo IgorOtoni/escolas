@@ -695,7 +695,166 @@ $(function(){
         $('#adicionarSubSubMenuFormulario').validator('update');
         $('#adicionarSubSubMenuFormulario').validator('validate');
     });
-    /////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+
+     // PARA MENUS APLICATIVO ===========================================================================
+    $("#modal-incluir-menu-aplicativo #publicacoes_area").css('display', 'none');
+    $("#modal-incluir-menu-aplicativo #publicacao").attr('data-validate', 'false');
+
+    $("#modal-incluir-menu-aplicativo #eventos_area").css('display', 'none');
+    $("#modal-incluir-menu-aplicativo #evento").attr('data-validate', 'false');
+
+    $("#modal-incluir-menu-aplicativo #eventosfixos_area").css('display', 'none');
+    $("#modal-incluir-menu-aplicativo #eventofixo").attr('data-validate', 'false');
+
+    $("#modal-incluir-menu-aplicativo #noticias_area").css('display', 'none');
+    $("#modal-incluir-menu-aplicativo #noticia").attr('data-validate', 'false');
+
+    $("#modal-incluir-menu-aplicativo #sermoes_area").css('display', 'none');
+    $("#modal-incluir-menu-aplicativo #sermao").attr('data-validate', 'false');
+
+    $("#modal-incluir-menu-aplicativo #galerias_area").css('display', 'none');
+    $("#modal-incluir-menu-aplicativo #galeria").attr('data-validate', 'false');
+
+    $("#modal-incluir-menu-aplicativo #url_externa_area").css('display', 'none');
+    $("#modal-incluir-menu-aplicativo #url").attr('data-validate', 'false');
+
+    $('#adicionarMenuAplicativoFormulario').validator('update');
+    $('#adicionarMenuAplicativoFormulario').validator('validate');
+
+    $('#modal-incluir-menu-aplicativo #link').on('change', function (event) {
+        $("#modal-incluir-menu-aplicativo #modulos_area").css('display', 'none');
+        $("#modal-incluir-menu-aplicativo #modulo").attr('data-validate', 'false');
+
+        $("#modal-incluir-menu-aplicativo #publicacoes_area").css('display', 'none');
+        $("#modal-incluir-menu-aplicativo #publicacao").attr('data-validate', 'false');
+
+        $("#modal-incluir-menu-aplicativo #eventos_area").css('display', 'none');
+        $("#modal-incluir-menu-aplicativo #evento").attr('data-validate', 'false');
+
+        $("#modal-incluir-menu-aplicativo #eventosfixos_area").css('display', 'none');
+        $("#modal-incluir-menu-aplicativo #eventofixo").attr('data-validate', 'false');
+
+        $("#modal-incluir-menu-aplicativo #noticias_area").css('display', 'none');
+        $("#modal-incluir-menu-aplicativo #noticia").attr('data-validate', 'false');
+
+        $("#modal-incluir-menu-aplicativo #sermoes_area").css('display', 'none');
+        $("#modal-incluir-menu-aplicativo #sermao").attr('data-validate', 'false');
+
+        $("#modal-incluir-menu-aplicativo #galerias_area").css('display', 'none');
+        $("#modal-incluir-menu-aplicativo #galeria").attr('data-validate', 'false');
+
+        $("#modal-incluir-menu-aplicativo #url_externa_area").css('display', 'none');
+        $("#modal-incluir-menu-aplicativo #url").attr('data-validate', 'false');
+
+        op = $("#modal-incluir-menu-aplicativo #link").val();
+        if(op == 1){
+            $("#modal-incluir-menu-aplicativo #modulos_area").css('display', 'block');
+            $("#modal-incluir-menu-aplicativo #modulo").attr('data-validate', 'true');
+        }else if(op == 2){
+            $("#modal-incluir-menu-aplicativo #publicacoes_area").css('display', 'block');
+            $("#modal-incluir-menu-aplicativo #publicacao").attr('data-validate', 'true');
+        }else if(op == 3){
+            $("#modal-incluir-menu-aplicativo #eventos_area").css('display', 'block');
+            $("#modal-incluir-menu-aplicativo #evento").attr('data-validate', 'true');
+        }else if(op == 4){
+            $("#modal-incluir-menu-aplicativo #eventosfixos_area").css('display', 'block');
+            $("#modal-incluir-menu-aplicativo #eventofixo").attr('data-validate', 'true');
+        }else if(op == 5){
+            $("#modal-incluir-menu-aplicativo #noticias_area").css('display', 'block');
+            $("#modal-incluir-menu-aplicativo #noticia").attr('data-validate', 'true');
+        }else if(op == 6){
+            $("#modal-incluir-menu-aplicativo #sermoes_area").css('display', 'block');
+            $("#modal-incluir-menu-aplicativo #sermao").attr('data-validate', 'true');
+        }else if(op == 7){
+            $("#modal-incluir-menu-aplicativo #galerias_area").css('display', 'block');
+            $("#modal-incluir-menu-aplicativo #galeria").attr('data-validate', 'true');
+        }else if(op == 8){
+            $("#modal-incluir-menu-aplicativo #url_externa_area").css('display', 'block');
+            $("#modal-incluir-menu-aplicativo #url").attr('data-validate', 'true');
+        }
+
+        $('#adicionarMenuAplicativoFormulario').validator('update');
+        $('#adicionarMenuAplicativoFormulario').validator('validate');
+    });
+
+    $("#modal-editar-menu-aplicativo #publicacoes_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #publicacao").attr('data-validate', 'false');
+
+    $("#modal-editar-menu-aplicativo #eventos_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #evento").attr('data-validate', 'false');
+
+    $("#modal-editar-menu-aplicativo #eventosfixos_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #eventofixo").attr('data-validate', 'false');
+
+    $("#modal-editar-menu-aplicativo #noticias_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #noticia").attr('data-validate', 'false');
+
+    $("#modal-editar-menu-aplicativo #sermoes_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #sermao").attr('data-validate', 'false');
+
+    $("#modal-editar-menu-aplicativo #galerias_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #galeria").attr('data-validate', 'false');
+
+    $("#modal-editar-menu-aplicativo #url_externa_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #url").attr('data-validate', 'false');
+
+    $('#modal-editar-menu-aplicativo #link').on('change', function (event) {
+        $("#modal-editar-menu-aplicativo #modulos_area").css('display', 'none');
+        $("#modal-editar-menu-aplicativo #modulo").attr('data-validate', 'false');
+
+        $("#modal-editar-menu-aplicativo #publicacoes_area").css('display', 'none');
+        $("#modal-editar-menu-aplicativo #publicacao").attr('data-validate', 'false');
+
+        $("#modal-editar-menu-aplicativo #eventos_area").css('display', 'none');
+        $("#modal-editar-menu-aplicativo #evento").attr('data-validate', 'false');
+
+        $("#modal-editar-menu-aplicativo #eventosfixos_area").css('display', 'none');
+        $("#modal-editar-menu-aplicativo #eventofixo").attr('data-validate', 'false');
+
+        $("#modal-editar-menu-aplicativo #noticias_area").css('display', 'none');
+        $("#modal-editar-menu-aplicativo #noticia").attr('data-validate', 'false');
+
+        $("#modal-editar-menu-aplicativo #sermoes_area").css('display', 'none');
+        $("#modal-editar-menu-aplicativo #sermao").attr('data-validate', 'false');
+
+        $("#modal-editar-menu-aplicativo #galerias_area").css('display', 'none');
+        $("#modal-editar-menu-aplicativo #galeria").attr('data-validate', 'false');
+
+        $("#modal-editar-menu-aplicativo #url_externa_area").css('display', 'none');
+        $("#modal-editar-menu-aplicativo #url").attr('data-validate', 'false');
+
+        op = $("#modal-editar-menu-aplicativo #link").val();
+        if(op == 1){
+            $("#modal-editar-menu-aplicativo #modulos_area").css('display', 'block');
+            $("#modal-editar-menu-aplicativo #modulo").attr('data-validate', 'true');
+        }else if(op == 2){
+            $("#modal-editar-menu-aplicativo #publicacoes_area").css('display', 'block');
+            $("#modal-editar-menu-aplicativo #publicacao").attr('data-validate', 'true');
+        }else if(op == 3){
+            $("#modal-editar-menu-aplicativo #eventos_area").css('display', 'block');
+            $("#modal-editar-menu-aplicativo #evento").attr('data-validate', 'true');
+        }else if(op == 4){
+            $("#modal-editar-menu-aplicativo #eventosfixos_area").css('display', 'block');
+            $("#modal-editar-menu-aplicativo #eventofixo").attr('data-validate', 'true');
+        }else if(op == 5){
+            $("#modal-editar-menu-aplicativo #noticias_area").css('display', 'block');
+            $("#modal-editar-menu-aplicativo #noticia").attr('data-validate', 'true');
+        }else if(op == 6){
+            $("#modal-editar-menu-aplicativo #sermoes_area").css('display', 'block');
+            $("#modal-editar-menu-aplicativo #sermao").attr('data-validate', 'true');
+        }else if(op == 7){
+            $("#modal-editar-menu-aplicativo #galerias_area").css('display', 'block');
+            $("#modal-editar-menu-aplicativo #galeria").attr('data-validate', 'true');
+        }else if(op == 8){
+            $("#modal-editar-menu-aplicativo #url_externa_area").css('display', 'block');
+            $("#modal-editar-menu-aplicativo #url").attr('data-validate', 'true');
+        }
+
+        $('#editarMenuAplicativoFormulario').validator('update');
+        $('#editarMenuAplicativoFormulario').validator('validate');
+    });
+    ////////////////////////////////////////////////////////////////////////////////
 });
 
 // MODAL INCLUIR SUB MENU ===================================================================
@@ -906,6 +1065,58 @@ $('#modal-editar-subsubmenu').on('show.bs.modal', function (event) {
 });
 /////////////////////////////////////////////////////////////////////////////////////////////
 
+// MODAL EDITAR MENU APLICATIVO ===================================================================
+$('#modal-editar-menu-aplicativo').on('hide.bs.modal', function (event) {
+    var button = $(event.relatedTarget) ;
+
+    var modal = $(this);
+
+    modal.find('#id').val(null);
+
+    $("#modal-editar-menu-aplicativo #link").val(1);
+
+    $("#modal-editar-menu-aplicativo #modulos_area").css('display', 'block');
+    $("#modal-editar-menu-aplicativo #modulo").attr('data-validate', 'true');
+
+    $("#modal-editar-menu-aplicativo #publicacoes_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #publicacao").attr('data-validate', 'false');
+
+    $("#modal-editar-menu-aplicativo #noticias_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #noticia").attr('data-validate', 'false');
+
+    $("#modal-editar-menu-aplicativo #eventos_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #evento").attr('data-validate', 'false');
+
+    $("#modal-editar-menu-aplicativo #eventosfixos_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #eventofixo").attr('data-validate', 'false');
+
+    $("#modal-editar-menu-aplicativo #galerias_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #galeria").attr('data-validate', 'false');
+
+    $("#modal-editar-menu-aplicativo #sermoes_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #sermao").attr('data-validate', 'false');
+    
+    $("#modal-editar-menu-aplicativo #url_externa_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #url").attr('data-validate', 'false');
+});
+
+$('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) ;
+    var id = button.data('id');
+    var nome = button.data('nome');
+    var link = button.data('link');
+    var ordem = button.data('ordem');
+
+    var modal = $(this);
+
+    if(id != null) modal.find('#id').val(id);
+    if(nome != null) modal.find('#nome').val(nome);
+    if(link != null) modal.find('#link_atual').val(link);
+    if(ordem != null) modal.find('#ordem').val(ordem);
+
+    $('#editarMenuAplicativoFormulario').validator('update');
+    $('#editarMenuAplicativoFormulario').validator('validate');
+});
 /////////////////////////////////////////////////////////////////////////////////////////////
 </script>
 
@@ -916,7 +1127,7 @@ $('#modal-editar-subsubmenu').on('show.bs.modal', function (event) {
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-    Configuração do site da escola
+    Configuração do site
     <!--<small>it all starts here</small>-->
     </h1>
 </section>
@@ -1159,6 +1370,56 @@ $('#modal-editar-subsubmenu').on('show.bs.modal', function (event) {
                                                 </li>
                                             <?php } ?>
                                         </ul>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="box-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                <label >Hierarquia de menus do aplicativo</label>
+                <div id="tree" class="tree">
+                    <ul>
+                        <li>
+                            <div><span><i class="icon-folder-open"></i> Raíz</span>
+                                <?php if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.configuracoesg'), \Config::get('constants.permissoes.incluir'))[2] == true){ ?>
+                                    <div class="pull-right">
+                                        <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-incluir-menu-aplicativo"><i class="fa fa-plus"></i> Menu</a> 
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <ul>
+                                <?php foreach($menus_aplicativo as $menu){ ?>
+                                    <li>
+                                        <div><span><i class="icon-folder-open"></i> <?php echo e($menu->ordem); ?> - <?php echo e($menu->nome); ?></span> 
+                                            <?php 
+                                                $pos = strpos($menu->link, "http");
+                                                if($pos === false){
+                                                    if(false !== strpos($menu->link, "modulo")){
+                                                        echo ($menu->link != null) ? '<a target="_blank" href="/'.$igreja->url.'/'.str_replace("modulo-","",$menu->link).'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>';
+                                                    }else echo ($menu->link != null) ? '<a target="_blank" href="/'.$igreja->url.'/'.str_replace("-","/",$menu->link).'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>';
+                                                }else{
+                                                    echo '<a target="_blank" href="'.$menu->link.'"><span class="bg-blue">Possui link</span></a>';
+                                                } ?>
+                                            <div class="pull-right">
+                                                <?php if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.configuracoesg'), \Config::get('constants.permissoes.alterar'))[2] == true){ ?>
+                                                    <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-editar-menu-aplicativo" data-id="<?php echo e($menu->id); ?>" data-nome="<?php echo e($menu->nome); ?>" data-link="<?php echo e($menu->link); ?>" data-ordem="<?php echo e($menu->ordem); ?>"><i class="fa fa-edit"></i> Menu</a>
+                                                <?php } ?>
+                                                <?php if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.configuracoesg'), \Config::get('constants.permissoes.desativar'))[2] == true){ ?>
+                                                    <a class="btn btn-danger btn-sm" href="/usuario/excluirMenuAplicativo/<?php echo e($menu->id); ?>"><i class="fa fa-trash"></i> Menu</a>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
                                     </li>
                                 <?php } ?>
                             </ul>
@@ -2148,6 +2409,323 @@ $('#modal-editar-subsubmenu').on('show.bs.modal', function (event) {
     </div>
 </form>
 </div>
+
+<!-- MODAIS DOS MENUS DO APLICATIVO =========================================================== -->
+
+<!-- modals -->
+<!-- Adicionar Menu Aplicativo -->
+<div class="modal fade" id="modal-incluir-menu-aplicativo">
+<form id="adicionarMenuAplicativoFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.adicionarMenuAplicativo')); ?>" enctype="multipart/form-data">
+<?php echo csrf_field(); ?>
+    <input type="hidden" name="id_configuracao" value="<?php echo e($igreja->id_configuracao); ?>">
+    <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Novo menu no aplicativo</h4>
+        </div>
+        <div class="modal-body">
+        <div class="box-body">
+            <div class="row">
+            <div class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Nome</label>
+                <input id="nome" name="nome" type="text" class="form-control" placeholder="Nome" required>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Ordem</label>
+                <input id="ordem" name="ordem" type="number" min="1" class="form-control" placeholder="Ordem" required>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="link_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Tipo de link</label>
+                <select id="link" name="link" class="form-control select2" style="width: 100%;" required>
+                    <option value="1">Link para módulo do sistema</option>
+                    <option value="2">Link para publicação</option>
+                    <option value="3">Link para evento</option>
+                    <option value="4">Link para evento fixo</option>
+                    <option value="5">Link para notícia</option>
+                    <option value="6">Link para sermão</option>
+                    <option value="7">Link para galeria</option>
+                    <option value="8">Link externo</option>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="modulos_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Módulos</label>
+                <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
+                    <?php $__currentLoopData = $modulos_igreja; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php if(!$modulo->gerencial): ?>
+                            <option value="<?php echo e($modulo->id); ?>"><?php echo e($modulo->nome); ?></option>
+                        <?php endif; ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="publicacoes_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Publicações</label>
+                <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $publicacoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $publicacao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($publicacao->id); ?>"><?php echo e($publicacao->nome); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="eventos_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Eventos</label>
+                <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
+                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="eventosfixos_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Eventos fixos</label>
+                <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $eventosfixos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $eventofixo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($eventofixo->id); ?>"><?php echo e($eventofixo->nome); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="noticias_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Notícias</label>
+                <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
+                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $noticias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $noticia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($noticia->id); ?>"><?php echo e($noticia->nome); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="sermoes_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Sermões</label>
+                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
+                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $sermoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sermao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($sermao->id); ?>"><?php echo e($sermao->nome); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="galerias_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Galerias</label>
+                <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
+                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $galerias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $galeria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($galeria->id); ?>"><?php echo e($galeria->nome); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="url_externa_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Url externa</label>
+                <input id="url" name="url" type="text" class="form-control" placeholder="Url externa" required>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+        </div>
+    </div>
+    </div>
+</form>
+</div>
+
+<!-- Editar Menu Aplicativo -->
+<div class="modal fade" id="modal-editar-menu-aplicativo">
+<form id="editarMenuAplicativoFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.editarMenuAplicativo')); ?>" enctype="multipart/form-data">
+<?php echo csrf_field(); ?>
+    <input type="hidden" name="id" id="id">
+    <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Editar menu do aplicativo</h4>
+        </div>
+        <div class="modal-body">
+        <div class="box-body">
+            <div class="row">
+            <div class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Nome</label>
+                <input id="nome" name="nome" type="text" class="form-control" placeholder="Nome" required>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Ordem</label>
+                <input id="ordem" name="ordem" type="number" min="1" class="form-control" placeholder="Ordem" required>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                <label >Link atual</label>
+                <input id="link_atual" type="text" class="form-control" placeholder="Link atual" disabled>
+                </div>
+            </div>
+            <div id="link_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Tipo de link</label>
+                <select id="link" name="link" class="form-control select2" style="width: 100%;" required>
+                    <option value="1">Link para módulo do sistema</option>
+                    <option value="2">Link para publicação</option>
+                    <option value="3">Link para evento</option>
+                    <option value="4">Link para evento fixo</option>
+                    <option value="5">Link para notícia</option>
+                    <option value="6">Link para sermão</option>
+                    <option value="7">Link para galeria</option>
+                    <option value="8">Link externo</option>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="modulos_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Módulos</label>
+                <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
+                    <?php $__currentLoopData = $modulos_igreja; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php if(!$modulo->gerencial): ?>
+                            <option value="<?php echo e($modulo->id); ?>"><?php echo e($modulo->nome); ?></option>
+                        <?php endif; ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="publicacoes_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Publicações</label>
+                <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $publicacoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $publicacao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($publicacao->id); ?>"><?php echo e($publicacao->nome); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="eventos_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Eventos</label>
+                <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
+                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="eventosfixos_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Eventos fixos</label>
+                <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $eventosfixos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $eventofixo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($eventofixo->id); ?>"><?php echo e($eventofixo->nome); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="noticias_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Notícia</label>
+                <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
+                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $noticias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $noticia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($noticia->id); ?>"><?php echo e($noticia->nome); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="sermoes_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Sermões</label>
+                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
+                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $sermoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sermao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($sermao->id); ?>"><?php echo e($sermao->nome); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="galerias_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Galerias</label>
+                <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
+                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $galerias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $galeria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($galeria->id); ?>"><?php echo e($galeria->nome); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div id="url_externa_area" class="col-md-12">
+                <div class="form-group has-feedback">
+                <label >Url externa</label>
+                <input id="url" name="url" type="text" class="form-control" placeholder="Url externa" required>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Salvar alterações</button>
+        </div>
+        </div>
+    </div>
+    </div>
+</form>
+</div>
+
+<!-- end modals -->
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.usuario.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

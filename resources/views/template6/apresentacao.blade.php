@@ -7,7 +7,7 @@
 <div class="main" role="main">
 <div id="content" class="content full">
 	<div class="container">
-       	<h2>Sobre nós</h2>
+       	<h2>Sobre nós/Visões e valores</h2>
       	<hr class="sm">
        	<p>{{$igreja->texto_apresentativo}}</p>
        	@if ($funcoes != null && sizeof($funcoes) > 0)

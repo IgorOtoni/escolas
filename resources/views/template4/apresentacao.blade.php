@@ -11,7 +11,7 @@
 			</div>
 			<div class="entry-container" style="min-height: 150px">
 
-				<h1>Sobre nós</h1>
+				<h1>Sobre nós/Visões e valores</h1>
 				
 				<p>
 					{{$igreja->texto_apresentativo}}

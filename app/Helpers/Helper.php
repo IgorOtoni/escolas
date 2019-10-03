@@ -94,6 +94,13 @@ function obter_menus_configuracao($id){
     }
     return array($menus, $submenus, $subsubmenus);
 }
+function obter_menus_aplicativo_configuracao($id){
+    $menus = \DB::table('tbl_menus_android')
+        ->where('id_configuracao', '=', $id)
+        ->orderBy('ordem', 'ASC')
+        ->get();
+    return $menus;
+}
 function muda_cep($cep){
     return str_replace(".", "", str_replace("-", "", $cep));
 }

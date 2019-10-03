@@ -15,7 +15,7 @@
                 	<p>
                 		Cidade: {{$igreja->cidade}} - {{$igreja->estado}}<br />
                         Bairro: {{$igreja->bairro}}<br />
-                        Rua: {{$igreja->rua}}, n°: {{$igreja->num}}
+                        Rua: {{$igreja->rua}}, {{$igreja->num}}
                     </p>
                     <hr class="fw cont">
                     <h4 class="short accent-color">Telefone:</h4>

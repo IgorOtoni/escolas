@@ -42,6 +42,7 @@ use App\TblTiposVendas;
 use App\TblVendasProdutos;
 use App\TblTurnosEntregas;
 use App\TblSituacoesEntregas;
+use App\TblMenusAndroid;
 use Carbon\Carbon;
 use Calendar;
 
@@ -957,6 +958,7 @@ class HomeController extends Controller
             $menus = $retorno[0];
             $submenus = $retorno[1];
             $subsubmenus = $retorno[2];
+            $menus_aplicativo = obter_menus_aplicativo_configuracao($igreja->id_configuracao);
             return view('usuario.configuracoes', compact('igreja','modulos_igreja','menus','submenus','subsubmenus'));
         }
     }
@@ -1302,6 +1304,91 @@ class HomeController extends Controller
         }else{ return view('error'); }
     }
 
+    public function adicionarMenuAplicativo(Request $request){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.configuracoesg'), \Config::get('constants.permissoes.incluir'))[2] == true){
+
+            $menu = new TblMenusAndroid();
+            $menu->id_configuracao = $request->id_configuracao;
+            $menu->nome = $request->nome;
+            $menu->ordem = $request->ordem;
+            if($request->link == 1){ // modulo
+                $modulo = TblModulo::find($request->modulo);
+                $menu->link = 'modulo-' . $modulo->rota;
+            }else if($request->link == 2){ // publicação
+                $menu->link = 'publicacao-'.$request->publicacao;
+            }else if($request->link == 3){ // evento
+                $menu->link = 'evento-'.$request->evento;
+            }else if($request->link == 4){ // eventofixo
+                $menu->link = 'eventofixo-'.$request->eventofixo;
+            }else if($request->link == 5){ // notica
+                $menu->link = 'noticia-'.$request->noticia;
+            }else if($request->link == 6){ // sermao
+                $menu->link = 'sermao-'.$request->sermao;
+            }else if($request->link == 7){ // galeria
+                $menu->link = 'galeria-'.$request->sermao;
+            }else if($request->link == 8){ // link
+                $menu->link = $request->url;
+            }
+            $menu->save();
+
+            $notification = array(
+                'message' => 'Menu ' . $menu->nome . ' foi adicionado ao aplicativo com sucesso!', 
+                'alert-type' => 'success'
+            );
+
+            return back()->with($notification);
+        }else{ return view('error'); }
+    }
+
+    public function editarMenuAplicativo(Request $request){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.configuracoesg'), \Config::get('constants.permissoes.alterar'))[2] == true){
+
+            $menu = TblMenusAndroid::find($request->id);
+            $menu->nome = $request->nome;
+            $menu->ordem = $request->ordem;
+            if($request->link == 1){ // modulo
+                $modulo = TblModulo::find($request->modulo);
+                $menu->link = 'modulo-' . $modulo->rota;
+            }else if($request->link == 2){ // publicação
+                $menu->link = 'publicacao-'.$request->publicacao;
+            }else if($request->link == 3){ // evento
+                $menu->link = 'evento-'.$request->evento;
+            }else if($request->link == 4){ // eventofixo
+                $menu->link = 'eventofixo-'.$request->eventofixo;
+            }else if($request->link == 5){ // notica
+                $menu->link = 'noticia-'.$request->noticia;
+            }else if($request->link == 6){ // sermao
+                $menu->link = 'sermao-'.$request->sermao;
+            }else if($request->link == 7){ // galeria
+                $menu->link = 'galeria-'.$request->sermao;
+            }else if($request->link == 8){ // link
+                $menu->link = $request->url;
+            }
+            $menu->save();
+
+            $notification = array(
+                'message' => 'Menu ' . $menu->nome . ' do aplicativo foi alterado com sucesso!', 
+                'alert-type' => 'success'
+            );
+
+            return back()->with($notification);
+        }else{ return view('error'); }
+    }
+
+    public function excluirMenuAplicativo($id){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.configuracoesg'), \Config::get('constants.permissoes.alterar'))[2] == true){
+
+            $menu = TblMenusAndroid::find($id);
+            TblMenusAndroid::where('id', $id)->delete();
+
+            $notification = array(
+                'message' => 'Menu ' . $menu->nome . ' foi excluído do aplicativo com sucesso!', 
+                'alert-type' => 'success'
+            );
+
+            return back()->with($notification);
+        }else{ return view('error'); }
+    }
     ////////////////////////////////////////////////////////////////////////////////////////
 
     // EVENTOS AREA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

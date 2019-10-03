@@ -13,7 +13,7 @@ class CreateTblMenusAndroidTable extends Migration
      */
     public function up()
     {
-        /*Schema::create('tbl_menus_android', function (Blueprint $table) {
+        Schema::create('tbl_menus_android', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
             $table->string('link');
@@ -21,7 +21,7 @@ class CreateTblMenusAndroidTable extends Migration
             $table->foreign('id_configuracao')->references('id')->on('tbl_configuracoes');
             $table->bigInteger('ordem');
             $table->timestamps();
-        });*/
+        });
     }
 
     /**
@@ -31,6 +31,6 @@ class CreateTblMenusAndroidTable extends Migration
      */
     public function down()
     {
-        //Schema::dropIfExists('tbl_menus_android');
+        Schema::dropIfExists('tbl_menus_android');
     }
 }
