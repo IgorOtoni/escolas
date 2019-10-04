@@ -959,7 +959,7 @@ class HomeController extends Controller
             $submenus = $retorno[1];
             $subsubmenus = $retorno[2];
             $menus_aplicativo = obter_menus_aplicativo_configuracao($igreja->id_configuracao);
-            return view('usuario.configuracoes', compact('igreja','modulos_igreja','menus','submenus','subsubmenus'));
+            return view('usuario.configuracoes', compact('igreja','modulos_igreja','menus','submenus','subsubmenus','menus_aplicativo'));
         }
     }
 

@@ -6,7 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<title>{{ $igreja->nome }}</title>
+		<title><?php $igreja->nome ?></title>
 
 		<!-- Bootstrap 3.3.7 -->
   		<link rel="stylesheet" href="{{asset('template_adm/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
@@ -61,7 +61,7 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a href="/{{ $igreja->url }}" class="navbar-brand">{{ $igreja->nome }}</a>
+		          <a href="/{{ $igreja->url }}" class="navbar-brand"><?php $igreja->nome ?></a>
 		        </div>
 			    <div id="navbar" class="navbar-collapse collapse">
 				    <ul class="nav navbar-nav">
@@ -150,7 +150,7 @@
 	    	<hr>
 
 	      	<footer>
-		        <p>{{$igreja->nome}} - <b> powered by hotsystems</b></p>
+		        <p><?php $igreja->nome ?> - <b> powered by hotsystems</b></p>
 	      	</footer>
 
 		</div>

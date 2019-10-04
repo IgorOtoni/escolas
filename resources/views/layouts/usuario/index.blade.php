@@ -13,7 +13,7 @@ $igreja = obter_dados_igreja_id($perfil->id_igreja);
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Language" content="pt-br">
-  <title>{{$igreja->nome}}</title>
+  <title><?php $igreja->nome ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -109,7 +109,7 @@ $igreja = obter_dados_igreja_id($perfil->id_igreja);
           <img src="/storage/{{($igreja->logo != null) ? "igrejas/" . $igreja->logo : "no-logo.jpg"}}" class="img" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{{$igreja->nome}}</p>
+          <p><?php $igreja->nome ?></p>
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
