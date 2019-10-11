@@ -38,6 +38,7 @@ class CreateTblMembrosTable extends Migration
             $table->boolean('ativo')->default(true);
             $table->timestamps();
         });
+        DB::statement('ALTER TABLE tbl_membros ADD foto MEDIUMBLOB');
     }
 
     /**

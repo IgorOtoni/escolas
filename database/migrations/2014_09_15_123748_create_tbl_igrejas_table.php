@@ -27,11 +27,10 @@ class CreateTblIgrejasTable extends Migration
             $table->string('telefone')->nullable();
             $table->string('email')->nullable();
             $table->boolean('status')->default(0);
-            $table->string('logo')->nullable();
+            //$table->string('logo')->nullable();
             $table->timestamps();
         });
-
-        //DB::statement('ALTER TABLE tbl_igrejas ADD logo MEDIUMBLOB');
+        DB::statement('ALTER TABLE tbl_igrejas ADD logo MEDIUMBLOB');
     }
 
     /**

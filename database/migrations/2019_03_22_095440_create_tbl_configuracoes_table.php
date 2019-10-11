@@ -27,6 +27,7 @@ class CreateTblConfiguracoesTable extends Migration
             $table->string('youtube')->nullable();
             $table->timestamps();
         });
+        DB::statement('ALTER TABLE tbl_configuracoes ADD custom_style MEDIUMBLOB null');
     }
 
     /**

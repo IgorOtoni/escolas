@@ -49,24 +49,16 @@ class PlataformaController extends Controller
         $igreja->bairro = $request->bairro;
         $igreja->estado = $request->estado;
         $igreja->telefone = $request->telefone;
+        $igreja->logo = file_get_contents($request->file($logo));
         $igreja->email = $request->email;
-        $igreja->logo = "vazio";
-
+        $igreja->status = true;
+        
         $count = TblIgreja::where("nome", "=", $igreja->nome)->count();
         $count_ = TblConfiguracoes::where("url", "=", $request->url)->count();
         if($count == 0){
             if($count_ == 0){
                 $igreja->save();
 
-                //convertendo imagem base64
-                $img = $request->logo;
-
-                \Image::make($request->logo)->save(public_path('storage/igrejas/').'logo-igreja-'.$igreja->id.'.'.strtolower($request->logo->getClientOriginalExtension()),90);
-
-                $igreja->logo = 'logo-igreja-'.$igreja->id.'.'.strtolower($request->logo->getClientOriginalExtension());
-
-                $igreja->status = true;
-                $igreja->save();
                 $igreja_modulos = null;
                 $igreja_modulos_g = null;
 

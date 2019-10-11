@@ -19,10 +19,9 @@ class CreateTblNoticiasTable extends Migration
             $table->bigInteger('id_igreja')->unsigned();
             $table->foreign('id_igreja')->references('id')->on('tbl_igrejas');
             $table->text('descricao')->nullable();
-            $table->string('foto')->nullable();
-            //$table->boolean('banner')->default(false);
             $table->timestamps();
         });
+        DB::statement('ALTER TABLE tbl_noticias ADD foto MEDIUMBLOB null');
     }
 
     /**

@@ -17,13 +17,13 @@ class CreateTblBannersTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome');
             $table->text('descricao');
-            $table->string('foto');
             $table->string('link')->nullable();
             $table->bigInteger('id_igreja')->unsigned();
             $table->foreign('id_igreja')->references('id')->on('tbl_igrejas');
             $table->bigInteger('ordem');
             $table->timestamps();
         });
+        DB::statement('ALTER TABLE tbl_banners ADD foto MEDIUMBLOB');
     }
 
     /**

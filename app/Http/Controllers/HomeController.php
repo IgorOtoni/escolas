@@ -326,59 +326,9 @@ class HomeController extends Controller
     public function atualizarBanner(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.bannersg'), \Config::get('constants.permissoes.alterar'))[2] == true){
             $banner = TblBanner::find($request->id);
-            if(!$request->foto && ($banner->foto == 'vazio' || $banner->foto == null)){
-                $banner->nome = $request->nome;
-                $banner->ordem = $request->ordem;
-                $banner->descricao = $request->descricao;
-                if($request->link == 1){
-                    $modulo = TblModulo::find($request->modulo);
-                    $menu->link = $modulo->rota;
-                }else if($request->link == 2){
-                    $menu->link = 'publicacao/'.$request->publicacao;
-                }else if($request->link == 3){
-                    $menu->link = 'evento/'.$request->evento;
-                }else if($request->link == 4){
-                    $menu->link = 'eventofixo/'.$request->eventofixo;
-                }else if($request->link == 5){
-                    $menu->link = 'noticia/'.$request->noticia;
-                }else if($request->link == 6){
-                    $menu->link = 'sermao/'.$request->sermao;
-                }else if($request->link == 7){
-                    $menu->link = 'galeria/'.$request->galeria;
-                }else if($request->link == 8){
-                    $menu->link = $request->url;
-                }
-                if($request->foto){
-                    \Image::make($request->foto)->save(public_path('storage/banners/').'banner-'.$banner->id.'-'.$banner->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
-                    $banner->foto = 'banner-'.$banner->id.'-'.$banner->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
-                }
-                $banner->save();
-
-                $notification = array(
-                    'message' => 'Banner ' . $banner->nome . ' foi alterado com sucesso!', 
-                    'alert-type' => 'success'
-                );
-
-                return redirect()->route('usuario.banners')->with($notification);
-            }else{
-                $notification = array(
-                    'message' => 'O banner não pode ficar sem imagem!', 
-                    'alert-type' => 'error'
-                );
-
-                return back()->with($notification);
-            }
-        }else{ return view('error'); }
-    }
-
-    public function incluirBanner(Request $request){
-        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.bannersg'), \Config::get('constants.permissoes.incluir'))[2] == true){
-            $banner = new TblBanner();
-            $banner->id_igreja = $request->igreja;
             $banner->nome = $request->nome;
             $banner->ordem = $request->ordem;
             $banner->descricao = $request->descricao;
-            $banner->foto = "null";
             if($request->link == 1){
                 $modulo = TblModulo::find($request->modulo);
                 $menu->link = $modulo->rota;
@@ -397,10 +347,46 @@ class HomeController extends Controller
             }else if($request->link == 8){
                 $menu->link = $request->url;
             }
+            if($request->foto){
+                $banner->foto = file_get_contents($request->foto);
+            }
             $banner->save();
 
-            \Image::make($request->foto)->save(public_path('storage/banners/').'banner-'.$banner->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
-            $banner->foto = 'banner-'.$banner->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
+            $notification = array(
+                'message' => 'Banner ' . $banner->nome . ' foi alterado com sucesso!', 
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route('usuario.banners')->with($notification);
+        }else{ return view('error'); }
+    }
+
+    public function incluirBanner(Request $request){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.bannersg'), \Config::get('constants.permissoes.incluir'))[2] == true){
+            $banner = new TblBanner();
+            $banner->id_igreja = $request->igreja;
+            $banner->nome = $request->nome;
+            $banner->ordem = $request->ordem;
+            $banner->descricao = $request->descricao;
+            if($request->link == 1){
+                $modulo = TblModulo::find($request->modulo);
+                $menu->link = $modulo->rota;
+            }else if($request->link == 2){
+                $menu->link = 'publicacao/'.$request->publicacao;
+            }else if($request->link == 3){
+                $menu->link = 'evento/'.$request->evento;
+            }else if($request->link == 4){
+                $menu->link = 'eventofixo/'.$request->eventofixo;
+            }else if($request->link == 5){
+                $menu->link = 'noticia/'.$request->noticia;
+            }else if($request->link == 6){
+                $menu->link = 'sermao/'.$request->sermao;
+            }else if($request->link == 7){
+                $menu->link = 'galeria/'.$request->galeria;
+            }else if($request->link == 8){
+                $menu->link = $request->url;
+            }
+            $banner->foto = file_get_contents($request->foto);
             $banner->save();
 
             $notification = array(
@@ -414,11 +400,9 @@ class HomeController extends Controller
 
     public function excluirFotoBanner(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.bannersg'), \Config::get('constants.permissoes.desativar'))[2] == true){
-            $foto = $request['foto'];
             $banner = TblBanner::find($request->id);
-            $banner->foto = "vazio";
+            $banner->foto = null;
             $banner->save();
-            File::delete(public_path().'/storage/banners/'.$foto);
             return \Response::json(['message' => 'File successfully delete'], 200);
         }else{ return view('error'); }
     }
@@ -501,11 +485,7 @@ class HomeController extends Controller
             foreach($request->fotos as $f_){
                 $foto = new TblFotos();
                 $foto->id_galeria = $galeria->id;
-                $foto->foto = "vazio";
-                $foto->save();
-
-                \Image::make($f_)->save(public_path('storage/galerias/').'foto-'.$foto->id.'-'.$galeria->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension(),90);
-                $foto->foto = 'foto-'.$foto->id.'-'.$galeria->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension();
+                $foto->foto = file_get_contents($f_);
                 $foto->save();
             }
                 
@@ -559,11 +539,7 @@ class HomeController extends Controller
             if($request->fotos) foreach($request->fotos as $f_){
                 $foto = new TblFotos();
                 $foto->id_galeria = $galeria->id;
-                $foto->foto = "vazio";
-                $foto->save();
-
-                \Image::make($f_)->save(public_path('storage/galerias/').'foto-'.$foto->id.'-'.$galeria->id.'-'.$galeria->id_igreja.'.'.$f_->getClientOriginalExtension(),90);
-                $foto->foto = 'foto-'.$foto->id.'-'.$galeria->id.'-'.$galeria->id_igreja.'.'.$f_->getClientOriginalExtension();
+                $foto->foto = file_get_contents($f_);
                 $foto->save();
             }
                 
@@ -641,8 +617,7 @@ class HomeController extends Controller
             $eventofixo->save();
 
             if($request->foto){
-                \Image::make($request->foto)->save(public_path('storage/eventos/').'evento-'.$eventofixo->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
-                $eventofixo->foto = 'evento-'.$eventofixo->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
+                $eventofixo->foto = file_get_contents($request->foto);
                 $eventofixo->save();
             }
 
@@ -674,8 +649,7 @@ class HomeController extends Controller
             $eventofixo->save();
 
             if($request->foto){
-                \Image::make($request->foto)->save(public_path('storage/eventos/').'evento-'.$eventofixo->id.'-'.$eventofixo->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
-                $eventofixo->foto = 'evento-'.$eventofixo->id.'-'.$eventofixo->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
+                $eventofixo->foto = file_get_contents($request->foto);
                 $eventofixo->save();
             }
 
@@ -769,8 +743,7 @@ class HomeController extends Controller
             $noticia->save();
 
             if($request->foto){
-                \Image::make($request->foto)->save(public_path('storage/noticias/').'noticia-'.$noticia->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
-                $noticia->foto = 'noticia-'.$noticia->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
+                $noticia->foto = file_get_contents($request->foto);
                 $noticia->save();
             }
 
@@ -801,8 +774,7 @@ class HomeController extends Controller
             $noticia->save();
 
             if($request->foto){
-                \Image::make($request->foto)->save(public_path('storage/noticias/').'noticia-'.$noticia->id.'-'.$noticia->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
-                $noticia->foto = 'noticia-'.$noticia->id.'-'.$noticia->id_igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
+                $noticia->foto = file_get_contents($request->foto);
                 $noticia->save();
             }
 
@@ -1243,11 +1215,9 @@ class HomeController extends Controller
 
     public function excluirLogo(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.configuracoesg'), \Config::get('constants.permissoes.alterar'))[2] == true){
-            $logo = $request['logo'];
             $igreja = TblIgreja::find($request->id);
             $igreja->logo = null;
             $igreja->save();
-            File::delete(public_path().'/storage/igrejas/'.$logo);
             return \Response::json(['message' => 'File successfully delete'], 200);
         }
     }
@@ -1275,10 +1245,8 @@ class HomeController extends Controller
             $count = TblIgreja::where("nome", "=", $igreja->nome)->where("id", "<>", $request->id)->count();
             if($count == 0){
                 if($request->logo){
-                    //convertendo imagem base64
-                    $img = $request->logo;
-                    \Image::make($request->logo)->save(public_path('storage/igrejas/').'logo-igreja-'.$igreja->id.'.'.strtolower($request->logo->getClientOriginalExtension()),90);
-                    $igreja->logo = 'logo-igreja-'.$igreja->id.'.'.strtolower($request->logo->getClientOriginalExtension());
+                    $img = file_get_contents($request->logo);
+                    $igreja->logo = $img;
                 }
 
                 $igreja->save();
@@ -1442,8 +1410,7 @@ class HomeController extends Controller
             $evento->save();
 
             if($request->foto){
-                \Image::make($request->foto)->save(public_path('storage/timeline/').'timeline-'.$evento->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
-                $evento->foto = 'timeline-'.$evento->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
+                $evento->foto = file_get_contents($request->foto);
                 $evento->save();
             }
 
@@ -1511,8 +1478,7 @@ class HomeController extends Controller
             $evento->save();
 
             if($request->foto){
-                \Image::make($request->foto)->save(public_path('storage/timeline/').'timeline-'.$evento->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension()),90);
-                $evento->foto = 'timeline-'.$evento->id.'-'.$request->igreja.'.'.strtolower($request->foto->getClientOriginalExtension());
+                $evento->foto = file_get_contents($request->foto);
                 $evento->save();
             }
 
@@ -1608,11 +1574,7 @@ class HomeController extends Controller
                 if($request->galeria) foreach($request->galeria as $f_){
                     $foto = new TblPublicacaoFotos();
                     $foto->id_publicacao = $publicacao->id;
-                    $foto->foto = "vazio";
-                    $foto->save();
-
-                    \Image::make($f_)->save(public_path('storage/galerias-publicacoes/').'foto-'.$foto->id.'-'.$publicacao->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension(),90);
-                    $foto->foto = 'foto-'.$foto->id.'-'.$publicacao->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension();
+                    $foto->foto = file_get_contents($request->foto);
                     $foto->save();
                 }
                     
@@ -1654,11 +1616,7 @@ class HomeController extends Controller
             if($request->galeria) foreach($request->galeria as $f_){
                 $foto = new TblPublicacaoFotos();
                 $foto->id_publicacao = $publicacao->id;
-                $foto->foto = "vazio";
-                $foto->save();
-
-                \Image::make($f_)->save(public_path('storage/galerias-publicacoes/').'foto-'.$foto->id.'-'.$publicacao->id.'-'.$publicacao->id_igreja.'.'.$f_->getClientOriginalExtension(),90);
-                $foto->foto = 'foto-'.$foto->id.'-'.$publicacao->id.'-'.$publicacao->id_igreja.'.'.$f_->getClientOriginalExtension();
+                $foto->foto = file_get_contents($f_);
                 $foto->save();
             }
                 
@@ -2370,14 +2328,12 @@ class HomeController extends Controller
             $membro->facebook = $request->facebook;
             $membro->twitter = $request->twitter;
             $membro->youtube = $request->youtube;
-            $membro->foto = 'vazio';
             $membro->descricao = $request->descricao;
             $membro->save();
 
             if($request->foto){
                 $f_ = $request->foto;
-                \Image::make($f_)->save(public_path('storage/membros/').'membro-'.$membro->id.'-'.$membro->id_igreja.'.'.$f_->getClientOriginalExtension(),90);
-                $membro->foto = 'membro-'.$membro->id.'-'.$membro->id_igreja.'.'.$f_->getClientOriginalExtension();
+                $membro->foto = file_get_contents($request->foto);
                 $membro->save();
             }
 
@@ -2419,9 +2375,7 @@ class HomeController extends Controller
             $membro->save();
 
             if($request->foto){
-                $f_ = $request->foto;
-                \Image::make($f_)->save(public_path('storage/membros/').'membro-'.$membro->id.'-'.$membro->id_igreja.'.'.$f_->getClientOriginalExtension(),90);
-                $membro->foto = 'membro-'.$membro->id.'-'.$membro->id_igreja.'.'.$f_->getClientOriginalExtension();
+                $membro->foto = $membro->foto = file_get_contents($request->foto);
                 $membro->save();
             }
             
@@ -2455,11 +2409,9 @@ class HomeController extends Controller
 
     public function excluirFotoMembro(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.membrosg'), \Config::get('constants.permissoes.desativar'))[2] == true){
-            $foto = $request['foto'];
             $banner = TblMembros::find($request->id);
-            $banner->foto = "vazio";
+            $banner->foto = null;
             $banner->save();
-            File::delete(public_path().'/storage/membros/'.$foto);
             return \Response::json(['message' => 'File successfully delete'], 200);
         }else{ return view('error'); }
     }
@@ -2528,7 +2480,6 @@ class HomeController extends Controller
             $produto->descricao = $request->descricao;
             $produto->id_categoria = $request->categoria;
             $produto->id_tipo_venda = $request->tipo;
-            $produto->icone = 'vazio';
             $produto->situacao = false;
             if(isset($request->situacao)){
                 $produto->situacao = true;
@@ -2536,19 +2487,14 @@ class HomeController extends Controller
             $produto->save();
 
             if($request->icone){
-                \Image::make($request->icone)->save(public_path('storage/produtos/').'produto-'.$produto->id.'-'.$produto->id_igreja.'.'.strtolower($request->icone->getClientOriginalExtension()),90);
-                $produto->icone = 'produto-'.$produto->id.'-'.$produto->id_igreja.'.'.strtolower($request->icone->getClientOriginalExtension());
+                $produto->icone = file_get_contents($request->icone);
                 $produto->save();
             }
 
             if($request->fotos) foreach($request->fotos as $f_){
                 $foto = new TblProdutosFotos();
                 $foto->id_produto = $produto->id;
-                $foto->foto = "vazio";
-                $foto->save();
-
-                \Image::make($f_)->save(public_path('storage/fotos-produtos/').'foto-'.$foto->id.'-'.$produto->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension(),90);
-                $foto->foto = 'foto-'.$foto->id.'-'.$produto->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension();
+                $foto->foto = file_get_contents($f_);
                 $foto->save();
             }
 
@@ -2580,7 +2526,6 @@ class HomeController extends Controller
             $produto->descricao = $request->descricao;
             $produto->id_categoria = $request->categoria;
             $produto->id_tipo_venda = $request->tipo;
-            $produto->icone = 'vazio';
             $produto->situacao = false;
             if(isset($request->situacao)){
                 $produto->situacao = true;
@@ -2588,19 +2533,14 @@ class HomeController extends Controller
             $produto->save();
 
             if($request->icone){
-                \Image::make($request->icone)->save(public_path('storage/produtos/').'produto-'.$produto->id.'-'.$produto->id_igreja.'.'.strtolower($request->icone->getClientOriginalExtension()),90);
-                $produto->icone = 'produto-'.$produto->id.'-'.$produto->id_igreja.'.'.strtolower($request->icone->getClientOriginalExtension());
+                $produto->icone = file_get_contents($request->icone);
                 $produto->save();
             }
 
             if($request->fotos) foreach($request->fotos as $f_){
                 $foto = new TblProdutosFotos();
                 $foto->id_produto = $produto->id;
-                $foto->foto = "vazio";
-                $foto->save();
-
-                \Image::make($f_)->save(public_path('storage/fotos-produtos/').'foto-'.$foto->id.'-'.$produto->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension(),90);
-                $foto->foto = 'foto-'.$foto->id.'-'.$produto->id.'-'.$request->igreja.'.'.$f_->getClientOriginalExtension();
+                $foto->foto = file_get_contents($f_);
                 $foto->save();
             }
 

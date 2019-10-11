@@ -30,13 +30,13 @@ class DatabaseSeeder extends Seeder
         $this->call(Tbl_Sermoes_Seeder::class);
         $this->call(Tbl_Galeria_Seeder::class);
         $this->call(Tbl_Fotos_Seeder::class);
-        //$this->call(Tbl_Menus_Android_Seeder::class);
+        $this->call(Tbl_Menus_Android_Seeder::class);
         $this->call(Tbl_Menus_Seeder::class);
         $this->call(Tbl_Sub_Menus_Seeder::class);
         $this->call(Tbl_Sub_Sub_Menus_Seeder::class);
         $this->call(Tbl_Publicacao_Seeder::class);
-        $this->call(Tbl_Banner_Seeder::class);
         $this->call(Tbl_Publicacao_Fotos_Seeder::class);
+        $this->call(Tbl_Banner_Seeder::class);
         $this->call(Tbl_Template_Fotos_Seeder::class);
         $this->call(Tbl_Comunidades_Seeder::class);
     }
