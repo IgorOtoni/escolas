@@ -23,7 +23,7 @@ function fistCharFromWord_toUpper($string)
 }
 function obter_dados_igreja_id($id){
     $igreja = \DB::table('tbl_igrejas')
-        ->select('tbl_igrejas.*', 'tbl_configuracoes.id as id_configuracao', 'tbl_configuracoes.url','tbl_configuracoes.id_template','tbl_configuracoes.texto_apresentativo','tbl_configuracoes.facebook','tbl_configuracoes.youtube','tbl_configuracoes.twitter','tbl_configuracoes.cor')
+        ->select('tbl_igrejas.*', 'tbl_configuracoes.id as id_configuracao', 'tbl_configuracoes.url','tbl_configuracoes.id_template','tbl_configuracoes.texto_apresentativo','tbl_configuracoes.facebook','tbl_configuracoes.youtube','tbl_configuracoes.twitter','tbl_configuracoes.cor','tbl_configuracoes.custom_style')
         ->leftJoin('tbl_configuracoes', 'tbl_igrejas.id', '=', 'tbl_configuracoes.id_igreja')
         ->where('tbl_igrejas.id','=',$id)
         ->get();
@@ -31,11 +31,21 @@ function obter_dados_igreja_id($id){
 }
 function obter_dados_igreja($url){
     $igreja = \DB::table('tbl_igrejas')
-        ->select('tbl_igrejas.*', 'tbl_configuracoes.id as id_configuracao', 'tbl_configuracoes.url','tbl_configuracoes.id_template','tbl_configuracoes.texto_apresentativo','tbl_configuracoes.facebook','tbl_configuracoes.youtube','tbl_configuracoes.twitter','tbl_configuracoes.cor')
+        ->select('tbl_igrejas.*', 'tbl_configuracoes.id as id_configuracao', 'tbl_configuracoes.url','tbl_configuracoes.id_template','tbl_configuracoes.texto_apresentativo','tbl_configuracoes.facebook','tbl_configuracoes.youtube','tbl_configuracoes.twitter','tbl_configuracoes.cor','tbl_configuracoes.custom_style')
         ->leftJoin('tbl_configuracoes', 'tbl_igrejas.id', '=', 'tbl_configuracoes.id_igreja')
         ->where('url','=',$url)
         ->get();
-    return $igreja[0];
+    return ($igreja != null && sizeof($igreja) == 1) ? $igreja[0] : null;
+}
+function obter_modulos_igreja_aplicativo($igreja){
+    $modulos = \DB::table('tbl_igrejas_modulos')
+        ->leftJoin('tbl_modulos', 'tbl_igrejas_modulos.id_modulo', '=', 'tbl_modulos.id')
+        ->select('tbl_igrejas_modulos.id_modulo', 'tbl_modulos.*')
+        ->where('id_igreja','=',$igreja->id)
+        ->where('tbl_modulos.sistema','like','%app%')
+        ->orderBy('tbl_modulos.nome', 'ASC')
+        ->get();
+    return $modulos;
 }
 function obter_modulos_igreja($igreja){
     $modulos = \DB::table('tbl_igrejas_modulos')
@@ -147,11 +157,16 @@ function limpa_html($html){
 }
 function verifica_link($link, $igreja){
     if($link == null || empty($link) || trim($link) == ""){
-        return "/".$igreja->url;
+        return route('igreja.index', ['url' => $igreja->url]);
     }else if(substr($link, 0, 4) == "http"){
         return $link;
     }else{
-        return "/".$igreja->url."/".$link;
+        if(strpos($link, '/') === false){
+            return route('igreja.'.$link, ['url' => $igreja->url]);
+        }else{
+            $link_ = explode('/',$link);
+            return route('igreja.'.$link_[0], ['url' => $igreja->url, 'id'=> $link_[1]]);
+        }
     }
 }
 // ÁREA DE AUTENTICAÇÃO E VALIDAÇÃO DE MÓDULOS E PERMISSÕES !!!!!!!!!!!!!!!!!!!!!!!!!!!!

@@ -25,14 +25,14 @@ $(function(){
         //maxImageCount: 1,
         allowedFileExtensions: ["jpeg", "jpg", "png", "gif"],
         initialPreview: [
-            "{{'/storage/banners/'.$banner->foto}}",
+            "{{'data:image;base64,'.base64_encode($banner->foto)}}",
         ],
         deleteUrl: "{{'/storage'}}",
         uploadExtraData:{'_token':$("#csrf_token").val()},
         initialPreviewAsData: true,
         //initialPreviewFileType: "image",
         initialPreviewConfig: [
-            {caption: "{{$banner->foto}}", extra: {id: {{$banner->id}}, foto: "{{$banner->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirFotoBanner", key: 1},
+            {caption: "{{$banner->foto}}", extra: {id: {{$banner->id}}, foto: "{{$banner->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "{{route('usuario.excluirFotoBanner')}}", key: 1},
         ],
         //overwriteInitial: false,
         //purifyHtml: true,
@@ -121,7 +121,7 @@ $(function(){
         $("#editarBannerFormulario #url_externa_area").css('display', 'none');
         $("#editarBannerFormulario #url").attr('data-validate', 'false');
 
-        op = $("#editarBannerFormulario #link").css('display', 'block');
+        op =$("#editarBannerFormulario #link").val();
         if(op == 1){
             $("#editarBannerFormulario #modulos_area").css('display', 'block');
             $("#editarBannerFormulario #modulo").attr('data-validate', 'true');
@@ -328,7 +328,7 @@ $(function(){
                 
             </div>
             <div class="box-footer">
-                <a href="/usuario/banners" class="btn btn-warning pull-left">Cancelar</a>
+                <a href="{{route('usuario.banners')}}" class="btn btn-warning pull-left">Cancelar</a>
                 <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
             </div>
             </div>

@@ -11,6 +11,7 @@ class Tbl_Modulos_Seeder extends Seeder
      */
     public function run()
     {
+        // ADMIN MODULOS ==============================================================================================
         DB::table('tbl_modulos')->insert([
             'id'=>13,
             'nome'=>'Usuários',
@@ -121,6 +122,9 @@ class Tbl_Modulos_Seeder extends Seeder
             'gerencial'=>true,
             'sistema'=>'web',
         ]);
+        // ============================================================================================================
+
+        // TEMPLATES MODULOS ==========================================================================================
         DB::table('tbl_modulos')->insert([
             'id'=>5,
             'nome'=>'Eventos Fixos',
@@ -157,5 +161,72 @@ class Tbl_Modulos_Seeder extends Seeder
             'descricao'=>'Funcionalidade do site apresentativo.',
             'rota'=>'carrinho',
         ]);
+        // ============================================================================================================
+
+        // APP MODULOS ================================================================================================
+        DB::table('tbl_modulos')->insert([
+            'nome'=>'Produtos',
+            'descricao'=>'Funcionalidade do aplicativo.',
+            'rota'=>'modulo-produtos',
+            'gerencial'=>false,
+            'sistema'=>'app',
+        ]);
+        DB::table('tbl_modulos')->insert([
+            'nome'=>'Mídias',
+            'descricao'=>'Funcionalidade do aplicativo.',
+            'rota'=>'modulo-sermoes',
+            'gerencial'=>false,
+            'sistema'=>'app',
+        ]);
+        DB::table('tbl_modulos')->insert([
+            'nome'=>'Eventos',
+            'descricao'=>'Funcionalidade do aplicativo.',
+            'rota'=>'modulo-eventos',
+            'gerencial'=>false,
+            'sistema'=>'app',
+        ]);
+        DB::table('tbl_modulos')->insert([
+            'nome'=>'Eventos fixos',
+            'descricao'=>'Funcionalidade do aplicativo.',
+            'rota'=>'modulo-eventosfixos',
+            'gerencial'=>false,
+            'sistema'=>'app',
+        ]);
+        DB::table('tbl_modulos')->insert([
+            'nome'=>'Notícias',
+            'descricao'=>'Funcionalidade do aplicativo.',
+            'rota'=>'modulo-noticias',
+            'gerencial'=>false,
+            'sistema'=>'app',
+        ]);
+        DB::table('tbl_modulos')->insert([
+            'nome'=>'Galerias',
+            'descricao'=>'Funcionalidade do aplicativo.',
+            'rota'=>'modulo-galerias',
+            'gerencial'=>false,
+            'sistema'=>'app',
+        ]);
+        DB::table('tbl_modulos')->insert([
+            'nome'=>'Publicações',
+            'descricao'=>'Funcionalidade do aplicativo.',
+            'rota'=>'modulo-publicacoes',
+            'gerencial'=>false,
+            'sistema'=>'app',
+        ]);
+        DB::table('tbl_modulos')->insert([
+            'nome'=>'Apresentação',
+            'descricao'=>'Funcionalidade do aplicativo.',
+            'rota'=>'modulo-apresentacao',
+            'gerencial'=>false,
+            'sistema'=>'app',
+        ]);
+        DB::table('tbl_modulos')->insert([
+            'nome'=>'Login',
+            'descricao'=>'Funcionalidade do aplicativo.',
+            'rota'=>'modulo-login',
+            'gerencial'=>false,
+            'sistema'=>'app',
+        ]);
+        // ============================================================================================================
     }
 }

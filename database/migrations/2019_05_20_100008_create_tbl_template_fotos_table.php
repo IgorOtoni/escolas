@@ -17,9 +17,9 @@ class CreateTblTemplateFotosTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('id_template')->unsigned();
             $table->foreign('id_template')->references('id')->on('tbl_templates');
-            $table->string('foto');
             $table->timestamps();
         });
+        DB::statement('ALTER TABLE tbl_template_fotos ADD foto MEDIUMBLOB');
     }
 
     /**

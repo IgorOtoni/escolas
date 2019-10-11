@@ -1,0 +1,682 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "API - Gratunos",
+        "description": "Api para comunica\u00e7\u00e3o com softwares externos",
+        "license": {
+            "name": "Projeto privado"
+        },
+        "version": "1.0.0"
+    },
+    "host": "localhost/Gratunos/public",
+    "basePath": "/",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "/api/sites": {
+            "get": {
+                "tags": [
+                    "Sites"
+                ],
+                "summary": "Obt\u00eam os sites da plataforma.",
+                "operationId": "sites",
+                "responses": {
+                    "200": {
+                        "description": "Sites do Gratunos."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/site/{url}": {
+            "get": {
+                "tags": [
+                    "Sites"
+                ],
+                "summary": "Obt\u00eam o site da plataforma.",
+                "operationId": "site",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Site do Gratunos."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/banners/{url}": {
+            "get": {
+                "tags": [
+                    "Banners"
+                ],
+                "summary": "Obt\u00eam os banners do site.",
+                "operationId": "banners",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Banners do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/banner/{url}/{id}": {
+            "get": {
+                "tags": [
+                    "Banners"
+                ],
+                "summary": "Obt\u00eam o banner do site.",
+                "operationId": "banner",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do banner.",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Banner do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/noticias/{url}": {
+            "get": {
+                "tags": [
+                    "Not\u00edcias"
+                ],
+                "summary": "Obt\u00eam as not\u00edcias do site.",
+                "operationId": "noticias",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Not\u00edcias do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/noticia/{url}/{id}": {
+            "get": {
+                "tags": [
+                    "Not\u00edcias"
+                ],
+                "summary": "Obt\u00eam a not\u00edcia do site.",
+                "operationId": "noticia",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da not\u00edcia.",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Not\u00edcia do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/apresentacao/{url}": {
+            "get": {
+                "tags": [
+                    "Apresenta\u00e7\u00e3o"
+                ],
+                "summary": "Obt\u00eam a apresenta\u00e7\u00e3o do site.",
+                "operationId": "apresentacao",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Apresenta\u00e7\u00e3o do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/galerias/{url}": {
+            "get": {
+                "tags": [
+                    "Galerias"
+                ],
+                "summary": "Obt\u00eam as galerias do site.",
+                "operationId": "galerias",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Galerias do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/galeria/{url}/{id}": {
+            "get": {
+                "tags": [
+                    "Galerias"
+                ],
+                "summary": "Obt\u00eam a galeria do site.",
+                "operationId": "galeria",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da galeria.",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Galeria do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/sermoes/{url}": {
+            "get": {
+                "tags": [
+                    "M\u00eddias"
+                ],
+                "summary": "Obt\u00eam as m\u00eddias do site.",
+                "operationId": "sermoes",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "M\u00eddias do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/sermao/{url}/{id}": {
+            "get": {
+                "tags": [
+                    "M\u00eddias"
+                ],
+                "summary": "Obt\u00eam a m\u00eddia do site.",
+                "operationId": "sermao",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da m\u00eddia.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "M\u00eddia do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/publicacoes/{url}": {
+            "get": {
+                "tags": [
+                    "Publica\u00e7\u00f5es"
+                ],
+                "summary": "Obt\u00eam as publica\u00e7\u00f5es do site.",
+                "operationId": "publicacoes",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Publica\u00e7\u00f5es do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/publicacao/{url}/{id}": {
+            "get": {
+                "tags": [
+                    "Publica\u00e7\u00f5es"
+                ],
+                "summary": "Obt\u00eam a publica\u00e7\u00e3o do site.",
+                "operationId": "publicacao",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da publica\u00e7\u00e3o.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Publica\u00e7\u00e3o do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/eventos/{url}": {
+            "get": {
+                "tags": [
+                    "Eventos"
+                ],
+                "summary": "Obt\u00eam os eventos do site.",
+                "operationId": "eventos",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Eventos do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/evento/{url}/{id}": {
+            "get": {
+                "tags": [
+                    "Eventos"
+                ],
+                "summary": "Obt\u00eam o evento do site.",
+                "operationId": "evento",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do evento.",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Evento do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/eventosfixos/{url}": {
+            "get": {
+                "tags": [
+                    "Eventos fixos"
+                ],
+                "summary": "Obt\u00eam os eventos fixos do site.",
+                "operationId": "eventosfixos",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Eventos fixos do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/eventofixo/{url}/{id}": {
+            "get": {
+                "tags": [
+                    "Eventos fixos"
+                ],
+                "summary": "Obt\u00eam o evento fixo do site.",
+                "operationId": "eventofixo",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do evento fixo.",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Evento fixo do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/produtos/{url}": {
+            "get": {
+                "tags": [
+                    "Carrinho"
+                ],
+                "summary": "Obt\u00eam os produtos do site.",
+                "operationId": "produtos",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produtos do site."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        },
+        "/api/login/{url}": {
+            "post": {
+                "tags": [
+                    "Autenticaca\u00e7\u00e3o"
+                ],
+                "summary": "Autentica\u00e7\u00e3o.",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "path",
+                        "description": "Url do site.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email do usu\u00e1rio",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Login do usu\u00e1rio",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dados do usu\u00e1rio."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal error."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

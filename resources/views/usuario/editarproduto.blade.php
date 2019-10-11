@@ -23,7 +23,7 @@ $(function(){
         //maxImageCount: 1,
         initialPreview: [
             <?php if($produto->icone != null){ ?>
-                "{{'/storage/produtos/'.$produto->icone}}",
+                "{{'data:image;base64,'.base64_encode($produto->icone)}}",
             <?php } ?>
         ],
         deleteUrl: "{{'/storage'}}",
@@ -32,7 +32,7 @@ $(function(){
         //initialPreviewFileType: "image",
         initialPreviewConfig: [
             <?php if($produto->icone != null){ ?>
-                {caption: "{{$produto->icone}}", extra: {id: {{$produto->id}}, foto: "{{$produto->icone}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirIconeProduto", key: 1},
+                {caption: "{{$produto->icone}}", extra: {id: {{$produto->id}}, foto: "{{$produto->icone}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "{{route('usuario.excluirIconeProduto')}}", key: 1},
             <?php } ?>
         ],
         //overwriteInitial: false,
@@ -66,7 +66,7 @@ $(function(){
         allowedFileExtensions: ["jpeg", "jpg", "png", "gif"],
         initialPreview: [
             <?php foreach($fotos as $foto){ ?>
-                "{{'/storage/fotos-produtos/'.$foto->foto}}",
+                "{{'data:image;base64,'.base64_encode($foto->foto)}}",
             <?php } ?>
         ],
         //deleteUrl: "{{'/storage'}}",
@@ -75,7 +75,7 @@ $(function(){
         //initialPreviewFileType: "image",
         initialPreviewConfig: [
             <?php $x = 0; foreach($fotos as $foto){ $x++; ?>
-                {caption: "{{$foto->foto}}", extra: {id: {{$foto->id}}, foto: "{{$foto->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirFotoProduto", key: {{$x}}},
+                {caption: "{{$foto->foto}}", extra: {id: {{$foto->id}}, foto: "{{$foto->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "{{route('usuario.excluirFotoProduto')}}", key: {{$x}}},
             <?php } ?>
         ],
         overwriteInitial: false,
@@ -200,7 +200,7 @@ $(function(){
             </div>
         </div>
         <div class="box-footer">
-            <a href="/usuario/produtos" class="btn btn-warning pull-left">Cancelar</a>
+            <a href="{{route('usuario.produtos')}}" class="btn btn-warning pull-left">Cancelar</a>
             <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
         </div>
 	</div>

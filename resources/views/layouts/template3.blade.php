@@ -16,6 +16,11 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{asset('template_igreja/template-escuro/style.css')}}">
+
+    <?php if($igreja->custom_style != null){ ?>
+        <style><?php echo $igreja->custom_style ?></style>
+    <?php } ?>
+    
 </head>
 
 <body>

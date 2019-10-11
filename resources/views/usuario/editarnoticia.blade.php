@@ -20,7 +20,7 @@ $(function(){
         //maxImageCount: 1,
         initialPreview: [
             <?php if($noticia->foto != null){ ?>
-                "{{'/storage/noticias/'.$noticia->foto}}",
+                "{{'data:image;base64,'.base64_encode($noticia->foto)}}",
             <?php } ?>
         ],
         deleteUrl: "{{'/storage'}}",
@@ -29,7 +29,7 @@ $(function(){
         //initialPreviewFileType: "image",
         initialPreviewConfig: [
             <?php if($noticia->foto != null){ ?>
-                {caption: "{{$noticia->foto}}", extra: {id: {{$noticia->id}}, foto: "{{$noticia->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirFotoNoticia", key: 1},
+                {caption: "{{$noticia->foto}}", extra: {id: {{$noticia->id}}, foto: "{{$noticia->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "{{route('usuario.excluirFotoNoticia')}}", key: 1},
             <?php } ?>
         ],
         //overwriteInitial: false,
@@ -111,7 +111,7 @@ $(function(){
                 
             </div>
             <div class="box-footer">
-                <a href="/usuario/noticias" class="btn btn-warning pull-left">Cancelar</a>
+                <a href="{{route('usuario.noticias')}}" class="btn btn-warning pull-left">Cancelar</a>
                 <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
             </div>
             </div>

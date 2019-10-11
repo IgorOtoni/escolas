@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Language" content="pt-br">
-  <title>Escolas</title>
+  <title>Sites</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -47,11 +47,11 @@
 
   <header class="main-header">
     <!-- Logo -->
-      <a href="#" class="logo">
+      <a href="{{route('admin.home')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>Escolas</b></span>
+      <span class="logo-mini"><b>Sites</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"> <b>Escolas</b></span>
+      <span class="logo-lg"> <b>Sites</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -74,7 +74,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="{{route('account')}}" class="btn btn-default btn-flat">Conta</a>
+                  <a href="{{route('admin.account')}}" class="btn btn-default btn-flat">Conta</a>
                 </div>
                 <div class="pull-right">
                   <a href="{{route('logout')}}" class="btn btn-default btn-flat">Sair</a>
@@ -97,11 +97,10 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">BARRA DE NAVEGAÇÃO</li>
-        <li><a href="/admin/home"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="/admin/igrejas"><i class="fa fa-institution "></i> <span>Escolas</span></a></li>
-        <li><a href="/admin/perfis"><i class="fa fa-users"></i> <span>Perfis</span></a></li>
-        <!--<li><a href="/admin/publicacoes"><i class="fa fa-sticky-note"></i> <span>Publicacoes</span></a></li>-->
-        <li><a href="/admin/usuarios"><i class="fa fa-user"></i> <span>Usuários</span></a></li>
+        <li><a href="{{route('admin.home')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li><a href="{{route('igrejas')}}"><i class="fa fa-institution "></i> <span>Sites</span></a></li>
+        <li><a href="{{route('perfis')}}"><i class="fa fa-users"></i> <span>Perfis</span></a></li>
+        <li><a href="{{route('usuarios')}}"><i class="fa fa-user"></i> <span>Usuários</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

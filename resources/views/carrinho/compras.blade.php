@@ -47,7 +47,7 @@
 							}
 							?>
 						</td>
-						<td><a href="/nota_encomenda/{{ $compra->id }}" class="btn btn-primary">Emitir nota</a></td>
+						<td><a href="{{ route('igreja.nota_encomenda',['id'=>$compra->id]) }}" class="btn btn-primary">Emitir nota</a></td>
 					</tr>
 		    	<?php endforeach ?>
 	    	</tbody>

@@ -56,7 +56,7 @@ echo "<table class='table'>";
 
         echo '<td>';
         echo '<center>';
-        echo '<img class="img-thumbnail" width="175px" src="/storage/produtos/'.$produto->icone.'">';
+        echo '<img class="img-thumbnail" width="175px" src="'.'data:image;base64,'.base64_encode($produto->icone).'">';
         echo '<br>';
         echo "<strong>Nome:</strong> ".$produto->nome;
         echo '<br>';
@@ -66,7 +66,7 @@ echo "<table class='table'>";
             echo '<span class="label label-primary">Em oferta: '.$oferta->desconto.'% de desconto!</span>';
             echo '<br>';
         }
-        echo "<strong><a href='/".$igreja->url."/produto/".$produto->id."'>+ Informações</a></strong>";
+        echo "<strong><a href='".route('igreja.produto',['url'=>$igreja->url,'id'=>$produto->id])."'>+ Informações</a></strong>";
 
         $botaoAdd = true;
         if(null !== \Session()->get('carrinho') && is_array(\Session()->get('carrinho'))){
@@ -79,7 +79,7 @@ echo "<table class='table'>";
         }
 
         if($botaoAdd == true){
-            echo '<form method="get" action="/'.$igreja->url.'/adicionarProduto">'
+            echo '<form method="get" action="'.route('igreja.adicionarProduto',['url'=>$igreja->url]).'">'
                     . '<div class="form_settings">'
                     	. '<input type="hidden" name="id" value="'.$produto->id.'">'
                         . '<input class="btn btn-sm btn-primary" type="submit" value="Acidionar ao carrinho">'

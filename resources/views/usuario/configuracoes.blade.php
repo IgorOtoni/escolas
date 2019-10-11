@@ -28,7 +28,7 @@ $(function(){
 
     $('.select2').select2();
 
-    $('input[type=file]').fileinput({
+    $('input[name=logo]').fileinput({
         language: "pt-BR",
         //minImageCount: 0,
         //maxImageCount: 1,
@@ -1270,6 +1270,12 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 </div>
             </div>
             <div class="col-md-12">
+                <div class="form-group">
+                <label >Arquivo CSS personalizado:</label>
+                <input type="file" name="custom_style">
+                </div>
+            </div>
+            <div class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Texto apresentativo da escola</label>
                 <textarea name="texto_apresentativo" class="form-control" rows="10" required>{{$igreja->texto_apresentativo}}</textarea>
@@ -2464,7 +2470,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    @foreach ($modulos_igreja as $modulo)
+                    @foreach ($modulos_aplicativo as $modulo)
                         @if (!$modulo->gerencial)
                             <option value="{{$modulo->id}}">{{$modulo->nome}}</option>
                         @endif
@@ -2623,7 +2629,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    @foreach ($modulos_igreja as $modulo)
+                    @foreach ($modulos_aplicativo as $modulo)
                         @if (!$modulo->gerencial)
                             <option value="{{$modulo->id}}">{{$modulo->nome}}</option>
                         @endif

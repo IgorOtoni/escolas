@@ -15,6 +15,10 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{asset('template_igreja/template-laranja/style.css')}}" />
     <link rel="stylesheet" type="text/css" media="screen" href="{{asset('template_igreja/template-laranja/css/select_color.css')}}" />
     <link rel="stylesheet" type="text/css" media="screen" href="{{asset('template_igreja/template-laranja/js/fancybox/jquery.fancybox-1.3.4.css')}}" />
+
+    <?php if($igreja->custom_style != null){ ?>
+        <style><?php echo $igreja->custom_style ?></style>
+    <?php } ?>
     
     <!-- Skin CSS -->
     <link rel="stylesheet" type="text/css" media="screen" href="{{asset('template_igreja/template-laranja/styles/Yellow-Orange/yellow-orange.css')}}" class="changeme" />

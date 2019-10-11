@@ -17,8 +17,8 @@ class Tbl_Banner_Seeder extends Seeder
             'id'=>1,
             'nome'=>'Venha conhecer nossa escola!',
             'descricao'=>'Clique aqui para saber mais sobre nossa localização e contatos.',
-            'foto'=>file_get_contents(getcwd().'\\public\\storage\\banners\\banner-1-1.jpeg'),
-            'link'=>'contatos',
+            'foto'=>file_get_contents(getcwd().'\\public\\storage\\banners\\banner-1-1.jpg'),
+            'link'=>'contato',
             'ordem'=>1,
             'id_igreja'=>1,
         ]);
@@ -27,7 +27,7 @@ class Tbl_Banner_Seeder extends Seeder
             'nome'=>'Venha fazer curso de inglês em nossa escola!',
             'descricao'=>'Clique aqui para saber mais sobre nossa localização e contatos.',
             'foto'=>file_get_contents(getcwd().'\\public\\storage\\banners\\banner-2-1.jpeg'),
-            'link'=>'contatos',
+            'link'=>'contato',
             'ordem'=>1,
             'id_igreja'=>1,
         ]);
@@ -45,7 +45,7 @@ class Tbl_Banner_Seeder extends Seeder
             'nome'=>'Venha conhecer nossa escola!',
             'descricao'=>'Clique aqui para saber mais sobre nossa localização e contatos.',
             'foto'=>file_get_contents(getcwd().'\\public\\storage\\banners\\banner-4-1.jpeg'),
-            'link'=>'contatos',
+            'link'=>'contato',
             'ordem'=>1,
             'id_igreja'=>1,
         ]);
@@ -54,7 +54,7 @@ class Tbl_Banner_Seeder extends Seeder
             'nome'=>'Venha conhecer nossa escola!',
             'descricao'=>'Clique aqui para saber mais sobre nossa localização e contatos.',
             'foto'=>file_get_contents(getcwd().'\\public\\storage\\banners\\banner-5-1.jpeg'),
-            'link'=>'contatos',
+            'link'=>'contato',
             'ordem'=>1,
             'id_igreja'=>1,
         ]);
@@ -63,7 +63,7 @@ class Tbl_Banner_Seeder extends Seeder
             'nome'=>'Venha conhecer nossa escola!',
             'descricao'=>'Clique aqui para saber mais sobre nossa localização e contatos.',
             'foto'=>file_get_contents(getcwd().'\\public\\storage\\banners\\banner-6-1.jpeg'),
-            'link'=>'contatos',
+            'link'=>'contato',
             'ordem'=>1,
             'id_igreja'=>1,
         ]);
@@ -72,7 +72,7 @@ class Tbl_Banner_Seeder extends Seeder
             'nome'=>'Venha conhecer nossa escola!',
             'descricao'=>'Clique aqui para saber mais sobre nossa localização e contatos.',
             'foto'=>file_get_contents(getcwd().'\\public\\storage\\banners\\banner-7-1.jpeg'),
-            'link'=>'contatos',
+            'link'=>'contato',
             'ordem'=>1,
             'id_igreja'=>1,
         ]);
@@ -81,7 +81,7 @@ class Tbl_Banner_Seeder extends Seeder
             'nome'=>'Venha conhecer nossa escola!',
             'descricao'=>'Clique aqui para saber mais sobre nossa localização e contatos.',
             'foto'=>file_get_contents(getcwd().'\\public\\storage\\banners\\banner-8-1.jpeg'),
-            'link'=>'contatos',
+            'link'=>'contato',
             'ordem'=>1,
             'id_igreja'=>1,
         ]);
@@ -90,7 +90,7 @@ class Tbl_Banner_Seeder extends Seeder
             'nome'=>'Venha conhecer nossa escola!',
             'descricao'=>'Clique aqui para saber mais sobre nossa localização e contatos.',
             'foto'=>file_get_contents(getcwd().'\\public\\storage\\banners\\banner-9-1.jpeg'),
-            'link'=>'contatos',
+            'link'=>'contato',
             'ordem'=>1,
             'id_igreja'=>1,
         ]);
@@ -99,7 +99,7 @@ class Tbl_Banner_Seeder extends Seeder
             'nome'=>'Venha conhecer nossa escola!',
             'descricao'=>'Clique aqui para saber mais sobre nossa localização e contatos.',
             'foto'=>file_get_contents(getcwd().'\\public\\storage\\banners\\banner-10-1.jpeg'),
-            'link'=>'contatos',
+            'link'=>'contato',
             'ordem'=>1,
             'id_igreja'=>1,
         ]);

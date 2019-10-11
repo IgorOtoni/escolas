@@ -5,8 +5,12 @@
 <!-- InputFilePTBR Confirm Dialog -->
 <link href="{{asset('template_adm/plugins/krajee.confirm/jquery-confirm.min.css')}}" rel="stylesheet" type="text/css" />
 
+<!-- SummerNote -->
+<link href="{{asset('template_adm/bower_components/summernote/summernote-bs4.css')}}" rel="stylesheet">
+<script src="{{asset('template_adm/bower_components/summernote/summernote-bs4.min.js')}}"></script>
+
 <!-- CKEditor -->
-<script src="{{asset('template_adm/bower_components/ckeditor/ckeditor.js')}}"></script>
+<!--<script src="{{asset('template_adm/bower_components/ckeditor/ckeditor.js')}}"></script>-->
 <!-- InputFilePTBR -->
 <script src="{{asset('template_adm/bower_components/input.file.js/fileinput.js')}}"></script>
 <script src="{{asset('template_adm/bower_components/input.file.js/locales/pt-BR.js')}}"></script>
@@ -24,7 +28,7 @@ $(function(){
         allowedFileExtensions: ["jpeg", "jpg", "png", "gif"],
         initialPreview: [
             <?php foreach($fotos as $foto){ ?>
-                "{{'/storage/galerias-publicacoes/'.$foto->foto}}",
+                "{{'data:image;base64,'.base64_encode($foto->foto)}}",
             <?php } ?>
         ],
         //deleteUrl: "{{'/storage'}}",
@@ -33,7 +37,7 @@ $(function(){
         //initialPreviewFileType: "image",
         initialPreviewConfig: [
             <?php $x = 0; foreach($fotos as $foto){ $x++; ?>
-                {caption: "{{$foto->foto}}", extra: {id: {{$foto->id}}, foto: "{{$foto->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirFotoPublicacao", key: {{$x}}},
+                {caption: "{{$foto->foto}}", extra: {id: {{$foto->id}}, foto: "{{$foto->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "{{route('usuario.excluirFotoPublicacao')}}", key: {{$x}}},
             <?php } ?>
         ],
         overwriteInitial: false,
@@ -62,18 +66,22 @@ $(function(){
 
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
-    var editor = CKEDITOR.replace('editor', {
+    /*var editor = CKEDITOR.replace('editor', {
         language: 'pt-br',
         //filebrowserBrowseUrl: '/template_adm/bower_components/ckeditor/ckfinder/ckfinder.html',
         filebrowserUploadUrl: '/template_adm/bower_components/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
         //filebrowserWindowWidth: '1000',
         //filebrowserWindowHeight: '700'
-    });
+    });*/
     /*CKEDITOR.instances.editor.setData( "{{limpa_html($publicacao->html)}}", function()
     {
         this.checkDirty();  // true
     });*/
     //CKFinder.setupCKEditor( editor );
+
+    $('.summernote').summernote({
+        height: 500,
+    });
 
 });
 
@@ -111,7 +119,7 @@ $(function(){
                 <div class="col-md-12">
                     <div class="form-group">
                         <label >Conteúdo da publicação</label>
-                        <textarea name="html" id="editor" class="form-control">{{limpa_html($publicacao->html)}}</textarea>
+                        <textarea name="html" id="editor" class="form-control summernote">{{limpa_html($publicacao->html)}}</textarea>
                     </div>
                 </div>
                 </div>
@@ -128,7 +136,7 @@ $(function(){
                 </div>
             </div>
             <div class="box-footer">
-                <a href="/usuario/publicacoes" class="btn btn-warning pull-left">Cancelar</a>
+                <a href="{{route('usuario.publicacoes')}}" class="btn btn-warning pull-left">Cancelar</a>
                 <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
             </div>
         </div>

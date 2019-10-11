@@ -12,8 +12,8 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/{{$igreja->url}}/">Home</a></li>
-        <li><a href="/{{$igreja->url}}/sermoes">Vídeos</a></li>
+        <li><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
+        <li><a href="{{route('igreja.sermoes',['url'=>$igreja->url])}}">Vídeos</a></li>
         <li class="active">Vídeo</li>
         </ol>
     </div>
@@ -26,7 +26,7 @@
 <div class="container">
     <div class="row">
     <div class="col-md-12">
-        <h1>{{$sermao->nome}}</h1>
+        <h1><?php echo $sermao->nome ?></h1>
     </div>
     </div>
 </div>
@@ -40,7 +40,7 @@
                 <!-- Post Details Area -->
                 <div class="single-post-details-area">
                     <div class="post-content">
-                        <p>{{$sermao->descricao}}</p>
+                        <p><?php echo $sermao->descricao ?></p>
                         <ul class="info-table">
                         <li><i class="fa fa-calendar" id="dth_publicacao"></i> Publicado {{\Carbon\Carbon::parse($sermao->created_at)->diffForHumans()}}</li>
                         <?php

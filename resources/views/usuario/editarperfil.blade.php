@@ -21,7 +21,7 @@ $(function(){
     ?>
 
     $.ajax({
-        url: '/usuario/carregarModulosIgreja/'+{{$igreja->id}},
+        url: 'route('usuario.carregarModulosIgreja',['id'=>''])/'+{{$igreja->id}},
         type: 'get',
         dataType: 'json',
         success: function(response){
@@ -118,7 +118,7 @@ $(function(){
                 </div>
             </div>
             <div class="box-footer">
-                <a href="/usuario/perfis" class="btn btn-warning pull-left">Cancelar</a>
+                <a href="{{route('usuario.perfis')}}" class="btn btn-warning pull-left">Cancelar</a>
                 <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
             </div>
         </div>

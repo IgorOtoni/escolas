@@ -20,7 +20,6 @@ class CreateTblMembrosTable extends Migration
             $table->text('twitter')->nullable();
             $table->text('youtube')->nullable();
             $table->text('facebook')->nullable();
-            $table->text('foto')->nullable();
             $table->date('dt_nascimento')->nullable();
             $table->string('cep')->nullable();
             $table->string('estado')->nullable();
@@ -38,7 +37,7 @@ class CreateTblMembrosTable extends Migration
             $table->boolean('ativo')->default(true);
             $table->timestamps();
         });
-        DB::statement('ALTER TABLE tbl_membros ADD foto MEDIUMBLOB');
+        DB::statement('ALTER TABLE tbl_membros ADD foto MEDIUMBLOB null');
     }
 
     /**

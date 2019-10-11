@@ -30,7 +30,7 @@ function switch_status(comp){
   var id = $(comp).prop('id');
   var nome = $(comp).prop('name');
   $.ajax({
-    url: '/igrejas/switchStatus/'+id,
+    url: '{{route('igrejas.switchStatus',['id'=>''])}}/'+id,
     type: 'GET'
   });
   if($(comp).prop('checked') == true){
@@ -52,7 +52,7 @@ $(function () {
       allowedFileExtensions: ["jpeg", "jpg", "png", "gif"],
       <?php if($igreja->logo != null){ ?>
       initialPreview: [
-        "{{'/storage/igrejas/'.$igreja->logo}}",
+        "{{'data:image;base64,'.base64_encode($igreja->logo)}}",
       ],
       <?php } ?>
       deleteUrl: "{{'/storage'}}",
@@ -61,7 +61,7 @@ $(function () {
       //initialPreviewFileType: "image",
       <?php if($igreja->logo != null){ ?>
       initialPreviewConfig: [
-        {caption: "{{$igreja->logo}}", extra: {id: {{$igreja->id}}, logo: "{{$igreja->logo}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/admin/igrejas/excluirLogo", key: 1},
+        {caption: "{{$igreja->logo}}", extra: {id: {{$igreja->id}}, logo: "{{$igreja->logo}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "{{route('igrejas.excluirLogo')}}", key: 1},
       ],
       <?php } ?>
       //overwriteInitial: false,

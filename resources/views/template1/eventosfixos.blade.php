@@ -6,7 +6,7 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/{{$igreja->url}}/">Home</a></li>
+        <li><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
         <li class="active">Eventos fixos</li>
         </ol>
     </div>
@@ -42,13 +42,17 @@
                     <li class="grid-item format-standard">
                     <div class="grid-item-inner"> 
                         <?php if($evento->foto != null){ ?>
-                            <img src="/storage/eventos/{{$evento->foto}}" alt="">
+                            <img src="{{'data:image;base64,'.base64_encode($evento->foto)}}" alt="">
                         <?php }else{ ?>
                             <img src="/storage/no-event.jpg" alt="">
                         <?php } ?>
                         <div class="grid-content">
-                        <h3><a href="/{{$igreja->url}}/eventofixo/{{$evento->id}}">{{$evento->nome}}</a></h3>
-                        <?php if($evento->descricao != null){ ?> <p>{{$evento->descricao}}</p> <?php } ?>
+                        <h3>
+                            <a href="{{route('igreja.eventofixo', ['url'=>$igreja->url,'id'=>$evento->id])}}">
+                                <?php echo $evento->nome ?>
+                            </a>
+                        </h3>
+                        <?php if($evento->descricao != null){ ?> <p><?php echo $evento->descricao ?></p> <?php } ?>
                         </div>
                         <ul class="info-table">
                         <li><i class="fa fa-calendar"></i><i class="fa fa-map-marker"></i> {{$evento->dados_horario_local}}</li>

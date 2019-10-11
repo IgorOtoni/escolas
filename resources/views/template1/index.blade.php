@@ -1,8 +1,12 @@
 @extends('layouts.template1')
 @push('script')
 <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-<script type="text/javascript" src="{{asset('template_igreja/template-padrao/plugins/rs-plugin/js/jquery.themepunch.tools.min.js')}}"></script>   
+<script type="text/javascript" src="{{asset('template_igreja/template-padrao/plugins/rs-plugin/js/jquery.themepunch.tools.min.js')}}"></script>
+
 <script type="text/javascript" src="{{asset('template_igreja/template-padrao/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
+
+<script src="{{asset('template_igreja/template-padrao/plugins/flexslider/js/jquery.flexslider.js')}}"></script>
+
 <script type="text/javascript">
     jQuery(document).ready(function() {
         jQuery('.tp-banner').show().revolution(
@@ -75,92 +79,9 @@
             hideAllCaptionAtLilmit:0,
             startWithSlide:0
         });				
-    });	//ready
+    });
 </script>
-<!-- FlexSlider --> 
-<script src="{{asset('template_igreja/template-padrao/plugins/flexslider/js/jquery.flexslider.js')}}"></script>
-<script>
-$('#modal-noticia').on('hide.bs.modal', function (event) {
-    var button = $(event.relatedTarget) ;
 
-    var modal = $(this);
-
-    modal.find('.modal-content #nome').html("");
-    modal.find('.modal-content #descricao').html("");
-    modal.find('.modal-content #dth_publicacao').html("");
-    modal.find('.modal-content #dth_atualizacao').html("");
-    modal.find('.modal-content #foto').show();
-    modal.find('.modal-content #dth_atualizacao').show();
-});
-
-$('#modal-noticia').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) ;
-    var nome = button.data('nome');
-    var descricao = button.data('descricao');
-    var publicacao = button.data('publicacao');
-    var atualizacao = button.data('atualizacao');
-    var foto = button.data('foto');
-
-    var modal = $(this);
-
-    if(nome != null) modal.find('.modal-content #nome').append(nome);
-    if(descricao != null) modal.find('.modal-content #descricao').append(descricao);
-    if(publicacao != null) modal.find('.modal-content #dth_publicacao').append(' ' + publicacao);
-    if(atualizacao != null && atualizacao != ''){
-        modal.find('.modal-content #dth_atualizacao').append(' Atualizada ' + atualizacao);
-    }else{
-        modal.find('.modal-content #dth_atualizacao').hide();
-    }
-    if(foto != null && foto != ''){
-        modal.find('.modal-content #foto').prop('src', '{{asset('storage/noticias/')}}' + '/' + foto);
-    }else{
-        modal.find('.modal-content #foto').prop('src', '{{asset('storage/')}}' + '/no-news.jpg');
-    }
-});
-</script>
-<script>
-$('#modal-evento').on('hide.bs.modal', function (event) {
-    var button = $(event.relatedTarget) ;
-
-    var modal = $(this);
-
-    modal.find('.modal-content #nome').html("");
-    modal.find('.modal-content #descricao').html("");
-    modal.find('.modal-content #dth_inicio').html("");
-    modal.find('.modal-content #dth_fim').html("");
-    modal.find('.modal-content #local').html("");
-    modal.find('.modal-content #src').prop('src', '');
-    modal.find('.modal-content #dth_fim').show();
-    modal.find('.modal-content #foto').show();
-});
-
-$('#modal-evento').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) ;
-    var nome = button.data('nome');
-    var descricao = button.data('descricao');
-    var inicio = button.data('inicio');
-    var fim = button.data('fim');
-    var local = button.data('local');
-    var foto = button.data('foto');
-
-    var modal = $(this);
-
-    if(nome != null) modal.find('.modal-content #nome').append(nome);
-    if(descricao != null) modal.find('.modal-content #descricao').append(descricao);
-    if(inicio != null) modal.find('.modal-content #dth_inicio').append(' ' + inicio);
-    if(fim != null && fim != ''){
-        modal.find('.modal-content #dth_fim').append(' Final previsto para ' + fim);
-    }else{
-        modal.find('.modal-content #dth_fim').hide();
-    }
-    if(local != null) modal.find('.modal-content #local').append(' ' + local);
-    if(foto != null && foto != ''){
-        modal.find('.modal-content #foto').prop('src', '{{asset('storage/timeline/')}}' + '/' + foto);
-    }else{
-        modal.find('.modal-content #foto').hide();
-    }
-});
-</script>
 @endpush
 @section('content')
 <?php
@@ -178,7 +99,7 @@ if($banners != null && sizeof($banners)){
                     <!-- SLIDE  -->
                     <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"  data-saveperformance="off" data-title="{{$x++}}">
                         <!-- MAIN IMAGE -->
-                        <img src="/storage/banners/{{$banner->foto}}"  alt="fullslide1"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <img src="{{'data:image;base64,'.base64_encode($banner->foto)}}"  alt="fullslide1"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
                         <!-- LAYERS -->
             
                         <?php
@@ -200,7 +121,7 @@ if($banners != null && sizeof($banners)){
                                 
                     data-endspeed="300" 
                 
-                            style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;">{{$banner->nome}} 
+                            style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;"><?php echo $banner->nome ?> 
                         </div>
                         <?php
                         if($banner->link != null){
@@ -225,7 +146,7 @@ if($banners != null && sizeof($banners)){
                             
                     data-endspeed="300" 
                 
-                            style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">{{$banner->descricao}} 
+                            style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;"><?php echo $banner->descricao ?> 
                         </div>
                         <?php
                         if($banner->link != null){
@@ -271,15 +192,15 @@ if($noticias != null && sizeof($noticias) != 0){
                     <li class="grid-item post format-standard">
                     <div class="grid-item-inner">  
                         <?php if($noticia->foto != null){ ?>
-                            <img src="/storage/noticias/{{$noticia->foto}}" alt=""> 
+                            <img src="{{'data:image;base64,'.base64_encode($noticia->foto)}}" alt=""> 
                         <?php }else{ ?>
-                            <img src="/storage/no-news.jpg" alt=""> 
+                            <img src="{{asset('/storage/no-news.jpg')}}" alt=""> 
                         <?php } ?>
                         <div class="grid-content">
                         <?php /* ?>
                         <h3><a data-publicacao="{{\Carbon\Carbon::parse($noticia->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}" data-atualizacao="{{(($noticia->updated_at != null) ? \Carbon\Carbon::parse($noticia->updated_at)->diffForHumans() : '')}}" data-foto="{{$noticia->foto}}" data-nome="{{$noticia->nome}}" data-descricao="{{$noticia->descricao}}" data-toggle="modal" data-target="#modal-noticia" href="">{{$noticia->nome}}</a></h3>
                         <?php */ ?>
-                        <h3><a href="/{{$igreja->url}}/noticia/{{$noticia->id}}">{{$noticia->nome}}</a></h3>
+                        <h3><a href="{{route('igreja.noticia', ['url'=>$igreja->url,'id'=>$noticia->id])}}"><?php echo $noticia->nome ?></a></h3>
                         <span class="meta-data"><span><i class="fa fa-calendar"></i> Publicada {{\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()}}</span><!--<span><a href="#"><i class="fa fa-tag"></i>Uncategoried</a></span>--></span>
                         <?php
                         if($noticia->updated_at != null && $noticia->updated_at != $noticia->created_at){
@@ -288,7 +209,7 @@ if($noticias != null && sizeof($noticias) != 0){
                             <?php
                         }
                         ?>
-                        <p>{{$noticia->descricao}}</p>
+                        <p><?php echo $noticia->descricao ?></p>
                         </div>
                     </div>
                     </li>
@@ -333,7 +254,7 @@ if($eventos != null && sizeof($eventos) != 0){
                     <div class="timeline-panel">
                     <div class="timeline-heading">
                         <h3 class="timeline-title">
-                        <a href="/{{$igreja->url}}/evento/{{$evento->id}}">{{$evento->nome}}</a>
+                        <a href="{{route('igreja.evento', ['url'=>$igreja->url,'id'=>$evento->id])}}"><?php echo $evento->nome ?></a>
                         </h3>
                     </div>
                     <div class="timeline-body">
@@ -342,7 +263,7 @@ if($eventos != null && sizeof($eventos) != 0){
                             <?php if($evento->dados_horario_fim != null){ ?>
                                 <li><i class="fa fa-clock-o"></i> Final previsto para {{\Carbon\Carbon::parse($evento->dados_horario_fim)->diffForHumans($evento->dados_horario_inicio)}}</li>
                             <?php } ?>
-                            <li><i class="fa fa-map-marker"></i> {{$evento->dados_local}}</li>
+                            <li><i class="fa fa-map-marker"></i> <?php echo $evento->dados_local ?></li>
                             <!--<li><i class="fa fa-phone"></i> 1 800 321 4321</li>-->
                         </ul>
                     </div>
@@ -376,31 +297,36 @@ if($galerias != null && sizeof($galerias) != 0){
     <div id="content" class="content full">
         <div class="container">
         <div class="row">
-            <ul class="isotope-grid" data-sort-id="gallery">
             <?php foreach($galerias as $galeria){ 
                 if(count($fotos[$galeria->id]) == 1){
                     $foto = $fotos[$galeria->id][0]; ?>
-                    <li class="col-md-3 col-sm-3 grid-item post format-image"><h3>{{$galeria->nome}}</h3>
-                        <div class="grid-item-inner"> <a href="/storage/galerias/{{$foto->foto}}" data-rel="prettyPhoto" class="media-box"> <img src="/carrega_imagem/480,320,galerias,{{$foto->foto}}" alt=""> <!--<img src="/storage/galerias/{{$foto->foto}}" alt="">--> </a> </div>
-                    </li>
+                    <div class="col-md-4 col-sm-4">
+                        <h3><?php $galeria->nome ?></h3>
+                        <a href="{{'data:image;base64,'.base64_encode($foto->foto)}}" data-rel="prettyPhoto" class="media-box">
+                            <img src="{{'data:image;base64,'.base64_encode($foto->foto)}}" alt="">
+                        </a>
+                    </div>
                 <?php }else{ ?>
-                    <li class="col-md-3 col-sm-3 grid-item post format-gallery"><h3>{{$galeria->nome}}</h3>
-                        <div class="grid-item-inner">
-                        <div class="media-box">
-                            <div class="flexslider" data-autoplay="yes" data-pagination="yes" data-arrows="yes" data-style="slide" data-pause="yes">
-                            <ul class="slides">
-                                <?php $fotos_ = $fotos[$galeria->id];
-                                    foreach($fotos_ as $foto){ ?>
-                                    <li class="item"><a href="/storage/galerias/{{$foto->foto}}" data-rel="prettyPhoto[postname]"><img src="/carrega_imagem/480,320,galerias,{{$foto->foto}}" alt=""></a></li>
-                                <?php } ?>
-                            </ul>
+                    <div class="col-md-4 col-sm-4"><h3><?php echo $galeria->nome ?></h3>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="flexslider" data-autoplay="yes" data-pagination="yes" data-arrows="yes" data-style="slide" data-pause="yes">
+                                    <ul class="slides">
+                                        <?php $fotos_ = $fotos[$galeria->id];
+                                        foreach($fotos_ as $foto){ ?>
+                                            <li>
+                                                <a href="{{'data:image;base64,'.base64_encode($foto->foto)}}" data-rel="prettyPhoto" >
+                                                    <img src="{{'data:image;base64,'.base64_encode($foto->foto)}}">
+                                                </a>
+                                            </li>
+                                        <?php } ?>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        </div>
-                    </li>
+                    </div>
                 <?php }
             } ?>
-            </ul>
         </div>
         </div>
     </div>

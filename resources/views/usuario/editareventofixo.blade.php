@@ -21,7 +21,7 @@ $(function(){
         allowedFileExtensions: ["jpeg", "jpg", "png", "gif"],
         initialPreview: [
             <?php if($eventofixo->foto != null){ ?>
-                "{{'/storage/eventos/'.$eventofixo->foto}}",
+                "{{'data:image;base64,'.base64_encode($eventofixo->foto)}}",
             <?php } ?>
         ],
         deleteUrl: "{{'/storage'}}",
@@ -30,7 +30,7 @@ $(function(){
         //initialPreviewFileType: "image",
         initialPreviewConfig: [
             <?php if($eventofixo->foto != null){ ?>
-                {caption: "{{$eventofixo->foto}}", extra: {id: {{$eventofixo->id}}, foto: "{{$eventofixo->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirFotoEventoFixo", key: 1},
+                {caption: "{{$eventofixo->foto}}", extra: {id: {{$eventofixo->id}}, foto: "{{$eventofixo->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "route('usuario.excluirFotoEventoFixo')", key: 1},
             <?php } ?>
         ],
         //overwriteInitial: false,
@@ -120,7 +120,7 @@ $(function(){
                 
             </div>
             <div class="box-footer">
-                <a href="/usuario/eventosfixos" class="btn btn-warning pull-left">Cancelar</a>
+                <a href="{{route('usuario.eventosfixos')}}" class="btn btn-warning pull-left">Cancelar</a>
                 <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
             </div>
             </div>

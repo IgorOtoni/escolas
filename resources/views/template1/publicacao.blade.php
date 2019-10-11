@@ -9,7 +9,7 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/{{$igreja->url}}/">Home</a></li>
+        <li><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
         <li class="active">Publicação</li>
         </ol>
     </div>
@@ -22,7 +22,7 @@
 <div class="container">
     <div class="row">
     <div class="col-md-12">
-        <h1>{{$publicacao->nome}}</h1>
+        <h1><?php echo $publicacao->nome ?></h1>
     </div>
     </div>
 </div>
@@ -41,7 +41,7 @@
         <ul class="isotope-grid" data-sort-id="gallery">
         <?php foreach($galeria_publicacao as $foto){ ?>
             <li class="col-md-3 col-sm-3 grid-item post format-image">
-                <div class="grid-item-inner"> <a href="/storage/galerias-publicacoes/{{$foto->foto}}" data-rel="prettyPhoto" class="media-box"> <img src="/carrega_imagem/480,320,galerias-publicacoes,{{$foto->foto}}" alt=""> <!--<img src="/storage/galerias/{{$foto->foto}}" alt="">--> </a> </div>
+                <div class="grid-item-inner"> <a href="{{'data:image;base64,'.base64_encode($foto->foto)}}" data-rel="prettyPhoto" class="media-box"> <img width="480" height="320" src="'data:image;base64,'.base64_encode($foto->foto)" alt=""> <!--<img src="/storage/galerias/{{$foto->foto}}" alt="">--> </a> </div>
             </li>
         <?php } ?>
         </ul>

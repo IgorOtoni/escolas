@@ -43,7 +43,7 @@ if(null !== \Session()->get('carrinho') && is_array(\Session()->get('carrinho'))
                 echo '<tr width="100%">';
 
                     echo '<td width="100%">';
-                    echo '<center><img class="img-thumbnail" width="100px" height="100px" src="/storage/produtos/'.$produto->icone.'"></center>';
+                    echo '<center><img class="img-thumbnail" width="100px" height="100px" src="data:image;base64,'.base64_encode($produto->icone).'"></center>';
                     echo '</td>';
 
                 echo '</tr>';
@@ -69,7 +69,7 @@ if(null !== \Session()->get('carrinho') && is_array(\Session()->get('carrinho'))
         
         echo '<td style="text-align: center;" width="20%">';
         echo '<div class="form_settings">'
-                . '<form method="get" action="/'.$igreja->url.'/alterarProduto" name="form'.$x.'">'
+                . '<form method="get" action="'.route('igreja.alterarProduto',['url'=>$igreja->url]).'" name="form'.$x.'">'
                         . '<input type="hidden" name="id" value="'.$produto->id.'">'
                         . '<div class="input-group">'
                             . '<input name="qtd" class="form-control" type="number" value="'.\Session()->get('carrinho_qtd')[$x].'">'
@@ -90,7 +90,7 @@ if(null !== \Session()->get('carrinho') && is_array(\Session()->get('carrinho'))
         echo '</td>';
 
         echo '<td style="text-align: center;" width="20%">'
-                . '<form style="padding-bottom: 5px;" method="get" action="/'.$igreja->url.'/removerProduto">'
+                . '<form style="padding-bottom: 5px;" method="get" action="'.route('igreja.removerProduto',['url'=>$igreja->url]).'">'
                     . '<input type="hidden" name="id" value="'.$produto->id.'">'
                     . '<input type="submit" value="Remover" class="btn btn-danger">'
                 . '</form>';

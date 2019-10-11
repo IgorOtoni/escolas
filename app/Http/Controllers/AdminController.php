@@ -2,6 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use DataTables;
+use App\TblIgreja;
+use App\TblConfiguracoes;
+use App\TblPerfisPermissoes;
+use App\TblPerfisIgrejasModulos;
+use App\TblIgrejasModulos;
+use App\TblModulo;
+use App\TblMenu;
+use App\TblSubMenu;
+use App\TblSubSubMenu;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Symfony\Component\HttpFoundation\Response;
+use Carbon\Carbon;
+use App\TblPerfil;
+use App\User;
+
 class AdminController extends Controller{
 
 	// IGREJAS CRUD ===================================================================================================
@@ -192,7 +209,8 @@ class AdminController extends Controller{
         $submenus = $retorno[1];
         $subsubmenus = $retorno[2];
         $menus_aplicativo = obter_menus_aplicativo_configuracao($igreja->id_configuracao);
-        return view('admin.igrejas.configuracoes', compact('igreja','modulos_igreja','menus','submenus','subsubmenus','menus_aplicativo'));
+        $modulos_aplicativo = obter_modulos_igreja_aplicativo($igreja);
+        return view('admin.igrejas.configuracoes', compact('igreja','modulos_igreja','modulos_aplicativo','menus','submenus','subsubmenus','menus_aplicativo'));
     }
 
     public function adicionarMenu(Request $request){
@@ -477,19 +495,32 @@ class AdminController extends Controller{
             $configuracao->custom_style = file_get_contents($request->custom_style);
         }
 
-        $count = TblIgreja::where("nome", "=", $igreja->nome)->where("id", "<>", $request->id)->count();
+        $count = TblIgreja::where("nome", "=", $igreja->nome)->where("id", "<>", $igreja->id)->count();
         if($count == 0){
-            $igreja->save();
+            $count_ = TblConfiguracoes::where("url", "=", $igreja->nome)->where("id_igreja", "<>", $igreja->id)->count();
+            if($count_ == 0){
 
-            $configuracao->save();
+                $igreja->save();
 
-            $notification = array(
-                'message' => 'Configurações da congregação alteradas com sucesso!', 
-                'alert-type' => 'success'
-            );
+                $configuracao->save();
 
-            return back()->with($notification);
+                $notification = array(
+                    'message' => 'Configurações da congregação alteradas com sucesso!', 
+                    'alert-type' => 'success'
+                );
 
+                return back()->with($notification);
+                
+            }else{
+
+                $notification = array(
+                    'message' => 'A URL informada já está na base de dados!', 
+                    'alert-type' => 'error'
+                );
+
+                return back()->with($notification);
+
+            }
         }else{
 
             $notification = array(
@@ -509,7 +540,7 @@ class AdminController extends Controller{
         $menu->ordem = $request->ordem;
         if($request->link == 1){ // modulo
             $modulo = TblModulo::find($request->modulo);
-            $menu->link = 'modulo-' . $modulo->rota;
+            $menu->link = /*'modulo-' .*/ $modulo->rota;
         }else if($request->link == 2){ // publicação
             $menu->link = 'publicacao-'.$request->publicacao;
         }else if($request->link == 3){ // evento
@@ -541,7 +572,7 @@ class AdminController extends Controller{
         $menu->ordem = $request->ordem;
         if($request->link == 1){ // modulo
             $modulo = TblModulo::find($request->modulo);
-            $menu->link = 'modulo-' . $modulo->rota;
+            $menu->link = /*'modulo-' .*/ $modulo->rota;
         }else if($request->link == 2){ // publicação
             $menu->link = 'publicacao-'.$request->publicacao;
         }else if($request->link == 3){ // evento
@@ -788,9 +819,9 @@ class AdminController extends Controller{
             return back()->with($notification);
         }
     }
-    // ================================================================================================================
+    // ==================================================================================================================
 
-    // USUARIOS CURDO =================================================================================================
+    // USUARIOS CRUD =================================================================================================
     public function usuarios()
     {
         return view('admin.usuarios.index');
@@ -799,12 +830,12 @@ class AdminController extends Controller{
     public function tbl_usuarios(){
         $usuarios = User::orderBy('nome', 'ASC');
         return DataTables::of($usuarios)->addColumn('action',function($usuarios){
-            return '<a href="/admin/usuarios/editarUsuario/'.$usuarios->id.'" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>'.'&nbsp'.
+            return '<a href="'.route('usuarios.editar',['id'=>$usuarios->id]).'" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>'.'&nbsp'.
             '<label title="Status do Usuário" class="switch"><input onClick="switch_status(this)" name="'.$usuarios->nome.'" class="status" id="'.$usuarios->id.'" type="checkbox" '.(($usuarios->status == 1) ? "checked" : "").'><span class="slider"></span></label>';
         })->addColumn('perfil',function($usuarios){
             return (TblPerfil::find($usuarios->id_perfil))->nome;
         })->addColumn('igreja',function($usuarios){
-            $perfil = TblPerfil::find($usuarios->id);
+            $perfil = TblPerfil::find($usuarios->id_perfil);
             if($perfil->id_igreja != null && $perfil->id_igreja != 1)
                 return (TblIgreja::find($perfil->id_igreja))->nome;
             else

@@ -15,11 +15,11 @@ class CreateTblProdutosFotosTable extends Migration
     {
         Schema::create('tbl_produtos_fotos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('foto');
             $table->bigInteger('id_produto')->unsigned();
             $table->foreign('id_produto')->references('id')->on('tbl_produtos');
             $table->timestamps();
         });
+        DB::statement('ALTER TABLE tbl_produtos_fotos ADD foto MEDIUMBLOB');
     }
 
     /**

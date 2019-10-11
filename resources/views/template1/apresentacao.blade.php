@@ -45,9 +45,9 @@
                     <div class="grid-item-inner">
                     <div class="media-box"> 
                         @if ($membro->foto != null)
-                            <img src="/carrega_imagem/250,250,membros,{{$membro->foto}}" alt=""> 
+                            <img width="250" height="250" src="{{'data:image;base64,'.base64_encode($membro->foto)}}" alt=""> 
                         @else
-                            <img src="/carrega_imagem/250,250,X,no-foto.png" alt=""> 
+                            <img src="{{ route('igreja.carrega_imagem',['largura'=>250,'altura'=>250,'pasta'=>'X','arquivo'=>'no-foto.png']) }}" alt=""> 
                         @endif
                     </div>
                     <div class="grid-content">

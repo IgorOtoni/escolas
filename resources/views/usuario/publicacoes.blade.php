@@ -3,10 +3,13 @@
 <!-- InputFilePTBR -->
 <link rel="stylesheet" href="{{asset('template_adm/bower_components/input.file.js/fileinput.min.css')}}">
 
+<!-- SummerNote -->
+<link href="{{asset('template_adm/bower_components/summernote/summernote-bs4.css')}}" rel="stylesheet">
+<script src="{{asset('template_adm/bower_components/summernote/summernote-bs4.min.js')}}"></script>
+
 <!-- CKEditor -->
-<script src="{{asset('template_adm/bower_components/ckeditor/ckeditor.js')}}"></script>
-<!-- CKFinder -->
-<script src="{{asset('template_adm/bower_components/ckeditor/ckfinder/ckfinder.js')}}"></script>
+<!--<script src="{{asset('template_adm/bower_components/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('template_adm/bower_components/ckeditor/ckfinder/ckfinder.js')}}"></script>-->
 <!-- InputFilePTBR -->
 <script src="{{asset('template_adm/bower_components/input.file.js/fileinput.js')}}"></script>
 <script src="{{asset('template_adm/bower_components/input.file.js/locales/pt-BR.js')}}"></script>
@@ -27,11 +30,11 @@
 
 <style>
 td.details-control {
-    background: url('/images/details_open.jpeg') no-repeat center center;
+    background: url({{asset('/images/details_open.jpeg')}}) no-repeat center center;
     cursor: pointer;
 }
 tr.shown td.details-control {
-    background: url('/images/details_close.jpeg') no-repeat center center;
+    background: url({{asset('/images/details_close.jpeg')}}) no-repeat center center;
 }
 </style>
 
@@ -140,14 +143,18 @@ $(function () {
 
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
-    var editor = CKEDITOR.replace('editor', {
+    /*var editor = CKEDITOR.replace('editor', {
         language: 'pt-br',
         //filebrowserBrowseUrl: '/template_adm/bower_components/ckeditor/ckfinder/ckfinder.html',
         filebrowserUploadUrl: '/template_adm/bower_components/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
         //filebrowserWindowWidth: '1000',
         //filebrowserWindowHeight: '700'
-    });
+    });*/
     //CKFinder.setupCKEditor( editor );
+
+    $('.summernote').summernote({
+        height: 500,
+    });
 })
 </script>
 @endpush
@@ -225,7 +232,7 @@ $(function () {
                 <div class="col-md-12">
                     <div class="form-group">
                         <label >Conteúdo da publicação</label>
-                        <textarea name="html" id="editor" class="form-control"></textarea>
+                        <textarea name="html" id="editor" class="form-control summernote"></textarea>
                     </div>
                 </div>
                 </div>

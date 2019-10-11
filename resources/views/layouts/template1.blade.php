@@ -25,6 +25,11 @@
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="{{asset('template_igreja/template-padrao/css/extralayers.css')}}" media="screen" />	
     <link rel="stylesheet" type="text/css" href="{{asset('template_igreja/template-padrao/plugins/rs-plugin/css/settings.css')}}" media="screen" />
+
+    <?php if($igreja->custom_style != null){ ?>
+        <style><?php echo $igreja->custom_style ?></style>
+    <?php } ?>
+    
 </head>
 <body>
     <div class="body"> 
@@ -34,7 +39,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-2 col-sm-2 col-xs-2">
-                    <h1 class="logo"> <a href="/{{$igreja->url}}/"><img style="witdh: 100px; height: 50px;" src="{{asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))}}" alt="Logo"></a> </h1>
+                    <h1 class="logo"> <a href="{{route('igreja.index', ['url' => $igreja->url])}}"><img style="witdh: 100px; height: 50px;" src="{{(($igreja->logo != null) ? 'data:image;base64,'.base64_encode($igreja->logo) : '/storage/no-logo.jpg' )}}" alt="Logo"></a> </h1>
                     </div>
                     <div class="col-md-10 col-sm-8 col-xs-8">
                         <ul class="top-navigation pull-right">
@@ -88,7 +93,7 @@
             <div class="container">
             <div class="row">
                 <div class="copyrights-col-left col-md-6 col-sm-6">
-                <p><?php echo strip_tags($igreja->nome ?> - <b> powered by hotsystems</b></p>
+                <p><?php echo strip_tags($igreja->nome) ?> - <b> powered by hotsystems</b></p>
                 </div>
                 <div class="copyrights-col-right col-md-6 col-sm-6">
                 <div class="social-icons"> 
@@ -120,7 +125,7 @@
     </div>
     
     <!-- Jquery Library Call -->
-    <script src="{{asset('template_igreja/template-padrao/js/jquery-2.0.0.min.js')}}"></script> 
+    <script src="{{asset('template_igreja/template-padrao/js/jquery.js')}}"></script> 
     <!-- PrettyPhoto Plugin --> 
     <script src="{{asset('template_igreja/template-padrao/plugins/prettyphoto/js/prettyphoto.js')}}"></script> 
     <!-- Plugins -->

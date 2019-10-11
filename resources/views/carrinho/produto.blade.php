@@ -11,7 +11,11 @@
 	<div class="panel-body">
 		<div class="row">
 		<div class="col-md-12">
-			<p><a href="/storage/produtos/{{ $produto->icone }}"><img class="img-thumbnail" width="100%" src="/storage/produtos/{{ $produto->icone }}"></a></p>
+            <center>
+    			<a href="{{ 'data:image;base64,'.base64_encode($produto->icone) }}">
+                    <img class="img-thumbnail" width="40%" src="{{ 'data:image;base64,'.base64_encode($produto->icone) }}">
+                </a>
+            </center>
 		</div>
 		<div class="col-md-12">
 			<p><strong>Valor:</strong> <span class='label label-success'>R$ {{ str_replace('.', ',', $produto->valor) }}</span></p>
@@ -42,7 +46,7 @@
 
         <div class="col-md-12">
 	        <?php if($botaoAdd == true){
-	            echo '<center><form method="get" action="/'.$igreja->url.'/adicionarProduto">'
+	            echo '<center><form method="get" action="'.route('igreja.adicionarProduto',['url'=>$igreja->url]).'">'
 	                    . '<div class="form_settings">'
 	                    	. '<input type="hidden" name="id" value="'.$produto->id.'">'
 	                        . '<input class="btn btn-sm btn-primary" type="submit" value="Acidionar ao carrinho">'
@@ -70,7 +74,7 @@ echo "<table class='table'>";
 
         echo '<td>';
         echo '<center>';
-        echo '<a href="/storage/fotos-produtos/'.$foto->foto.'"><img class="img-thumbnail" width="175px" src="/storage/fotos-produtos/'.$foto->foto.'"></a>';
+        echo '<a href="'.'data:image;base64,'.base64_encode($foto->foto).'"><img class="img-thumbnail" width="175px" src="'.'data:image;base64,'.base64_encode($foto->foto).'"></a>';
         echo '</center>';
         echo '</td>';
 

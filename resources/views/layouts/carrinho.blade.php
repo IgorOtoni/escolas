@@ -6,7 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<title><?php $igreja->nome ?></title>
+		<title><?php echo $igreja->nome ?></title>
 
 		<!-- Bootstrap 3.3.7 -->
   		<link rel="stylesheet" href="{{asset('template_adm/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
@@ -61,15 +61,18 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a href="/{{ $igreja->url }}" class="navbar-brand"><?php $igreja->nome ?></a>
+		          	<!--<a href="{{route('igreja.index',['url'=>$igreja->url])}}" class="navbar-brand"><?php echo $igreja->nome ?></a>-->
+			    	<a class="navbar-brand" href="{{route('igreja.index',['url'=>$igreja->url])}}">
+			    		<img style="border-radius: 5px; width: 100%; height: 100%;" src="{{'data:image;base64,'.base64_encode($igreja->logo)}}">
+			    	</a>
 		        </div>
 			    <div id="navbar" class="navbar-collapse collapse">
 				    <ul class="nav navbar-nav">
 				        <?php
 				        if(!isset(\Auth::user()->id_perfil)){
 				            ?>
-				            <li><a href="/{{ $igreja->url }}/produtos">Produtos</a></li>
-				            <li><a href="/{{ $igreja->url }}/carrinho">Carrinho</a></li>
+				            <li><a href="{{route('igreja.produtos',['url'=>$igreja->url])}}">Produtos</a></li>
+				            <li><a href="{{route('igreja.carrinho',['url'=>$igreja->url])}}">Carrinho</a></li>
 				            <form data-toggle="validator" method="post" action="{{ route('autenticar_', $igreja->url) }}" class="navbar-form navbar-right">
 			            	@csrf
 					            <div class="form-group">
@@ -84,8 +87,8 @@
 				            <?php
 				        }else{
 				            ?>
-				            <li><a href="/{{ $igreja->url }}/produtos">Produtos</a></li>
-				            <li><a href="/{{ $igreja->url }}/carrinho">Carrinho</a></li>
+				            <li><a href="{{route('igreja.produtos',['url'=>$igreja->url])}}">Produtos</a></li>
+				            <li><a href="{{route('igreja.carrinho',['url'=>$igreja->url])}}">Carrinho</a></li>
 				            <?php
 				        }
 				        ?>
@@ -98,10 +101,10 @@
 				      		<li class="dropdown">
 					      		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Minha conta <span class="caret"></span></a>
 					      		<ul class="dropdown-menu" role="menu">
-						        	<li><a href="/{{ $igreja->url }}/compras">Minha compras</a></li>
-						        	<li><a href="/{{ $igreja->url }}/conta">Meus dados</a></li>
+						        	<li><a href="{{ route('comprador.compras',['url'=>$igreja->url]) }}">Minha compras</a></li>
+						        	<li><a href="{{ route('comprador.conta',['url'=>$igreja->url]) }}">Meus dados</a></li>
 						        	<li class="divider"></li>
-						        	<li><a href="/{{ $igreja->url }}/desativar_conta">Desativar conta</a></li>
+						        	<li><a href="{{ route('comprador.desativar_conta',['url'=>$igreja->url]) }}">Desativar conta</a></li>
 						        	<li class="divider"></li>
 						        	<li><a href="{{ route('logout') }}">Sair</a></li>
 					        	</ul>
@@ -136,7 +139,12 @@
 					            <!--<h4>{{ $igreja->nome }}</h4>-->
 					            <div class="row">
 									<div class="col-md-12">
-										<img width="100%" class="img-thumbnail" src="{{asset('/storage/igrejas/'.$igreja->logo)}}">
+										<center>
+										<a href="{{route('igreja.index',['url'=>$igreja->url])}}">
+										<h3>{{$igreja->nome}}</h3>
+										<img width="100%" class="img-thumbnail" src="{{'data:image;base64,'.base64_encode($igreja->logo)}}">
+										</a>
+										</center>
 									</div>
 								</div>
 				          	</div>
@@ -150,7 +158,7 @@
 	    	<hr>
 
 	      	<footer>
-		        <p><?php $igreja->nome ?> - <b> powered by hotsystems</b></p>
+		        <p><?php echo $igreja->nome ?> - <b> powered by hotsystems</b></p>
 	      	</footer>
 
 		</div>

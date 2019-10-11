@@ -13,7 +13,7 @@ Route::post('/{url}/logout', 'Auth\LoginController@logout')->name('logout_');
 Route::get('/formulario', 'PlataformaController@formulario')->name('plataforma.formulario');
 Route::post('/cadastro', 'PlataformaController@cadastro')->name('plataforma.incluirIgreja');
 
-Route::get('/congregacoes', 'PlataformaController@eglise')->name('plataforma.congregacoes');
+Route::get('/congregacoes', 'PlataformaController@gratunos')->name('plataforma.congregacoes');
 Route::get('/filtrarIgreja', 'PlataformaController@filtrarIgreja')->name('plataforma.filtrarIgreja');
 
 Route::get('/', 'PlataformaController@index')->name('plataforma.home');
@@ -53,7 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
         // CRUD IGREJAS ===============================================================================================
-        Route::get('igrejas/igrejas', 'AdminController@igrejas')
+        Route::get('igrejas', 'AdminController@igrejas')
             ->name('igrejas');
         Route::get('igrejas/tbl_igrejas', 'AdminController@tbl_igrejas')
             ->name('igrejas.tbl_igrejas');
@@ -94,7 +94,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('igrejas/adicionarMenuAplicativo', 'AdminController@adicionarMenuAplicativo')
             ->name('igrejas.adicionarMenuAplicativo');
         Route::post('igrejas/editarMenuAplicativo', 'AdminController@editarMenuAplicativo')
-            ->name('igrejas.editarMenu');
+            ->name('igrejas.editarMenuAplicativo');
         Route::get('igrejas/excluirMenuAplicativo/{id}', 'AdminController@excluirMenuAplicativo')
             ->name('igrejas.excluirMenuAplicativo');
         // =========================================================================================================== 
@@ -129,7 +129,7 @@ Route::group(['middleware' => 'auth'], function () {
             ->name('usuarios.tbl_usuarios');
         Route::get('usuarios/switchStatus/{id}', 'AdminController@switchStatusUsuario')
             ->name('usuarios.switchStatus');
-        Route::get('usuarios/editarUsuario/{id}', 'AdminController@eitarUsuario')
+        Route::get('usuarios/editarUsuario/{id}', 'AdminController@editarUsuario')
             ->name('usuarios.editar');
         Route::post('usuarios/atualizar', 'AdminController@autalizarusuario')
             ->name('usuarios.atualizar');
@@ -137,9 +137,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         // CONTA ======================================================================================================
         Route::get('usuarios/conta', 'AdminController@conta')
-            ->name('account');
+            ->name('admin.account');
         Route::post('usuarios/atualizarConta', 'AdminController@atualizarConta')
-            ->name('account.atualizar');
+            ->name('admin.account.atualizar');
         // ============================================================================================================
 
         Route::get('/home', 'HomeController@index')
@@ -447,8 +447,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 // FUNCIONALIDADES BASICAS ============================================================================================
-Route::get('/{url}', 'IgrejaController@index')
-    ->name('igreja.index');
+/*Route::get('/{url}', 'IgrejaController@index')
+    ->name('igreja.index');*/
 Route::get('/{url}/home/', 'IgrejaController@index')
     ->name('igreja.index');
 Route::get('/{url}/contato', 'IgrejaController@contato')
@@ -525,4 +525,45 @@ Route::get('/{url}/alterar_conta', 'IgrejaController@alterar_conta')
     ->name('comprador.alterar_conta');
 Route::get('/{url}/compras', 'IgrejaController@compras')
     ->name('comprador.compras');
+// ====================================================================================================================
+
+// API ================================================================================================================
+Route::get('/api/noticias/{url}', 'ApiController@noticias')
+    ->name('api.noticias');
+Route::get('/api/noticia/{url}/{id}', 'ApiController@noticia')
+    ->name('api.noticia');
+Route::get('/api/banners/{url}', 'ApiController@banners')
+    ->name('api.banners');
+Route::get('/api/banner/{url}/{id}', 'ApiController@banner')
+    ->name('api.banner');
+Route::get('/api/apresentacao/{url}', 'ApiController@apresentacao')
+    ->name('api.apresentacao');
+Route::get('/api/galeria/{url}/{id}', 'ApiController@galeria')
+    ->name('api.galeria');
+Route::get('/api/galerias/{url}', 'ApiController@galerias')
+    ->name('api.galerias');
+Route::get('/api/sermoes/{url}', 'ApiController@sermoes')
+    ->name('api.sermoes');
+Route::get('/api/sermao/{url}/{id}', 'ApiController@sermao')
+    ->name('api.sermao');
+Route::get('/api/eventos/{url}', 'ApiController@eventos')
+    ->name('api.eventos');
+Route::get('/api/evento/{url}/{id}', 'ApiController@evento')
+    ->name('api.evento');
+Route::get('/api/eventosfixos/{url}', 'ApiController@eventosfixos')
+    ->name('api.eventosfixos');
+Route::get('/api/eventofixo/{url}/{id}', 'ApiController@eventofixo')
+    ->name('api.eventofixo');
+Route::get('/api/publicacoes/{url}', 'ApiController@publicacoes')
+    ->name('api.publicacoes');
+Route::get('/api/publicacao/{url}/{id}', 'ApiController@publicacao')
+    ->name('api.publicacao');
+Route::get('/api/produtos/{url}', 'ApiController@produtos')
+    ->name('api.produtos');
+Route::post('/api/login/{url}', 'ApiController@login')
+    ->name('api.login');
+Route::get('/api/sites/', 'ApiController@sites')
+    ->name('api.sites');
+Route::get('/api/site/{url}', 'ApiController@site')
+    ->name('api.site');
 // ====================================================================================================================

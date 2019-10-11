@@ -115,7 +115,7 @@ $(function () {
     'processing': true,
     'autoWidth': false,
     //'serverSide': false,
-    'ajax': '/admin/usuarios/tbl_usuarios',
+    'ajax': '{{route('usuarios.tbl_usuarios')}}',
     'columns': [
             {
               "className":      'details-control',

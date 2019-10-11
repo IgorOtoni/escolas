@@ -6,7 +6,7 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/{{$igreja->url}}/">Home</a></li>
+        <li><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
         <li class="active">Vídeos</li>
         </ol>
     </div>
@@ -43,7 +43,10 @@
                     <header class="post-title">
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
-                        <h3><a href="/{{$igreja->url}}/sermao/{{$sermao->id}}">{{$sermao->nome}}</a></h3>
+                        <h3>
+                            <a href="{{route('igreja.sermao', ['url'=>$igreja->url,'id'=>$sermao->id])}}"><?php echo $sermao->nome ?>
+                            </a>
+                        </h3>
                         <span class="meta-data"><i class="fa fa-calendar"></i> {{\Carbon\Carbon::parse($sermao->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}} </div>
                     </div>
                     </header>
@@ -51,7 +54,7 @@
                     <div class="row">
                         <div class="col-md-5"> <iframe frameborder="0" src="{{$sermao->link}}"></iframe> </div>
                         <div class="col-md-7">
-                        <p>{{$sermao->descricao}}</p>
+                        <p><?php echo $sermao->descricao ?></p>
                         <p><a href="{{$sermao->link}}" class="btn btn-primary">Assistir vídeo <i class="fa fa-long-arrow-right"></i></a></p>
                         </div>
                     </div>

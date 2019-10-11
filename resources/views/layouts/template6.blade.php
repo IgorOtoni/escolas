@@ -26,6 +26,11 @@
 <!-- SCRIPTS
   ================================================== -->
 <script src="{{asset('template_igreja/template-branco/js/modernizr.js')}}"></script><!-- Modernizr -->
+
+<?php if($igreja->custom_style != null){ ?>
+    <style><?php echo $igreja->custom_style ?></style>
+<?php } ?>
+
 </head>
 <body class="header-style2">
 <!--[if lt IE 7]>

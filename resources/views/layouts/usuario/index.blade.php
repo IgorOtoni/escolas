@@ -13,7 +13,7 @@ $igreja = obter_dados_igreja_id($perfil->id_igreja);
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Language" content="pt-br">
-  <title><?php $igreja->nome ?></title>
+  <title><?php echo $igreja->nome ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -106,10 +106,10 @@ $igreja = obter_dados_igreja_id($perfil->id_igreja);
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="/storage/{{($igreja->logo != null) ? "igrejas/" . $igreja->logo : "no-logo.jpg"}}" class="img" alt="User Image">
+          <img src="{{($igreja->logo != null) ? 'data:image;base64,'.base64_encode($igreja->logo) : '/storage/no-logo.jpg'}}" class="img" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><?php $igreja->nome ?></p>
+          <p><?php echo $igreja->nome ?></p>
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -148,22 +148,22 @@ $igreja = obter_dados_igreja_id($perfil->id_igreja);
               </a>
               <ul class="treeview-menu">
                 <li>
-                  <a href="/usuario/categorias">
+                  <a href="{{route('usuario.categorias')}}">
                     <span>Categorias</span>
                   </a>
                 </li>
                 <li>
-                  <a href="/usuario/ofertas">
+                  <a href="{{route('usuario.ofertas')}}">
                     <span>Ofertas</span>
                   </a>
                 </li>
                 <li>
-                  <a href="/usuario/produtos">
+                  <a href="{{route('usuario.produtos')}}">
                     <span>Produtos</span>
                   </a>
                 </li>
                 <li>
-                  <a href="/usuario/vendas">
+                  <a href="{{route('usuario.vendas')}}">
                     <span>Vendas</span>
                   </a>
                 </li>
@@ -206,8 +206,19 @@ $igreja = obter_dados_igreja_id($perfil->id_igreja);
     $('.sidebar-menu').tree();
 
     url = window.location.href;
+    achou = false;
     $('li a').each(function(index) {
-      if($(this).attr('href') === url || url.indexOf($(this).attr('href')) >= 0){
+      if($(this).attr('href') === url){
+        $(this).parent().addClass('active');
+        if($(this).parent().parent().parent().is( "li" )){
+          $(this).parent().parent().parent().addClass('active menu-open');
+        }
+        achou = true;
+      }
+    });
+
+    $('li a').each(function(index) {
+      if($(this).attr('href') === url && !achou){
         $(this).parent().addClass('active');
         if($(this).parent().parent().parent().is( "li" )){
           $(this).parent().parent().parent().addClass('active menu-open');

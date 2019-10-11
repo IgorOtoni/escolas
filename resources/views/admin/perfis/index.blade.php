@@ -32,7 +32,7 @@ function switch_status(comp){
   var id = $(comp).prop('id');
   var nome = $(comp).prop('name');
   $.ajax({
-    url: '/admin/perfis/switchStatus/'+id,
+    url: '{{route('perfis.switchStatus',['id'=>''])}}/'+id,
     type: 'GET'
   });
   if($(comp).prop('checked') == true){
@@ -76,7 +76,7 @@ $("#igreja").on("change", function(){
 
   if(id_igreja > 0){
     $.ajax({
-        url: '/admin/igrejas/carregarModulos/'+id_igreja,
+        url: '{{route('igrejas.carregarModulos',['id'=>''])}}/'+id_igreja,
         type: 'get',
         dataType: 'json',
         success: function(response){
@@ -182,7 +182,7 @@ $(function () {
     'processing': true,
     'autoWidth': false,
     //'serverSide': false,
-    'ajax': '/admin/perfis/tbl_perfis',
+    'ajax': '{{route('perfis.tbl_perfis')}}',
     'columns': [
             {
               "className":      'details-control',

@@ -18,6 +18,10 @@
 	<link rel="stylesheet" href="{{asset('template_igreja/template-azul/css/prettyPhoto.css')}}" /><!-- HTML5 Shiv -->
     <link rel="stylesheet" href="{{asset('template_igreja/template-azul/css/flexnav.css')}}" />
     <script src="{{asset('template_igreja/template-azul/js/modernizr.custom.js')}}"></script>
+
+    <?php if($igreja->custom_style != null){ ?>
+        <style><?php echo $igreja->custom_style ?></style>
+    <?php } ?>
 	
 </head>
 <body class="t-blue t-pattern-1 kids-front-page t-menu-1 t-header-1 t-text-1">

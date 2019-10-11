@@ -21,7 +21,7 @@ class Tbl_Igrejas_Seeder extends Seeder
             'rua' => 'Avenida Pedro Nolasco',
             'num'=> '609',
             'cep'=> '35.170-300',
-            'logo'=> file_get_contents(getcwd()."\\public\\storage\\igrejas\\logo-igreja-1.jpeg"),
+            'logo'=> file_get_contents(getcwd()."\\public\\storage\\igrejas\\logo-igreja-1.png"),
             'status'=> true,
         ]);
     }

@@ -36,6 +36,11 @@
     <link rel="stylesheet" href="{{asset('template_igreja/template-padrao-3/css/skins/skin-responsive.css')}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset('template_igreja/template-padrao-3/css/slider-style.css')}}" type="text/css" media="all" />
 	<link rel="stylesheet" href="{{asset('template_igreja/template-padrao-3/css/custom-style.css')}}" type="text/css" media="all" />
+
+    <?php if($igreja->custom_style != null){ ?>
+        <style><?php echo $igreja->custom_style ?></style>
+    <?php } ?>
+    
 </head>
 
 @yield('content')

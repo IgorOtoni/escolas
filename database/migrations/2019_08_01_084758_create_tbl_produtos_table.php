@@ -17,7 +17,6 @@ class CreateTblProdutosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome');
             $table->text('descricao')->nullable();
-            $table->string('icone');
             $table->boolean('situacao');
             $table->float('valor', 10, 2);
             $table->bigInteger('id_igreja')->unsigned();
@@ -31,6 +30,7 @@ class CreateTblProdutosTable extends Migration
 
             $table->timestamps();
         });
+        DB::statement('ALTER TABLE tbl_produtos ADD icone MEDIUMBLOB');
     }
 
     /**

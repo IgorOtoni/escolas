@@ -1165,7 +1165,6 @@ body.boxed .body .site-header, body.boxed .body .main-menu-wrapper{
 .flexslider {
 	margin: 0;
 	padding: 0;
-	background:url(../images/loader.gif) no-repeat scroll center center;
 }
 .flexslider .slides > li {
 	display: none;

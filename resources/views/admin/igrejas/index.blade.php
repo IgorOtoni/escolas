@@ -41,7 +41,7 @@ function switch_status(comp){
   var id = $(comp).prop('id');
   var nome = $(comp).prop('name');
   $.ajax({
-    url: '/admin/igrejas/switchStatus/'+id,
+    url: '{{route('igrejas.switchStatus',['id'=>''])}}/'+id,
     type: 'GET'
   });
   if($(comp).prop('checked') == true){

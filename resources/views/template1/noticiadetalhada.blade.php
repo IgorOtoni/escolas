@@ -12,8 +12,8 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/{{$igreja->url}}/">Home</a></li>
-        <li><a href="/{{$igreja->url}}/noticias">Notícias</a></li>
+        <li><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
+        <li><a href="{{route('igreja.noticias',['url'=>$igreja->url])}}">Notícias</a></li>
         <li class="active">Notícia</li>
         </ol>
     </div>
@@ -26,7 +26,7 @@
 <div class="container">
     <div class="row">
     <div class="col-md-12">
-        <h1>{{$noticia->nome}}</h1>
+        <h1><?php echo $noticia->nome ?></h1>
     </div>
     </div>
 </div>
@@ -40,7 +40,7 @@
                 <!-- Post Details Area -->
                 <div class="single-post-details-area">
                     <div class="post-content">
-                        <p>{{$noticia->descricao}}</p>
+                        <p><?php echo $noticia->descricao ?></p>
                         <ul class="info-table">
                         <li><i class="fa fa-calendar" id="dth_publicacao"></i> Publicada {{\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()}}</li>
                         <?php
@@ -55,7 +55,7 @@
                     </div>
                     <div class="post-thumbnail mb-30">
                         @if ($noticia->foto != null)
-                        <img src="/storage/{{($noticia->foto != null) ? "noticias/".$noticia->foto : "no-news.jpg"}}" alt="">
+                        <img src="{{($noticia->foto != null) ? 'data:image;base64,'.base64_encode($noticia->foto) : asset('/storage/no-news.jpg')}}" alt="">
                         @endif
                     </div>
                 </div>

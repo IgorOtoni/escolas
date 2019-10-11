@@ -62,7 +62,7 @@ $(function(){
         allowedFileExtensions: ["jpeg", "jpg", "png", "gif"],
         initialPreview: [
             <?php if($evento->foto != null){ ?>
-                "{{'/storage/timeline/'.$evento->foto}}",
+                "{{'data:image;base64,'.base64_encode($evento->foto)}}",
             <?php } ?>
         ],
         deleteUrl: "{{'/storage'}}",
@@ -71,7 +71,7 @@ $(function(){
         //initialPreviewFileType: "image",
         initialPreviewConfig: [
             <?php if($evento->foto != null){ ?>
-                {caption: "{{$evento->foto}}", extra: {id: {{$evento->id}}, foto: "{{$evento->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirFotoEvento", key: 1},
+                {caption: "{{$evento->foto}}", extra: {id: {{$evento->id}}, foto: "{{$evento->foto}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "{{route('usuario.excluirFotoEvento')}}", key: 1},
             <?php } ?>
         ],
         overwriteInitial: true,
@@ -222,7 +222,7 @@ $(function(){
             </div>
         </div>
         <div class="box-footer">
-            <a href="/usuario/eventos" class="btn btn-warning pull-left">Cancelar</a>
+            <a href="{{route('usuario.eventos')}}" class="btn btn-warning pull-left">Cancelar</a>
             <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
         </div>
     </div>

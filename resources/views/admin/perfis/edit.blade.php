@@ -18,7 +18,7 @@ $("#igreja").on("change", function(){
 
     if(id_igreja > 0){
         $.ajax({
-            url: '/admin/igrejas/carregarModulos/'+id_igreja,
+            url: '{{route('igrejas.carregarModulos',['id'=>''])}}/'+id_igreja,
             type: 'get',
             dataType: 'json',
             success: function(response){
@@ -79,7 +79,7 @@ $(function(){
         ?>
 
         $.ajax({
-            url: '/admin/igrejas/carregarModulos/'+{{$perfil->id_igreja}},
+            url: '{{route('igrejas.carregarModulos',['id'=>''])}}/'+{{$perfil->id_igreja}},
             type: 'get',
             dataType: 'json',
             success: function(response){
@@ -190,7 +190,7 @@ $(function(){
                 </div>
             </div>
             <div class="box-footer">
-                <a href="/admin/perfis" class="btn btn-warning pull-left">Cancelar</a>
+                <a href="{{route('perfis')}}" class="btn btn-warning pull-left">Cancelar</a>
                 <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
             </div>
         </div>

@@ -20,10 +20,15 @@
 	<link rel="stylesheet" href="{{asset('/template_igreja/template-padrao-2/style.css')}}">
 
 	<!-- Cusom css -->
-   <link rel="stylesheet" href="{{asset('/template_igreja/template-padrao-2/css/custom.css')}}">
+   	<link rel="stylesheet" href="{{asset('/template_igreja/template-padrao-2/css/custom.css')}}">
 
 	<!-- Modernizer js -->
 	<script src="{{asset('/template_igreja/template-padrao-2/js/vendor/modernizr-3.5.0.min.js')}}"></script>
+
+	<?php if($igreja->custom_style != null){ ?>
+        <style><?php echo $igreja->custom_style ?></style>
+    <?php } ?>
+	
 </head>
 <body>
 	<!--[if lte IE 9]>

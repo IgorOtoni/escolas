@@ -22,7 +22,7 @@ $(function(){
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/{{$igreja->url}}">Home</a></li>
+        <li><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
         <li class="active">Contato</li>
         </ol>
     </div>
@@ -64,7 +64,7 @@ $(function(){
                     </div>
                     <div class="row">
                     <h2>Envie uma mensagem</h2>
-                    <form method="get" data-toggle="validator" id="contactform" name="contactform" action="/{{$igreja->url}}/enviaContato">
+                    <form method="get" data-toggle="validator" id="contactform" name="contactform" action="{{route('igreja.enviaContato',['url'=>$igreja->url])}}">
                         @csrf
                         <div class="col-md-6 margin-15">
                         <div class="form-group has-feedback">

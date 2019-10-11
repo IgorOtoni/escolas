@@ -196,7 +196,7 @@ $(function(){
                             
         </div>
         <div class="box-footer">
-            <a href="/usuario/vendas" class="btn btn-warning pull-left">Cancelar</a>
+            <a href="{{route('usuario.vendas')}}" class="btn btn-warning pull-left">Cancelar</a>
             <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
         </div>
         </div>

@@ -19,11 +19,11 @@
 
 <style>
 td.details-control {
-    background: url('/images/details_open.jpeg') no-repeat center center;
+    background: url({{asset('/images/details_open.jpeg')}}) no-repeat center center;
     cursor: pointer;
 }
 tr.shown td.details-control {
-    background: url('/images/details_close.jpeg') no-repeat center center;
+    background: url({{asset('/images/details_close.jpeg')}}) no-repeat center center;
 }
 </style>
 
@@ -32,7 +32,7 @@ function switch_status(comp){
   var id = $(comp).prop('id');
   var nome = $(comp).prop('name');
   $.ajax({
-    url: '/usuario/switchStatusUsuario/'+id,
+    url: '{{route('usuario.switchStatusUsuario', ['id'=>''])}}/'+id,
     type: 'GET'
   });
   if($(comp).prop('checked') == true){
@@ -111,7 +111,7 @@ $(function () {
     'processing': true,
     'autoWidth': false,
     //'serverSide': false,
-    'ajax': '/usuario/tbl_usuarios',
+    'ajax': '{{route('usuario.tbl_usuarios')}}',
     'columns': [
             {
             "className":      'details-control',

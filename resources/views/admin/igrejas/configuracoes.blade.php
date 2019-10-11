@@ -28,14 +28,14 @@ $(function(){
 
     $('.select2').select2();
 
-    $('input[type=file]').fileinput({
+    $('input[name=logo]').fileinput({
         language: "pt-BR",
         //minImageCount: 0,
         //maxImageCount: 1,
         allowedFileExtensions: ["jpeg", "jpg", "png", "gif"],
         <?php if($igreja->logo != null){ ?>
         initialPreview: [
-            "{{'data:image;base64,'.base64_encode($igreja->logo})}",
+            "{{'data:image;base64,'.base64_encode($igreja->logo)}}"
         ],
         <?php } ?>
         deleteUrl: "{{'/storage'}}",
@@ -44,7 +44,7 @@ $(function(){
         //initialPreviewFileType: "image",
         <?php if($igreja->logo != null){ ?>
         initialPreviewConfig: [
-            {caption: "{{$igreja->logo}}", extra: {id: {{$igreja->id}}, logo: "{{$igreja->logo}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/admin/igrejas/excluirLogo", key: 1},
+            {caption: "{{$igreja->logo}}", extra: {id: {{$igreja->id}}, logo: "{{$igreja->logo}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "{{route('igrejas.excluirLogo')}}", key: 1},
         ],
         <?php } ?>
         //overwriteInitial: false,
@@ -1214,7 +1214,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
             <div class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Url</label>
-                <input name="url" type="text" class="form-control" placeholder="Url" value="{{$igreja->url}}" required disabled>
+                <input name="url" type="text" class="form-control" placeholder="Url" value="{{$igreja->url}}" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
                 </div>
@@ -2414,7 +2414,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    @foreach ($modulos_igreja as $modulo)
+                    @foreach ($modulos_aplicativo as $modulo)
                         @if (!$modulo->gerencial)
                             <option value="{{$modulo->id}}">{{$modulo->nome}}</option>
                         @endif
@@ -2573,7 +2573,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    @foreach ($modulos_igreja as $modulo)
+                    @foreach ($modulos_aplicativo as $modulo)
                         @if (!$modulo->gerencial)
                             <option value="{{$modulo->id}}">{{$modulo->nome}}</option>
                         @endif

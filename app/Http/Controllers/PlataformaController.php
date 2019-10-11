@@ -18,23 +18,23 @@ use App\Mail\SendMailuser;
 class PlataformaController extends Controller
 {
     public function index(){
-        return view('eglise.index');
+        return view('gratunos.index');
     }
 
-    public function eglise()
+    public function gratunos()
     {
         $igrejas_e_configuracoes = \DB::table('tbl_igrejas')->leftJoin('tbl_configuracoes','tbl_igrejas.id','=','tbl_configuracoes.id_igreja')->paginate(6);
-        return view('eglise.igrejas', compact('igrejas_e_configuracoes'));
+        return view('gratunos.igrejas', compact('igrejas_e_configuracoes'));
     }
 
     public function filtrarIgreja(Request $request)
     {
         $igrejas_e_configuracoes = \DB::table('tbl_igrejas')->where('tbl_igrejas.nome','like', '%'.$request->nome.'%')->leftJoin('tbl_configuracoes','tbl_igrejas.id','=','tbl_configuracoes.id_igreja')->paginate(6);
-        return view('eglise.igrejas', compact('igrejas_e_configuracoes'));
+        return view('gratunos.igrejas', compact('igrejas_e_configuracoes'));
     }
 
     public function formulario(){
-        return view('eglise.formulario');
+        return view('gratunos.formulario');
     }
 
     public function cadastro(Request $request){
@@ -49,7 +49,7 @@ class PlataformaController extends Controller
         $igreja->bairro = $request->bairro;
         $igreja->estado = $request->estado;
         $igreja->telefone = $request->telefone;
-        $igreja->logo = file_get_contents($request->file($logo));
+        $igreja->logo = file_get_contents($request->file('logo'));
         $igreja->email = $request->email;
         $igreja->status = true;
         
@@ -126,12 +126,12 @@ class PlataformaController extends Controller
                 $configuracao->save();
 
                 // Configuração dos menus ====================================================
-                $menu = new TblMenu();
+                /*$menu = new TblMenu();
                 $menu->id_configuracao = $configuracao->id;
                 $menu->nome = "Eduno";
                 $menu->link = "http://www.eduno.com.br/";
                 $menu->ordem = 1;
-                $menu->save();
+                $menu->save();*/
 
                 $menu = new TblMenu();
                 $menu->id_configuracao = $configuracao->id;
@@ -251,7 +251,7 @@ class PlataformaController extends Controller
                     'alert-type' => 'success'
                 );
 
-                return redirect($configuracao->url)->with($notification);
+                return redirect(route('igreja.index',['url'=>$configuracao->url]))->with($notification);
             }else{
                 $notification = array(
                     'message' => 'Já existe uma escola com essa URL, por favor escolha outra URL.', 
