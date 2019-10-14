@@ -7,7 +7,7 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/{{$igreja->url}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Vídeos</li>
                     </ol>
                 </nav>
@@ -47,7 +47,7 @@
                         <iframe frameborder="0" src="{{$sermao->link}}"></iframe>
                         <!--</div>-->
                         <div class="sermons-content">
-                            <a href="/{{$igreja->url}}/sermao/{{$sermao->id}}"><h4>{{$sermao->nome}}</h4></a>
+                            <a href="{{route('igreja.sermao', ['url'=>$igreja->url,'id'=>$sermao->id])}}"><h4>{{$sermao->nome}}</h4></a>
                             <div class="sermons-meta-data">
                                 <p><i class="fa fa-tag" aria-hidden="true"></i> {{$sermao->descricao}}</p>
                                 <p><i class="fa fa-clock-o" aria-hidden="true"></i> {{\Carbon\Carbon::parse($sermao->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}</p>

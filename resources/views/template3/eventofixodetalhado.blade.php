@@ -34,7 +34,7 @@
                         </div>
                         <div class="post-thumbnail mb-30">
                             @if ($eventofixo->foto != null)
-                            <img src="/storage/{{($eventofixo->foto != null) ? "eventos/".$eventofixo->foto : "no-event.jpg"}}" alt="">
+                            <img src="{{($eventofixo->foto != null) ? 'data:image;base64,'.base64_encode($eventofixo->foto) : asset('/storage/no-event.jpg')}}" alt="">
                             @endif
                         </div>
                     </div>

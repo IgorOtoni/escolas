@@ -4,7 +4,7 @@
 @endpush
 @section('content')
 <!-- ##### Breadcumb Area Start ##### -->
-<div class="breadcumb-area bg-img" style="background-image: url({{asset('storage/no-news.jpg')}});">
+<div class="breadcumb-area bg-img" style="background-image: url({{asset('/storage/no-news.jpg')}});">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12 col-md-6">
@@ -41,7 +41,7 @@
                         </div>
                         <div class="post-thumbnail mb-30">
                             @if ($noticia->foto != null)
-                            <img src="/storage/{{($noticia->foto != null) ? "noticias/".$noticia->foto : "no-news.jpg"}}" alt="">
+                            <img src="{{($noticia->foto != null) ? 'data:image;base64,'.base64_encode($noticia->foto) : asset('/storage/no-news.jpg')}}" alt="">
                             @endif
                         </div>
                     </div>

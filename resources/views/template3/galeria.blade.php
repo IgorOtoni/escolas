@@ -1,29 +1,6 @@
 @extends('layouts.template3')
 @push('script')
-<script>
-$('#modal-galeria').on('hide.bs.modal', function (event) {
-    var button = $(event.relatedTarget) ;
 
-    var modal = $(this);
-
-    //modal.find('.modal-content #nome').html("");
-    //modal.find('.modal-content #descricao').html("");
-    modal.find('.modal-content #foto').show();
-});
-
-$('#modal-galeria').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) ;
-    //var nome = button.data('nome');
-    //var descricao = button.data('descricao');
-    var foto = button.data('foto');
-
-    var modal = $(this);
-
-    //if(nome != null) modal.find('.modal-content #nome').append(nome);
-    //if(descricao != null) modal.find('.modal-content #descricao').append(descricao);
-    modal.find('.modal-content #foto').prop('src', '{{asset('storage/galerias/')}}' + '/' + foto);
-});
-</script>
 @endpush
 @section('content')
 <!-- ##### Donate Area Start ##### -->
@@ -53,7 +30,7 @@ $('#modal-galeria').on('show.bs.modal', function (event) {
                             foreach($fotos_ as $foto){ ?>
                             <!-- Single Donate Slide Area -->
                             <a href="#" data-foto="{{$foto->foto}}" data-toggle="modal" data-target="#modal-galeria"><div class="single-donate-slide">
-                                <img width="255" height="255" src="/storage/galerias/{{$foto->foto}}" alt="">
+                                <img width="255" height="255" src="{{'data:image;base64,'.base64_encode($foto->foto)}}" alt="">
                             </div></a>
                         <?php } ?>
                     </div>
@@ -72,39 +49,4 @@ $('#modal-galeria').on('show.bs.modal', function (event) {
 </section>
 <!-- ##### Donate Area End ##### -->
 
-<!-- modals -->
-<div class="modal fade" id="modal-galeria">
-    <input type="hidden" name="id" id="id">
-    <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h4 class="modal-title" id="nome"></h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="modal-body">
-        <div class="box-body">
-            <!--<article class="post-content">-->
-            <div class="event-description"> <img id="foto" src="" class="img-responsive">
-                <div class="spacer-20"></div>
-                <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                    <!--<div class="panel-heading">
-                        <h3 class="panel-title">Detalhes da notícia</h3>
-                    </div>-->
-                    </div>
-                </div>
-                </div>
-            </div>
-            <!--</article>-->
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn crose-btn btn-2" data-dismiss="modal">Fechar</button>
-        </div>
-        </div>
-    </div>
-    </div>
-</div>
-<!-- Modals end -->
 @endsection

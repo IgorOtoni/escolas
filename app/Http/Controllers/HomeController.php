@@ -2394,7 +2394,7 @@ class HomeController extends Controller
     public function excluirMembro($id){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.membrosg'), \Config::get('constants.permissoes.desativar'))[2] == true){
             
-            Users::where('id_membro', $id)->update(['id_membro' => null]);
+            User::where('id_membro', $id)->update(['id_membro' => null]);
 
             $membro = TblMembros::find($id);
             $foto = $membro->foto;

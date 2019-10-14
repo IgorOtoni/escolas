@@ -31,7 +31,7 @@
                                 <iframe frameborder="0" src="{{$sermao->link}}"></iframe>
                                 <!-- Sermons Content -->
                                 <div class="sermons-text">
-                                    <a href="/{{$igreja->url}}/sermao/{{$sermao->id}}">
+                                    <a href="{{route('igreja.sermao', ['url'=>$igreja->url,'id'=>$sermao->id])}}">
                                         <h6>{{$sermao->nome}}</h6>
                                     </a>
                                     <p>{{$sermao->descricao}}</p>

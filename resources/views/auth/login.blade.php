@@ -39,7 +39,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Auntenticação</p>
+    <p class="login-box-msg">Autenticação</p>
 
     <form action="{{ route('autenticar') }}" data-toggle="validator" method="post">
     @csrf

@@ -1,88 +1,6 @@
 @extends('layouts.template3')
 @push('script')
-<script>
-$('#modal-noticia').on('hide.bs.modal', function (event) {
-    var button = $(event.relatedTarget) ;
 
-    var modal = $(this);
-
-    modal.find('.modal-content #nome').html("");
-    modal.find('.modal-content #descricao').html("");
-    modal.find('.modal-content #dth_publicacao').html("");
-    modal.find('.modal-content #dth_atualizacao').html("");
-    modal.find('.modal-content #foto').show();
-    modal.find('.modal-content #dth_atualizacao').show();
-});
-
-$('#modal-noticia').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) ;
-    var nome = button.data('nome');
-    var descricao = button.data('descricao');
-    var publicacao = button.data('publicacao');
-    var atualizacao = button.data('atualizacao');
-    var foto = button.data('foto');
-
-    var modal = $(this);
-
-    if(nome != null) modal.find('.modal-content #nome').append(nome);
-    if(descricao != null) modal.find('.modal-content #descricao').append(descricao);
-    if(publicacao != null) modal.find('.modal-content #dth_publicacao').append(' ' + publicacao);
-    if(atualizacao != null && atualizacao != ''){
-        modal.find('.modal-content #dth_atualizacao').append(' Atualizada ' + atualizacao);
-    }else{
-        modal.find('.modal-content #dth_atualizacao').hide();
-    }
-    if(foto != null && foto != ''){
-        modal.find('.modal-content #foto').prop('src', '{{asset('storage/noticias/')}}' + '/' + foto);
-    }else{
-        modal.find('.modal-content #foto').prop('src', '{{asset('storage/')}}' + '/no-news.jpg');
-    }
-});
-</script>
-
-<script>
-$('#modal-evento').on('hide.bs.modal', function (event) {
-    var button = $(event.relatedTarget) ;
-
-    var modal = $(this);
-
-    modal.find('.modal-content #nome').html("");
-    modal.find('.modal-content #descricao').html("");
-    modal.find('.modal-content #dth_inicio').html("");
-    modal.find('.modal-content #dth_fim').html("");
-    modal.find('.modal-content #local').html("");
-    modal.find('.modal-content #src').prop('src', '');
-    modal.find('.modal-content #dth_fim').show();
-    modal.find('.modal-content #foto').show();
-});
-
-$('#modal-evento').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) ;
-    var nome = button.data('nome');
-    var descricao = button.data('descricao');
-    var inicio = button.data('inicio');
-    var fim = button.data('fim');
-    var local = button.data('local');
-    var foto = button.data('foto');
-
-    var modal = $(this);
-
-    if(nome != null) modal.find('.modal-content #nome').append(nome);
-    if(descricao != null) modal.find('.modal-content #descricao').append(descricao);
-    if(inicio != null) modal.find('.modal-content #dth_inicio').append(' ' + inicio);
-    if(fim != null && fim != ''){
-        modal.find('.modal-content #dth_fim').append(' Final previsto para ' + fim);
-    }else{
-        modal.find('.modal-content #dth_fim').hide();
-    }
-    if(local != null) modal.find('.modal-content #local').append(' ' + local);
-    if(foto != null && foto != ''){
-        modal.find('.modal-content #foto').prop('src', '{{asset('storage/timeline/')}}' + '/' + foto);
-    }else{
-        modal.find('.modal-content #foto').hide();
-    }
-});
-</script>
 @endpush
 @section('content')
 <?php
@@ -99,7 +17,7 @@ if($banners != null && sizeof($banners)){
                 }
                 ?>
                 <!-- Single Hero Slide -->
-                <div class="single-hero-slide bg-img bg-overlay" style="background-image: url(storage/{{(($banner->foto != null) ? "banners/".$banner->foto : "no-event.jpg")}});">
+                <div class="single-hero-slide bg-img bg-overlay" style="background-image: url({{'data:image;base64,'.base64_encode($banner->foto)}});">
                     <div class="container h-100">
                         <div class="row h-100 align-items-center justify-content-end">
                             <div class="col-12 col-lg-7">
@@ -146,9 +64,9 @@ if($noticias != null && sizeof($noticias) != 0){
                         <div class="single-blog-area mb-100">
                             <div class="blog-thumbnail">
                                 <?php if($noticia->foto != null){ ?>
-                                    <img src="/storage/noticias/{{$noticia->foto}}" alt=""> 
+                                    <img src="{{'data:image;base64,'.base64_encode($noticia->foto)}}" alt=""> 
                                 <?php }else{ ?>
-                                    <img src="/storage/no-news.jpg" alt=""> 
+                                    <img src="{{asset('/storage/no-news.jpg')}}" alt=""> 
                                 <?php } ?>
                                 <div class="post-date">
                                     <?php /* ?>
@@ -212,7 +130,7 @@ if($eventos != null && sizeof($eventos) != 0){
                                     <div class="event-date">
                                         <h6>{{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YY h:mm A')}}</h6>
                                     </div>
-                                    <div class="event-thumbnail bg-img" style="background-image: url({{(($evento->foto != null) ? "/storage/timeline/".$evento->foto : "/storage/no-event.jpg")}});"></div>
+                                    <div class="event-thumbnail bg-img" style="background-image: url({{($evento->foto != null) ? 'data:image;base64,'.base64_encode($evento->foto) : asset('/storage/no-event.jpg')}});"></div>
                                 </div>
                                 <!-- Events Content -->
                                 <div class="events-content">
@@ -221,7 +139,7 @@ if($eventos != null && sizeof($eventos) != 0){
                                         <h6>{{$evento->nome}}</h6>
                                     </a>
                                     <?php */ ?>
-                                    <a href="/{{$igreja->url}}/evento/{{$evento->id}}"><h6>{{$evento->nome}}</h6></a>
+                                    <a href="{{route('igreja.evento', ['url'=>$igreja->url,'id'=>$evento->id])}}"><h6>{{$evento->nome}}</h6></a>
                                     <p>Final previsto para {{\Carbon\Carbon::parse($evento->dados_horario_fim)->diffForHumans($evento->dados_horario_inicio)}} @ {{$evento->dados_local}}</p>
                                 </div>
                             </div>
@@ -264,7 +182,7 @@ if($galerias != null && sizeof($galerias) != 0){
                                 foreach($fotos_ as $foto){ ?>
                                 <!-- Single Donate Slide Area -->
                                 <div class="single-donate-slide">
-                                    <img src="/carrega_imagem/480,320,galerias,{{$foto->foto}}" alt="">
+                                    <img width="480" height="320" src="{{'data:image;base64,'.base64_encode($foto->foto)}}" alt="">
                                 </div>
                             <?php } ?>
                         </div>

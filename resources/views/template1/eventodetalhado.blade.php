@@ -65,14 +65,14 @@ $(function(){
                     </div>
                     <div class="post-thumbnail mb-30">
                         @if ($evento->foto != null)
-                            <img src="{{($evento->foto != null) ? 'data:image;base64,'.base64_encode($evento->foto) : '/storage/no-event.jpg'}}" alt="">
+                            <img src="{{($evento->foto != null) ? 'data:image;base64,'.base64_encode($evento->foto) : asset('/storage/no-event.jpg')}}" alt="">
                         @endif
                     </div>
                 </div>
             </div>
             <section class="post-comment-form">
             <h3><i class="fa fa-share"></i> Inscrever me</h3>
-            <form action="/{{$igreja->url}}/inscreveEnvento" method="get" data-toggle="validator" id="subscribeForm">
+            <form action="{{route('igreja.inscreveEnvento',['url'=>$igreja->url])}}" method="get" data-toggle="validator" id="subscribeForm">
                 <input type="hidden" name="id_evento" value="{{$evento->id}}">
                 @csrf
                 <div class="row">

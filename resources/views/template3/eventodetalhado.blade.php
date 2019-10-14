@@ -48,7 +48,7 @@ $(function(){
                         </div>
                         <div class="post-thumbnail mb-30">
                             @if ($evento->foto != null)
-                            <img src="/storage/{{($evento->foto != null) ? "timeline/".$evento->foto : "no-event.jpg"}}" alt="">
+                            <img src="{{($evento->foto != null) ? 'data:image;base64,'.base64_encode($evento->foto) : asset('/storage/no-event.jpg')}}" alt="">
                             @endif
                         </div>
                     </div>
@@ -65,7 +65,7 @@ $(function(){
         <div class="row">
             <div class="col-12">
                 <div class="cta-text d-flex justify-content-between align-items-center">
-                    <form id="subscribeForm" name="subscribeForm" method="get" action="/{{$igreja->url}}/inscreveEnvento" class="contact-form-area">
+                    <form id="subscribeForm" name="subscribeForm" method="get" action="{{route('igreja.inscreveEnvento',['url'=>$igreja->url])}}" class="contact-form-area">
                         <input type="hidden" name="id_evento" value="{{$evento->id}}">
                         @csrf
                         <h5>Me inscrever</h5>

@@ -44,7 +44,7 @@
                         <?php if($evento->foto != null){ ?>
                             <img src="{{'data:image;base64,'.base64_encode($evento->foto)}}" alt="">
                         <?php }else{ ?>
-                            <img src="/storage/no-event.jpg" alt="">
+                            <img src="{{asset('/storage/no-event.jpg')}}" alt="">
                         <?php } ?>
                         <div class="grid-content">
                         <h3>

@@ -7,7 +7,7 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/{{$igreja->url}}"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('igreja.index',['url'=>$igreja->url])}}"><i class="fa fa-home"></i> Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Eventos fixos</li>
                     </ol>
                 </nav>
@@ -56,9 +56,9 @@
                                 <!-- Thumbnail -->
                                 <div class="upcoming-events-thumbnail">
                                     <?php if($evento->foto != null){ ?>
-                                        <img src="/storage/eventos/{{$evento->foto}}" alt="">
+                                        <img src="{{'data:image;base64,'.base64_encode($evento->foto)}}" alt="">
                                     <?php }else{ ?>
-                                        <img src="/storage/no-event.jpg" alt="">
+                                        <img src="{{asset('/storage/no-event.jpg')}}" alt="">
                                     <?php } ?>
                                 </div>
                                 <!-- Content -->
@@ -72,7 +72,7 @@
                                         <!--<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>-->
                                     </div>
                                     <div class="find-out-more-btn">
-                                        <a href="/{{$igreja->url}}/eventofixo/{{$evento->id}}" class="btn crose-btn btn-2">Ver em detalhe</a>
+                                        <a href="{{route('igreja.eventofixo', ['url'=>$igreja->url,'id'=>$evento->id])}}" class="btn crose-btn btn-2">Ver em detalhe</a>
                                     </div>
                                 </div>
                             </div>

@@ -40,7 +40,7 @@
                     <nav class="classy-navbar justify-content-between" id="croseNav">
 
                         <!-- Nav brand -->
-                        <a href="/{{$igreja->url}}" class="nav-brand"><img style="witdh: 120px; height: 50px;" src="{{asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))}}" alt=""></a><h3><?php echo $igreja->nome ?></h3>
+                        <a href="{{route('igreja.index', ['url' => $igreja->url])}}" class="nav-brand"><img style="witdh: 120px; height: 50px;" src="{{($igreja->logo != null) ? 'data:image;base64,'.base64_encode($igreja->logo) : asset('/storage/no-logo.jpg')}}" alt=""></a><h3><?php echo $igreja->nome ?></h3>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">

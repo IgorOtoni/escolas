@@ -33,11 +33,11 @@
                             <!-- Events Date & Thumbnail -->
                             <div class="event-date-thumbnail d-flex align-items-center">
                                 <div class="event-date"><h6>{{$evento->nome}}</h6></div>
-                                <div class="event-thumbnail bg-img" style="background-image: url({{(($evento->foto != null) ? "/storage/eventos/".$evento->foto : "/storage/no-event.jpg")}});"></div>
+                                <div class="event-thumbnail bg-img" style="background-image: url({{$evento->foto != null ? 'data:image;base64,'.base64_encode($evento->foto) : asset('/storage/no-event.jpg')}});"></div>
                             </div>
                             <!-- Events Content -->
                             <div class="events-content">
-                                <a href="/{{$igreja->url}}/eventofixo/{{$evento->id}}"><h6>{{$evento->nome}}</h6></a>
+                                <a href="{{route('igreja.eventofixo', ['url'=>$igreja->url,'id'=>$evento->id])}}"><h6>{{$evento->nome}}</h6></a>
                                 <p>{{$evento->dados_horario_local}}</p>
                                 <p>{{$evento->descricao}}</p>
                             </div>

@@ -10,7 +10,7 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/{{$igreja->url}}"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('igreja.index',['url'=>$igreja->url])}}"><i class="fa fa-home"></i> Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Galeria</li>
                     </ol>
                 </nav>
@@ -51,8 +51,8 @@
                 foreach($fotos_ as $foto){ ?>
                     <!-- Single Gallery Area -->
                     <div class="single-gallery-area">
-                        <a href="/storage/galerias/{{$foto->foto}}" class="gallery-img" title="{{$galeria->nome}}">
-                            <img src="/carrega_imagem/480,320,galerias,{{$foto->foto}}" alt="">
+                        <a href="{{'data:image;base64,'.base64_encode($foto->foto)}}" class="gallery-img" title="{{$galeria->nome}}">
+                            <img width="480" height="320" src="{{'data:image;base64,'.base64_encode($foto->foto)}}">
                         </a>
                     </div>
                 <?php } ?>

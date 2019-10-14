@@ -1,5 +1,7 @@
 @extends('layouts.usuario.index')
 @push('script')
+<!--<link rel="stylesheet" href="{{asset('template_adm/plugins/iCheck/all.css')}}">
+<script src="{{asset('template_adm//plugins/iCheck/icheck.min.js')}}"></script>-->
 <script>
   $(document).ready(function() {
       $(".selecao").on("change", function () {
@@ -9,6 +11,11 @@
             $(this).closest('.row').find('[type=checkbox]').prop('checked', false);
           }
       });
+
+      /*$('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+        checkboxClass: 'icheckbox_flat-green',
+        radioClass   : 'iradio_flat-green'
+      });*/
   });
 </script>
 @endpush
@@ -36,21 +43,29 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label >{{$modulo->nome}}</label>&nbsp;<input type="checkbox" class="selecao" id="selecao_{{$modulo->id}}" style="margin: 0px 800px 2px 6px;">
-                                <br>
-                                @foreach ($permissoes[$modulo->id]['todas'] as $permissao)
-                                  <?php
-                                  $marcacao = '';
-                                  foreach($permissoes[$modulo->id]['ativas'] as $permissao_){
-                                    if($permissao->id == $permissao_->id){
-                                      $marcacao = 'checked';
-                                      break;
+                                <label>
+                                  <input type="checkbox" class="selecao" id="selecao_{{$modulo->id}}">
+                                </label>
+                                <label>{{$modulo->nome}}</label>
+                                <div class="row">
+                                  @foreach ($permissoes[$modulo->id]['todas'] as $permissao)
+                                    <?php
+                                    $marcacao = '';
+                                    foreach($permissoes[$modulo->id]['ativas'] as $permissao_){
+                                      if($permissao->id == $permissao_->id){
+                                        $marcacao = 'checked';
+                                        break;
+                                      }
                                     }
-                                  }
-                                  ?>
-                                  <input name="{{$modulo->id_perfis_igrejas_modulos}}[]" value="{{$permissao->id}}" type="checkbox" {{$marcacao}}> {{$permissao->nome}}
-                                @endforeach
-
+                                    ?>
+                                    <div class="col-md-3">
+                                      <label>
+                                        <input name="{{$modulo->id_perfis_igrejas_modulos}}[]" value="{{$permissao->id}}" type="checkbox" class="flat-red" {{$marcacao}}>
+                                      </label>
+                                      <label>{{$permissao->nome}}</label>
+                                    </div>
+                                  @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>

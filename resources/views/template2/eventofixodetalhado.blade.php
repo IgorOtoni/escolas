@@ -7,8 +7,8 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/{{$igreja->url}}"><i class="fa fa-home"></i> Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><a href="/{{$igreja->url}}/eventofixos">Eventos fixos</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('igreja.index',['url'=>$igreja->url])}}"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="{{route('igreja.eventosfixos',['url'=>$igreja->url])}}">Eventos fixos</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Evento</li>
                     </ol>
                 </nav>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="post-thumbnail mb-30">
                             @if ($eventofixo->foto != null)
-                            <img src="/storage/{{($eventofixo->foto != null) ? "eventos/".$eventofixo->foto : "no-event.jpg"}}" alt="">
+                            <img src="{{($eventofixo->foto != null) ? 'data:image;base64,'.base64_encode($eventofixo->foto) : asset('/storage/no-event.jpg')}}" alt="">
                             @endif
                         </div>
                     </div>

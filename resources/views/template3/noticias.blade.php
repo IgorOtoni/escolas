@@ -1,44 +1,6 @@
 @extends('layouts.template3')
 @push('script')
-<script>
-$('#modal-noticia').on('hide.bs.modal', function (event) {
-    var button = $(event.relatedTarget) ;
 
-    var modal = $(this);
-
-    modal.find('.modal-content #nome').html("");
-    modal.find('.modal-content #descricao').html("");
-    modal.find('.modal-content #dth_publicacao').html("");
-    modal.find('.modal-content #dth_atualizacao').html("");
-    modal.find('.modal-content #foto').show();
-    modal.find('.modal-content #dth_atualizacao').show();
-});
-
-$('#modal-noticia').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) ;
-    var nome = button.data('nome');
-    var descricao = button.data('descricao');
-    var publicacao = button.data('publicacao');
-    var atualizacao = button.data('atualizacao');
-    var foto = button.data('foto');
-
-    var modal = $(this);
-
-    if(nome != null) modal.find('.modal-content #nome').append(nome);
-    if(descricao != null) modal.find('.modal-content #descricao').append(descricao);
-    if(publicacao != null) modal.find('.modal-content #dth_publicacao').append(' ' + publicacao);
-    if(atualizacao != null && atualizacao != ''){
-        modal.find('.modal-content #dth_atualizacao').append(' Atualizada ' + atualizacao);
-    }else{
-        modal.find('.modal-content #dth_atualizacao').hide();
-    }
-    if(foto != null && foto != ''){
-        modal.find('.modal-content #foto').prop('src', '{{asset('storage/noticias/')}}' + '/' + foto);
-    }else{
-        modal.find('.modal-content #foto').prop('src', '{{asset('storage/')}}' + '/no-news.jpg');
-    }
-});
-</script>
 @endpush
 @section('content')
 <!-- ##### Blog Area Start ##### -->
@@ -64,9 +26,9 @@ $('#modal-noticia').on('show.bs.modal', function (event) {
                     <div class="single-blog-area mb-100">
                         <div class="blog-thumbnail">
                             <?php if($noticia->foto != null){ ?>
-                                <img src="/storage/noticias/{{$noticia->foto}}" alt=""> 
+                                <img src="{{'data:image;base64,'.base64_encode($noticia->foto)}}" alt=""> 
                             <?php }else{ ?>
-                                <img src="/storage/no-news.jpg" alt=""> 
+                                <img src="{{asset('/storage/no-news.jpg')}}" alt=""> 
                             <?php } ?>
                             <div class="post-date">
                                 <?php /* ?>
@@ -76,7 +38,7 @@ $('#modal-noticia').on('show.bs.modal', function (event) {
                             </div>
                         </div>
                         <div class="blog-content">
-                            <a href="/{{$igreja->url}}/noticia/{{$noticia->id}}" class="blog-title">{{$noticia->nome}}</a>
+                            <a href="{{route('igreja.noticia', ['url'=>$igreja->url,'id'=>$noticia->id])}}" class="blog-title">{{$noticia->nome}}</a>
                             <p>{{$noticia->descricao}}</p>
                             <?php
                             if($noticia->updated_at != null && $noticia->updated_at != $noticia->created_at){

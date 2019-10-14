@@ -51,24 +51,20 @@
                         <!-- Single Pastors Area -->
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="single-pastor-area mb-100">
-                                @if ($membro->foto != null)
-                                    <img src="/carrega_imagem/250,250,membros,{{$membro->foto}}" alt=""> 
-                                @else
-                                    <img src="/carrega_imagem/250,250,X,no-foto.png" alt=""> 
-                                @endif
+                                <img width="250" height="250" src="{{asset($membro->foto != null ? 'data:image;base64,'.base64_encode($membro->foto) : asset('/storage/no-foto.png')}}" alt="">
                                 <div class="pastor-content">
                                     <h5>{{$membro->nome}} ({{$funcao->nome}})</h5>
                                     <h6>{{$membro->descricao}}</h6>
                                     <div class="pastor-meta d-flex align-items-center justify-content-between">
-                                            @if ($membro->facebook != null)
-                                                <a href="{{$membro->facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                            @endif
-                                            @if ($membro->twitter != null)
-                                                <a href="{{$membro->twitter}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                            @endif
-                                            @if ($membro->youtube != null)
-                                                <a href="{{$membro->youtube}}"><i class="fa fa-youtube" aria-hidden="true"></i></a>
-                                            @endif
+                                        @if ($membro->facebook != null)
+                                            <a href="{{$membro->facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                        @endif
+                                        @if ($membro->twitter != null)
+                                            <a href="{{$membro->twitter}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                        @endif
+                                        @if ($membro->youtube != null)
+                                            <a href="{{$membro->youtube}}"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

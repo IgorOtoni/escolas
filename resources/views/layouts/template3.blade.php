@@ -43,7 +43,7 @@
                     <nav class="classy-navbar justify-content-between" id="faithNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="/{{$igreja->url}}"><img style="witdh: 120px; height: 50px;" src="{{asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))}}" alt=""></a><h3><?php echo $igreja->nome ?></h3></a>
+                        <a class="nav-brand" href="{{route('igreja.index', ['url' => $igreja->url])}}"><img style="witdh: 120px; height: 50px;" src="{{($igreja->logo != null) ? 'data:image;base64,'.base64_encode($igreja->logo) : asset('/storage/no-logo.jpg')}}" alt=""></a><h3><?php echo $igreja->nome ?></h3></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -108,12 +108,12 @@
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
         <!-- Main Footer Area -->
-        <div class="main-footer-area section-padding-100-0 bg-img foo-bg-overlay" style="background-image: url(template_igreja/template-escuro/img/bg-img/bg-9.jpg);">
+        <div class="main-footer-area section-padding-100-0 bg-img foo-bg-overlay" style="background-image: url({{asset('template_igreja/template-escuro/img/bg-img/bg-9.jpg')}});">
             <div class="container">
                 <div class="row">
                     <!-- Footer Widget Area -->
                     <div class="col-6 col-sm-6 col-xl-6">
-                        <p><?php echo strip_tags($igreja->nome ?> - <b> powered by hotsystems</b></p>
+                        <p><?php echo strip_tags($igreja->nome) ?> - <b> powered by hotsystems</b></p>
                     </div>
 
                     <div class="col-6 col-sm-6 col-xl-6">

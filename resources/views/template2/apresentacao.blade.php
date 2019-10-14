@@ -7,7 +7,7 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/{{$igreja->url}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Sobre nós</li>
                     </ol>
                 </nav>
@@ -56,7 +56,7 @@
                         <!-- Team Members Area -->
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="single-team-members text-center mb-100">
-                                <div class="team-thumb" style="background-image: url({{asset('/storage/'.($membro->foto != null ? 'membros/'.$membro->foto : 'no-foto.png'))}}); background-repeat: no-repeat; background-size: 200px 200px;">
+                                <div class="team-thumb" style="background-image: url({{asset($membro->foto != null ? 'data:image;base64,'.base64_encode($membro->foto) : asset('/storage/no-foto.png')}}); background-repeat: no-repeat; background-size: 200px 200px;">
                                     <div class="team-social-info">
                                         @if ($membro->facebook != null)
                                             <a href="{{$membro->facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
