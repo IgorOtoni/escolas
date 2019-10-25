@@ -12,7 +12,7 @@ class Tbl_Menus_Android_Seeder extends Seeder
     public function run()
     {
         /*
-        // Menus da primeira igreja =============================================================
+        // Menus da primeira site =============================================================
         DB::table('tbl_menus_android')->insert([
             'id'=>22,
             'id_configuracao'=>1,
@@ -73,12 +73,12 @@ class Tbl_Menus_Android_Seeder extends Seeder
             'id'=>19,
             'id_configuracao'=>1,
             'nome'=>'Sermões',
-            'link'=>'modulo-sermoes',
+            'link'=>'modulo-midias',
             'ordem'=>7,
         ]);
         /////////////////////////////////////////////////////////////////////////////////////////
 
-        // Menus da segunda igreja =============================================================
+        // Menus da segunda site =============================================================
         DB::table('tbl_menus_android')->insert([
             'id'=>23,
             'id_configuracao'=>2,
@@ -139,12 +139,12 @@ class Tbl_Menus_Android_Seeder extends Seeder
             'id'=>20,
             'id_configuracao'=>2,
             'nome'=>'Sermões',
-            'link'=>'modulo-sermoes',
+            'link'=>'modulo-midias',
             'ordem'=>7,
         ]);
         /////////////////////////////////////////////////////////////////////////////////////////
 
-        // Menus da terceira igreja =============================================================
+        // Menus da terceira site =============================================================
         DB::table('tbl_menus_android')->insert([
             'id'=>24,
             'id_configuracao'=>3,
@@ -205,7 +205,7 @@ class Tbl_Menus_Android_Seeder extends Seeder
             'id'=>21,
             'id_configuracao'=>3,
             'nome'=>'Sermões',
-            'link'=>'modulo-sermoes',
+            'link'=>'modulo-midias',
             'ordem'=>7,
         ]);
         /////////////////////////////////////////////////////////////////////////////////////////

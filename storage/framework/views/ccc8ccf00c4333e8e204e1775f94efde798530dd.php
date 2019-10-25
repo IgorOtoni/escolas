@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/eglise/index.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/eglise/index.blade.php */ ?>
 <?php $__env->startSection('content'); ?>
 <!-- Full Width Column -->
 <div class="content-wrapper">

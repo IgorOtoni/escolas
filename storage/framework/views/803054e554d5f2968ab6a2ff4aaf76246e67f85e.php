@@ -9,7 +9,7 @@
 <div class="panel panel-primary">
     <div class="panel-heading"><h3 class="panel-title">Opções de  filtro:</h3></div>
     <div class="panel-body">
-        <form class="form-group" action="<?php echo e(route('igreja.filtrarProdutos', $igreja->url)); ?>" method="get" name="filtroProdutosNome">
+        <form class="form-group" action="<?php echo e(route('site.filtrarProdutos', $site->url)); ?>" method="get" name="filtroProdutosNome">
             <div class="row">
                 <div class="col-md-2">Nome</div>
                 <div class="col-md-8">
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </form>
-        <form class="form-group" action="<?php echo e(route('igreja.filtrarProdutos', $igreja->url)); ?>" method="get" name="filtroProdutosCategoria">
+        <form class="form-group" action="<?php echo e(route('site.filtrarProdutos', $site->url)); ?>" method="get" name="filtroProdutosCategoria">
             <div class="row">
                 <div class="col-md-2">Categoria</div>
                 <div class="col-md-8">
@@ -65,7 +65,7 @@ echo "<table class='table'>";
             echo '<span class="label label-primary">Em oferta: '.$oferta->desconto.'% de desconto!</span>';
             echo '<br>';
         }
-        echo "<strong><a href='".route('igreja.produto',['url'=>$igreja->url,'id'=>$produto->id])."'>+ Informações</a></strong>";
+        echo "<strong><a href='".route('site.produto',['url'=>$site->url,'id'=>$produto->id])."'>+ Informações</a></strong>";
 
         $botaoAdd = true;
         if(null !== \Session()->get('carrinho') && is_array(\Session()->get('carrinho'))){
@@ -78,7 +78,7 @@ echo "<table class='table'>";
         }
 
         if($botaoAdd == true){
-            echo '<form method="get" action="'.route('igreja.adicionarProduto',['url'=>$igreja->url]).'">'
+            echo '<form method="get" action="'.route('site.adicionarProduto',['url'=>$site->url]).'">'
                     . '<div class="form_settings">'
                     	. '<input type="hidden" name="id" value="'.$produto->id.'">'
                         . '<input class="btn btn-sm btn-primary" type="submit" value="Acidionar ao carrinho">'

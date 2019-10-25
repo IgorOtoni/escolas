@@ -315,13 +315,13 @@
                 }
             }
         },
-        "/api/sermoes/{url}": {
+        "/api/midias/{url}": {
             "get": {
                 "tags": [
                     "M\u00eddias"
                 ],
                 "summary": "Obt\u00eam as m\u00eddias do site.",
-                "operationId": "sermoes",
+                "operationId": "midias",
                 "parameters": [
                     {
                         "name": "url",
@@ -347,13 +347,13 @@
                 }
             }
         },
-        "/api/sermao/{url}/{id}": {
+        "/api/midia/{url}/{id}": {
             "get": {
                 "tags": [
                     "M\u00eddias"
                 ],
                 "summary": "Obt\u00eam a m\u00eddia do site.",
-                "operationId": "sermao",
+                "operationId": "midia",
                 "parameters": [
                     {
                         "name": "url",

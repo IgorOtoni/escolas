@@ -67,13 +67,13 @@ $(function(){
     var vetor = [];
 
     <?php
-    foreach($modulos_igreja as $modulo){
+    foreach($modulos_site as $modulo){
         ?> vetor.push(<?php echo e($modulo->id); ?>); <?php
     }
     ?>
 
     $.ajax({
-        url: '/usuario/carregarModulosIgreja/'+<?php echo e($igreja->id); ?>,
+        url: '/usuario/carregarModulosSite/'+<?php echo e($site->id); ?>,
         type: 'get',
         dataType: 'json',
         success: function(response){
@@ -273,7 +273,7 @@ $(function () {
 <div class="modal fade" id="modal-incluir">
   <form id="incluirPerfilFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.incluirPerfil')); ?>" enctype="multipart/form-data">
   <?php echo csrf_field(); ?>
-    <input type="hidden" name="igreja" value="<?php echo e($igreja->id); ?>">
+    <input type="hidden" name="site" value="<?php echo e($site->id); ?>">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -302,7 +302,7 @@ $(function () {
                   </div>
                   <div class="col-md-12" id="list-area">
                     <div class="form-group has-feedback">
-                      <label>Selecione quais módulos da igreja o perfil irá acessar:</label>
+                      <label>Selecione quais módulos da site o perfil irá acessar:</label>
                       <select id="select_2_modulos" name="modulos[]" data-placeholder="Selecione os módulos" class="form-control select2" style="width: 100%;" multiple="multiple" required></select>
                       <div class="help-block with-errors"></div>
                     </div>

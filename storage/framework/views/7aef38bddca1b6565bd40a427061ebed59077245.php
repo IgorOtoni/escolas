@@ -1,4 +1,3 @@
-<?php /* E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/usuario/categorias.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- DataTables -->
 <script src="<?php echo e(asset('template_adm/bower_components/datatables.net/js/jquery.dataTables.min.js')); ?>"></script>
@@ -188,7 +187,7 @@ $(function(){
 <div class="modal fade" id="modal-incluir">
 <form id="incluirCategoriaFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.incluirCategoria')); ?>" enctype="multipart/form-data">
 <?php echo csrf_field(); ?>
-    <input type="hidden" name="igreja" id="igreja" value="<?php echo e($igreja->id); ?>">
+    <input type="hidden" name="site" id="site" value="<?php echo e($site->id); ?>">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -233,4 +232,4 @@ $(function(){
 </div>
 <!-- /.modal -->
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.usuario.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.usuario.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/usuario/categorias.blade.php ENDPATH**/ ?>

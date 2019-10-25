@@ -1,10 +1,10 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/template3/apresentacao.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/template3/apresentacao.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
 <?php $__env->startSection('content'); ?>
 <!-- ##### Breadcumb Area Start ##### -->
-<!--<div class="breadcumb-area bg-img" style="background-image: url(<?php echo e(asset('template_igreja/template-escuro/img/bg-img/bg-4.jpg')); ?>);">
+<!--<div class="breadcumb-area bg-img" style="background-image: url(<?php echo e(asset('template_site/template-escuro/img/bg-img/bg-4.jpg')); ?>);">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12 col-md-6">
@@ -24,7 +24,7 @@
             <div class="col-12">
                 <div class="section-heading text-center mx-auto">
                     <h3>Sobre nós</h3>
-                    <p><?php echo e($igreja->texto_apresentativo); ?></p>
+                    <p><?php echo e($site->texto_apresentativo); ?></p>
                 </div>
             </div>
         </div>
@@ -33,13 +33,13 @@
 <!-- ##### Ministries Area End ##### -->
 
 <!-- ##### Pastors Area Start ##### -->
-<section class="pastors-area section-padding-100-0 bg-img bg-overlay" style="background-image: url(<?php echo e(asset('/template_igreja/template-escuro/img/bg-img/bg-5.jpg')); ?>);">
+<section class="pastors-area section-padding-100-0 bg-img bg-overlay" style="background-image: url(<?php echo e(asset('/template_site/template-escuro/img/bg-img/bg-5.jpg')); ?>);">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="section-heading white text-center mx-auto">
-                    <img src="<?php echo e(asset('/template_igreja/template-escuro/img/core-img/cross.png')); ?>" alt="">
-                    <h3>Equipe</h3>
+                    <img src="<?php echo e(asset('/template_site/template-escuro/img/core-img/cross.png')); ?>" alt="">
+                    <h3>Membros</h3>
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@
             <div class="page">
                 <h2>Sobre nós/Visões e valores</h2>
                 <p>
-                	{{$igreja->texto_apresentativo}}
+                	{{$site->texto_apresentativo}}
                 </p>
             </div>
         </div>
@@ -28,7 +28,7 @@
     	<div class="l-page-width clearfix">
 		    <div class="wrap">
 		        <div class="c-12">
-	                <h2>Nossa equipe</h2>
+	                <h2>Nossa membros</h2>
 	                
 	                <ul class="portfolio-menu">
 		                <?php $x=0; foreach ($funcoes as $funcao){ $x++; ?>

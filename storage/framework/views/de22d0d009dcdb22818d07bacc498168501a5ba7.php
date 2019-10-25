@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template4/contato.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template4/contato.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -63,7 +63,7 @@
 							
 							<div class="border-shadow">
 								<figure>
-									<iframe id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q=<?php echo e(muda_cep($igreja->cep)); ?>&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
+									<iframe id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q=<?php echo e(muda_cep($site->cep)); ?>&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
 								</figure>
 							</div>
 							
@@ -72,16 +72,16 @@
 						<div class="contact-address">
 							<h1>Informações de contato</h1>
 							<address>
-                                Cidade: <?php echo e($igreja->cidade); ?> - <?php echo e($igreja->estado); ?><br />
-                                Bairro: <?php echo e($igreja->bairro); ?><br />
-                                Rua: <?php echo e($igreja->rua); ?>, n°: <?php echo e($igreja->num); ?>
+                                Cidade: <?php echo e($site->cidade); ?> - <?php echo e($site->estado); ?><br />
+                                Bairro: <?php echo e($site->bairro); ?><br />
+                                Rua: <?php echo e($site->rua); ?>, n°: <?php echo e($site->num); ?>
 
 							</address>
 							<address> 
-								<?php if($igreja->telefone != null){ ?> <span><?php echo e($igreja->telefone); ?></span> <?php } ?>
+								<?php if($site->telefone != null){ ?> <span><?php echo e($site->telefone); ?></span> <?php } ?>
 							</address>
 							<address>
-								<?php if($igreja->email != null){ ?> <span><?php echo e($igreja->email); ?></span> <?php } ?>
+								<?php if($site->email != null){ ?> <span><?php echo e($site->email); ?></span> <?php } ?>
 							</address>
 						</div><!--/ contact-address-->
 					</div><!--/ l-grid-5-->

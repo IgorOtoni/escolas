@@ -101,6 +101,8 @@ $(function(){
             });
         });
     });
+
+    $('.select2').select2();
 });
 
 </script>
@@ -159,7 +161,7 @@ $(function(){
                 <div class="col-md-12">
                     <div class="form-group has-feedback">
                 		<select id="categoria" name="categoria" class="form-control select2" style="width: 100%;" required>
-	                        <?php $categorias = App\TblCategoriasProdutos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+	                        <?php $categorias = App\TblCategoriasProdutos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
 	                        @foreach ($categorias as $categoria)
 	                        <option value="{{$categoria->id}}" {{($produto->id_categoria == $categoria->id) ? 'selected' : ''}}>{{$categoria->nome}}</option>
 	                        @endforeach

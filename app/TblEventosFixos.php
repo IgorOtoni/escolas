@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class TblEventosFixos extends Model
 {
-    protected $fillable = ['id','nome','dados_horario_local','id_igreja','foto','descricao'];
+    protected $fillable = ['id','nome','dados_horario_local','id_site','foto','descricao'];
 }

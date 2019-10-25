@@ -215,7 +215,7 @@ $(function(){
 <div class="modal fade" id="modal-incluir">
 <form id="incluirComunidadeFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.incluirComunidade')); ?>" enctype="multipart/form-data">
 <?php echo csrf_field(); ?>
-    <input type="hidden" name="igreja" id="igreja" value="<?php echo e($igreja->id); ?>">
+    <input type="hidden" name="site" id="site" value="<?php echo e($site->id); ?>">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -258,7 +258,7 @@ $(function(){
                 </thead>
                 <tbody>
                     <?php Use App\TblMembros;
-                    $membros = TblMembros::where('id_igreja','=',$igreja->id)->where('ativo','=',true)->get();
+                    $membros = TblMembros::where('id_site','=',$site->id)->where('ativo','=',true)->get();
                     foreach($membros as $membro){
                         ?>
                         <tr>

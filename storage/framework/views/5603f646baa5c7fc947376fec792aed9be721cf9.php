@@ -59,7 +59,7 @@
                                     ?>
                                     <div class="col-md-3">
                                       <label>
-                                        <input name="<?php echo e($modulo->id_perfis_igrejas_modulos); ?>[]" value="<?php echo e($permissao->id); ?>" type="checkbox" class="flat-red" <?php echo e($marcacao); ?>>
+                                        <input name="<?php echo e($modulo->id_perfis_sites_modulos); ?>[]" value="<?php echo e($permissao->id); ?>" type="checkbox" class="flat-red" <?php echo e($marcacao); ?>>
                                       </label>
                                       <label><?php echo e($permissao->nome); ?></label>
                                     </div>

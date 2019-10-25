@@ -77,7 +77,7 @@ $('#modal-noticia').on('show.bs.modal', function (event) {
                             </div>
                         </div>
                         <div class="blog-content">
-                            <a href="/<?php echo e($igreja->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="blog-title"><?php echo e($noticia->nome); ?></a>
+                            <a href="/<?php echo e($site->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="blog-title"><?php echo e($noticia->nome); ?></a>
                             <p><?php echo e($noticia->descricao); ?></p>
                             <?php
                             if($noticia->updated_at != null && $noticia->updated_at != $noticia->created_at){

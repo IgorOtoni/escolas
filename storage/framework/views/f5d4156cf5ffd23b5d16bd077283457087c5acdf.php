@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template6/sermaodetalhado.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template6/midiadetalhado.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -9,14 +9,14 @@
     	<div class="container">
     		<h1>Detalhes do sermão</h1>
   			<hr class="sm">
-  			<h3><?php echo e($sermao->nome); ?></h3>
+  			<h3><?php echo e($midia->nome); ?></h3>
   			<hr class="sm">
             <div class="row">
             	<div class="col-md-12">
-	        		<a href="<?php echo e($sermao->link); ?>"><iframe frameborder="0" width="800" height="400" src="<?php echo e($sermao->link); ?>"></iframe></a>
+	        		<a href="<?php echo e($midia->link); ?>"><iframe frameborder="0" width="800" height="400" src="<?php echo e($midia->link); ?>"></iframe></a>
 	                <p>
-	                	<?php echo e($sermao->descricao); ?><br/>
-	        			<span class="meta-data"><i class="fa fa-calendar"></i> Adicionado <?php echo e(\Carbon\Carbon::parse($sermao->created_at)->diffForHumans()); ?></span>
+	                	<?php echo e($midia->descricao); ?><br/>
+	        			<span class="meta-data"><i class="fa fa-calendar"></i> Adicionado <?php echo e(\Carbon\Carbon::parse($midia->created_at)->diffForHumans()); ?></span>
 	        		</p>
         		</div>
         	</div>

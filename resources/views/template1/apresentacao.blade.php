@@ -7,7 +7,7 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
+        <li><a href="{{route('site.index',['url'=>$site->url])}}">Home</a></li>
         <li class="active">Sobre nós/Visões e valores</li>
         </ol>
     </div>
@@ -32,10 +32,10 @@
     <div class="container">
     <div class="row">
         <div class="col-md-12">
-        <p>{{$igreja->texto_apresentativo}}</p>
+        <p>{{$site->texto_apresentativo}}</p>
         <hr>
         @if ($funcoes != null && sizeof($funcoes) > 0)
-            <h3>Equipe</h3>
+            <h3>Membros</h3>
         @endif
         </div>
         @foreach ($funcoes as $funcao)
@@ -47,7 +47,7 @@
                         @if ($membro->foto != null)
                             <img width="250" height="250" src="{{'data:image;base64,'.base64_encode($membro->foto)}}" alt=""> 
                         @else
-                            <img src="{{ route('igreja.carrega_imagem',['largura'=>250,'altura'=>250,'pasta'=>'X','arquivo'=>'no-foto.png']) }}" alt=""> 
+                            <img src="{{ route('site.carrega_imagem',['largura'=>250,'altura'=>250,'pasta'=>'X','arquivo'=>'no-foto.png']) }}" alt=""> 
                         @endif
                     </div>
                     <div class="grid-content">

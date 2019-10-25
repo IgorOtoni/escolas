@@ -1,4 +1,3 @@
-<?php /* E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/gratunos/formulario.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <!-- Select2 -->
@@ -197,7 +196,7 @@ $('div.setup-panel div a.btn-success').trigger('click');
             </div>
             <div class="stepwizard-step col-xs-3"> 
                 <a href="#step-3" type="button" class="btn btn-default btn-circle disabled" disabled="disabled">3</a>
-                <p><small>Dados da Escola</small></p>
+                <p><small>Dados da Site</small></p>
             </div>
             <div class="stepwizard-step col-xs-3"> 
                     <a href="#step-4" type="button" class="btn btn-default btn-circle disabled" disabled="disabled">4</a>
@@ -210,7 +209,7 @@ $('div.setup-panel div a.btn-success').trigger('click');
         </div>
     </div>
     
-    <form id="cadastrarIgrejaForm" method="POST" role="form" action="<?php echo e(route('plataforma.incluirIgreja')); ?>" enctype="multipart/form-data">
+    <form id="cadastrarSiteForm" method="POST" role="form" action="<?php echo e(route('plataforma.incluirSite')); ?>" enctype="multipart/form-data">
     <?php echo csrf_field(); ?>
         <div class="panel panel-primary setup-content" id="step-1">
             <div class="panel-heading">
@@ -218,7 +217,7 @@ $('div.setup-panel div a.btn-success').trigger('click');
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <p>Para aderir, basta informar alguns dados  sobre a escola, realizar o pagamento e obter a visão do seu site. Caso queira ter um domínio (seu www) próprio, entre em contato com nossa equipe pelo tel (31) 3849-6771.
+                    <p>Para aderir, basta informar alguns dados  sobre a site, realizar o pagamento e obter a visão do seu site. Caso queira ter um domínio (seu www) próprio, entre em contato com nossa membros pelo tel (31) 3849-6771.
                     </p>
                 </div>
                 <button class="btn btn-primary nextBtn pull-right" type="button">Próximo</button>
@@ -234,7 +233,7 @@ $('div.setup-panel div a.btn-success').trigger('click');
                     <h3>I - DOS OBJETIVOS:</h3>
  
                     <p>
-                        O objetivo do presente instrumento é a contratação da utilização pelo LICENCIADO do Site Escolar hospedado em nossos servidores, bem como os serviços de manutenção e suporte a ele associados.
+                        O objetivo do presente instrumento é a contratação da utilização pelo LICENCIADO do Site Siter hospedado em nossos servidores, bem como os serviços de manutenção e suporte a ele associados.
                     </p> 
                          
                     <h3>
@@ -242,7 +241,7 @@ $('div.setup-panel div a.btn-success').trigger('click');
                     </h3>
                          
                     <p>
-                        Mediante o presente instrumento, o LICENCIADO obtém da HotSystems o direito de utilizar o Site Escolar com as funcionalidades nele implementadas bem como obter a execução do seguinte escopo de serviços:
+                        Mediante o presente instrumento, o LICENCIADO obtém da HotSystems o direito de utilizar o Site Siter com as funcionalidades nele implementadas bem como obter a execução do seguinte escopo de serviços:
                     </p>
                         
                     <ol type="A">
@@ -345,7 +344,7 @@ $('div.setup-panel div a.btn-success').trigger('click');
         
         <div class="panel panel-primary setup-content" id="step-3">
             <div class="panel-heading">
-                <h3 class="panel-title">Dados da Escola</h3>
+                <h3 class="panel-title">Dados da Site</h3>
             </div>
             <div class="panel-body">
 
@@ -438,7 +437,7 @@ $('div.setup-panel div a.btn-success').trigger('click');
                 </div>
                 <div class="col-md-8">
                     <div class="form-group has-feedback">
-                        <label >URL da escola (escolas.com.br/URL)</label>
+                        <label >URL da site (sites.com.br/URL)</label>
                         <input maxlength="20" name="url" type="text" class="form-control" placeholder="URL" required>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <div class="help-block with-errors"></div>
@@ -484,7 +483,7 @@ $('div.setup-panel div a.btn-success').trigger('click');
                 <h3 class="panel-title">Escolher template</h3>
             </div>
             <div class="panel-body">
-                <p>Escolha um template para o site de sua escola:</p>
+                <p>Escolha um template para o site de sua site:</p>
                 <?php
                 Use App\TblTemplates;
                 Use App\TblTemplateFotos;
@@ -587,4 +586,4 @@ $('div.setup-panel div a.btn-success').trigger('click');
 </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.gratunos', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.gratunos', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/gratunos/formulario.blade.php ENDPATH**/ ?>

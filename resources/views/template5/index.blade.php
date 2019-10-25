@@ -17,7 +17,7 @@
                     foreach($banners as $banner){
                         ?><li><?php
                         if($banner->link != null){
-                            ?> <a href="{{verifica_link($banner->link, $igreja)}}"> <?php
+                            ?> <a href="{{verifica_link($banner->link, $site)}}"> <?php
                         }
                         ?> <img src="/storage/banners/{{$banner->foto}}" width="98%" height="293" alt="Slider Image" title="" /> <?php
                         if($banner->link != null){
@@ -71,7 +71,7 @@
                             </a>    
                         </div>
                         <p>{{$noticia->descricao}}</p>
-                        <a href="/{{$igreja->url}}/noticia/{{$noticia->id}}" class="read-more">Detalhes<span class="circle-arrow"></span></a>
+                        <a href="/{{$site->url}}/noticia/{{$noticia->id}}" class="read-more">Detalhes<span class="circle-arrow"></span></a>
                     </div>
 
                     <?php

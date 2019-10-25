@@ -1,4 +1,3 @@
-<?php /* E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/gratunos/igrejas.blade.php */ ?>
 <?php $__env->startSection('content'); ?>
 <!-- Full Width Column -->
 <div class="content-wrapper">
@@ -10,12 +9,12 @@
     </h1>
     </section>-->
 
-    <form id="filtrarIgrejaForm" method="GET" role="form" action="<?php echo e(route('plataforma.filtrarIgreja')); ?>" enctype="multipart/form-data">
+    <form id="filtrarSiteForm" method="GET" role="form" action="<?php echo e(route('plataforma.filtrarSite')); ?>" enctype="multipart/form-data">
     <?php echo csrf_field(); ?>
         <div class="box-body">
             <div class="row">
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" name="nome" placeholder="Escola">
+                    <input type="text" class="form-control" name="nome" placeholder="Site">
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-primary btn-flat">Filtrar</button>
                     </span>
@@ -24,51 +23,51 @@
         </div>
     </form>
 
-    <div class="row"><center><?php echo e($igrejas_e_configuracoes->appends(request()->query())->links()); ?></center></div>
+    <div class="row"><center><?php echo e($sites_e_configuracoes->appends(request()->query())->links()); ?></center></div>
     <!-- Main content -->
     <div class="row">
     <section class="content">
-    <?php $__currentLoopData = $igrejas_e_configuracoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $igreja): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <?php $__currentLoopData = $sites_e_configuracoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $site): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="col-md-6 col-xs-12">
         <!-- Attachment -->
         <div class="attachment-block clearfix">
-        <?php if($igreja->logo != null): ?>
-            <img class="attachment-img" src="<?php echo e('data:image;base64,'.base64_encode($igreja->logo)); ?>" alt="Attachment Image">
+        <?php if($site->logo != null): ?>
+            <img class="attachment-img" src="<?php echo e('data:image;base64,'.base64_encode($site->logo)); ?>" alt="Attachment Image">
         <?php else: ?>
             <img class="attachment-img" src="storage/no-logo.jpg" alt="Attachment Image">
         <?php endif; ?>
         
         <div class="attachment-pushed" style="word-wrap: break-word; overflow-wrap: break-word;">
             <h4 class="attachment-heading">
-                <?php if($igreja->url != null && $igreja->status == true): ?>
-                    <a href="<?php echo e(route('igreja.index', ['url' => $igreja->url])); ?>">
-                        <?php echo $igreja->nome ?>
+                <?php if($site->url != null && $site->status == true): ?>
+                    <a href="<?php echo e(route('site.index', ['url' => $site->url])); ?>">
+                        <?php echo $site->nome ?>
                     </a>
                 <?php else: ?>
-                    <?php echo $igreja->nome ?>
+                    <?php echo $site->nome ?>
                 <?php endif; ?>
             </h4>
 
             <div class="attachment-text">
-            Cidade: <?php echo e($igreja->cidade); ?> - <?php echo e($igreja->estado); ?><br/>
-            Bairro: <?php echo e($igreja->bairro); ?><br/>
-            Rua: <?php echo e($igreja->rua); ?>, n°: <?php echo e($igreja->num); ?><br/>
-            <?php if($igreja->complemento != null): ?>
-                Complemento: <?php echo e($igreja->complemento); ?>
+            Cidade: <?php echo e($site->cidade); ?> - <?php echo e($site->estado); ?><br/>
+            Bairro: <?php echo e($site->bairro); ?><br/>
+            Rua: <?php echo e($site->rua); ?>, n°: <?php echo e($site->num); ?><br/>
+            <?php if($site->complemento != null): ?>
+                Complemento: <?php echo e($site->complemento); ?>
 
             <?php else: ?>
                 Complemento: <span class="label bg-red">Não informado</span>
             <?php endif; ?>
             <br/>
-            <?php if($igreja->telefone != null): ?>
-                Telefone: <?php echo e($igreja->telefone); ?>
+            <?php if($site->telefone != null): ?>
+                Telefone: <?php echo e($site->telefone); ?>
 
             <?php else: ?>
                 Telefone: <span class="label bg-red">Não informado</span>
             <?php endif; ?>
             <br />
-            <?php if($igreja->email != null): ?>
-                Email: <?php echo e($igreja->email); ?>
+            <?php if($site->email != null): ?>
+                Email: <?php echo e($site->email); ?>
 
             <?php else: ?>
                 Email: <span class="label bg-red">Não informado</span>
@@ -84,10 +83,10 @@
     </section>
     </div>
     <!-- /.content -->
-    <div class="row"><center><?php echo e($igrejas_e_configuracoes->appends(request()->query())->links()); ?></center></div>
+    <div class="row"><center><?php echo e($sites_e_configuracoes->appends(request()->query())->links()); ?></center></div>
 </div>
 <!-- /.container -->
 </div>
 <!-- /.content-wrapper -->
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.gratunos', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.gratunos', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/gratunos/sites.blade.php ENDPATH**/ ?>

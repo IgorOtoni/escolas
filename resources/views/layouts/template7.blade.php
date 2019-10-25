@@ -3,30 +3,30 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title><?php echo strip_tags($igreja->nome) ?></title>
+	<title><?php echo strip_tags($site->nome) ?></title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="{{asset('/template_igreja/template-padrao-2/images/favicon.ico')}}">
-	<link rel="apple-touch-icon" href="{{asset('/template_igreja/template-padrao-2/images/icon.png')}}">
+	<link rel="shortcut icon" href="{{asset('/template_site/template-padrao-2/images/favicon.ico')}}">
+	<link rel="apple-touch-icon" href="{{asset('/template_site/template-padrao-2/images/icon.png')}}">
 	<!-- Google font (font-family: 'Dosis', Roboto;) -->
 	<link href="https://fonts.googleapis.com/css?family=Dosis:400,500,600,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
 	 
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="{{asset('/template_igreja/template-padrao-2/css/bootstrap.min.css')}}">
-	<link rel="stylesheet" href="{{asset('/template_igreja/template-padrao-2/css/plugins.css')}}">
-	<link rel="stylesheet" href="{{asset('/template_igreja/template-padrao-2/style.css')}}">
+	<link rel="stylesheet" href="{{asset('/template_site/template-padrao-2/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{asset('/template_site/template-padrao-2/css/plugins.css')}}">
+	<link rel="stylesheet" href="{{asset('/template_site/template-padrao-2/style.css')}}">
 
 	<!-- Cusom css -->
-   	<link rel="stylesheet" href="{{asset('/template_igreja/template-padrao-2/css/custom.css')}}">
+   	<link rel="stylesheet" href="{{asset('/template_site/template-padrao-2/css/custom.css')}}">
 
 	<!-- Modernizer js -->
-	<script src="{{asset('/template_igreja/template-padrao-2/js/vendor/modernizr-3.5.0.min.js')}}"></script>
+	<script src="{{asset('/template_site/template-padrao-2/js/vendor/modernizr-3.5.0.min.js')}}"></script>
 
-	<?php if($igreja->custom_style != null){ ?>
-        <style><?php echo $igreja->custom_style ?></style>
+	<?php if($site->custom_style != null){ ?>
+        <style><?php echo $site->custom_style ?></style>
     <?php } ?>
 	
 </head>
@@ -50,7 +50,7 @@
 						<div class="col-sm-4 col-md-6 col-lg-2 order-1 order-lg-1">
 							<div class="logo">
 								<a href="index.html">
-									<img src="{{asset('/storage/igrejas/'.$igreja->logo)}}" alt="logo images" width="135px">
+									<img src="{{asset('/storage/sites/'.$site->logo)}}" alt="logo images" width="135px">
 								</a>
 							</div>
 						</div>
@@ -60,15 +60,15 @@
                                     <ul class="mainmenu">
 					                    <?php
 					                    foreach($menus as $menu){
-					                        ?><li class="drop"><a href="{{verifica_link($menu->link, $igreja)}}"><?php echo $menu->nome ?></a><?php
+					                        ?><li class="drop"><a href="{{verifica_link($menu->link, $site)}}"><?php echo $menu->nome ?></a><?php
 					                            if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
 					                                <ul class="dropdown__menu">
 					                                    <?php foreach($submenus[$menu->id] as $submenu){
-					                                        ?><li class="drop"><a href="{{verifica_link($submenu->link, $igreja)}}"><?php echo $submenu->nome ?></a><?php
+					                                        ?><li class="drop"><a href="{{verifica_link($submenu->link, $site)}}"><?php echo $submenu->nome ?></a><?php
 					                                        if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
 					                                            <ul class="dropdown__menu">
 					                                                <?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-					                                                    ?> <li><a href="{{verifica_link($subsubmenu->link, $igreja)}}"><?php echo $subsubmenu->nome ?></a></li> <?php
+					                                                    ?> <li><a href="{{verifica_link($subsubmenu->link, $site)}}"><?php echo $subsubmenu->nome ?></a></li> <?php
 					                                                } ?>
 					                                            </ul>
 					                                        <?php
@@ -89,7 +89,7 @@
 					<!-- Mobile Menu -->
                     <div class="mobile-menu d-block d-lg-none">
                     	<div class="logo">
-                    		<a href="index.html"><img src="{{asset('/template_igreja/template-padrao-2/images/logo/junior.png')}}" alt="logo"></a>
+                    		<a href="index.html"><img src="{{asset('/template_site/template-padrao-2/images/logo/junior.png')}}" alt="logo"></a>
                     	</div>
                     	<a class="minicart-trigger" href="#">
                     		<i class="fa fa-shopping-basket"></i>
@@ -114,7 +114,7 @@
 				<div class="row align-items-center copyright__wrapper justify-content-center">
 					<div class="col-lg-12 col-sm-12 col-md-12">
 						<div class="coppy__right__inner text-center">
-							<p><i class="fa fa-copyright"></i><?php echo strip_tags($igreja->nome) ?> - <b> powered by hotsystems</b></p>
+							<p><i class="fa fa-copyright"></i><?php echo strip_tags($site->nome) ?> - <b> powered by hotsystems</b></p>
 						</div>
 					</div>
 				</div>
@@ -124,11 +124,11 @@
 	<!-- //Footer Area -->
 
 	<!-- JS Files -->
-	<script src="{{asset('/template_igreja/template-padrao-2/js/vendor/jquery-3.2.1.min.js')}}"></script>
-	<script src="{{asset('/template_igreja/template-padrao-2/js/popper.min.js')}}"></script>
-	<script src="{{asset('/template_igreja/template-padrao-2/js/bootstrap.min.js')}}"></script>
-	<script src="{{asset('/template_igreja/template-padrao-2/js/plugins.js')}}"></script>
-	<script src="{{asset('/template_igreja/template-padrao-2/js/active.js')}}"></script>
+	<script src="{{asset('/template_site/template-padrao-2/js/vendor/jquery-3.2.1.min.js')}}"></script>
+	<script src="{{asset('/template_site/template-padrao-2/js/popper.min.js')}}"></script>
+	<script src="{{asset('/template_site/template-padrao-2/js/bootstrap.min.js')}}"></script>
+	<script src="{{asset('/template_site/template-padrao-2/js/plugins.js')}}"></script>
+	<script src="{{asset('/template_site/template-padrao-2/js/active.js')}}"></script>
 
 	@stack('script')
 </body>

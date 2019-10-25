@@ -1,6 +1,6 @@
 @extends('layouts.template1')
 @push('script')
-<script src="{{asset('template_igreja/template-padrao/plugins/flexslider/js/jquery.flexslider.js')}}"></script> <!-- FlexSlider --> 
+<script src="{{asset('template_site/template-padrao/plugins/flexslider/js/jquery.flexslider.js')}}"></script> <!-- FlexSlider --> 
 @endpush
 @section('content')
 <!-- Start Nav Backed Header -->
@@ -9,7 +9,7 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
+        <li><a href="{{route('site.index',['url'=>$site->url])}}">Home</a></li>
         <li class="active">Álbuns</li>
         </ol>
     </div>

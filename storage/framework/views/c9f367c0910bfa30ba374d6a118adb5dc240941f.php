@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template6/apresentacao.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template6/apresentacao.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -9,10 +9,10 @@
 	<div class="container">
        	<h2>Sobre nós</h2>
       	<hr class="sm">
-       	<p><?php echo e($igreja->texto_apresentativo); ?></p>
+       	<p><?php echo e($site->texto_apresentativo); ?></p>
        	<?php if($funcoes != null && sizeof($funcoes) > 0): ?>
         	<hr class="fw">
-	        <h3>Nossa equipe</h3>
+	        <h3>Nossa membros</h3>
 	        <div class="spacer-10"></div>
 	        <div class="row">
         		<?php $x=0; foreach ($funcoes as $funcao){ $x++; ?>

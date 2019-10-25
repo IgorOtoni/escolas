@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/template2/apresentacao.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/template2/apresentacao.blade.php */ ?>
 <?php $__env->startSection('content'); ?>
 <!-- ##### Breadcrumb Area Start ##### -->
 <div class="breadcrumb-area">
@@ -7,7 +7,7 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/<?php echo e($igreja->url); ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/<?php echo e($site->url); ?>">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Sobre nós</li>
                     </ol>
                 </nav>
@@ -24,7 +24,7 @@
             <div class="col-12 col-lg-12">
                 <div class="about-content">
                     <h2>Sobre nós</h2>
-                    <p><?php echo e($igreja->texto_apresentativo); ?></p>
+                    <p><?php echo e($site->texto_apresentativo); ?></p>
                 </div>
             </div>
             <!--<div class="col-12 col-lg-6">
@@ -45,7 +45,7 @@
                 <!-- Section Heading -->
                 <div class="col-12">
                     <div class="section-heading">
-                        <h2>Equipe</h2>
+                        <h2>Membros</h2>
                     </div>
                 </div>
             </div>

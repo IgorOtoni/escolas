@@ -12,14 +12,14 @@ class Tbl_Membros_Seeder extends Seeder
      */
     public function run()
     {
-        // Mebros para Escola CEPSMA =============================================================
+        // Mebros para Site CEPSMA =============================================================
         DB::table('tbl_membros')->insert([
             'id'=>1,
             'nome'=>"Ana",
             'descricao'=>'Professora do ensino médio e fundamental de matemática.',
             'foto'=>file_get_contents(getcwd()."\\public\\storage\\membros\\membro-1-1.jpg"),
             'id_funcao'=>1,
-            'id_igreja'=>1,
+            'id_site'=>1,
         ]);
 
         DB::table('tbl_membros')->insert([
@@ -28,7 +28,7 @@ class Tbl_Membros_Seeder extends Seeder
             'descricao'=>'Professora do ensino médio e fundamental de portugês.',
             'foto'=>file_get_contents(getcwd()."\\public\\storage\\membros\\membro-2-1.jpeg"),
             'id_funcao'=>1,
-            'id_igreja'=>1,
+            'id_site'=>1,
         ]);
 
         DB::table('tbl_membros')->insert([
@@ -36,16 +36,16 @@ class Tbl_Membros_Seeder extends Seeder
             'nome'=>"Clara",
             'foto'=>file_get_contents(getcwd()."\\public\\storage\\membros\\membro-3-1.jpg"),
             'id_funcao'=>2,
-            'id_igreja'=>1,
+            'id_site'=>1,
         ]);
 
         DB::table('tbl_membros')->insert([
             'id'=>4,
             'nome'=>"Débora",
-            'descricao'=>'Responsável pela recepção na escola.',
+            'descricao'=>'Responsável pela recepção na site.',
             'foto'=>file_get_contents(getcwd()."\\public\\storage\\membros\\membro-4-1.jpg"),
             'id_funcao'=>3,
-            'id_igreja'=>1,
+            'id_site'=>1,
         ]);
 
     }

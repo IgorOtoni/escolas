@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template4/apresentacao.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template4/apresentacao.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -14,14 +14,14 @@
 				<h1>Sobre nós</h1>
 				
 				<p>
-					<?php echo e($igreja->texto_apresentativo); ?>
+					<?php echo e($site->texto_apresentativo); ?>
 
 				</p>
 
 			</div>
 
 	    	<div class="header_container">  
-				<h1>Equipe</h1>
+				<h1>Membros</h1>
 			</div>
 
 			<div class="gl_col_4">

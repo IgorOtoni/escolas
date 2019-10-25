@@ -72,7 +72,7 @@ class Tbl_Modulos_Seeder extends Seeder
             'id'=>20,
             'nome'=>'Vídeos',
             'descricao'=>'Funcionalidade do site gerencial.',
-            'rota'=>'sermoes',
+            'rota'=>'midias',
             'gerencial'=>true,
             'sistema'=>'web',
         ]);
@@ -108,7 +108,7 @@ class Tbl_Modulos_Seeder extends Seeder
         ]);
         DB::table('tbl_modulos')->insert([
             'id'=>25,
-            'nome'=>'Equipe',
+            'nome'=>'Membros',
             'descricao'=>'Funcionalidade do site gerencial.',
             'rota'=>'membros',
             'gerencial'=>true,
@@ -153,7 +153,7 @@ class Tbl_Modulos_Seeder extends Seeder
             'id'=>12,
             'nome'=>'Vídeos',
             'descricao'=>'Funcionalidade do site apresentativo.',
-            'rota'=>'sermoes',
+            'rota'=>'midias',
         ]);
         DB::table('tbl_modulos')->insert([
             'id'=>28,
@@ -174,7 +174,7 @@ class Tbl_Modulos_Seeder extends Seeder
         DB::table('tbl_modulos')->insert([
             'nome'=>'Mídias',
             'descricao'=>'Funcionalidade do aplicativo.',
-            'rota'=>'modulo-sermoes',
+            'rota'=>'modulo-midias',
             'gerencial'=>false,
             'sistema'=>'app',
         ]);

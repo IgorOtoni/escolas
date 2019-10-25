@@ -23,6 +23,8 @@
 
 $(function(){
 
+    $('.select2').select2();
+
     $('[data-mask]').inputmask();
 
     function limpa_formulário_cep() {
@@ -145,7 +147,7 @@ $(function(){
                             <label >Função</label>
                             <select id="funcao" name="funcao" class="form-control select2" style="width: 100%;" required>
                                 <option value="0">Sem função</option>
-                                <?php $funcoes = App\TblFuncoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                                <?php $funcoes = App\TblFuncoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                                 @foreach ($funcoes as $funcao)
                                 <option value="{{$funcao->id}}" {{($membro->id_funcao != null && $membro->id_funcao == $funcao->id) ? "selected" : ""}}>{{$funcao->nome}}</option>
                                 @endforeach

@@ -87,7 +87,7 @@ $('#modal-evento').on('show.bs.modal', function (event) {
                                     <h6>{{$evento->nome}}</h6>
                                 </a>
                                 <?php */ ?>
-                                <a href="/<?php echo e($igreja->url); ?>/evento/<?php echo e($evento->id); ?>"><h6><?php echo e($evento->nome); ?></h6></a>
+                                <a href="/<?php echo e($site->url); ?>/evento/<?php echo e($evento->id); ?>"><h6><?php echo e($evento->nome); ?></h6></a>
                                 <p>Final previsto para <?php echo e(\Carbon\Carbon::parse($evento->dados_horario_fim)->diffForHumans($evento->dados_horario_inicio)); ?> @ <?php echo e($evento->dados_local); ?></p>
                             </div>
                         </div>

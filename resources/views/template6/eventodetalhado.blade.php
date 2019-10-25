@@ -24,7 +24,7 @@
 	        		</p>
         		</div>
         		<h3>Inscrição</h3>
-               	<form method="get" class="contact-form clearfix" action="/{{$igreja->url}}/inscreveEnvento">
+               	<form method="get" class="contact-form clearfix" action="/{{$site->url}}/inscreveEnvento">
                 	<div class="row">
                         <div class="col-md-12">
                             <div class="form-group">

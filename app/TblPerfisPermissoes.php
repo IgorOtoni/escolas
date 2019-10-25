@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class TblPerfisPermissoes extends Model
 {
-    protected $fillable = ['id','id_perfil_igreja_modulo','id_permissao'];
+    protected $fillable = ['id','id_perfil_site_modulo','id_permissao'];
 }

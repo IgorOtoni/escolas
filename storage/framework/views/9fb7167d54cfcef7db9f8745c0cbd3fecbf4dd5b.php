@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/carrinho/produto.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/carrinho/produto.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -42,7 +42,7 @@
 
         <div class="col-md-12">
 	        <?php if($botaoAdd == true){
-	            echo '<center><form method="get" action="/'.$igreja->url.'/adicionarProduto">'
+	            echo '<center><form method="get" action="/'.$site->url.'/adicionarProduto">'
 	                    . '<div class="form_settings">'
 	                    	. '<input type="hidden" name="id" value="'.$produto->id.'">'
 	                        . '<input class="btn btn-sm btn-primary" type="submit" value="Acidionar ao carrinho">'

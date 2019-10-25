@@ -9,14 +9,14 @@
     	<div class="container">
     		<h1>Detalhes do sermão</h1>
   			<hr class="sm">
-  			<h3>{{ $sermao->nome }}</h3>
+  			<h3>{{ $midia->nome }}</h3>
   			<hr class="sm">
             <div class="row">
             	<div class="col-md-12">
-	        		<a href="{{$sermao->link}}"><iframe frameborder="0" width="800" height="400" src="{{$sermao->link}}"></iframe></a>
+	        		<a href="{{$midia->link}}"><iframe frameborder="0" width="800" height="400" src="{{$midia->link}}"></iframe></a>
 	                <p>
-	                	{{ $sermao->descricao }}<br/>
-	        			<span class="meta-data"><i class="fa fa-calendar"></i> Adicionado {{\Carbon\Carbon::parse($sermao->created_at)->diffForHumans()}}</span>
+	                	{{ $midia->descricao }}<br/>
+	        			<span class="meta-data"><i class="fa fa-calendar"></i> Adicionado {{\Carbon\Carbon::parse($midia->created_at)->diffForHumans()}}</span>
 	        		</p>
         		</div>
         	</div>

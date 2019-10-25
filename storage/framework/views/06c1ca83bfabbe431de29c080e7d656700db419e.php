@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template7/eventosfixos.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template7/eventosfixos.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -37,17 +37,17 @@
 					<div class="upcomming__event">
 						<div class="upcomming__thumb">
 							<img style="opacity: 0.5" src="<?php echo e(($evento->foto != null) ? '/storage/eventos/'.$evento->foto : '/storage/no-event.jpg'); ?>" alt="upcomming images">
-							<!--<img src="<?php echo e(asset('/template_igreja/template-padrao-2/images/upcomming/1.png')); ?>" alt="upcomming images">-->
+							<!--<img src="<?php echo e(asset('/template_site/template-padrao-2/images/upcomming/1.png')); ?>" alt="upcomming images">-->
 						</div>
 						<div class="upcomming__inner">
-							<h6><a href="/<?php echo e($igreja->url); ?>/eventofixo/<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></a></h6>
+							<h6><a href="/<?php echo e($site->url); ?>/eventofixo/<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></a></h6>
 							<p><?php echo e($evento->descricao); ?></p>
 							<ul class="event__time">
 								<li><i class="fa fa-home"></i><?php echo e($evento->dados_horario_local); ?></li>
 							</ul>
 						</div>
 						<div class="event__occur">
-							<img src="<?php echo e(asset('/template_igreja/template-padrao-2/images/upcomming/shape/1.png')); ?>" alt="shape images">
+							<img src="<?php echo e(asset('/template_site/template-padrao-2/images/upcomming/shape/1.png')); ?>" alt="shape images">
 							<div class="enent__pub">
 								<!--<span class="time">21st </span>
 								<span class="bate">Dec,2017</span>-->

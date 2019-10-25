@@ -36,7 +36,7 @@ class Tbl_Menus_Seeder extends Seeder
             'id'=>4,
             'id_configuracao'=>1,
             'nome'=>'Vídeos',
-            'link'=>'sermoes',
+            'link'=>'midias',
             'ordem'=>4,
         ]);
         DB::table('tbl_menus')->insert([

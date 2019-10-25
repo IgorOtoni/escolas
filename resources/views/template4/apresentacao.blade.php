@@ -14,13 +14,13 @@
 				<h1>Sobre nós/Visões e valores</h1>
 				
 				<p>
-					{{$igreja->texto_apresentativo}}
+					{{$site->texto_apresentativo}}
 				</p>
 
 			</div>
 
 	    	<div class="header_container">  
-				<h1>Equipe</h1>
+				<h1>Membros</h1>
 			</div>
 
 			<div class="gl_col_4">

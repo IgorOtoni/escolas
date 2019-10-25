@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/usuario/editargaleria.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/usuario/editargaleria.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- bootstrap datepicker -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')); ?>">

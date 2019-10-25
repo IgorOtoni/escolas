@@ -7,7 +7,7 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/<?php echo e($igreja->url); ?>"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item"><a href="/<?php echo e($site->url); ?>"><i class="fa fa-home"></i> Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Eventos fixos</li>
                     </ol>
                 </nav>
@@ -20,7 +20,7 @@
 <!-- ##### Upcoming Events Area Start ##### -->
 <section class="upcoming-events-area section-padding-0-100">
     <!-- Upcoming Events Heading Area -->
-    <div class="upcoming-events-heading bg-img bg-overlay bg-fixed" style="background-image: url(<?php echo e(asset('template_igreja/template-vermelho/img/bg-img/1.jpg')); ?>);">
+    <div class="upcoming-events-heading bg-img bg-overlay bg-fixed" style="background-image: url(<?php echo e(asset('template_site/template-vermelho/img/bg-img/1.jpg')); ?>);">
         <div class="container">
             <div class="row">
                 <!-- Section Heading -->
@@ -72,7 +72,7 @@
                                         <!--<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>-->
                                     </div>
                                     <div class="find-out-more-btn">
-                                        <a href="/<?php echo e($igreja->url); ?>/eventofixo/<?php echo e($evento->id); ?>" class="btn crose-btn btn-2">Ver em detalhe</a>
+                                        <a href="/<?php echo e($site->url); ?>/eventofixo/<?php echo e($evento->id); ?>" class="btn crose-btn btn-2">Ver em detalhe</a>
                                     </div>
                                 </div>
                             </div>

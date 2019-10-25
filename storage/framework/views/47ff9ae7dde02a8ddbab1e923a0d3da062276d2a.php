@@ -9,9 +9,9 @@
             <?php endif; ?>
 
             <div class="card">
-                <?php if(isset($igreja->nome)): ?>
+                <?php if(isset($site->nome)): ?>
                 <!--<div class="card-header"><?php echo e(__('Login')); ?></div>-->
-                <div class="card-header"><center><?php echo e($igreja->nome); ?></center></div>
+                <div class="card-header"><center><?php echo e($site->nome); ?></center></div>
                 <?php endif; ?>
 
                 <div class="card-body">
@@ -66,8 +66,8 @@
 
                                 </button>
 
-                                <?php if(isset($igreja->nome)): ?>
-                                    <a class="btn btn-warning" href="/<?php echo e($igreja->url); ?>">
+                                <?php if(isset($site->nome)): ?>
+                                    <a class="btn btn-warning" href="/<?php echo e($site->url); ?>">
                                         Voltar
                                     </a>
                                 <?php endif; ?>

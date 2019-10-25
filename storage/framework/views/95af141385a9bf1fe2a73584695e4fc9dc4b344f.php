@@ -60,7 +60,7 @@ $(function(){
     <section class="content-header">
         <h1>
         Linha do tempo
-        <small>Lista de todos os eventos da escola</small>
+        <small>Lista de todos os eventos da site</small>
         </h1>
     </section>
 
@@ -94,7 +94,7 @@ $(function(){
 <div class="modal fade" id="modal-incluir">
 <form id="incluirEventoFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.incluirEvento')); ?>" enctype="multipart/form-data">
 <?php echo csrf_field(); ?>
-    <input type="hidden" name="igreja" id="igreja" value="<?php echo e($igreja->id); ?>">
+    <input type="hidden" name="site" id="site" value="<?php echo e($site->id); ?>">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">

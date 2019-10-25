@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/admin/igrejas/index.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/admin/sites/index.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- Select2 -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/select2/dist/css/select2.min.css')); ?>">
@@ -41,7 +41,7 @@ function switch_status(comp){
   var id = $(comp).prop('id');
   var nome = $(comp).prop('name');
   $.ajax({
-    url: '/admin/igrejas/switchStatus/'+id,
+    url: '/admin/sites/switchStatus/'+id,
     type: 'GET'
   });
   if($(comp).prop('checked') == true){
@@ -136,7 +136,7 @@ $(function () {
     });
   })
 
-  var table = $('#tbl_igrejas').DataTable({
+  var table = $('#tbl_sites').DataTable({
     'paging'      : true,
     'lengthChange': true,
     'searching'   : true,
@@ -181,7 +181,7 @@ $(function () {
     processing: true,
     autoWidth: false,
   //serverSide: true,
-    'ajax': '<?php echo e(route('igrejas.tbl_igrejas')); ?>',
+    'ajax': '<?php echo e(route('sites.tbl_sites')); ?>',
     'columns': [
             {
               "className":      'details-control',
@@ -197,7 +197,7 @@ $(function () {
     });
 
     // Add event listener for opening and closing details
-    $('#tbl_igrejas tbody').on('click', 'td.details-control', function () {
+    $('#tbl_sites tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var row = table.row( tr );
 
@@ -213,9 +213,9 @@ $(function () {
         }
     });
 
-    $('#configuracoesIgrejaFormulario').validator('update');
+    $('#configuracoesSiteFormulario').validator('update');
 
-    $('#incluirIgrejaFormulario').validator({
+    $('#incluirSiteFormulario').validator({
       update: true,
       ignore: [],       
       rules: {
@@ -251,7 +251,7 @@ $('#modal-configuracoes').on('show.bs.modal', function (event) {
   if(url != null) modal.find('.modal-body #url').val(url);
   if(template != null) modal.find('.modal-body #template').val(template);
 
-  $('#configuracoesIgrejaFormulario').validator('validate');
+  $('#configuracoesSiteFormulario').validator('validate');
 });
 </script>
 <?php $__env->stopPush(); ?>
@@ -261,8 +261,8 @@ $('#modal-configuracoes').on('show.bs.modal', function (event) {
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Escolas
-        <small>Lista de todas as escolas</small>
+        Sites
+        <small>Lista de todas as sites</small>
       </h1>
     </section>
 
@@ -274,11 +274,11 @@ $('#modal-configuracoes').on('show.bs.modal', function (event) {
         <div class="box-header with-border">
           <h3 class="box-title"></h3>
           <div class="pull-right">
-            <a class="btn btn-success" data-toggle="modal" data-target="#modal-incluir"><i class="fa fa-plus"></i>&nbspIncluir igreja</a>
+            <a class="btn btn-success" data-toggle="modal" data-target="#modal-incluir"><i class="fa fa-plus"></i>&nbspIncluir site</a>
           </div>
         </div>
         <div class="box-body table-responsive">
-            <table id="tbl_igrejas" class="table table-bordered table-striped">
+            <table id="tbl_sites" class="table table-bordered table-striped">
             <thead>
             <tr>
                 <th></th>
@@ -303,7 +303,7 @@ $('#modal-configuracoes').on('show.bs.modal', function (event) {
 
   <!-- modals -->
   <div class="modal fade" id="modal-configuracoes">
-    <form id="configuracoesIgrejaFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('igrejas.salvarConfiguracoes')); ?>" enctype="multipart/form-data">
+    <form id="configuracoesSiteFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('sites.salvarConfiguracoes')); ?>" enctype="multipart/form-data">
     <?php echo csrf_field(); ?>
       <input type="hidden" name="id" id="id">
       <div class="modal-dialog modal-lg">
@@ -349,14 +349,14 @@ $('#modal-configuracoes').on('show.bs.modal', function (event) {
   </div>
 
   <div class="modal fade" id="modal-incluir">
-    <form id="incluirIgrejaFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('igrejas.incluir')); ?>" enctype="multipart/form-data">
+    <form id="incluirSiteFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('sites.incluir')); ?>" enctype="multipart/form-data">
     <?php echo csrf_field(); ?>
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Incluir igreja</h4>
+            <h4 class="modal-title">Incluir site</h4>
           </div>
           <div class="modal-body">
             <!-- form start -->

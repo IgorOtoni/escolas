@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/admin/perfis/index.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/admin/perfis/index.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- Select2 -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/select2/dist/css/select2.min.css')); ?>">
@@ -52,7 +52,7 @@ function format ( d ) {
             '</tr>'+
         '<tr>'+
             '<td>'+valida(d.nome)+'</td>'+
-            '<td>'+valida_congregacao(d.igreja)+'</td>'+
+            '<td>'+valida_congregacao(d.site)+'</td>'+
             '<td>'+valida(d.descricao)+'</td>'+
             '</tr>'+
         '</table></div>';
@@ -66,17 +66,17 @@ function valida_congregacao(txt){
   return (txt != 'Administrador da Plataforma' ? txt : '<span class="label bg-yellow">' + txt + '</span>')
 }
 
-$("#igreja").on("change", function(){
+$("#site").on("change", function(){
 
-  var id_igreja = $("#igreja").val();
+  var id_site = $("#site").val();
 
   $("#list-area").html("");
 
-  $("#list-area").append("<div class='form-group has-feedback'><label>Selecione quais módulos da igreja o perfil irá acessar:</label><select id='select_2_modulos' name='modulos[]' data-placeholder='Selecione os módulos' class='form-control select2' style='width: 100%;' multiple='multiple' required></select><div class='help-block with-errors'></div></div>");
+  $("#list-area").append("<div class='form-group has-feedback'><label>Selecione quais módulos da site o perfil irá acessar:</label><select id='select_2_modulos' name='modulos[]' data-placeholder='Selecione os módulos' class='form-control select2' style='width: 100%;' multiple='multiple' required></select><div class='help-block with-errors'></div></div>");
 
-  if(id_igreja > 0){
+  if(id_site > 0){
     $.ajax({
-        url: '/admin/igrejas/carregarModulos/'+id_igreja,
+        url: '/admin/sites/carregarModulos/'+id_site,
         type: 'get',
         dataType: 'json',
         success: function(response){
@@ -192,7 +192,7 @@ $(function () {
             },
             { data: 'id', name: 'id' },
             { data: 'nome', name: 'nome' },
-            { data: 'igreja', name: 'igreja' },
+            { data: 'site', name: 'site' },
             { data: 'action', name: 'action' },
           ],
           order: [[1, 'asc']]
@@ -247,7 +247,7 @@ $(function () {
           <th></th>
           <th>#</th>
           <th>Nome</th>
-          <th>Escola</th>
+          <th>Site</th>
           <th>Ações</th>
       </tr>
       </thead>
@@ -296,12 +296,12 @@ $(function () {
                   </div>
                   <div class="col-md-12">
                     <div class="form-group has-feedback">
-                      <label>Selecione a Igreja associada ao perfil:</label>
-                      <select id="igreja" name="igreja" class="form-control" required>
+                      <label>Selecione a Site associada ao perfil:</label>
+                      <select id="site" name="site" class="form-control" required>
                         <option value="-1" selected>Administrador da plataforma Église</option>
-                        <?php $igrejas = App\TblIgreja::orderBy('nome','ASC')->get(); ?>
-                        <?php $__currentLoopData = $igrejas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $igreja): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($igreja->id); ?>"><?php echo e($igreja->nome); ?></option>
+                        <?php $sites = App\TblSite::orderBy('nome','ASC')->get(); ?>
+                        <?php $__currentLoopData = $sites; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $site): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($site->id); ?>"><?php echo e($site->nome); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                       </select>
                       <div class="help-block with-errors"></div>
@@ -309,7 +309,7 @@ $(function () {
                   </div>
                   <div class="col-md-12" id="list-area">
                     <div class="form-group has-feedback">
-                      <label>Selecione quais módulos da igreja o perfil irá acessar:</label>
+                      <label>Selecione quais módulos da site o perfil irá acessar:</label>
                       <select id="select_2_modulos" name="modulos[]" data-placeholder="Selecione os módulos" class="form-control select2" style="width: 100%;" multiple="multiple" required></select>
                       <div class="help-block with-errors"></div>
                     </div>

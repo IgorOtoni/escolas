@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/admin/igrejas/edit.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/admin/sites/edit.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- Select2 -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/select2/dist/css/select2.min.css')); ?>">
@@ -30,7 +30,7 @@ function switch_status(comp){
   var id = $(comp).prop('id');
   var nome = $(comp).prop('name');
   $.ajax({
-    url: '/igrejas/switchStatus/'+id,
+    url: '/sites/switchStatus/'+id,
     type: 'GET'
   });
   if($(comp).prop('checked') == true){
@@ -50,18 +50,18 @@ $(function () {
       //minImageCount: 0,
       //maxImageCount: 1,
       allowedFileExtensions: ["jpeg", "jpg", "png", "gif"],
-      <?php if($igreja->logo != null){ ?>
+      <?php if($site->logo != null){ ?>
       initialPreview: [
-        "<?php echo e('/storage/igrejas/'.$igreja->logo); ?>",
+        "<?php echo e('/storage/sites/'.$site->logo); ?>",
       ],
       <?php } ?>
       deleteUrl: "<?php echo e('/storage'); ?>",
       uploadExtraData:{'_token':$("#csrf_token").val()},
       initialPreviewAsData: true,
       //initialPreviewFileType: "image",
-      <?php if($igreja->logo != null){ ?>
+      <?php if($site->logo != null){ ?>
       initialPreviewConfig: [
-        {caption: "<?php echo e($igreja->logo); ?>", extra: {id: <?php echo e($igreja->id); ?>, logo: "<?php echo e($igreja->logo); ?>", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/admin/igrejas/excluirLogo", key: 1},
+        {caption: "<?php echo e($site->logo); ?>", extra: {id: <?php echo e($site->id); ?>, logo: "<?php echo e($site->logo); ?>", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/admin/sites/excluirLogo", key: 1},
       ],
       <?php } ?>
       //overwriteInitial: false,
@@ -128,7 +128,7 @@ $(function () {
     });
   });
 
-  $('#incluirIgrejaFormulario').validator({
+  $('#incluirSiteFormulario').validator({
     update: true,
     ignore: [],       
     rules: {
@@ -149,7 +149,7 @@ $(function () {
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Editar escola
+        Editar site
         <!--<small>it all starts here</small>-->
       </h1>
     </section>
@@ -157,16 +157,16 @@ $(function () {
     <!-- Main content -->
     <section class="content">
 
-      <form id="editarIgrejaFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('igrejas.atualizar')); ?>" enctype="multipart/form-data">
+      <form id="editarSiteFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('sites.atualizar')); ?>" enctype="multipart/form-data">
         <?php echo csrf_field(); ?>
-        <input type="hidden" name="id" value="<?php echo e($igreja->id); ?>">
+        <input type="hidden" name="id" value="<?php echo e($site->id); ?>">
         <div class="box">
           <div class="box-body">
             <div class="row">
               <div class="col-md-12">
                   <div class="form-group has-feedback">
                     <label >Nome</label>
-                    <input name="nome" type="text" class="form-control" placeholder="Nome" value="<?php echo e($igreja->nome); ?>" required>
+                    <input name="nome" type="text" class="form-control" placeholder="Nome" value="<?php echo e($site->nome); ?>" required>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     <div class="help-block with-errors"></div>
                   </div>
@@ -174,7 +174,7 @@ $(function () {
               <div class="col-md-4">
                   <div class="form-group has-feedback">
                       <label >CEP</label>
-                      <input id="cep" name="cep" type="text" class="form-control" placeholder="CEP" data-inputmask='"mask": "99.999-999"' value="<?php echo e($igreja->cep); ?>" data-mask required>
+                      <input id="cep" name="cep" type="text" class="form-control" placeholder="CEP" data-inputmask='"mask": "99.999-999"' value="<?php echo e($site->cep); ?>" data-mask required>
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -182,7 +182,7 @@ $(function () {
               <div class="col-md-4">
                   <div class="form-group has-feedback">
                       <label >Estado</label>
-                      <input id="uf" name="estado" type="text" class="form-control" placeholder="Estado" value="<?php echo e($igreja->estado); ?>" required>
+                      <input id="uf" name="estado" type="text" class="form-control" placeholder="Estado" value="<?php echo e($site->estado); ?>" required>
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -190,7 +190,7 @@ $(function () {
               <div class="col-md-4">
                   <div class="form-group has-feedback">
                       <label >Cidade</label>
-                      <input id="cidade" name="cidade" type="text" class="form-control" placeholder="Cidade" value="<?php echo e($igreja->cidade); ?>" required>
+                      <input id="cidade" name="cidade" type="text" class="form-control" placeholder="Cidade" value="<?php echo e($site->cidade); ?>" required>
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -198,7 +198,7 @@ $(function () {
               <div class="col-md-4">
                   <div class="form-group has-feedback">
                       <label >Bairro</label>
-                      <input id="bairro" name="bairro" type="text" class="form-control" placeholder="Bairro" value="<?php echo e($igreja->bairro); ?>" required>
+                      <input id="bairro" name="bairro" type="text" class="form-control" placeholder="Bairro" value="<?php echo e($site->bairro); ?>" required>
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -206,7 +206,7 @@ $(function () {
               <div class="col-md-4">
                   <div class="form-group has-feedback">
                       <label >Rua</label>
-                      <input id="rua" name="rua" type="text" class="form-control" placeholder="Rua" value="<?php echo e($igreja->rua); ?>" required>
+                      <input id="rua" name="rua" type="text" class="form-control" placeholder="Rua" value="<?php echo e($site->rua); ?>" required>
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -214,13 +214,13 @@ $(function () {
               <div class="col-md-8">
                   <div class="form-group">
                       <label >Complemento</label>
-                      <input name="complemento" type="text" class="form-control" placeholder="Complemento" value="<?php echo e($igreja->complemento); ?>">
+                      <input name="complemento" type="text" class="form-control" placeholder="Complemento" value="<?php echo e($site->complemento); ?>">
                   </div>
               </div>
               <div class="col-md-4">
                   <div class="form-group has-feedback">
                       <label >Número</label>
-                      <input name="num" type="number" class="form-control" placeholder="Número" value="<?php echo e($igreja->num); ?>" required>
+                      <input name="num" type="number" class="form-control" placeholder="Número" value="<?php echo e($site->num); ?>" required>
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -228,7 +228,7 @@ $(function () {
               <div class="col-md-4">
                   <div class="form-group has-feedback">
                       <label >Telefone</label>
-                      <input name="telefone" type="text" class="form-control" placeholder="Telefone" data-inputmask='"mask": "(99) 99999-9999"' data-mask value="<?php echo e($igreja->telefone); ?>">
+                      <input name="telefone" type="text" class="form-control" placeholder="Telefone" data-inputmask='"mask": "(99) 99999-9999"' data-mask value="<?php echo e($site->telefone); ?>">
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -236,7 +236,7 @@ $(function () {
               <div class="col-md-8">
                   <div class="form-group has-feedback">
                       <label >Email</label>
-                      <input name="email" type="text" class="form-control" placeholder="Email" value="<?php echo e($igreja->email); ?>" required>
+                      <input name="email" type="text" class="form-control" placeholder="Email" value="<?php echo e($site->email); ?>" required>
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -262,8 +262,8 @@ $(function () {
                     <?php $modulos = App\TblModulo::orderBy('nome','ASC')->get();
                     foreach ($modulos as $modulo){
                       $achou = false;
-                      foreach ($modulos_igreja as $modulo_igreja){
-                        if($modulo_igreja->id_modulo == $modulo->id){
+                      foreach ($modulos_site as $modulo_site){
+                        if($modulo_site->id_modulo == $modulo->id){
                           ?>
                           <option value="<?php echo e($modulo->id); ?>" selected><?php echo e($modulo->nome); ?> - <?php echo e($modulo->sistema); ?> - <?php echo e(($modulo->gerencial) ? 'Gerencial' : 'Apresentativo'); ?></option>
                           <?php
@@ -286,7 +286,7 @@ $(function () {
 
           </div>
           <div class="box-footer">
-            <a href="<?php echo e(route('igrejas')); ?>" class="btn btn-warning pull-left">Cancelar</a>
+            <a href="<?php echo e(route('sites')); ?>" class="btn btn-warning pull-left">Cancelar</a>
             <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
           </div>
         </div>

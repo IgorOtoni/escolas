@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template5/index.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template5/index.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -17,7 +17,7 @@
                     foreach($banners as $banner){
                         ?><li><?php
                         if($banner->link != null){
-                            ?> <a href="<?php echo e(verifica_link($banner->link, $igreja)); ?>"> <?php
+                            ?> <a href="<?php echo e(verifica_link($banner->link, $site)); ?>"> <?php
                         }
                         ?> <img src="/storage/banners/<?php echo e($banner->foto); ?>" width="98%" height="293" alt="Slider Image" title="" /> <?php
                         if($banner->link != null){
@@ -71,7 +71,7 @@
                             </a>    
                         </div>
                         <p><?php echo e($noticia->descricao); ?></p>
-                        <a href="/<?php echo e($igreja->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="read-more">Detalhes<span class="circle-arrow"></span></a>
+                        <a href="/<?php echo e($site->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="read-more">Detalhes<span class="circle-arrow"></span></a>
                     </div>
 
                     <?php

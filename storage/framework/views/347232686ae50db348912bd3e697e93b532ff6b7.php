@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template7/sermaodetalhado.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template7/midiadetalhado.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -29,15 +29,15 @@
                 <div class="page__blog__details">
                     <article class="dacre__blog__details">
                         <div class="blog__thumb">
-                            <iframe width="839" height="600" frameborder="0" src="<?php echo e($sermao->link); ?>"></iframe>
+                            <iframe width="839" height="600" frameborder="0" src="<?php echo e($midia->link); ?>"></iframe>
                         </div>
                         <div class="blog__inner">
-                            <h2><?php echo e($sermao->nome); ?></h2>
+                            <h2><?php echo e($midia->nome); ?></h2>
                             <ul>
-                                <li>Adicionado <?php echo e(\Carbon\Carbon::parse($sermao->created_at)->diffForHumans()); ?></li>
+                                <li>Adicionado <?php echo e(\Carbon\Carbon::parse($midia->created_at)->diffForHumans()); ?></li>
                             </ul>
 
-                            <p><?php echo e($sermao->descricao); ?></p>
+                            <p><?php echo e($midia->descricao); ?></p>
 
                         </div>
                     </article>

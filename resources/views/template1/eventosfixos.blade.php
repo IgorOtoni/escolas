@@ -6,7 +6,7 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
+        <li><a href="{{route('site.index',['url'=>$site->url])}}">Home</a></li>
         <li class="active">Eventos fixos</li>
         </ol>
     </div>
@@ -48,7 +48,7 @@
                         <?php } ?>
                         <div class="grid-content">
                         <h3>
-                            <a href="{{route('igreja.eventofixo', ['url'=>$igreja->url,'id'=>$evento->id])}}">
+                            <a href="{{route('site.eventofixo', ['url'=>$site->url,'id'=>$evento->id])}}">
                                 <?php echo $evento->nome ?>
                             </a>
                         </h3>

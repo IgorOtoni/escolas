@@ -22,8 +22,8 @@ $(function(){
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
-        <li><a href="{{route('igreja.eventos',['url'=>$igreja->url])}}">Linha do tempo</a></li>
+        <li><a href="{{route('site.index',['url'=>$site->url])}}">Home</a></li>
+        <li><a href="{{route('site.eventos',['url'=>$site->url])}}">Linha do tempo</a></li>
         <li class="active">Evento</li>
         </ol>
     </div>
@@ -72,7 +72,7 @@ $(function(){
             </div>
             <section class="post-comment-form">
             <h3><i class="fa fa-share"></i> Inscrever me</h3>
-            <form action="{{route('igreja.inscreveEnvento',['url'=>$igreja->url])}}" method="get" data-toggle="validator" id="subscribeForm">
+            <form action="{{route('site.inscreveEnvento',['url'=>$site->url])}}" method="get" data-toggle="validator" id="subscribeForm">
                 <input type="hidden" name="id_evento" value="{{$evento->id}}">
                 @csrf
                 <div class="row">

@@ -12,7 +12,7 @@ if($banners != null && sizeof($banners)){
         $x = 1;
         foreach($banners as $banner){
             if($banner->link != null){
-                ?> <a href="{{verifica_link($banner->link, $igreja)}}"> <?php
+                ?> <a href="{{verifica_link($banner->link, $site)}}"> <?php
             }
             ?>
             <!-- Single Hero Slide -->
@@ -76,7 +76,7 @@ if($noticias != null && sizeof($noticias) != 0){
                                     <h4>{{$noticia->nome}}</h4>
                                 </a>
                                 <?php */ ?>
-                                <a href="{{route('igreja.noticia', ['url'=>$igreja->url,'id'=>$noticia->id])}}"><h4>{{$noticia->nome}}</h4></a>
+                                <a href="{{route('site.noticia', ['url'=>$site->url,'id'=>$noticia->id])}}"><h4>{{$noticia->nome}}</h4></a>
                                 <div class="post-meta d-flex">
                                     <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> Publicada {{\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()}}</a>
                                     <?php
@@ -161,7 +161,7 @@ if($eventos != null && sizeof($eventos) != 0){
                                             <?php /* ?>
                                             <a href="#" data-toggle="modal" data-target="#modal-evento" data-foto="{{$evento->foto}}" data-local="{{$evento->dados_local}}" data-nome="{{$evento->nome}}" data-descricao="{{$evento->descricao}}" data-inicio="{{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}" data-fim="{{(($evento->dados_horario_fim != null) ? \Carbon\Carbon::parse($evento->dados_horario_fim)->diffForHumans($evento->dados_horario_inicio) : '')}}" class="btn crose-btn btn-2">Ver em detalhe</a>
                                             <?php */ ?>
-                                            <a href="{{route('igreja.evento', ['url'=>$igreja->url,'id'=>$evento->id])}}" class="btn crose-btn btn-2">Ver em detalhe</a>
+                                            <a href="{{route('site.evento', ['url'=>$site->url,'id'=>$evento->id])}}" class="btn crose-btn btn-2">Ver em detalhe</a>
                                         </div>
                                     </div>
                                 </div>

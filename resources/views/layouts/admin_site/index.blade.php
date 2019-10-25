@@ -98,7 +98,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">BARRA DE NAVEGAÇÃO</li>
         <li><a href="{{route('admin.home')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="{{route('igrejas')}}"><i class="fa fa-institution "></i> <span>Sites</span></a></li>
+        <li><a href="{{route('sites')}}"><i class="fa fa-institution "></i> <span>Sites</span></a></li>
         <li><a href="{{route('perfis')}}"><i class="fa fa-users"></i> <span>Perfis</span></a></li>
         <li><a href="{{route('usuarios')}}"><i class="fa fa-user"></i> <span>Usuários</span></a></li>
       </ul>
@@ -111,7 +111,7 @@
   @yield('content')
 
   <footer class="main-footer">
-    <strong>Escolas
+    <strong>Sites
   </footer>
 
 </div>

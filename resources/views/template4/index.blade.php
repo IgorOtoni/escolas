@@ -58,7 +58,7 @@
                             <article class="kids_post_block l-grid-4">
                                 <h1><img width="71" height="41" class="icon" src="{{($evento->foto != null) ? "/storage/timeline/".$evento->foto : "/storage/no-event.jpg"}}" alt="" /><a class="link" href="#">{{$evento->nome}}</a></h1>
                                 <div class="kids_post_content">
-                                    <p>{{$evento->descricao}}</p> <h3 class="l-float-right"><a class="link" href="/{{$igreja->url}}/evento/{{$evento->id}}">Detalhes</a></h3>
+                                    <p>{{$evento->descricao}}</p> <h3 class="l-float-right"><a class="link" href="/{{$site->url}}/evento/{{$evento->id}}">Detalhes</a></h3>
                                 </div>
                             </article>
 
@@ -107,7 +107,7 @@
                                     {{$noticia->descricao}}
                                 </p>
                                 <footer class="aligncenter">
-                                    <a href="/{{$igreja->url}}/noticia/{{$noticia->id}}" class="button button-centering medium button-style1">Detalhes</a>
+                                    <a href="/{{$site->url}}/noticia/{{$noticia->id}}" class="button button-centering medium button-style1">Detalhes</a>
                                 </footer>
                             </li>
 

@@ -1,6 +1,6 @@
 <?php /* C:\xampp\htdocs\adm_eglise\resources\views\layouts\template1\publicacao.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
-<script src="<?php echo e(asset('template_igreja/template-padrao/plugins/flexslider/js/jquery.flexslider.js')); ?>"></script> <!-- FlexSlider --> 
+<script src="<?php echo e(asset('template_site/template-padrao/plugins/flexslider/js/jquery.flexslider.js')); ?>"></script> <!-- FlexSlider --> 
 <?php $__env->stopPush(); ?>
 <?php $__env->startSection('content'); ?>
 <!-- Start Nav Backed Header -->
@@ -9,7 +9,7 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/<?php echo e($igreja->url); ?>/">Home</a></li>
+        <li><a href="/<?php echo e($site->url); ?>/">Home</a></li>
         <li class="active">Publicação</li>
         </ol>
     </div>

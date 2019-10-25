@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class Tbl_Igrejas_Modulos_Seeder extends Seeder
+class Tbl_Sites_Modulos_Seeder extends Seeder
 {
     /**
      * Run the database seeds.

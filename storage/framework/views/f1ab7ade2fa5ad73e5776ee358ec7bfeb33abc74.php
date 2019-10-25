@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/admin/perfis/edit.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/admin/perfis/edit.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- Select2 -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/select2/dist/css/select2.min.css')); ?>">
@@ -8,17 +8,17 @@
 
 <script>
 
-$("#igreja").on("change", function(){
+$("#site").on("change", function(){
 
-    var id_igreja = $("#igreja").val();
+    var id_site = $("#site").val();
 
     $("#list-area").html("");
 
-    $("#list-area").append("<div class='form-group has-feedback'><label>Selecione quais módulos da igreja o perfil irá acessar:</label><select id='select_2_modulos' name='modulos[]' data-placeholder='Selecione os módulos' class='form-control select2' style='width: 100%;' multiple='multiple' required></select><div class='help-block with-errors'></div></div>");
+    $("#list-area").append("<div class='form-group has-feedback'><label>Selecione quais módulos da site o perfil irá acessar:</label><select id='select_2_modulos' name='modulos[]' data-placeholder='Selecione os módulos' class='form-control select2' style='width: 100%;' multiple='multiple' required></select><div class='help-block with-errors'></div></div>");
 
-    if(id_igreja > 0){
+    if(id_site > 0){
         $.ajax({
-            url: '/admin/igrejas/carregarModulos/'+id_igreja,
+            url: '/admin/sites/carregarModulos/'+id_site,
             type: 'get',
             dataType: 'json',
             success: function(response){
@@ -69,7 +69,7 @@ $(function(){
 
     $('#select_2_modulos').select2();
 
-    <?php if($perfil->id_igreja != null){ ?>
+    <?php if($perfil->id_site != null){ ?>
         var vetor = [];
 
         <?php
@@ -79,7 +79,7 @@ $(function(){
         ?>
 
         $.ajax({
-            url: '/admin/igrejas/carregarModulos/'+<?php echo e($perfil->id_igreja); ?>,
+            url: '/admin/sites/carregarModulos/'+<?php echo e($perfil->id_site); ?>,
             type: 'get',
             dataType: 'json',
             success: function(response){
@@ -169,12 +169,12 @@ $(function(){
                 </div>
                 <div class="col-md-12">
                     <div class="form-group has-feedback">
-                    <label>Selecione a Igreja associada ao perfil:</label>
-                    <select id="igreja" name="igreja" class="form-control" required>
+                    <label>Selecione a Site associada ao perfil:</label>
+                    <select id="site" name="site" class="form-control" required>
                         <option value="-1" selected>Administrador da plataforma Église</option>
-                        <?php $igrejas = App\TblIgreja::orderBy('nome','ASC')->get(); ?>
-                        <?php $__currentLoopData = $igrejas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $igreja): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($igreja->id); ?>" <?php echo e(($igreja->id == $perfil->id_igreja) ? 'selected' : ''); ?>><?php echo e($igreja->nome); ?></option>
+                        <?php $sites = App\TblSite::orderBy('nome','ASC')->get(); ?>
+                        <?php $__currentLoopData = $sites; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $site): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($site->id); ?>" <?php echo e(($site->id == $perfil->id_site) ? 'selected' : ''); ?>><?php echo e($site->nome); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <div class="help-block with-errors"></div>
@@ -182,7 +182,7 @@ $(function(){
                 </div>
                 <div class="col-md-12" id="list-area">
                     <div class="form-group has-feedback">
-                    <label>Selecione quais módulos da igreja o perfil irá acessar:</label>
+                    <label>Selecione quais módulos da site o perfil irá acessar:</label>
                     <select id="select_2_modulos" name="modulos[]" data-placeholder="Selecione os módulos" class="form-control select2" style="width: 100%;" multiple="multiple" required></select>
                     <div class="help-block with-errors"></div>
                     </div>

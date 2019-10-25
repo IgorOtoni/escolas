@@ -19,7 +19,7 @@
 	                            	<img src="{{($noticia->foto != null) ? '/carrega_imagem/330,206,noticias,'.$noticia->foto : '/carrega_imagem/330,206,X,no-news.jpg'}}" alt="">
 	                            </a>
 	                            <div class="grid-content">
-	                            	<h3><a href="/{{$igreja->url}}/noticia/{{$noticia->id}}" class="event-title">{{$noticia->nome}}</a></h3>
+	                            	<h3><a href="/{{$site->url}}/noticia/{{$noticia->id}}" class="event-title">{{$noticia->nome}}</a></h3>
 	                                <span class="meta-data"><i class="fa fa-calendar"></i>
 	                                	Publicada {{\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()}}
 	                                </span>
@@ -30,7 +30,7 @@
 	                                <?php } ?>
 	                            </div>
 	                            <div class="grid-footer clearfix">
-	                        		<a href="/{{$igreja->url}}/noticia/{{$noticia->id}}" class="pull-right btn btn-primary btn-sm">Detalhes</a>
+	                        		<a href="/{{$site->url}}/noticia/{{$noticia->id}}" class="pull-right btn btn-primary btn-sm">Detalhes</a>
 	                            </div>
 	                        </div>
 	                    </li>

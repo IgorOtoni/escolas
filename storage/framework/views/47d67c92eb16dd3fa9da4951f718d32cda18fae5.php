@@ -7,7 +7,7 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/<?php echo e($igreja->url); ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/<?php echo e($site->url); ?>">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Sobre nós</li>
                     </ol>
                 </nav>
@@ -24,7 +24,7 @@
             <div class="col-12 col-lg-12">
                 <div class="about-content">
                     <h2>Sobre nós</h2>
-                    <p><?php echo e($igreja->texto_apresentativo); ?></p>
+                    <p><?php echo e($site->texto_apresentativo); ?></p>
                 </div>
             </div>
             <!--<div class="col-12 col-lg-6">

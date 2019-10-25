@@ -209,7 +209,7 @@ $(function(){
 <div class="modal fade" id="modal-incluir">
 <form id="incluirOfertaFormulario" data-toggle="validator" method="POST" role="form" action="{{route('usuario.incluirOferta')}}" enctype="multipart/form-data">
 @csrf
-    <input type="hidden" name="igreja" id="igreja" value="{{$igreja->id}}">
+    <input type="hidden" name="site" id="site" value="{{$site->id}}">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -233,7 +233,6 @@ $(function(){
                 <div class="col-md-12">
                     <div class="form-group has-feedback">
                 		<select id="produto" name="produto" class="form-control select2" style="width: 100%;" required>
-	                        <?php $produtos = App\TblProdutos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
 	                        @foreach ($produtos as $produto)
 	                        <option value="{{$produto->id}}">{{$produto->nome}}</option>
 	                        @endforeach

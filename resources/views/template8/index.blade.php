@@ -27,7 +27,7 @@ if($banners != null && sizeof($banners)){
 	                        if($banner->link != null){
 	                            ?>
 			                    <div class="tp-caption slide_button customin stb tp-resizeme cust-z-index-7 rs-cust-style3" data-x="center" data-hoffset="0" data-y="center" data-voffset="200" data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:20;transformOrigin:50% 100%;" data-speed="500" data-start="1350" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-end="8450" data-endspeed="300">
-									<a href="{{verifica_link($banner->link, $igreja)}}" class="slide_button_white">Detalhes</a>
+									<a href="{{verifica_link($banner->link, $site)}}" class="slide_button_white">Detalhes</a>
 			                    </div>
 			                    <?php
 	                    	}
@@ -64,30 +64,30 @@ if($noticias != null && sizeof($noticias) != 0){
 									<div class="post_item post_item_courses odd">
 										<div class="post_content isotope_item_content ih-item colored square effect_dir left_to_right">
 											<div class="post_featured img" style="width: 350; height: 350px">
-												<a href="{{ $igreja->url }}/noticia/{{ $noticia->id }}">
+												<a href="{{ $site->url }}/noticia/{{ $noticia->id }}">
 													<img height="400" width="400" alt="" src="{{ ($noticia->foto != null) ? '/storage/noticias/'.$noticia->foto : '/storage/noticias/no-news.jpg'}}">
 												</a>
 												<h4 class="post_title">
-													<a href="{{ $igreja->url }}/noticia/{{ $noticia->id }}">{{$noticia->nome}}</a>
+													<a href="{{ $site->url }}/noticia/{{ $noticia->id }}">{{$noticia->nome}}</a>
 												</h4>
 												<div class="post_descr">
 													<div class="post_category">
-														<a href="{{ $igreja->url }}/noticia/{{ $noticia->id }}">{{$noticia->descricao}}</a>
+														<a href="{{ $site->url }}/noticia/{{ $noticia->id }}">{{$noticia->descricao}}</a>
 													</div>
 												</div>
 											</div>
 											<div class="post_info_wrap info">
 												<div class="info-back">
 													<h4 class="post_title">
-														<a href="{{ $igreja->url }}/noticia/{{ $noticia->id }}">{{$noticia->nome}}</a>
+														<a href="{{ $site->url }}/noticia/{{ $noticia->id }}">{{$noticia->nome}}</a>
 													</h4>
 													<div class="post_descr">
 														<p>
-															<a href="{{ $igreja->url }}/noticia/{{ $noticia->id }}">{{$noticia->descricao}}</a>
+															<a href="{{ $site->url }}/noticia/{{ $noticia->id }}">{{$noticia->descricao}}</a>
 														</p>
 														<div class="post_buttons">
 															<div class="post_button">
-																<a href="{{ $igreja->url }}/noticia/{{ $noticia->id }}" class="sc_button sc_button_square sc_button_style_filled sc_button_bg_link sc_button_size_small">Detalhes</a>
+																<a href="{{ $site->url }}/noticia/{{ $noticia->id }}" class="sc_button sc_button_square sc_button_style_filled sc_button_bg_link sc_button_size_small">Detalhes</a>
 															</div>
 														</div>
 													</div>

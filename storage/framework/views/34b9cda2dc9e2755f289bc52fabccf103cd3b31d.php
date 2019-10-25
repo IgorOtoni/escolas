@@ -45,7 +45,7 @@
 
         <div class="col-md-12">
 	        <?php if($botaoAdd == true){
-	            echo '<center><form method="get" action="'.route('igreja.adicionarProduto',['url'=>$igreja->url]).'">'
+	            echo '<center><form method="get" action="'.route('site.adicionarProduto',['url'=>$site->url]).'">'
 	                    . '<div class="form_settings">'
 	                    	. '<input type="hidden" name="id" value="'.$produto->id.'">'
 	                        . '<input class="btn btn-sm btn-primary" type="submit" value="Acidionar ao carrinho">'

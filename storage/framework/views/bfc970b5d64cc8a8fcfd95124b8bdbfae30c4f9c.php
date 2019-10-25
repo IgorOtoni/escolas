@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template7/noticias.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template7/noticias.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -39,7 +39,7 @@
 							<span>Publicada <?php echo e(\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()); ?></span>
 						</div>
 						<div class="blog__thumb">
-							<a href="/<?php echo e($igreja->url); ?>/noticia/<?php echo e($noticia->id); ?>">
+							<a href="/<?php echo e($site->url); ?>/noticia/<?php echo e($noticia->id); ?>">
 								<img width="370" height="215" src="<?php echo e(($noticia->foto != null) ? '/storage/noticias/'.$noticia->foto : '/storage/no-news.jpg'); ?>" alt="blog images">
 							</a>
 						</div>
@@ -54,7 +54,7 @@
 							<h4><a href="blog-details.html"><?php echo e($noticia->nome); ?></a></h4>
 							<p><?php echo e($noticia->descricao); ?></p>
 							<ul class="blog__meta d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
-								<li><a href="/<?php echo e($igreja->url); ?>/noticia/<?php echo e($noticia->id); ?>">Detalhes</a></li>
+								<li><a href="/<?php echo e($site->url); ?>/noticia/<?php echo e($noticia->id); ?>">Detalhes</a></li>
 							</ul>
 						</div>
 					</article>

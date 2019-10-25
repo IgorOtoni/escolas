@@ -37,7 +37,7 @@
                             </div>
                             <!-- Events Content -->
                             <div class="events-content">
-                                <a href="<?php echo e(route('igreja.eventofixo', ['url'=>$igreja->url,'id'=>$evento->id])); ?>"><h6><?php echo e($evento->nome); ?></h6></a>
+                                <a href="<?php echo e(route('site.eventofixo', ['url'=>$site->url,'id'=>$evento->id])); ?>"><h6><?php echo e($evento->nome); ?></h6></a>
                                 <p><?php echo e($evento->dados_horario_local); ?></p>
                                 <p><?php echo e($evento->descricao); ?></p>
                             </div>

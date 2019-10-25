@@ -9,16 +9,16 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title><?php echo strip_tags($igreja->nome) ?></title>
+    <title><?php echo strip_tags($site->nome) ?></title>
 
     <!-- Favicon -->
-    <link rel="icon" href="{{asset('template_igreja/template-vermelho/img/core-img/favicon.ico')}}">
+    <link rel="icon" href="{{asset('template_site/template-vermelho/img/core-img/favicon.ico')}}">
 
     <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="{{asset('template_igreja/template-vermelho/style.css')}}">
+    <link rel="stylesheet" href="{{asset('template_site/template-vermelho/style.css')}}">
     
-    <?php if($igreja->custom_style != null){ ?>
-        <style><?php echo $igreja->custom_style ?></style>
+    <?php if($site->custom_style != null){ ?>
+        <style><?php echo $site->custom_style ?></style>
     <?php } ?>
 	
 </head>
@@ -40,7 +40,7 @@
                     <nav class="classy-navbar justify-content-between" id="croseNav">
 
                         <!-- Nav brand -->
-                        <a href="{{route('igreja.index', ['url' => $igreja->url])}}" class="nav-brand"><img style="witdh: 120px; height: 50px;" src="{{($igreja->logo != null) ? 'data:image;base64,'.base64_encode($igreja->logo) : asset('/storage/no-logo.jpg')}}" alt=""></a><h3><?php echo $igreja->nome ?></h3>
+                        <a href="{{route('site.index', ['url' => $site->url])}}" class="nav-brand"><img style="witdh: 120px; height: 50px;" src="{{($site->logo != null) ? 'data:image;base64,'.base64_encode($site->logo) : asset('/storage/no-logo.jpg')}}" alt=""></a><h3><?php echo $site->nome ?></h3>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -60,15 +60,15 @@
                                 <ul>
                                     <?php
                                     foreach($menus as $menu){
-                                        ?><li><a href="{{verifica_link($menu->link, $igreja)}}">{{$menu->nome}}</a><?php
+                                        ?><li><a href="{{verifica_link($menu->link, $site)}}">{{$menu->nome}}</a><?php
                                             if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
                                                 <ul class="dropdown">
                                                     <?php foreach($submenus[$menu->id] as $submenu){
-                                                        ?><li><a href="{{verifica_link($submenu->link, $igreja)}}">{{$submenu->nome}}</a><?php
+                                                        ?><li><a href="{{verifica_link($submenu->link, $site)}}">{{$submenu->nome}}</a><?php
                                                         if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
                                                             <ul class="dropdown">
                                                                 <?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-                                                                    ?> <li><a href="{{verifica_link($subsubmenu->link, $igreja)}}">{{$subsubmenu->nome}}</a></li> <?php
+                                                                    ?> <li><a href="{{verifica_link($subsubmenu->link, $site)}}">{{$subsubmenu->nome}}</a></li> <?php
                                                                 } ?>
                                                             </ul>
                                                         <?php
@@ -85,7 +85,7 @@
 
                                 <?php /* ?>
                                 <!-- Donate Button -->
-                                <a href="/{{$igreja->url}}/login" class="btn crose-btn header-btn">Login</a>
+                                <a href="/{{$site->url}}/login" class="btn crose-btn header-btn">Login</a>
                                 <?php */ ?>
 
                             </div>
@@ -110,21 +110,21 @@
                     <!-- Copywrite Text -->
                     <div class="col-12 col-md-6">
                         <div class="copywrite-text">
-                            <p><?php echo strip_tags($igreja->nome) ?> - <b> powered by hotsystems</b></p>
+                            <p><?php echo strip_tags($site->nome) ?> - <b> powered by hotsystems</b></p>
                         </div>
                     </div>
 
                     <!-- Footer Social Icon -->
                     <div class="col-12 col-md-6">
                         <div class="footer-social-icon">
-                            <?php if($igreja->facebook != null){ ?>
-                                <a href="{{$igreja->facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <?php if($site->facebook != null){ ?>
+                                <a href="{{$site->facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                             <?php } ?>
-                            <?php if($igreja->twitter != null){ ?>
-                                <a href="{{$igreja->twitter}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <?php if($site->twitter != null){ ?>
+                                <a href="{{$site->twitter}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                             <?php } ?>
-                            <?php if($igreja->youtube != null){ ?>
-                                <a href="{{$igreja->youtube}}"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                            <?php if($site->youtube != null){ ?>
+                                <a href="{{$site->youtube}}"><i class="fa fa-youtube" aria-hidden="true"></i></a>
                             <?php } ?>
                         </div>
                     </div>
@@ -136,17 +136,17 @@
 
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
-    <script src="{{asset('template_igreja/template-vermelho/js/jquery/jquery-2.2.4.min.js')}}"></script>
+    <script src="{{asset('template_site/template-vermelho/js/jquery/jquery-2.2.4.min.js')}}"></script>
     <!-- Popper js -->
-    <script src="{{asset('template_igreja/template-vermelho/js/bootstrap/popper.min.js')}}"></script>
+    <script src="{{asset('template_site/template-vermelho/js/bootstrap/popper.min.js')}}"></script>
     <!-- Bootstrap js -->
-    <script src="{{asset('template_igreja/template-vermelho/js/bootstrap/bootstrap.min.js')}}"></script>
+    <script src="{{asset('template_site/template-vermelho/js/bootstrap/bootstrap.min.js')}}"></script>
     <!-- All Plugins js -->
-    <script src="{{asset('template_igreja/template-vermelho/js/plugins/plugins.js')}}"></script>
+    <script src="{{asset('template_site/template-vermelho/js/plugins/plugins.js')}}"></script>
     <!-- Active js -->
-    <script src="{{asset('template_igreja/template-vermelho/js/active.js')}}"></script>
+    <script src="{{asset('template_site/template-vermelho/js/active.js')}}"></script>
     <!-- Rocket Loader -->
-    <script src="{{asset('template_igreja/template-vermelho/js/plugins/rocket-loader.min.js')}}" data-cf-settings="7039e4ca662a388f1620a4f5-|49" defer=""></script>
+    <script src="{{asset('template_site/template-vermelho/js/plugins/rocket-loader.min.js')}}" data-cf-settings="7039e4ca662a388f1620a4f5-|49" defer=""></script>
     
     @stack('script')
 </body>

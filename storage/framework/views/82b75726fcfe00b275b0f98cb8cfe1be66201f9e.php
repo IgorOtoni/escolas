@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/template3/index.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/template3/index.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <script>
 $('#modal-noticia').on('hide.bs.modal', function (event) {
@@ -95,7 +95,7 @@ if($banners != null && sizeof($banners)){
             $x = 1;
             foreach($banners as $banner){
                 if($banner->link != null){
-                    ?> <a href="<?php echo e(verifica_link($banner->link, $igreja)); ?>"> <?php
+                    ?> <a href="<?php echo e(verifica_link($banner->link, $site)); ?>"> <?php
                 }
                 ?>
                 <!-- Single Hero Slide -->
@@ -158,7 +158,7 @@ if($noticias != null && sizeof($noticias) != 0){
                                 </div>
                             </div>
                             <div class="blog-content">
-                                <a href="/<?php echo e($igreja->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="blog-title"><?php echo e($noticia->nome); ?></a>
+                                <a href="/<?php echo e($site->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="blog-title"><?php echo e($noticia->nome); ?></a>
                                 <p><?php echo e($noticia->descricao); ?></p>
                                 <?php
                                 if($noticia->updated_at != null && $noticia->updated_at != $noticia->created_at){
@@ -221,7 +221,7 @@ if($eventos != null && sizeof($eventos) != 0){
                                         <h6>{{$evento->nome}}</h6>
                                     </a>
                                     <?php */ ?>
-                                    <a href="/<?php echo e($igreja->url); ?>/evento/<?php echo e($evento->id); ?>"><h6><?php echo e($evento->nome); ?></h6></a>
+                                    <a href="/<?php echo e($site->url); ?>/evento/<?php echo e($evento->id); ?>"><h6><?php echo e($evento->nome); ?></h6></a>
                                     <p>Final previsto para <?php echo e(\Carbon\Carbon::parse($evento->dados_horario_fim)->diffForHumans($evento->dados_horario_inicio)); ?> @ <?php echo e($evento->dados_local); ?></p>
                                 </div>
                             </div>

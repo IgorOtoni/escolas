@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template5/contato.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template5/contato.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -15,7 +15,7 @@
     <div class="wrap">
         <div class="c-8">
             <div class="page">
-                <form method="get" action="/<?php echo e($igreja->url); ?>/enviaContato" id="contactform">
+                <form method="get" action="/<?php echo e($site->url); ?>/enviaContato" id="contactform">
                     <div class="send-form">   
 	                      <p>
 	                      	<label>Nome:</label>
@@ -39,7 +39,7 @@
                  	</div>
                  	</form>
                  	<div class="google-map">
-	                    <iframe width="100%" height="400px" id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q=<?php echo e(muda_cep($igreja->cep)); ?>&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
+	                    <iframe width="100%" height="400px" id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q=<?php echo e(muda_cep($site->cep)); ?>&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
                  	</div>
             </div>
         </div>
@@ -50,21 +50,21 @@
                     <li>
                         <p class="meta">Endereço: </p>
                         <p>
-                        	Cidade: <?php echo e($igreja->cidade); ?> - <?php echo e($igreja->estado); ?><br />
-                            Bairro: <?php echo e($igreja->bairro); ?><br />
-                            Rua: <?php echo e($igreja->rua); ?>, n°: <?php echo e($igreja->num); ?>
+                        	Cidade: <?php echo e($site->cidade); ?> - <?php echo e($site->estado); ?><br />
+                            Bairro: <?php echo e($site->bairro); ?><br />
+                            Rua: <?php echo e($site->rua); ?>, n°: <?php echo e($site->num); ?>
 
                         </p>
                     </li>
-                    <?php if($igreja->telefone != null){ ?>  
+                    <?php if($site->telefone != null){ ?>  
 	                    <li>
 	                        <p class="meta">Telefone: </p>
-	                        <p><?php echo e($igreja->telefone); ?></p>
+	                        <p><?php echo e($site->telefone); ?></p>
 	                    </li>
                     <?php } ?>  
                     <li>    
                         <p class="meta">Email: </p>
-                        <p><a href="mailto:<?php echo e($igreja->email); ?>"><?php echo e($igreja->email); ?></a></p>
+                        <p><a href="mailto:<?php echo e($site->email); ?>"><?php echo e($site->email); ?></a></p>
                     </li>
                 </ul>
             </div><!--end widget-address-->

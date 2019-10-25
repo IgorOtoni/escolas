@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template7/galeria.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template7/galeria.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -48,9 +48,9 @@
 									<div class="gallery__hover__action">
 										<ul class="gallery__zoom">
 											<li><a href="/storage/galerias/<?php echo e($foto->foto); ?>" data-lightbox="grportimg" data-title="My caption"><i class="fa fa-search"></i></a></li>
-											<li><a href="/<?php echo e($igreja->url); ?>/galeria"><i class="fa fa-link"></i></a></li>
+											<li><a href="/<?php echo e($site->url); ?>/galeria"><i class="fa fa-link"></i></a></li>
 										</ul>
-										<h4 class="gallery__title"><a href="/<?php echo e($igreja->url); ?>/galeria"><?php echo e($galeria->nome); ?></a></h4>
+										<h4 class="gallery__title"><a href="/<?php echo e($site->url); ?>/galeria"><?php echo e($galeria->nome); ?></a></h4>
 									</div>
 								</div>
 							</div>	

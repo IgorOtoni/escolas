@@ -10,7 +10,7 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
+        <li><a href="{{route('site.index',['url'=>$site->url])}}">Home</a></li>
         <li class="active">Linha do tempo</li>
         </ol>
     </div>
@@ -53,9 +53,9 @@
                     <div class="timeline-heading">
                         <h3 class="timeline-title">
                         <?php /* ?>
-                        <a href="/{{$igreja->url}}/evento/{{$igreja->id}}" data-toggle="modal" data-target="#modal-evento" data-foto="{{$evento->foto}}" data-local="{{$evento->dados_local}}" data-nome="{{$evento->nome}}" data-descricao="{{$evento->descricao}}" data-inicio="{{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}" data-fim="{{(($evento->dados_horario_fim != null) ? \Carbon\Carbon::parse($evento->dados_horario_fim)->diffForHumans($evento->dados_horario_inicio) : '')}}">{{$evento->nome}}</a>
+                        <a href="/{{$site->url}}/evento/{{$site->id}}" data-toggle="modal" data-target="#modal-evento" data-foto="{{$evento->foto}}" data-local="{{$evento->dados_local}}" data-nome="{{$evento->nome}}" data-descricao="{{$evento->descricao}}" data-inicio="{{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}" data-fim="{{(($evento->dados_horario_fim != null) ? \Carbon\Carbon::parse($evento->dados_horario_fim)->diffForHumans($evento->dados_horario_inicio) : '')}}">{{$evento->nome}}</a>
                         */ ?>
-                        <a href="{{route('igreja.evento', ['url'=>$igreja->url,'id'=>$evento->id])}}"><?php echo $evento->nome ?></a>
+                        <a href="{{route('site.evento', ['url'=>$site->url,'id'=>$evento->id])}}"><?php echo $evento->nome ?></a>
                         </h3>
                     </div>
                     <div class="timeline-body">

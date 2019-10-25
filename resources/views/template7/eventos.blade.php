@@ -37,10 +37,10 @@
 					<div class="upcomming__event">
 						<div class="upcomming__thumb">
 							<img width="100%" style="opacity: 0.5" src="{{($evento->foto != null) ? '/storage/timeline/'.$evento->foto : '/storage/no-event.jpg'}}" alt="upcomming images">
-							<!--<img src="{{asset('/template_igreja/template-padrao-2/images/upcomming/1.png')}}" alt="upcomming images">-->
+							<!--<img src="{{asset('/template_site/template-padrao-2/images/upcomming/1.png')}}" alt="upcomming images">-->
 						</div>
 						<div class="upcomming__inner">
-							<h6><a href="/{{ $igreja->url }}/evento/{{ $evento->id }}">{{ $evento->nome }}</a></h6>
+							<h6><a href="/{{ $site->url }}/evento/{{ $evento->id }}">{{ $evento->nome }}</a></h6>
 							<p>{{ $evento->descricao }}</p>
 							<ul class="event__time">
 								<li><i class="fa fa-home"></i>{{ $evento->dados_local }}</li>
@@ -48,7 +48,7 @@
 							</ul>
 						</div>
 						<div class="event__occur">
-							<img src="{{asset('/template_igreja/template-padrao-2/images/upcomming/shape/1.png')}}" alt="shape images">
+							<img src="{{asset('/template_site/template-padrao-2/images/upcomming/shape/1.png')}}" alt="shape images">
 							<div class="enent__pub">
 								<span class="time">{{ \Carbon\Carbon::parse($evento->dados_horario_inicio)->diffForHumans() }}</span>
 							</div>

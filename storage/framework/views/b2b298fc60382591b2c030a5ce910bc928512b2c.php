@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/error.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/error.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>

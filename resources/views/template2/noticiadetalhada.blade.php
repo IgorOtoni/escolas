@@ -7,8 +7,8 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('igreja.index',['url'=>$igreja->url])}}"><i class="fa fa-home"></i> Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><a href="{{route('igreja.noticias',['url'=>$igreja->url])}}">Notícias</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('site.index',['url'=>$site->url])}}"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="{{route('site.noticias',['url'=>$site->url])}}">Notícias</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Notícia</li>
                     </ol>
                 </nav>

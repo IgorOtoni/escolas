@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/usuario/categorias.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/usuario/categorias.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- DataTables -->
 <script src="<?php echo e(asset('template_adm/bower_components/datatables.net/js/jquery.dataTables.min.js')); ?>"></script>
@@ -188,7 +188,7 @@ $(function(){
 <div class="modal fade" id="modal-incluir">
 <form id="incluirCategoriaFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.incluirCategoria')); ?>" enctype="multipart/form-data">
 <?php echo csrf_field(); ?>
-    <input type="hidden" name="igreja" id="igreja" value="<?php echo e($igreja->id); ?>">
+    <input type="hidden" name="site" id="site" value="<?php echo e($site->id); ?>">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">

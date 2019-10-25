@@ -2,7 +2,7 @@
     <body>
         <img src="/storage/hotsystems.jpeg" 
             style="display: block; margin-left: auto; margin-right: auto">
-        <h1>Seja bem vindo a Plataforma Escolas!</h1>
+        <h1>Seja bem vindo a Plataforma Sites!</h1>
         <p>Seu <b>usuário</b> é: {{$usuario}}</p>
         <p>Sua <b>senha usuário</b> é: {{$senha}}</p>
         <p>

@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/usuario/configuracoes.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/usuario/configuracoes.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- Select2 -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/select2/dist/css/select2.min.css')); ?>">
@@ -33,18 +33,18 @@ $(function(){
         //minImageCount: 0,
         //maxImageCount: 1,
         allowedFileExtensions: ["jpeg", "jpg", "png", "gif"],
-        <?php if($igreja->logo != null){ ?>
+        <?php if($site->logo != null){ ?>
         initialPreview: [
-            "<?php echo e('/storage/igrejas/'.$igreja->logo); ?>",
+            "<?php echo e('/storage/sites/'.$site->logo); ?>",
         ],
         <?php } ?>
         deleteUrl: "<?php echo e('/storage'); ?>",
         uploadExtraData:{'_token':$("#csrf_token").val()},
         initialPreviewAsData: true,
         //initialPreviewFileType: "image",
-        <?php if($igreja->logo != null){ ?>
+        <?php if($site->logo != null){ ?>
         initialPreviewConfig: [
-            {caption: "<?php echo e($igreja->logo); ?>", extra: {id: <?php echo e($igreja->id); ?>, logo: "<?php echo e($igreja->logo); ?>", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirLogo", key: 1},
+            {caption: "<?php echo e($site->logo); ?>", extra: {id: <?php echo e($site->id); ?>, logo: "<?php echo e($site->logo); ?>", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "/usuario/excluirLogo", key: 1},
         ],
         <?php } ?>
         //overwriteInitial: false,
@@ -215,8 +215,8 @@ $(function(){
     $("#modal-incluir-menu #noticias_area").css('display', 'none');
     $("#modal-incluir-menu #noticia").attr('data-validate', 'false');
 
-    $("#modal-incluir-menu #sermoes_area").css('display', 'none');
-    $("#modal-incluir-menu #sermao").attr('data-validate', 'false');
+    $("#modal-incluir-menu #midias_area").css('display', 'none');
+    $("#modal-incluir-menu #midia").attr('data-validate', 'false');
 
     $("#modal-incluir-menu #galerias_area").css('display', 'none');
     $("#modal-incluir-menu #galeria").attr('data-validate', 'false');
@@ -243,8 +243,8 @@ $(function(){
         $("#modal-incluir-menu #noticias_area").css('display', 'none');
         $("#modal-incluir-menu #noticia").attr('data-validate', 'false');
 
-        $("#modal-incluir-menu #sermoes_area").css('display', 'none');
-        $("#modal-incluir-menu #sermao").attr('data-validate', 'false');
+        $("#modal-incluir-menu #midias_area").css('display', 'none');
+        $("#modal-incluir-menu #midia").attr('data-validate', 'false');
 
         $("#modal-incluir-menu #galerias_area").css('display', 'none');
         $("#modal-incluir-menu #galeria").attr('data-validate', 'false');
@@ -269,8 +269,8 @@ $(function(){
             $("#modal-incluir-menu #noticias_area").css('display', 'block');
             $("#modal-incluir-menu #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-incluir-menu #sermoes_area").css('display', 'block');
-            $("#modal-incluir-menu #sermao").attr('data-validate', 'true');
+            $("#modal-incluir-menu #midias_area").css('display', 'block');
+            $("#modal-incluir-menu #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-incluir-menu #galerias_area").css('display', 'block');
             $("#modal-incluir-menu #galeria").attr('data-validate', 'true');
@@ -298,8 +298,8 @@ $(function(){
     $("#modal-editar-menu #noticias_area").css('display', 'none');
     $("#modal-editar-menu #noticia").attr('data-validate', 'false');
 
-    $("#modal-editar-menu #sermoes_area").css('display', 'none');
-    $("#modal-editar-menu #sermao").attr('data-validate', 'false');
+    $("#modal-editar-menu #midias_area").css('display', 'none');
+    $("#modal-editar-menu #midia").attr('data-validate', 'false');
 
     $("#modal-editar-menu #galerias_area").css('display', 'none');
     $("#modal-editar-menu #galeria").attr('data-validate', 'false');
@@ -323,8 +323,8 @@ $(function(){
         $("#modal-editar-menu #noticias_area").css('display', 'none');
         $("#modal-editar-menu #noticia").attr('data-validate', 'false');
 
-        $("#modal-editar-menu #sermoes_area").css('display', 'none');
-        $("#modal-editar-menu #sermao").attr('data-validate', 'false');
+        $("#modal-editar-menu #midias_area").css('display', 'none');
+        $("#modal-editar-menu #midia").attr('data-validate', 'false');
 
         $("#modal-editar-menu #galerias_area").css('display', 'none');
         $("#modal-editar-menu #galeria").attr('data-validate', 'false');
@@ -349,8 +349,8 @@ $(function(){
             $("#modal-editar-menu #noticias_area").css('display', 'block');
             $("#modal-editar-menu #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-editar-menu #sermoes_area").css('display', 'block');
-            $("#modal-editar-menu #sermao").attr('data-validate', 'true');
+            $("#modal-editar-menu #midias_area").css('display', 'block');
+            $("#modal-editar-menu #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-editar-menu #galerias_area").css('display', 'block');
             $("#modal-editar-menu #galeria").attr('data-validate', 'true');
@@ -380,8 +380,8 @@ $(function(){
     $("#modal-incluir-submenu #noticias_area").css('display', 'none');
     $("#modal-incluir-submenu #noticia").attr('data-validate', 'false');
 
-    $("#modal-incluir-submenu #sermoes_area").css('display', 'none');
-    $("#modal-incluir-submenu #sermao").attr('data-validate', 'false');
+    $("#modal-incluir-submenu #midias_area").css('display', 'none');
+    $("#modal-incluir-submenu #midia").attr('data-validate', 'false');
 
     $("#modal-incluir-submenu #galerias_area").css('display', 'none');
     $("#modal-incluir-submenu #galeria").attr('data-validate', 'false');
@@ -408,8 +408,8 @@ $(function(){
         $("#modal-incluir-submenu #noticias_area").css('display', 'none');
         $("#modal-incluir-submenu #noticia").attr('data-validate', 'false');
 
-        $("#modal-incluir-submenu #sermoes_area").css('display', 'none');
-        $("#modal-incluir-submenu #sermao").attr('data-validate', 'false');
+        $("#modal-incluir-submenu #midias_area").css('display', 'none');
+        $("#modal-incluir-submenu #midia").attr('data-validate', 'false');
 
         $("#modal-incluir-submenu #galerias_area").css('display', 'none');
         $("#modal-incluir-submenu #galeria").attr('data-validate', 'false');
@@ -434,8 +434,8 @@ $(function(){
             $("#modal-incluir-submenu #noticias_area").css('display', 'block');
             $("#modal-incluir-submenu #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-incluir-submenu #sermoes_area").css('display', 'block');
-            $("#modal-incluir-submenu #sermao").attr('data-validate', 'true');
+            $("#modal-incluir-submenu #midias_area").css('display', 'block');
+            $("#modal-incluir-submenu #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-incluir-submenu #galerias_area").css('display', 'block');
             $("#modal-incluir-submenu #galeria").attr('data-validate', 'true');
@@ -463,8 +463,8 @@ $(function(){
     $("#modal-editar-submenu #noticias_area").css('display', 'none');
     $("#modal-editar-submenu #noticia").attr('data-validate', 'false');
 
-    $("#modal-editar-submenu #sermoes_area").css('display', 'none');
-    $("#modal-editar-submenu #sermao").attr('data-validate', 'false');
+    $("#modal-editar-submenu #midias_area").css('display', 'none');
+    $("#modal-editar-submenu #midia").attr('data-validate', 'false');
 
     $("#modal-editar-submenu #galerias_area").css('display', 'none');
     $("#modal-editar-submenu #galeria").attr('data-validate', 'false');
@@ -488,8 +488,8 @@ $(function(){
         $("#modal-editar-submenu #noticias_area").css('display', 'none');
         $("#modal-editar-submenu #noticia").attr('data-validate', 'false');
 
-        $("#modal-editar-submenu #sermoes_area").css('display', 'none');
-        $("#modal-editar-submenu #sermao").attr('data-validate', 'false');
+        $("#modal-editar-submenu #midias_area").css('display', 'none');
+        $("#modal-editar-submenu #midia").attr('data-validate', 'false');
 
         $("#modal-editar-submenu #galerias_area").css('display', 'none');
         $("#modal-editar-submenu #galeria").attr('data-validate', 'false');
@@ -514,8 +514,8 @@ $(function(){
             $("#modal-editar-submenu #noticias_area").css('display', 'block');
             $("#modal-editar-submenu #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-editar-submenu #sermoes_area").css('display', 'block');
-            $("#modal-editar-submenu #sermao").attr('data-validate', 'true');
+            $("#modal-editar-submenu #midias_area").css('display', 'block');
+            $("#modal-editar-submenu #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-editar-submenu #galerias_area").css('display', 'block');
             $("#modal-editar-submenu #galeria").attr('data-validate', 'true');
@@ -545,8 +545,8 @@ $(function(){
     $("#modal-incluir-subsubmenu #noticias_area").css('display', 'none');
     $("#modal-incluir-subsubmenu #noticia").attr('data-validate', 'false');
 
-    $("#modal-incluir-subsubmenu #sermoes_area").css('display', 'none');
-    $("#modal-incluir-subsubmenu #sermao").attr('data-validate', 'false');
+    $("#modal-incluir-subsubmenu #midias_area").css('display', 'none');
+    $("#modal-incluir-subsubmenu #midia").attr('data-validate', 'false');
 
     $("#modal-incluir-subsubmenu #galerias_area").css('display', 'none');
     $("#modal-incluir-subsubmenu #galeria").attr('data-validate', 'false');
@@ -573,8 +573,8 @@ $(function(){
         $("#modal-incluir-subsubmenu #noticias_area").css('display', 'none');
         $("#modal-incluir-subsubmenu #noticia").attr('data-validate', 'false');
 
-        $("#modal-incluir-subsubmenu #sermoes_area").css('display', 'none');
-        $("#modal-incluir-subsubmenu #sermao").attr('data-validate', 'false');
+        $("#modal-incluir-subsubmenu #midias_area").css('display', 'none');
+        $("#modal-incluir-subsubmenu #midia").attr('data-validate', 'false');
 
         $("#modal-incluir-subsubmenu #galerias_area").css('display', 'none');
         $("#modal-incluir-subsubmenu #galeria").attr('data-validate', 'false');
@@ -599,8 +599,8 @@ $(function(){
             $("#modal-incluir-subsubmenu #noticias_area").css('display', 'block');
             $("#modal-incluir-subsubmenu #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-incluir-subsubmenu #sermoes_area").css('display', 'block');
-            $("#modal-incluir-subsubmenu #sermao").attr('data-validate', 'true');
+            $("#modal-incluir-subsubmenu #midias_area").css('display', 'block');
+            $("#modal-incluir-subsubmenu #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-incluir-subsubmenu #galerias_area").css('display', 'block');
             $("#modal-incluir-subsubmenu #galeria").attr('data-validate', 'true');
@@ -628,8 +628,8 @@ $(function(){
     $("#modal-editar-subsubmenu #noticias_area").css('display', 'none');
     $("#modal-editar-subsubmenu #noticia").attr('data-validate', 'false');
 
-    $("#modal-editar-subsubmenu #sermoes_area").css('display', 'none');
-    $("#modal-editar-subsubmenu #sermao").attr('data-validate', 'false');
+    $("#modal-editar-subsubmenu #midias_area").css('display', 'none');
+    $("#modal-editar-subsubmenu #midia").attr('data-validate', 'false');
 
     $("#modal-editar-subsubmenu #galerias_area").css('display', 'none');
     $("#modal-editar-subsubmenu #galeria").attr('data-validate', 'false');
@@ -656,8 +656,8 @@ $(function(){
         $("#modal-editar-subsubmenu #noticias_area").css('display', 'none');
         $("#modal-editar-subsubmenu #noticia").attr('data-validate', 'false');
 
-        $("#modal-editar-subsubmenu #sermoes_area").css('display', 'none');
-        $("#modal-editar-subsubmenu #sermao").attr('data-validate', 'false');
+        $("#modal-editar-subsubmenu #midias_area").css('display', 'none');
+        $("#modal-editar-subsubmenu #midia").attr('data-validate', 'false');
 
         $("#modal-editar-subsubmenu #galerias_area").css('display', 'none');
         $("#modal-editar-subsubmenu #galeria").attr('data-validate', 'false');
@@ -682,8 +682,8 @@ $(function(){
             $("#modal-editar-subsubmenu #noticias_area").css('display', 'block');
             $("#modal-editar-subsubmenu #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-editar-subsubmenu #sermoes_area").css('display', 'block');
-            $("#modal-editar-subsubmenu #sermao").attr('data-validate', 'true');
+            $("#modal-editar-subsubmenu #midias_area").css('display', 'block');
+            $("#modal-editar-subsubmenu #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-editar-subsubmenu #galerias_area").css('display', 'block');
             $("#modal-editar-subsubmenu #galeria").attr('data-validate', 'true');
@@ -710,8 +710,8 @@ $(function(){
     $("#modal-incluir-menu-aplicativo #noticias_area").css('display', 'none');
     $("#modal-incluir-menu-aplicativo #noticia").attr('data-validate', 'false');
 
-    $("#modal-incluir-menu-aplicativo #sermoes_area").css('display', 'none');
-    $("#modal-incluir-menu-aplicativo #sermao").attr('data-validate', 'false');
+    $("#modal-incluir-menu-aplicativo #midias_area").css('display', 'none');
+    $("#modal-incluir-menu-aplicativo #midia").attr('data-validate', 'false');
 
     $("#modal-incluir-menu-aplicativo #galerias_area").css('display', 'none');
     $("#modal-incluir-menu-aplicativo #galeria").attr('data-validate', 'false');
@@ -738,8 +738,8 @@ $(function(){
         $("#modal-incluir-menu-aplicativo #noticias_area").css('display', 'none');
         $("#modal-incluir-menu-aplicativo #noticia").attr('data-validate', 'false');
 
-        $("#modal-incluir-menu-aplicativo #sermoes_area").css('display', 'none');
-        $("#modal-incluir-menu-aplicativo #sermao").attr('data-validate', 'false');
+        $("#modal-incluir-menu-aplicativo #midias_area").css('display', 'none');
+        $("#modal-incluir-menu-aplicativo #midia").attr('data-validate', 'false');
 
         $("#modal-incluir-menu-aplicativo #galerias_area").css('display', 'none');
         $("#modal-incluir-menu-aplicativo #galeria").attr('data-validate', 'false');
@@ -764,8 +764,8 @@ $(function(){
             $("#modal-incluir-menu-aplicativo #noticias_area").css('display', 'block');
             $("#modal-incluir-menu-aplicativo #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-incluir-menu-aplicativo #sermoes_area").css('display', 'block');
-            $("#modal-incluir-menu-aplicativo #sermao").attr('data-validate', 'true');
+            $("#modal-incluir-menu-aplicativo #midias_area").css('display', 'block');
+            $("#modal-incluir-menu-aplicativo #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-incluir-menu-aplicativo #galerias_area").css('display', 'block');
             $("#modal-incluir-menu-aplicativo #galeria").attr('data-validate', 'true');
@@ -790,8 +790,8 @@ $(function(){
     $("#modal-editar-menu-aplicativo #noticias_area").css('display', 'none');
     $("#modal-editar-menu-aplicativo #noticia").attr('data-validate', 'false');
 
-    $("#modal-editar-menu-aplicativo #sermoes_area").css('display', 'none');
-    $("#modal-editar-menu-aplicativo #sermao").attr('data-validate', 'false');
+    $("#modal-editar-menu-aplicativo #midias_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #midia").attr('data-validate', 'false');
 
     $("#modal-editar-menu-aplicativo #galerias_area").css('display', 'none');
     $("#modal-editar-menu-aplicativo #galeria").attr('data-validate', 'false');
@@ -815,8 +815,8 @@ $(function(){
         $("#modal-editar-menu-aplicativo #noticias_area").css('display', 'none');
         $("#modal-editar-menu-aplicativo #noticia").attr('data-validate', 'false');
 
-        $("#modal-editar-menu-aplicativo #sermoes_area").css('display', 'none');
-        $("#modal-editar-menu-aplicativo #sermao").attr('data-validate', 'false');
+        $("#modal-editar-menu-aplicativo #midias_area").css('display', 'none');
+        $("#modal-editar-menu-aplicativo #midia").attr('data-validate', 'false');
 
         $("#modal-editar-menu-aplicativo #galerias_area").css('display', 'none');
         $("#modal-editar-menu-aplicativo #galeria").attr('data-validate', 'false');
@@ -841,8 +841,8 @@ $(function(){
             $("#modal-editar-menu-aplicativo #noticias_area").css('display', 'block');
             $("#modal-editar-menu-aplicativo #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-editar-menu-aplicativo #sermoes_area").css('display', 'block');
-            $("#modal-editar-menu-aplicativo #sermao").attr('data-validate', 'true');
+            $("#modal-editar-menu-aplicativo #midias_area").css('display', 'block');
+            $("#modal-editar-menu-aplicativo #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-editar-menu-aplicativo #galerias_area").css('display', 'block');
             $("#modal-editar-menu-aplicativo #galeria").attr('data-validate', 'true');
@@ -923,8 +923,8 @@ $('#modal-editar-menu').on('hide.bs.modal', function (event) {
     $("#modal-editar-menu #publicacoes_area").css('display', 'none');
     $("#modal-editar-menu #publicacao").attr('data-validate', 'false');
 
-    $("#modal-editar-menu #sermoes_area").css('display', 'none');
-    $("#modal-editar-menu #sermao").attr('data-validate', 'false');
+    $("#modal-editar-menu #midias_area").css('display', 'none');
+    $("#modal-editar-menu #midia").attr('data-validate', 'false');
 
     $("#modal-editar-menu #url_externa_area").css('display', 'none');
     $("#modal-editar-menu #url").attr('data-validate', 'false');
@@ -979,8 +979,8 @@ $('#modal-editar-submenu').on('hide.bs.modal', function (event) {
     $("#modal-editar-submenu #galerias_area").css('display', 'none');
     $("#modal-editar-submenu #galeria").attr('data-validate', 'false');
 
-    $("#modal-editar-submenu #sermoes_area").css('display', 'none');
-    $("#modal-editar-submenu #sermao").attr('data-validate', 'false');
+    $("#modal-editar-submenu #midias_area").css('display', 'none');
+    $("#modal-editar-submenu #midia").attr('data-validate', 'false');
 
     $("#modal-editar-submenu #url_externa_area").css('display', 'none');
     $("#modal-editar-submenu #url").attr('data-validate', 'false');
@@ -1037,8 +1037,8 @@ $('#modal-editar-subsubmenu').on('hide.bs.modal', function (event) {
     $("#modal-editar-subsubmenu #galerias_area").css('display', 'none');
     $("#modal-editar-subsubmenu #galeria").attr('data-validate', 'false');
     
-    $("#modal-editar-subsubmenu #sermoes_area").css('display', 'none');
-    $("#modal-editar-subsubmenu #sermao").attr('data-validate', 'false');
+    $("#modal-editar-subsubmenu #midias_area").css('display', 'none');
+    $("#modal-editar-subsubmenu #midia").attr('data-validate', 'false');
     
     $("#modal-editar-subsubmenu #url_externa_area").css('display', 'none');
     $("#modal-editar-subsubmenu #url").attr('data-validate', 'false');
@@ -1093,8 +1093,8 @@ $('#modal-editar-menu-aplicativo').on('hide.bs.modal', function (event) {
     $("#modal-editar-menu-aplicativo #galerias_area").css('display', 'none');
     $("#modal-editar-menu-aplicativo #galeria").attr('data-validate', 'false');
 
-    $("#modal-editar-menu-aplicativo #sermoes_area").css('display', 'none');
-    $("#modal-editar-menu-aplicativo #sermao").attr('data-validate', 'false');
+    $("#modal-editar-menu-aplicativo #midias_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #midia").attr('data-validate', 'false');
     
     $("#modal-editar-menu-aplicativo #url_externa_area").css('display', 'none');
     $("#modal-editar-menu-aplicativo #url").attr('data-validate', 'false');
@@ -1135,9 +1135,9 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 <!-- Main content -->
 <section class="content">
 
-    <form id="editarConfiguracoesIgrejaFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.salvarConfiguracoes')); ?>" enctype="multipart/form-data">
+    <form id="editarConfiguracoesSiteFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.salvarConfiguracoes')); ?>" enctype="multipart/form-data">
     <?php echo csrf_field(); ?>
-    <input type="hidden" name="id" value="<?php echo e($igreja->id_configuracao); ?>">
+    <input type="hidden" name="id" value="<?php echo e($site->id_configuracao); ?>">
     <div class="box">
         <div class="box-body">
 
@@ -1145,7 +1145,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-12">
             <div class="form-group has-feedback">
                 <label >Nome</label>
-                <input name="nome" type="text" class="form-control" placeholder="Nome" value="<?php echo e($igreja->nome); ?>" required>
+                <input name="nome" type="text" class="form-control" placeholder="Nome" value="<?php echo e($site->nome); ?>" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1153,7 +1153,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-12">
             <div class="form-group has-feedback">
                 <label >CNPJ</label>
-                <input name="cnpj" type="text" class="form-control" placeholder="CNPJ" data-inputmask='"mask": "99.999.999/9999-99"' value="<?php echo e($igreja->cnpj); ?>" data-mask required>
+                <input name="cnpj" type="text" class="form-control" placeholder="CNPJ" data-inputmask='"mask": "99.999.999/9999-99"' value="<?php echo e($site->cnpj); ?>" data-mask required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1161,7 +1161,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-4">
             <div class="form-group has-feedback">
                 <label >CEP</label>
-                <input id="cep" name="cep" type="text" class="form-control" placeholder="CEP" data-inputmask='"mask": "99.999-999"' value="<?php echo e($igreja->cep); ?>" data-mask required>
+                <input id="cep" name="cep" type="text" class="form-control" placeholder="CEP" data-inputmask='"mask": "99.999-999"' value="<?php echo e($site->cep); ?>" data-mask required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1169,7 +1169,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-4">
             <div class="form-group has-feedback">
                 <label >Estado</label>
-                <input id="uf" name="estado" type="text" class="form-control" placeholder="Estado" value="<?php echo e($igreja->estado); ?>" required>
+                <input id="uf" name="estado" type="text" class="form-control" placeholder="Estado" value="<?php echo e($site->estado); ?>" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1177,7 +1177,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-4">
             <div class="form-group has-feedback">
                 <label >Cidade</label>
-                <input id="cidade" name="cidade" type="text" class="form-control" placeholder="Cidade" value="<?php echo e($igreja->cidade); ?>" required>
+                <input id="cidade" name="cidade" type="text" class="form-control" placeholder="Cidade" value="<?php echo e($site->cidade); ?>" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1185,7 +1185,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-4">
             <div class="form-group has-feedback">
                 <label >Bairro</label>
-                <input id="bairro" name="bairro" type="text" class="form-control" placeholder="Bairro" value="<?php echo e($igreja->bairro); ?>" required>
+                <input id="bairro" name="bairro" type="text" class="form-control" placeholder="Bairro" value="<?php echo e($site->bairro); ?>" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1193,7 +1193,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-4">
             <div class="form-group has-feedback">
                 <label >Rua</label>
-                <input id="rua" name="rua" type="text" class="form-control" placeholder="Rua" value="<?php echo e($igreja->rua); ?>" required>
+                <input id="rua" name="rua" type="text" class="form-control" placeholder="Rua" value="<?php echo e($site->rua); ?>" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1201,13 +1201,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-8">
             <div class="form-group">
                 <label >Complemento</label>
-                <input name="complemento" type="text" class="form-control" placeholder="Complemento" value="<?php echo e($igreja->complemento); ?>">
+                <input name="complemento" type="text" class="form-control" placeholder="Complemento" value="<?php echo e($site->complemento); ?>">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group has-feedback">
                 <label >Número</label>
-                <input name="num" type="number" class="form-control" placeholder="Número" value="<?php echo e($igreja->num); ?>" required>
+                <input name="num" type="number" class="form-control" placeholder="Número" value="<?php echo e($site->num); ?>" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1215,7 +1215,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-4">
             <div class="form-group has-feedback">
                 <label >Telefone</label>
-                <input name="telefone" type="text" class="form-control" placeholder="Telefone" data-inputmask='"mask": "(99) 99999-9999"' data-mask value="<?php echo e($igreja->telefone); ?>">
+                <input name="telefone" type="text" class="form-control" placeholder="Telefone" data-inputmask='"mask": "(99) 99999-9999"' data-mask value="<?php echo e($site->telefone); ?>">
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1223,7 +1223,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-8">
             <div class="form-group has-feedback">
                 <label >Email</label>
-                <input name="email" type="text" class="form-control" placeholder="Email" value="<?php echo e($igreja->email); ?>" required>
+                <input name="email" type="text" class="form-control" placeholder="Email" value="<?php echo e($site->email); ?>" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1244,7 +1244,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
             <div class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Url</label>
-                <input name="url" type="text" class="form-control" placeholder="Url" value="<?php echo e($igreja->url); ?>" required disabled>
+                <input name="url" type="text" class="form-control" placeholder="Url" value="<?php echo e($site->url); ?>" required disabled>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
                 </div>
@@ -1255,7 +1255,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <select id="id_template" name="id_template" class="form-control select2" style="width: 100%;" required>
                     <?php $templates = App\TblTemplates::orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $templates; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $template): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <option value="<?php echo e($template->id); ?>" <?php echo e(($template->id == $igreja->id_template) ? 'selected' : ''); ?>><?php echo e($template->nome); ?></option>
+                    <option value="<?php echo e($template->id); ?>" <?php echo e(($template->id == $site->id_template) ? 'selected' : ''); ?>><?php echo e($template->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
                 <div class="help-block with-errors"></div>
@@ -1264,15 +1264,15 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
             <div class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Cor</label>
-                <input name="cor" type="text" class="form-control" placeholder="Cor" value="<?php echo e($igreja->cor); ?>" required>
+                <input name="cor" type="text" class="form-control" placeholder="Cor" value="<?php echo e($site->cor); ?>" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-group has-feedback">
-                <label >Texto apresentativo da escola</label>
-                <textarea name="texto_apresentativo" class="form-control" rows="10" required><?php echo e($igreja->texto_apresentativo); ?></textarea>
+                <label >Texto apresentativo da site</label>
+                <textarea name="texto_apresentativo" class="form-control" rows="10" required><?php echo e($site->texto_apresentativo); ?></textarea>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
                 </div>
@@ -1294,7 +1294,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 
             <div class="row">
             <div class="col-md-12">
-                <h4>Termo de compromisso:</h4> <a href="/gerar_termo_compromisso/<?php echo e($igreja->id); ?>" class="btn btn-primary" target="_blank">Gerar</a>
+                <h4>Termo de compromisso:</h4> <a href="/gerar_termo_compromisso/<?php echo e($site->id); ?>" class="btn btn-primary" target="_blank">Gerar</a>
             </div>
             </div>
         </div>
@@ -1320,7 +1320,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                                 <?php foreach($menus as $menu){ ?>
                                     <li>
                                         <div><span><i class="icon-folder-open"></i> <?php echo e($menu->ordem); ?> - <?php echo e($menu->nome); ?></span> 
-                                            <?php echo ($menu->link != null) ? '<a target="_blank" href="/'.$igreja->url.'/'.$menu->link.'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>' ?>
+                                            <?php echo ($menu->link != null) ? '<a target="_blank" href="/'.$site->url.'/'.$menu->link.'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>' ?>
                                             <div class="pull-right">
                                                 <?php if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.configuracoesg'), \Config::get('constants.permissoes.incluir'))[2] == true){ ?>
                                                     <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-incluir-submenu" data-idmenu="<?php echo e($menu->id); ?>"><i class="fa fa-plus"></i> Submenu</a>
@@ -1337,7 +1337,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                                             <?php if(isset($submenus[$menu->id])) foreach($submenus[$menu->id] as $submenu){ ?>
                                                 <li>
                                                     <div><span><i class="icon-minus-sign"></i> <?php echo e($submenu->ordem); ?> - <?php echo e($submenu->nome); ?></span>
-                                                        <?php echo ($submenu->link != null) ? '<a target="_blank" href="/'.$igreja->url.'/'.$submenu->link.'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>' ?>
+                                                        <?php echo ($submenu->link != null) ? '<a target="_blank" href="/'.$site->url.'/'.$submenu->link.'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>' ?>
                                                         <div class="pull-right">
                                                             <?php if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.configuracoesg'), \Config::get('constants.permissoes.incluir'))[2] == true){ ?>
                                                                 <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-incluir-subsubmenu" data-idsubmenu="<?php echo e($submenu->id); ?>"><i class="fa fa-plus"></i> Sub-Submenu</a>
@@ -1354,7 +1354,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                                                         <?php if(isset($subsubmenus[$submenu->id])) foreach($subsubmenus[$submenu->id] as $subsubmenu){ ?>
                                                             <li>
                                                                 <div><span><i class="icon-leaf"></i> <?php echo e($subsubmenu->ordem); ?> - <?php echo e($subsubmenu->nome); ?></span> 
-                                                                    <?php echo ($subsubmenu->link != null) ? '<a target="_blank" href="/'.$igreja->url.'/'.$subsubmenu->link.'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>' ?>
+                                                                    <?php echo ($subsubmenu->link != null) ? '<a target="_blank" href="/'.$site->url.'/'.$subsubmenu->link.'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>' ?>
                                                                     <div class="pull-right">
                                                                         <?php if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.configuracoesg'), \Config::get('constants.permissoes.alterar'))[2] == true){ ?>
                                                                             <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-editar-subsubmenu" data-id="<?php echo e($subsubmenu->id); ?>" data-nome="<?php echo e($subsubmenu->nome); ?>" data-link="<?php echo e($subsubmenu->link); ?>" data-ordem="<?php echo e($subsubmenu->ordem); ?>" data-idsubmenu="<?php echo e($subsubmenu->id_submenu); ?>"><i class="fa fa-edit"></i> Sub-Submenu</a> 
@@ -1406,8 +1406,8 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                                                 $pos = strpos($menu->link, "http");
                                                 if($pos === false){
                                                     if(false !== strpos($menu->link, "modulo")){
-                                                        echo ($menu->link != null) ? '<a target="_blank" href="/'.$igreja->url.'/'.str_replace("modulo-","",$menu->link).'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>';
-                                                    }else echo ($menu->link != null) ? '<a target="_blank" href="/'.$igreja->url.'/'.str_replace("-","/",$menu->link).'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>';
+                                                        echo ($menu->link != null) ? '<a target="_blank" href="/'.$site->url.'/'.str_replace("modulo-","",$menu->link).'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>';
+                                                    }else echo ($menu->link != null) ? '<a target="_blank" href="/'.$site->url.'/'.str_replace("-","/",$menu->link).'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>';
                                                 }else{
                                                     echo '<a target="_blank" href="'.$menu->link.'"><span class="bg-blue">Possui link</span></a>';
                                                 } ?>
@@ -1442,7 +1442,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 <div class="modal fade" id="modal-incluir-menu">
 <form id="adicionarMenuFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.adicionarMenu')); ?>" enctype="multipart/form-data">
 <?php echo csrf_field(); ?>
-    <input type="hidden" name="id_configuracao" value="<?php echo e($igreja->id_configuracao); ?>">
+    <input type="hidden" name="id_configuracao" value="<?php echo e($site->id_configuracao); ?>">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -1490,7 +1490,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    <?php $__currentLoopData = $modulos_igreja; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $modulos_site; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php if(!$modulo->gerencial): ?>
                             <option value="<?php echo e($modulo->id); ?>"><?php echo e($modulo->nome); ?></option>
                         <?php endif; ?>
@@ -1503,7 +1503,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $publicacoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $publicacao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($publicacao->id); ?>"><?php echo e($publicacao->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1515,7 +1515,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1527,7 +1527,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventosfixos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $eventofixo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($eventofixo->id); ?>"><?php echo e($eventofixo->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1539,7 +1539,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícias</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $noticias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $noticia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($noticia->id); ?>"><?php echo e($noticia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1547,13 +1547,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Vídeos</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    <?php $__currentLoopData = $sermoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sermao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($sermao->id); ?>"><?php echo e($sermao->nome); ?></option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $midias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $midia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($midia->id); ?>"><?php echo e($midia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
                 <div class="help-block with-errors"></div>
@@ -1563,7 +1563,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $galerias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $galeria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($galeria->id); ?>"><?php echo e($galeria->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1644,7 +1644,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    <?php $__currentLoopData = $modulos_igreja; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $modulos_site; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php if(!$modulo->gerencial): ?>
                             <option value="<?php echo e($modulo->id); ?>"><?php echo e($modulo->nome); ?></option>
                         <?php endif; ?>
@@ -1657,7 +1657,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $publicacoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $publicacao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($publicacao->id); ?>"><?php echo e($publicacao->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1669,7 +1669,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1681,7 +1681,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventosfixos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $eventofixo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($eventofixo->id); ?>"><?php echo e($eventofixo->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1693,7 +1693,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícias</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $noticias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $noticia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($noticia->id); ?>"><?php echo e($noticia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1701,13 +1701,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Vídeos</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    <?php $__currentLoopData = $sermoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sermao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($sermao->id); ?>"><?php echo e($sermao->nome); ?></option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $midias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $midia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($midia->id); ?>"><?php echo e($midia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
                 <div class="help-block with-errors"></div>
@@ -1717,7 +1717,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $galerias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $galeria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($galeria->id); ?>"><?php echo e($galeria->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1798,7 +1798,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    <?php $__currentLoopData = $modulos_igreja; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $modulos_site; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php if(!$modulo->gerencial): ?>
                             <option value="<?php echo e($modulo->id); ?>"><?php echo e($modulo->nome); ?></option>
                         <?php endif; ?>
@@ -1811,7 +1811,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $publicacoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $publicacao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($publicacao->id); ?>"><?php echo e($publicacao->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1823,7 +1823,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1835,7 +1835,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventosfixos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $eventofixo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($eventofixo->id); ?>"><?php echo e($eventofixo->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1847,7 +1847,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícias</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $noticias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $noticia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($noticia->id); ?>"><?php echo e($noticia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1855,13 +1855,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Vídeos</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    <?php $__currentLoopData = $sermoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sermao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($sermao->id); ?>"><?php echo e($sermao->nome); ?></option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $midias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $midia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($midia->id); ?>"><?php echo e($midia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
                 <div class="help-block with-errors"></div>
@@ -1871,7 +1871,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $galerias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $galeria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($galeria->id); ?>"><?php echo e($galeria->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1958,7 +1958,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    <?php $__currentLoopData = $modulos_igreja; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $modulos_site; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php if(!$modulo->gerencial): ?>
                             <option value="<?php echo e($modulo->id); ?>"><?php echo e($modulo->nome); ?></option>
                         <?php endif; ?>
@@ -1971,7 +1971,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $publicacoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $publicacao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($publicacao->id); ?>"><?php echo e($publicacao->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1983,7 +1983,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1995,7 +1995,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventosfixos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $eventofixo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($eventofixo->id); ?>"><?php echo e($eventofixo->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2007,7 +2007,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícia</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $noticias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $noticia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($noticia->id); ?>"><?php echo e($noticia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2015,13 +2015,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Vídeos</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    <?php $__currentLoopData = $sermoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sermao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($sermao->id); ?>"><?php echo e($sermao->nome); ?></option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $midias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $midia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($midia->id); ?>"><?php echo e($midia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
                 <div class="help-block with-errors"></div>
@@ -2031,7 +2031,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $galerias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $galeria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($galeria->id); ?>"><?php echo e($galeria->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2129,7 +2129,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    <?php $__currentLoopData = $modulos_igreja; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $modulos_site; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php if(!$modulo->gerencial): ?>
                             <option value="<?php echo e($modulo->id); ?>"><?php echo e($modulo->nome); ?></option>
                         <?php endif; ?>
@@ -2142,7 +2142,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $publicacoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $publicacao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($publicacao->id); ?>"><?php echo e($publicacao->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2154,7 +2154,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2166,7 +2166,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventosfixos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $eventofixo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($eventofixo->id); ?>"><?php echo e($eventofixo->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2178,7 +2178,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícias</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $noticias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $noticia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($noticia->id); ?>"><?php echo e($noticia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2186,13 +2186,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Vídeos</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    <?php $__currentLoopData = $sermoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sermao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($sermao->id); ?>"><?php echo e($sermao->nome); ?></option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $midias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $midia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($midia->id); ?>"><?php echo e($midia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
                 <div class="help-block with-errors"></div>
@@ -2202,7 +2202,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $galerias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $galeria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($galeria->id); ?>"><?php echo e($galeria->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2262,7 +2262,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                     $submenus = \DB::table('tbl_sub_menus')
                         ->select('tbl_sub_menus.*', 'tbl_menus.nome as menu')
                         ->leftJoin('tbl_menus', 'tbl_sub_menus.id_menu', '=', 'tbl_menus.id')
-                        ->where('tbl_menus.id_configuracao','=',$igreja->id_configuracao)
+                        ->where('tbl_menus.id_configuracao','=',$site->id_configuracao)
                         ->orderBy('tbl_sub_menus.nome', 'ASC')
                         ->get();
                     ?>
@@ -2308,7 +2308,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    <?php $__currentLoopData = $modulos_igreja; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $modulos_site; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php if(!$modulo->gerencial): ?>
                             <option value="<?php echo e($modulo->id); ?>"><?php echo e($modulo->nome); ?></option>
                         <?php endif; ?>
@@ -2321,7 +2321,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $publicacoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $publicacao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($publicacao->id); ?>"><?php echo e($publicacao->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2333,7 +2333,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2345,7 +2345,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventosfixos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $eventofixo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($eventofixo->id); ?>"><?php echo e($eventofixo->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2357,7 +2357,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícias</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $noticias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $noticia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($noticia->id); ?>"><?php echo e($noticia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2365,13 +2365,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Vídeos</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    <?php $__currentLoopData = $sermoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sermao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($sermao->id); ?>"><?php echo e($sermao->nome); ?></option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $midias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $midia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($midia->id); ?>"><?php echo e($midia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
                 <div class="help-block with-errors"></div>
@@ -2381,7 +2381,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $galerias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $galeria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($galeria->id); ?>"><?php echo e($galeria->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2417,7 +2417,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 <div class="modal fade" id="modal-incluir-menu-aplicativo">
 <form id="adicionarMenuAplicativoFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.adicionarMenuAplicativo')); ?>" enctype="multipart/form-data">
 <?php echo csrf_field(); ?>
-    <input type="hidden" name="id_configuracao" value="<?php echo e($igreja->id_configuracao); ?>">
+    <input type="hidden" name="id_configuracao" value="<?php echo e($site->id_configuracao); ?>">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -2464,7 +2464,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    <?php $__currentLoopData = $modulos_igreja; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $modulos_site; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php if(!$modulo->gerencial): ?>
                             <option value="<?php echo e($modulo->id); ?>"><?php echo e($modulo->nome); ?></option>
                         <?php endif; ?>
@@ -2477,7 +2477,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $publicacoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $publicacao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($publicacao->id); ?>"><?php echo e($publicacao->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2489,7 +2489,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2501,7 +2501,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventosfixos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $eventofixo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($eventofixo->id); ?>"><?php echo e($eventofixo->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2513,7 +2513,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícias</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $noticias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $noticia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($noticia->id); ?>"><?php echo e($noticia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2521,13 +2521,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Sermões</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    <?php $__currentLoopData = $sermoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sermao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($sermao->id); ?>"><?php echo e($sermao->nome); ?></option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $midias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $midia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($midia->id); ?>"><?php echo e($midia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
                 <div class="help-block with-errors"></div>
@@ -2537,7 +2537,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $galerias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $galeria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($galeria->id); ?>"><?php echo e($galeria->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2623,7 +2623,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    <?php $__currentLoopData = $modulos_igreja; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $modulos_site; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php if(!$modulo->gerencial): ?>
                             <option value="<?php echo e($modulo->id); ?>"><?php echo e($modulo->nome); ?></option>
                         <?php endif; ?>
@@ -2636,7 +2636,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $publicacoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $publicacao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($publicacao->id); ?>"><?php echo e($publicacao->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2648,7 +2648,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2660,7 +2660,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $eventosfixos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $eventofixo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($eventofixo->id); ?>"><?php echo e($eventofixo->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2672,7 +2672,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícia</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $noticias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $noticia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($noticia->id); ?>"><?php echo e($noticia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2680,13 +2680,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Sermões</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    <?php $__currentLoopData = $sermoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sermao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($sermao->id); ?>"><?php echo e($sermao->nome); ?></option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $__currentLoopData = $midias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $midia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($midia->id); ?>"><?php echo e($midia->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
                 <div class="help-block with-errors"></div>
@@ -2696,7 +2696,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     <?php $__currentLoopData = $galerias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $galeria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($galeria->id); ?>"><?php echo e($galeria->nome); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

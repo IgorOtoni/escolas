@@ -32,7 +32,7 @@
             </div>
             <h2>Inscrição</h2>
             <div class="page">
-                <form method="get" action="/{{$igreja->url}}/inscreveEnvento" id="contactform">
+                <form method="get" action="/{{$site->url}}/inscreveEnvento" id="contactform">
                     <div class="send-form">
                           <p>
                             <label>Email:</label>

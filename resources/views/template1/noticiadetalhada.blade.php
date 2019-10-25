@@ -12,8 +12,8 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
-        <li><a href="{{route('igreja.noticias',['url'=>$igreja->url])}}">Notícias</a></li>
+        <li><a href="{{route('site.index',['url'=>$site->url])}}">Home</a></li>
+        <li><a href="{{route('site.noticias',['url'=>$site->url])}}">Notícias</a></li>
         <li class="active">Notícia</li>
         </ol>
     </div>

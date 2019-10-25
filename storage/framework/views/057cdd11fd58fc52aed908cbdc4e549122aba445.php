@@ -14,7 +14,7 @@
                 Programa Église.
                 <!--<small>Example 2.0</small>-->
             </h1>
-            <h3>Temos uma forma fácil para você, líder, providenciar uma página de internet para sua igreja. Temos 10 modelos à sua disposição.  Com ela você irá manter seu público informado sobre as programações de sua igreja e usá-lo como um canal de evangelismo, postando suas mensagens e divulgando o evangelho de Cristo. Você poderá ainda usufruir de vários benefícios que estamos desenvolvendo para facilitar seu trabalho, como o controle do rol de membros, dízimos, etc.</h3>
+            <h3>Temos uma forma fácil para você, líder, providenciar uma página de internet para sua site. Temos 10 modelos à sua disposição.  Com ela você irá manter seu público informado sobre as programações de sua site e usá-lo como um canal de evangelismo, postando suas mensagens e divulgando o evangelho de Cristo. Você poderá ainda usufruir de vários benefícios que estamos desenvolvendo para facilitar seu trabalho, como o controle do rol de membros, dízimos, etc.</h3>
             <a class="btn btn-primary btn-lg" href="<?php echo e(route('plataforma.formulario')); ?>"><b>CLIQUE AQUI PARA SABER MAIS</b></a>
         </div>
         <div class="col-xs-12 col-md-6">

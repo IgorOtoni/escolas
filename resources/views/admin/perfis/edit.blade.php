@@ -8,17 +8,17 @@
 
 <script>
 
-$("#igreja").on("change", function(){
+$("#site").on("change", function(){
 
-    var id_igreja = $("#igreja").val();
+    var id_site = $("#site").val();
 
     $("#list-area").html("");
 
-    $("#list-area").append("<div class='form-group has-feedback'><label>Selecione quais módulos da igreja o perfil irá acessar:</label><select id='select_2_modulos' name='modulos[]' data-placeholder='Selecione os módulos' class='form-control select2' style='width: 100%;' multiple='multiple' required></select><div class='help-block with-errors'></div></div>");
+    $("#list-area").append("<div class='form-group has-feedback'><label>Selecione quais módulos da site o perfil irá acessar:</label><select id='select_2_modulos' name='modulos[]' data-placeholder='Selecione os módulos' class='form-control select2' style='width: 100%;' multiple='multiple' required></select><div class='help-block with-errors'></div></div>");
 
-    if(id_igreja > 0){
+    if(id_site > 0){
         $.ajax({
-            url: '{{route('igrejas.carregarModulos',['id'=>''])}}/'+id_igreja,
+            url: '{{route('sites.carregarModulos',['id'=>''])}}/'+id_site,
             type: 'get',
             dataType: 'json',
             success: function(response){
@@ -69,7 +69,7 @@ $(function(){
 
     $('#select_2_modulos').select2();
 
-    <?php if($perfil->id_igreja != null){ ?>
+    <?php if($perfil->id_site != null){ ?>
         var vetor = [];
 
         <?php
@@ -79,7 +79,7 @@ $(function(){
         ?>
 
         $.ajax({
-            url: '{{route('igrejas.carregarModulos',['id'=>''])}}/'+{{$perfil->id_igreja}},
+            url: '{{route('sites.carregarModulos',['id'=>''])}}/'+{{$perfil->id_site}},
             type: 'get',
             dataType: 'json',
             success: function(response){
@@ -169,12 +169,11 @@ $(function(){
                 </div>
                 <div class="col-md-12">
                     <div class="form-group has-feedback">
-                    <label>Selecione a Igreja associada ao perfil:</label>
-                    <select id="igreja" name="igreja" class="form-control" required>
+                    <label>Selecione o Site associado ao perfil:</label>
+                    <select id="site" name="site" class="form-control" required>
                         <option value="-1" selected>Administrador da plataforma Église</option>
-                        <?php $igrejas = App\TblIgreja::orderBy('nome','ASC')->get(); ?>
-                        @foreach ($igrejas as $igreja)
-                        <option value="{{$igreja->id}}" {{($igreja->id == $perfil->id_igreja) ? 'selected' : ''}}>{{$igreja->nome}}</option>
+                        @foreach ($sites as $site)
+                        <option value="{{$site->id}}" {{($site->id == $perfil->id_site) ? 'selected' : ''}}>{{$site->nome}}</option>
                         @endforeach
                     </select>
                     <div class="help-block with-errors"></div>
@@ -182,7 +181,7 @@ $(function(){
                 </div>
                 <div class="col-md-12" id="list-area">
                     <div class="form-group has-feedback">
-                    <label>Selecione quais módulos da igreja o perfil irá acessar:</label>
+                    <label>Selecione quais módulos da site o perfil irá acessar:</label>
                     <select id="select_2_modulos" name="modulos[]" data-placeholder="Selecione os módulos" class="form-control select2" style="width: 100%;" multiple="multiple" required></select>
                     <div class="help-block with-errors"></div>
                     </div>

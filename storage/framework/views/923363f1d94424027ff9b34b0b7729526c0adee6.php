@@ -197,7 +197,7 @@ $('div.setup-panel div a.btn-success').trigger('click');
             </div>
             <div class="stepwizard-step col-xs-3"> 
                 <a href="#step-3" type="button" class="btn btn-default btn-circle disabled" disabled="disabled">3</a>
-                <p><small>Dados da Igreja</small></p>
+                <p><small>Dados da Site</small></p>
             </div>
             <div class="stepwizard-step col-xs-3"> 
                     <a href="#step-4" type="button" class="btn btn-default btn-circle disabled" disabled="disabled">4</a>
@@ -210,7 +210,7 @@ $('div.setup-panel div a.btn-success').trigger('click');
         </div>
     </div>
     
-    <form id="cadastrarIgrejaForm" method="POST" role="form" action="<?php echo e(route('plataforma.incluirIgreja')); ?>" enctype="multipart/form-data">
+    <form id="cadastrarSiteForm" method="POST" role="form" action="<?php echo e(route('plataforma.incluirSite')); ?>" enctype="multipart/form-data">
     <?php echo csrf_field(); ?>
         <div class="panel panel-primary setup-content" id="step-1">
             <div class="panel-heading">
@@ -218,7 +218,7 @@ $('div.setup-panel div a.btn-success').trigger('click');
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <p>Para aderir, basta informar alguns dados  sobre a igreja, realizar o pagamento e obter a visão do seu site. Caso queira ter um domínio (seu www) próprio, entre em contato com nossa equipe pelo tel (31) 3849-6771.
+                    <p>Para aderir, basta informar alguns dados  sobre a site, realizar o pagamento e obter a visão do seu site. Caso queira ter um domínio (seu www) próprio, entre em contato com nossa membros pelo tel (31) 3849-6771.
                     </p>
                 </div>
                 <button class="btn btn-primary nextBtn pull-right" type="button">Próximo</button>
@@ -240,7 +240,7 @@ $('div.setup-panel div a.btn-success').trigger('click');
         
         <div class="panel panel-primary setup-content" id="step-3">
             <div class="panel-heading">
-                <h3 class="panel-title">Dados da Igreja</h3>
+                <h3 class="panel-title">Dados da Site</h3>
             </div>
             <div class="panel-body">
 
@@ -325,7 +325,7 @@ $('div.setup-panel div a.btn-success').trigger('click');
                 </div>
                 <div class="col-md-8">
                     <div class="form-group has-feedback">
-                        <label >URL da igreja (eglise.com.br/URL)</label>
+                        <label >URL da site (eglise.com.br/URL)</label>
                         <input maxlength="20" name="url" type="text" class="form-control" placeholder="URL" required>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <div class="help-block with-errors"></div>

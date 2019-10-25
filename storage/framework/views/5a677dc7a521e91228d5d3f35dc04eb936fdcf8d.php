@@ -1,4 +1,3 @@
-<?php /* E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/usuario/produtos.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- InputFilePTBR -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/input.file.js/fileinput.min.css')); ?>">
@@ -16,6 +15,10 @@
 <script src="<?php echo e(asset('template_adm/bower_components/datatables.plugins/vfs_fonts.js')); ?>"></script>
 <script src="<?php echo e(asset('template_adm/bower_components/datatables.plugins/buttons.colVis.min.js')); ?>"></script>
 <script src="<?php echo e(asset('template_adm/bower_components/datatables.plugins/buttons.bootstrap.min.js')); ?>"></script>
+<!-- Select2 -->
+<link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/select2/dist/css/select2.min.css')); ?>">
+<!-- Select2 -->
+<script src="<?php echo e(asset('template_adm/bower_components/select2/dist/js/select2.full.min.js')); ?>"></script>
 
 <style>
 td.details-control {
@@ -134,13 +137,7 @@ $(function(){
     });
 
     $('.select2').select2();
-
-    //Date picker
-    $('.datepicker').datepicker({
-        format: 'dd/mm/yyyy',
-        autoclose: true
-    });
-
+    
     $('#incluirProdutoFormulario').validator({
         update: true,
         ignore: [],       
@@ -224,7 +221,7 @@ $(function(){
 <div class="modal fade" id="modal-incluir">
 <form id="incluirProdutoFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.incluirProduto')); ?>" enctype="multipart/form-data">
 <?php echo csrf_field(); ?>
-    <input type="hidden" name="igreja" id="igreja" value="<?php echo e($igreja->id); ?>">
+    <input type="hidden" name="site" id="site" value="<?php echo e($site->id); ?>">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -271,7 +268,6 @@ $(function(){
                 <div class="col-md-12">
                     <div class="form-group has-feedback">
                 		<select id="categoria" name="categoria" class="form-control select2" style="width: 100%;" required>
-	                        <?php $categorias = App\TblCategoriasProdutos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
 	                        <?php $__currentLoopData = $categorias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categoria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 	                        <option value="<?php echo e($categoria->id); ?>"><?php echo e($categoria->nome); ?></option>
 	                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -325,4 +321,4 @@ $(function(){
 </div>
 <!-- /.modal -->
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.usuario.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.usuario.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/usuario/produtos.blade.php ENDPATH**/ ?>

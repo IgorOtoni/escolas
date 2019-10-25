@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use App\TblPerfil;
-use App\TblIgreja;
+use App\TblSite;
 
 class LoginRules
 {
@@ -30,8 +30,8 @@ class LoginRules
                 $perfil = TblPerfil::find(Auth::user()->id_perfil);
                 if($perfil->status == true){
                     // VERIFICAÇÃO BÁSICA 2: PARA AUTENTICAR O PERFIL PRECISA ESTAR ATIVO
-                    $igreja = TblIgrejas::find($perfil->id_igreja);
-                    if($igreja->status == true){
+                    $site = TblSites::find($perfil->id_site);
+                    if($site->status == true){
                         // VERIFICAÇÃO BÁSICA 3: PARA AUTENTICAR A CONGREGAÇÃO PRECISA ESTAR ATIVO
                         return redirect()->route('usuario.home');
                     }else{

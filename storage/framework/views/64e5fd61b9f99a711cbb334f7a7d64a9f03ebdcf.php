@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template7/apresentacao.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template7/apresentacao.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -10,7 +10,7 @@
 			<div class="col-lg-12 col-sm-12 col-md-12">
 				<div class="section__title text-center">
 					<h2 class="title__line">Sobre nós</h2>
-					<p><?php echo e($igreja->texto_apresentativo); ?></p>
+					<p><?php echo e($site->texto_apresentativo); ?></p>
 				</div>
 			</div>
 		</div>
@@ -24,7 +24,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-sm-12 col-md-12">
 					<div class="section__title text-center">
-						<h2 class="title__line">Nossa equipe</h2>
+						<h2 class="title__line">Nossa membros</h2>
 					</div>
 				</div>
 			</div>

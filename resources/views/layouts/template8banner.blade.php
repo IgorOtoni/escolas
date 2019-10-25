@@ -16,9 +16,9 @@
                     <div class="content_wrap clearfix">
 						<!-- Logo -->
                         <div class="logo">
-                            <a href="/{{ $igreja->url }}">
-								<img style="width: 125px; height: 80px;" src="{{asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))}}" class="logo_main" alt="">
-								<img style="width: 105px; height: 80px;" src="{{asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))}}" class="logo_fixed" alt="">
+                            <a href="/{{ $site->url }}">
+								<img style="width: 125px; height: 80px;" src="{{asset('/storage/'.(($site->logo != null) ? 'sites/'.$site->logo : 'no-logo.jpg' ))}}" class="logo_main" alt="">
+								<img style="width: 105px; height: 80px;" src="{{asset('/storage/'.(($site->logo != null) ? 'sites/'.$site->logo : 'no-logo.jpg' ))}}" class="logo_fixed" alt="">
 							</a>
                         </div>
 						<!-- Logo -->
@@ -29,15 +29,15 @@
 							<ul id="menu_main" class="menu_main_nav">
 								<?php
 								foreach($menus as $menu){
-									?><li class="menu-item menu-item-has-children"><a href="{{verifica_link($menu->link, $igreja)}}">{{$menu->nome}}</a><?php
+									?><li class="menu-item menu-item-has-children"><a href="{{verifica_link($menu->link, $site)}}">{{$menu->nome}}</a><?php
 										if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
 											<ul class="sub-menu">
 												<?php foreach($submenus[$menu->id] as $submenu){
-													?><li class="menu-item menu-item-has-children"><a href="{{verifica_link($submenu->link, $igreja)}}">{{$submenu->nome}}</a><?php
+													?><li class="menu-item menu-item-has-children"><a href="{{verifica_link($submenu->link, $site)}}">{{$submenu->nome}}</a><?php
 													if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
 														<ul class="sub-menu">
 															<?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-																?> <li><a href="{{verifica_link($subsubmenu->link, $igreja)}}">{{$subsubmenu->nome}}</a></li> <?php
+																?> <li><a href="{{verifica_link($subsubmenu->link, $site)}}">{{$subsubmenu->nome}}</a></li> <?php
 															} ?>
 														</ul>
 													<?php
@@ -81,7 +81,7 @@
 			<!-- Copyright -->
             <div class="copyright_wrap">
                 <div class="content_wrap">
-                    <p><?php echo strip_tags($igreja->nome) ?> - <b> powered by hotsystems</b></p>
+                    <p><?php echo strip_tags($site->nome) ?> - <b> powered by hotsystems</b></p>
                 </div>
             </div>
 			<!-- /Copyright -->

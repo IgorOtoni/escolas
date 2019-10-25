@@ -26,21 +26,21 @@
 						
 						<ul id="gallery">
 
-							<?php foreach($sermoes as $sermao){ ?>
+							<?php foreach($midias as $midia){ ?>
 
 								<li data-categories="web" class="gallery-item">
 
 									<div class="border-shadow alignleft">
 										<figure>
-											<iframe frameborder="0" src="{{$sermao->link}}"></iframe>
+											<iframe frameborder="0" src="{{$midia->link}}"></iframe>
 										</figure>
 									</div><!--/ gallery-image-->
 
 									<div class="gallery-text">
-										<h1><a class="link" href="#">{{ $sermao->nome }}</a></h1>
-	                                    <p class="date"><i>{{\Carbon\Carbon::parse($sermao->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}</i></p>
-										<p>{{$sermao->descricao}}</p>
-										<p><a href="/{{$igreja->url}}/sermao/{{$sermao->id}}" class="button medium button-style1 align-btn-right">Detalhes</a></p>
+										<h1><a class="link" href="#">{{ $midia->nome }}</a></h1>
+	                                    <p class="date"><i>{{\Carbon\Carbon::parse($midia->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}</i></p>
+										<p>{{$midia->descricao}}</p>
+										<p><a href="/{{$site->url}}/midia/{{$midia->id}}" class="button medium button-style1 align-btn-right">Detalhes</a></p>
 									</div><!--/ gallery-text-->
 
 									<div class="kids_clear"></div>

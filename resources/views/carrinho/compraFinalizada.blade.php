@@ -13,7 +13,7 @@
     	<p>A entrega irá aconteceer na data marcada ou posterior, caso ocorra o atraso ou algum outro problmea por favor entre em contato. O pagamento pode ser feito em dinheiro ou cartão no momento da entrega.</p>
 	</div>
 	<div class="panel-footer">
-		<a href="{{ route('igreja.nota_encomenda',['id'=>$venda->id]) }}" class="btn btn-primary">Emitir nota</a>
+		<a href="{{ route('site.nota_encomenda',['id'=>$venda->id]) }}" class="btn btn-primary">Emitir nota</a>
 	</div>
 </div>
 @endsection

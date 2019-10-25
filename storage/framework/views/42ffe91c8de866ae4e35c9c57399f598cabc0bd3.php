@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/template1/eventofixodetalhado.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/template1/eventofixodetalhado.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <script>
 
@@ -12,8 +12,8 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/<?php echo e($igreja->url); ?>/">Home</a></li>
-        <li><a href="/<?php echo e($igreja->url); ?>/eventosfixos">Eventos fixos</a></li>
+        <li><a href="/<?php echo e($site->url); ?>/">Home</a></li>
+        <li><a href="/<?php echo e($site->url); ?>/eventosfixos">Eventos fixos</a></li>
         <li class="active">Evento fixo</li>
         </ol>
     </div>

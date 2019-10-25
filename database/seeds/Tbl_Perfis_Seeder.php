@@ -16,14 +16,14 @@ class Tbl_Perfis_Seeder extends Seeder
             'nome'=>'ADM Plataforma',
             'descricao'=>'Administrador da plataforma.',
             'status'=> true,
-            'id_igreja'=>null,
+            'id_site'=>null,
         ]);
 
         DB::table('tbl_perfis')->insert([
             'id'=>2,
             'nome'=>'ADM Site',
-            'descricao'=>'Administrador do site da escola.',
-            'id_igreja'=>1,
+            'descricao'=>'Administrador do site da site.',
+            'id_site'=>1,
         ]);
 
         DB::table('tbl_perfis')->insert([
@@ -31,7 +31,7 @@ class Tbl_Perfis_Seeder extends Seeder
             'nome'=>'Comprador',
             'descricao'=>'Usuário que pode realizar compras na plataforma.',
             'status'=> true,
-            'id_igreja'=>null,
+            'id_site'=>null,
         ]);
 
         DB::table('tbl_turnos_entregas')->insert([
@@ -75,12 +75,12 @@ class Tbl_Perfis_Seeder extends Seeder
         DB::table('tbl_categorias_produtos')->insert([
             'id'=>1,
             'nome'=>'Teste 1',
-            'id_igreja'=>1,
+            'id_site'=>1,
         ]);
         DB::table('tbl_categorias_produtos')->insert([
             'id'=>2,
             'nome'=>'Teste 2',
-            'id_igreja'=>1,
+            'id_site'=>1,
         ]);
     }
 }

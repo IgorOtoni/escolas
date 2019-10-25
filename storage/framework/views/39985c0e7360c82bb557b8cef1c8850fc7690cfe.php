@@ -7,7 +7,7 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/<?php echo e($igreja->url); ?>/">Home</a></li>
+        <li><a href="/<?php echo e($site->url); ?>/">Home</a></li>
         <li class="active">Sobre nós/Visões e valores</li>
         </ol>
     </div>
@@ -32,10 +32,10 @@
     <div class="container">
     <div class="row">
         <div class="col-md-12">
-        <p><?php echo e($igreja->texto_apresentativo); ?></p>
+        <p><?php echo e($site->texto_apresentativo); ?></p>
         <hr>
         <?php if($funcoes != null && sizeof($funcoes) > 0): ?>
-            <h3>Equipe</h3>
+            <h3>Membros</h3>
         <?php endif; ?>
         </div>
         <?php $__currentLoopData = $funcoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $funcao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

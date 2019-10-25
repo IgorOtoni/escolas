@@ -1,6 +1,6 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template6/index.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template6/index.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
-<script src="<?php echo e(asset('template_igreja/template-branco/js/home.js')); ?>"></script> 
+<script src="<?php echo e(asset('template_site/template-branco/js/home.js')); ?>"></script> 
 <?php $__env->stopPush(); ?>
 <?php $__env->startSection('banner'); ?>
 <?php
@@ -17,7 +17,7 @@ if($banners != null && sizeof($banners)){
                     <div class="flex-caption" data-appear-animation="fadeInRight" data-appear-animation-delay="500">
                         <?php
                         if($banner->link != null){
-                            ?> <a href="<?php echo e(verifica_link($banner->link, $igreja)); ?>"> <?php
+                            ?> <a href="<?php echo e(verifica_link($banner->link, $site)); ?>"> <?php
                         }
                         ?>
                         <strong><?php echo e($banner->nome); ?></strong>
@@ -106,7 +106,7 @@ if($eventos != null && sizeof($eventos) != 0){
                                         </div>
                                         <div class="event-list-item-info">
                                             <div class="lined-info">
-                                                <h4><a href="/<?php echo e($igreja->url); ?>/evento/<?php echo e($evento->id); ?>" class="event-title"><?php echo e($evento->nome); ?></a></h4>
+                                                <h4><a href="/<?php echo e($site->url); ?>/evento/<?php echo e($evento->id); ?>" class="event-title"><?php echo e($evento->nome); ?></a></h4>
                                             </div>
                                             <div class="lined-info">
                                                 <span class="meta-data"><i class="fa fa-clock-o"></i> <?php echo e(\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')); ?></span>
@@ -116,7 +116,7 @@ if($eventos != null && sizeof($eventos) != 0){
                                             </div>
                                         </div>
                                         <div class="event-list-item-actions">
-                                            <a href="/<?php echo e($igreja->url); ?>/evento/<?php echo e($evento->id); ?>" class="btn btn-default btn-transparent event-tickets event-register-button">Detalhes</a>
+                                            <a href="/<?php echo e($site->url); ?>/evento/<?php echo e($evento->id); ?>" class="btn btn-default btn-transparent event-tickets event-register-button">Detalhes</a>
                                         </div>
                                     </div>
                                 <?php } ?>

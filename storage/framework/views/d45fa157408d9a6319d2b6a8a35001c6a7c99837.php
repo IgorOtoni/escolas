@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/usuario/editaroferta.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/usuario/editaroferta.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- Select2 -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/select2/dist/css/select2.min.css')); ?>">
@@ -58,7 +58,7 @@ $(function(){
             <div class="col-md-12">
                 <div class="form-group has-feedback">
             		<select id="produto" name="produto" class="form-control select2" style="width: 100%;" required>
-                        <?php $produtos = App\TblProdutos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $produtos = App\TblProdutos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         <?php $__currentLoopData = $produtos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $produto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($produto->id); ?>" <?php echo e($oferta->id_produto == $produto->id ? "selected" : ""); ?>><?php echo e($produto->nome); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

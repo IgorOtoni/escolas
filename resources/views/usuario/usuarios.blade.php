@@ -251,7 +251,7 @@ $(function () {
                     <div class="form-group has-feedback">
                       <label>Selecione o perfil do usuário:</label>
                       <select id="perfil" name="perfil" class="form-control select2" style="width: 100%;" required>
-                        <?php $perfis = App\TblPerfil::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $perfis = App\TblPerfil::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         @foreach ($perfis as $perfil)
                         <option value="{{$perfil->id}}">{{$perfil->nome}}</option>
                         @endforeach
@@ -263,7 +263,7 @@ $(function () {
                     <div class="form-group has-feedback">
                       <label>Selecione o membro do usuário: (o nome do usuário será substituído pelo nome do membro)</label>
                       <select id="membro" name="membro" class="form-control select2" style="width: 100%;" required>
-                        <?php $membros = App\TblMembros::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $membros = App\TblMembros::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         <option value="0">Sem membro</option>
                         @foreach ($membros as $membro)
                         <option value="{{$membro->id}}">{{$membro->nome}}</option>

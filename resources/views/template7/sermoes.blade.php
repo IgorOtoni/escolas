@@ -31,22 +31,22 @@
 			</div>
 		</div>-->
 		<div class="row galler__wrap mt--40">
-			<?php foreach($sermoes as $sermao){ ?>
+			<?php foreach($midias as $midia){ ?>
 				<!-- Start Single Gallery -->
 				<div class="col-lg-4 col-md-6 col-sm-6 col-12">
 					<div class="gallery wow fadeInUp">
 						<div class="gallery__thumb text-center">
-							<a href="{{$sermao->link}}">
-								<iframe width="360" height="360" frameborder="0" src="{{$sermao->link}}"></iframe>
+							<a href="{{$midia->link}}">
+								<iframe width="360" height="360" frameborder="0" src="{{$midia->link}}"></iframe>
 							</a>
 						</div>
 						<div class="gallery__hover__inner">
 							<div class="gallery__hover__action">
 								<ul class="gallery__zoom">
-									<li><a href="/{{ $igreja->url }}/sermao/{{ $sermao->id }}"><i class="fa fa-search"></i></a></li>
-									<li><a href="/{{ $sermao->link }}"><i class="fa fa-link"></i></a></li>
+									<li><a href="/{{ $site->url }}/midia/{{ $midia->id }}"><i class="fa fa-search"></i></a></li>
+									<li><a href="/{{ $midia->link }}"><i class="fa fa-link"></i></a></li>
 								</ul>
-								<h4 class="gallery__title"><a href="/{{ $igreja->url }}/sermao/{{ $sermao->id }}">{{ $sermao->nome }}</a></h4>
+								<h4 class="gallery__title"><a href="/{{ $site->url }}/midia/{{ $midia->id }}">{{ $midia->nome }}</a></h4>
 							</div>
 						</div>
 					</div>	
@@ -56,7 +56,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12" style="margin-top: 50px;">
-		        {{ $sermoes->appends(request()->query())->links() }}
+		        {{ $midias->appends(request()->query())->links() }}
 		    </div>
 	    </div>
 	</div>

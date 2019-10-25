@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template6/eventofixodetalhado.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template6/eventofixodetalhado.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>

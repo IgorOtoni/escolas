@@ -6,8 +6,8 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?php echo e(route('igreja.index',['url'=>$igreja->url])); ?>"><i class="fa fa-home"></i> Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo e(route('igreja.eventosfixos',['url'=>$igreja->url])); ?>">Eventos fixos</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo e(route('site.index',['url'=>$site->url])); ?>"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo e(route('site.eventosfixos',['url'=>$site->url])); ?>">Eventos fixos</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Evento</li>
                     </ol>
                 </nav>

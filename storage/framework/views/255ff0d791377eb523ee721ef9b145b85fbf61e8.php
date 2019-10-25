@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/home.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/home.blade.php */ ?>
 <?php $__env->startSection('content'); ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">

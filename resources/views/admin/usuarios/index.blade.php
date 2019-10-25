@@ -49,14 +49,14 @@ function format ( d ) {
             '<th>Nome:</th>'+
             '<th>Email:</th>'+
             '<th>Perfil:</th>'+
-            '<th>Igreja:</th>'+
+            '<th>Site:</th>'+
             '<th>Data de criação:</th>'+
             '</tr>'+
         '<tr>'+
             '<td>'+valida(d.nome)+'</td>'+
             '<td>'+valida(d.email)+'</td>'+
             '<td>'+valida(d.perfil)+'</td>'+
-            '<td>'+valida_congregacao(d.igreja)+'</td>'+
+            '<td>'+valida_congregacao(d.site)+'</td>'+
             '<td>'+valida(d.created_at)+'</td>'+
             '</tr>'+
         '</table></div>';
@@ -126,7 +126,7 @@ $(function () {
             { data: 'id', name: 'id' },
             { data: 'nome', name: 'nome' },
             { data: 'perfil', name: 'perfil' },
-            { data: 'igreja', name: 'igreja' },
+            { data: 'site', name: 'site' },
             { data: 'status', name: 'status' },
             { data: 'action', name: 'action' },
           ],
@@ -183,7 +183,7 @@ $(function () {
           <th>#</th>
           <th>Nome</th>
           <th>Perfil</th>
-          <th>Escola</th>
+          <th>Site</th>
           <th>Situação</th>
           <th>Ações</th>
       </tr>
@@ -257,16 +257,8 @@ $(function () {
                     <div class="form-group has-feedback">
                       <label>Selecione o perfil do usuário:</label>
                       <select id="perfil" name="perfil" class="form-control select2" style="width: 100%;" required>
-                        <?php 
-                        //$perfis = App\TblPerfil::orderBy('nome','ASC')->get();
-                        $perfis = \DB::table('tbl_perfis')
-                            ->select('tbl_perfis.*', 'tbl_igrejas.nome as nome_congregacao')
-                            ->leftJoin('tbl_igrejas','tbl_igrejas.id','=','tbl_perfis.id_igreja')
-                            ->orderBy('nome', 'ASC')
-                            ->get();
-                        ?>
                         @foreach ($perfis as $perfil)
-                        <option value="{{$perfil->id}}">{{$perfil->nome}} - {{($perfil->id_igreja == null || $perfil->id_igreja == 1) ? "Administador" : $perfil->nome_congregacao}}</option>
+                        <option value="{{$perfil->id}}">{{$perfil->nome}} - {{($perfil->id_site == null || $perfil->id_site == 1) ? "Administador" : $perfil->nome_congregacao}}</option>
                         @endforeach
                       </select>
                       <div class="help-block with-errors"></div>

@@ -59,7 +59,7 @@ $(function(){
     <section class="content-header">
         <h1>
         Linha do tempo
-        <small>Lista de todos os eventos da escola</small>
+        <small>Lista de todos os eventos da site</small>
         </h1>
     </section>
 
@@ -92,7 +92,7 @@ $(function(){
 <div class="modal fade" id="modal-incluir">
 <form id="incluirEventoFormulario" data-toggle="validator" method="POST" role="form" action="{{route('usuario.incluirEvento')}}" enctype="multipart/form-data">
 @csrf
-    <input type="hidden" name="igreja" id="igreja" value="{{$igreja->id}}">
+    <input type="hidden" name="site" id="site" value="{{$site->id}}">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">

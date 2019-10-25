@@ -6,7 +6,7 @@
 */
 
 use App\TblPerfil;
-use App\TblIgrejas;
+use App\TblSites;
 use App\TblModulos;
 use App\TblPermissoes;
 
@@ -21,58 +21,58 @@ function fistCharFromWord_toUpper($string)
     }
     return $st;   
 }
-function obter_dados_igreja_id($id){
-    $igreja = \DB::table('tbl_igrejas')
-        ->select('tbl_igrejas.*', 'tbl_configuracoes.id as id_configuracao', 'tbl_configuracoes.url','tbl_configuracoes.id_template','tbl_configuracoes.texto_apresentativo','tbl_configuracoes.facebook','tbl_configuracoes.youtube','tbl_configuracoes.twitter','tbl_configuracoes.cor','tbl_configuracoes.custom_style')
-        ->leftJoin('tbl_configuracoes', 'tbl_igrejas.id', '=', 'tbl_configuracoes.id_igreja')
-        ->where('tbl_igrejas.id','=',$id)
+function obter_dados_site_id($id){
+    $site = \DB::table('tbl_sites')
+        ->select('tbl_sites.*', 'tbl_configuracoes.id as id_configuracao', 'tbl_configuracoes.url','tbl_configuracoes.id_template','tbl_configuracoes.texto_apresentativo','tbl_configuracoes.facebook','tbl_configuracoes.youtube','tbl_configuracoes.twitter','tbl_configuracoes.cor','tbl_configuracoes.custom_style')
+        ->leftJoin('tbl_configuracoes', 'tbl_sites.id', '=', 'tbl_configuracoes.id_site')
+        ->where('tbl_sites.id','=',$id)
         ->get();
-    return $igreja[0];
+    return $site[0];
 }
-function obter_dados_igreja($url){
-    $igreja = \DB::table('tbl_igrejas')
-        ->select('tbl_igrejas.*', 'tbl_configuracoes.id as id_configuracao', 'tbl_configuracoes.url','tbl_configuracoes.id_template','tbl_configuracoes.texto_apresentativo','tbl_configuracoes.facebook','tbl_configuracoes.youtube','tbl_configuracoes.twitter','tbl_configuracoes.cor','tbl_configuracoes.custom_style')
-        ->leftJoin('tbl_configuracoes', 'tbl_igrejas.id', '=', 'tbl_configuracoes.id_igreja')
+function obter_dados_site($url){
+    $site = \DB::table('tbl_sites')
+        ->select('tbl_sites.*', 'tbl_configuracoes.id as id_configuracao', 'tbl_configuracoes.url','tbl_configuracoes.id_template','tbl_configuracoes.texto_apresentativo','tbl_configuracoes.facebook','tbl_configuracoes.youtube','tbl_configuracoes.twitter','tbl_configuracoes.cor','tbl_configuracoes.custom_style')
+        ->leftJoin('tbl_configuracoes', 'tbl_sites.id', '=', 'tbl_configuracoes.id_site')
         ->where('url','=',$url)
         ->get();
-    return ($igreja != null && sizeof($igreja) == 1) ? $igreja[0] : null;
+    return ($site != null && sizeof($site) == 1) ? $site[0] : null;
 }
-function obter_modulos_igreja_aplicativo($igreja){
-    $modulos = \DB::table('tbl_igrejas_modulos')
-        ->leftJoin('tbl_modulos', 'tbl_igrejas_modulos.id_modulo', '=', 'tbl_modulos.id')
-        ->select('tbl_igrejas_modulos.id_modulo', 'tbl_modulos.*')
-        ->where('id_igreja','=',$igreja->id)
+function obter_modulos_site_aplicativo($site){
+    $modulos = \DB::table('tbl_sites_modulos')
+        ->leftJoin('tbl_modulos', 'tbl_sites_modulos.id_modulo', '=', 'tbl_modulos.id')
+        ->select('tbl_sites_modulos.id_modulo', 'tbl_modulos.*')
+        ->where('id_site','=',$site->id)
         ->where('tbl_modulos.sistema','like','%app%')
         ->orderBy('tbl_modulos.nome', 'ASC')
         ->get();
     return $modulos;
 }
-function obter_modulos_igreja($igreja){
-    $modulos = \DB::table('tbl_igrejas_modulos')
-        ->leftJoin('tbl_modulos', 'tbl_igrejas_modulos.id_modulo', '=', 'tbl_modulos.id')
-        ->select('tbl_igrejas_modulos.id_modulo', 'tbl_modulos.*')
-        ->where('id_igreja','=',$igreja->id)
+function obter_modulos_site($site){
+    $modulos = \DB::table('tbl_sites_modulos')
+        ->leftJoin('tbl_modulos', 'tbl_sites_modulos.id_modulo', '=', 'tbl_modulos.id')
+        ->select('tbl_sites_modulos.id_modulo', 'tbl_modulos.*')
+        ->where('id_site','=',$site->id)
         ->where('tbl_modulos.sistema','like','%web%')
         ->orderBy('tbl_modulos.nome', 'ASC')
         ->get();
     return $modulos;
 }
-function obter_modulos_apresentativos_igreja($igreja){
-    $modulos = \DB::table('tbl_igrejas_modulos')
-        ->leftJoin('tbl_modulos', 'tbl_igrejas_modulos.id_modulo', '=', 'tbl_modulos.id')
-        ->select('tbl_igrejas_modulos.id_modulo', 'tbl_modulos.*')
-        ->where('id_igreja','=',$igreja->id)
+function obter_modulos_apresentativos_site($site){
+    $modulos = \DB::table('tbl_sites_modulos')
+        ->leftJoin('tbl_modulos', 'tbl_sites_modulos.id_modulo', '=', 'tbl_modulos.id')
+        ->select('tbl_sites_modulos.id_modulo', 'tbl_modulos.*')
+        ->where('id_site','=',$site->id)
         ->where('tbl_modulos.sistema','like','%web%')
         ->where('tbl_modulos.gerencial','=',false)
         ->orderBy('tbl_modulos.nome', 'ASC')
         ->get();
     return $modulos;
 }
-function obter_modulos_gerenciais_igreja($igreja){
-    $modulos = \DB::table('tbl_igrejas_modulos')
-        ->leftJoin('tbl_modulos', 'tbl_igrejas_modulos.id_modulo', '=', 'tbl_modulos.id')
-        ->select('tbl_igrejas_modulos.id_modulo', 'tbl_modulos.*')
-        ->where('id_igreja','=',$igreja->id)
+function obter_modulos_gerenciais_site($site){
+    $modulos = \DB::table('tbl_sites_modulos')
+        ->leftJoin('tbl_modulos', 'tbl_sites_modulos.id_modulo', '=', 'tbl_modulos.id')
+        ->select('tbl_sites_modulos.id_modulo', 'tbl_modulos.*')
+        ->where('id_site','=',$site->id)
         ->where('tbl_modulos.sistema','like','%web%')
         ->where('tbl_modulos.gerencial','=',true)
         ->orderBy('tbl_modulos.nome', 'ASC')
@@ -155,27 +155,27 @@ function limpa_html($html){
     $html = trim($html);
     return $html;
 }
-function verifica_link($link, $igreja){
+function verifica_link($link, $site){
     if($link == null || empty($link) || trim($link) == ""){
-        return route('igreja.index', ['url' => $igreja->url]);
+        return route('site.index', ['url' => $site->url]);
     }else if(substr($link, 0, 4) == "http"){
         return $link;
     }else{
         if(strpos($link, '/') === false){
-            return route('igreja.'.$link, ['url' => $igreja->url]);
+            return route('site.'.$link, ['url' => $site->url]);
         }else{
             $link_ = explode('/',$link);
-            return route('igreja.'.$link_[0], ['url' => $igreja->url, 'id'=> $link_[1]]);
+            return route('site.'.$link_[0], ['url' => $site->url, 'id'=> $link_[1]]);
         }
     }
 }
 // ÁREA DE AUTENTICAÇÃO E VALIDAÇÃO DE MÓDULOS E PERMISSÕES !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function obter_modulos_perfil($perfil){
-    $modulos = \DB::table('tbl_perfis_igrejas_modulos')
-        ->leftJoin('tbl_igrejas_modulos', 'tbl_perfis_igrejas_modulos.id_modulo_igreja', '=', 'tbl_igrejas_modulos.id')
-        ->leftJoin('tbl_modulos', 'tbl_igrejas_modulos.id_modulo', '=', 'tbl_modulos.id')
-        ->select('tbl_igrejas_modulos.id_modulo', 'tbl_modulos.*')
-        ->where('tbl_perfis_igrejas_modulos.id_perfil','=',$perfil->id)
+    $modulos = \DB::table('tbl_perfis_sites_modulos')
+        ->leftJoin('tbl_sites_modulos', 'tbl_perfis_sites_modulos.id_modulo_site', '=', 'tbl_sites_modulos.id')
+        ->leftJoin('tbl_modulos', 'tbl_sites_modulos.id_modulo', '=', 'tbl_modulos.id')
+        ->select('tbl_sites_modulos.id_modulo', 'tbl_modulos.*')
+        ->where('tbl_perfis_sites_modulos.id_perfil','=',$perfil->id)
         ->where('tbl_modulos.sistema','like','%web%')
         ->orderBy('tbl_modulos.nome', 'ASC')
         ->get();
@@ -184,12 +184,12 @@ function obter_modulos_perfil($perfil){
 function valida_modulo($id_perfil, $id_modulo){
     $retorno = null;
     $perfil = TblPerfil::find($id_perfil);
-    $modulos = \DB::table('tbl_igrejas_modulos')
-        ->select('tbl_igrejas_modulos.*', 'tbl_perfis_igrejas_modulos.id as id_perfis_igrejas_modulos')
-        ->leftJoin('tbl_perfis_igrejas_modulos', 'tbl_igrejas_modulos.id', '=', 'tbl_perfis_igrejas_modulos.id_modulo_igreja')
-        ->where('tbl_perfis_igrejas_modulos.id_perfil','=',$id_perfil)
-        ->where('tbl_igrejas_modulos.id_modulo','=',$id_modulo)
-        ->where('tbl_igrejas_modulos.id_igreja','=',$perfil->id_igreja)
+    $modulos = \DB::table('tbl_sites_modulos')
+        ->select('tbl_sites_modulos.*', 'tbl_perfis_sites_modulos.id as id_perfis_sites_modulos')
+        ->leftJoin('tbl_perfis_sites_modulos', 'tbl_sites_modulos.id', '=', 'tbl_perfis_sites_modulos.id_modulo_site')
+        ->where('tbl_perfis_sites_modulos.id_perfil','=',$id_perfil)
+        ->where('tbl_sites_modulos.id_modulo','=',$id_modulo)
+        ->where('tbl_sites_modulos.id_site','=',$perfil->id_site)
         ->get();
     // PRIMEIRO IF: VERIFIFICA SE O PERFIL TEM ACESSOS AO MÓDULO
     if($modulos == null || count($modulos) == 0){
@@ -202,11 +202,11 @@ function valida_modulo($id_perfil, $id_modulo){
 }
 function valida_permissao($id_perfil, $id_modulo, $id_permissao){
     $retorno = null;
-    $modulos = \DB::table('tbl_igrejas_modulos')
-        ->select('tbl_igrejas_modulos.*', 'tbl_perfis_igrejas_modulos.id as id_perfis_igrejas_modulos')
-        ->leftJoin('tbl_perfis_igrejas_modulos', 'tbl_igrejas_modulos.id', '=', 'tbl_perfis_igrejas_modulos.id_modulo_igreja')
-        ->where('tbl_perfis_igrejas_modulos.id_perfil','=',$id_perfil)
-        ->where('tbl_igrejas_modulos.id_modulo','=',$id_modulo)
+    $modulos = \DB::table('tbl_sites_modulos')
+        ->select('tbl_sites_modulos.*', 'tbl_perfis_sites_modulos.id as id_perfis_sites_modulos')
+        ->leftJoin('tbl_perfis_sites_modulos', 'tbl_sites_modulos.id', '=', 'tbl_perfis_sites_modulos.id_modulo_site')
+        ->where('tbl_perfis_sites_modulos.id_perfil','=',$id_perfil)
+        ->where('tbl_sites_modulos.id_modulo','=',$id_modulo)
         ->get();
     // PRIMEIRO IF: VERIFIFICA SE O PERFIL TEM ACESSOS AO MÓDULO
     if($modulos == null || count($modulos) == 0){
@@ -231,7 +231,7 @@ function valida_permissao($id_perfil, $id_modulo, $id_permissao){
             $permissoes_ = \DB::table('tbl_perfis_permissoes')
                 ->select('tbl_perfis_permissoes.*')
                 ->where('id_permissao','=',$id_permissao)
-                ->where('id_perfil_igreja_modulo','=',$modulo_do_perfil->id_perfis_igrejas_modulos)
+                ->where('id_perfil_site_modulo','=',$modulo_do_perfil->id_perfis_sites_modulos)
                 ->get();
             // TERCEIRO IF: VERIFICA SE O PERFIL TÊM A PERMISSÃO NO MÓDULO SOLICITADO
             if($permissoes_ == null || count($permissoes_) == 0){

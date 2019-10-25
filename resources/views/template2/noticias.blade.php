@@ -10,7 +10,7 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('igreja.index',['url'=>$igreja->url])}}"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('site.index',['url'=>$site->url])}}"><i class="fa fa-home"></i> Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Notícias</li>
                     </ol>
                 </nav>
@@ -60,7 +60,7 @@
                                 <h4>{{$noticia->nome}}</h4>
                             </a>
                             <?php */ ?>
-                            <a href="{{route('igreja.noticia', ['url'=>$igreja->url,'id'=>$noticia->id])}}"><h4>{{$noticia->nome}}</h4></a>
+                            <a href="{{route('site.noticia', ['url'=>$site->url,'id'=>$noticia->id])}}"><h4>{{$noticia->nome}}</h4></a>
                             <div class="post-meta d-flex">
                                 <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> Publicada {{\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()}}</a>
                                 <?php

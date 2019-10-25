@@ -1,9 +1,9 @@
 @extends('layouts.template6')
 @push('script')
-<script type="text/javascript" src="{{asset('template_igreja/template-branco/vendor/galleria/galleria-1.3.5.min.js')}}"></script><!-- Galleria -->
+<script type="text/javascript" src="{{asset('template_site/template-branco/vendor/galleria/galleria-1.3.5.min.js')}}"></script><!-- Galleria -->
 <script>
 	// Galleria Gallery Call
-	Galleria.loadTheme('{{asset('template_igreja/template-branco/vendor/galleria/themes/classic/galleria.classic.min.js')}}');
+	Galleria.loadTheme('{{asset('template_site/template-branco/vendor/galleria/themes/classic/galleria.classic.min.js')}}');
 	Galleria.configure({
 		imageCrop: true,
 		lightbox: true

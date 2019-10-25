@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TblIgreja;
-use App\TblIgrejasModulos;
+use App\TblSites;
+use App\TblSitesModulos;
 use App\TblModulo;
 use App\TblConfiguracoes;
 use App\TblMenu;
 use App\TblSubMenu;
 use App\TblSubSubMenu;
 use App\TblPerfil;
-use App\TblPerfisIgrejasModulos;
+use App\TblPerfisSitesModulos;
 use App\User;
 use App\Mail\SendMailuser;
 
@@ -23,14 +23,14 @@ class PlataformaController extends Controller
 
     public function gratunos()
     {
-        $igrejas_e_configuracoes = \DB::table('tbl_igrejas')->leftJoin('tbl_configuracoes','tbl_igrejas.id','=','tbl_configuracoes.id_igreja')->paginate(6);
-        return view('gratunos.igrejas', compact('igrejas_e_configuracoes'));
+        $sites_e_configuracoes = \DB::table('tbl_sites')->leftJoin('tbl_configuracoes','tbl_sites.id','=','tbl_configuracoes.id_site')->paginate(6);
+        return view('gratunos.sites', compact('sites_e_configuracoes'));
     }
 
-    public function filtrarIgreja(Request $request)
+    public function filtrarSite(Request $request)
     {
-        $igrejas_e_configuracoes = \DB::table('tbl_igrejas')->where('tbl_igrejas.nome','like', '%'.$request->nome.'%')->leftJoin('tbl_configuracoes','tbl_igrejas.id','=','tbl_configuracoes.id_igreja')->paginate(6);
-        return view('gratunos.igrejas', compact('igrejas_e_configuracoes'));
+        $sites_e_configuracoes = \DB::table('tbl_sites')->where('tbl_sites.nome','like', '%'.$request->nome.'%')->leftJoin('tbl_configuracoes','tbl_sites.id','=','tbl_configuracoes.id_site')->paginate(6);
+        return view('gratunos.sites', compact('sites_e_configuracoes'));
     }
 
     public function formulario(){
@@ -38,88 +38,90 @@ class PlataformaController extends Controller
     }
 
     public function cadastro(Request $request){
-        $igreja = new TblIgreja();
-        $igreja->nome = fistCharFromWord_toUpper($request->nome);
-        $igreja->cnpj = $request->cnpj;
-        $igreja->cep = $request->cep;
-        $igreja->num = $request->num;
-        $igreja->rua = $request->rua;
-        $igreja->cidade = $request->cidade;
-        $igreja->complemento = $request->complemento;
-        $igreja->bairro = $request->bairro;
-        $igreja->estado = $request->estado;
-        $igreja->telefone = $request->telefone;
-        $igreja->logo = file_get_contents($request->file('logo'));
-        $igreja->email = $request->email;
-        $igreja->status = true;
+        $site = new TblSites();
+        $site->nome = fistCharFromWord_toUpper($request->nome);
+        $site->cnpj = $request->cnpj;
+        $site->cep = $request->cep;
+        $site->num = $request->num;
+        $site->rua = $request->rua;
+        $site->cidade = $request->cidade;
+        $site->complemento = $request->complemento;
+        $site->bairro = $request->bairro;
+        $site->estado = $request->estado;
+        $site->telefone = $request->telefone;
+        $site->logo = file_get_contents($request->file('logo'));
+        $site->email = $request->email;
+        $site->status = true;
         
-        $count = TblIgreja::where("nome", "=", $igreja->nome)->count();
+        $count = TblSites::where("nome", "=", $site->nome)->count();
         $count_ = TblConfiguracoes::where("url", "=", $request->url)->count();
         if($count == 0){
             if($count_ == 0){
-                $igreja->save();
+                $site->save();
 
-                $igreja_modulos = null;
-                $igreja_modulos_g = null;
+                $site_modulos = null;
+                $site_modulos_g = null;
 
                 $modulos = TblModulo::all();
 
                 $x = 0;
                 foreach ($modulos as $modulo) {
-                    $igreja_modulo = new TblIgrejasModulos();
-                    $igreja_modulo->id_igreja = $igreja->id;
-                    $igreja_modulo->id_modulo = $modulo->id;
+                    $site_modulo = new TblSitesModulos();
+                    $site_modulo->id_site = $site->id;
+                    $site_modulo->id_modulo = $modulo->id;
                     if($modulo->gerencial){
                         switch($modulo->id){
                             case 13:
-                                $igreja_modulo->icone = "fa fa-child";
+                                $site_modulo->icone = "fa fa-user-plus";
                                 break;
                             case 14:
-                                $igreja_modulo->icone = "fa fa-users";
+                                $site_modulo->icone = "fa fa-user";
                                 break;
                             case 15:
-                                $igreja_modulo->icone = "fa fa-file-image-o";
+                                $site_modulo->icone = "fa fa-file-image-o";
                                 break;
                             case 16:
-                                $igreja_modulo->icone = "fa fa-calendar";
+                                $site_modulo->icone = "fa fa-calendar";
                                 break;
                             case 17:
-                                $igreja_modulo->icone = "fa fa-clock-o";
+                                $site_modulo->icone = "fa fa-clock-o";
                                 break;
                             case 18:
-                                $igreja_modulo->icone = "fa fa-newspaper-o";
+                                $site_modulo->icone = "fa fa-newspaper-o";
                                 break;
                                 case 19:
-                                $igreja_modulo->icone = "fa fa-play";
+                                $site_modulo->icone = "fa fa-play";
                                 break;
                             case 20:
-                                $igreja_modulo->icone = "fa fa-microphone";
+                                $site_modulo->icone = "fa fa-microphone";
                                 break;
                             case 21:
-                                $igreja_modulo->icone = "fa fa-thumbs-o-up";
+                                $site_modulo->icone = "fa fa-thumbs-o-up";
                                 break;
                             case 22:
-                                $igreja_modulo->icone = "fa fa-cogs";
+                                $site_modulo->icone = "fa fa-cogs";
                                 break;
                             case 24:
-                                $igreja_modulo->icone = "fa fa-tags";
+                                $site_modulo->icone = "fa fa-tags";
                                 break;
                             case 25:
-                                $igreja_modulo->icone = "fa fa-user-plus";
+                                $site_modulo->icone = "fa fa-child";
+                            case 26:
+                                $site_modulo->icone = "fa fa-users";
                                 break;
                             case 27:
-                                $igreja_modulo->icone = "fa fa-cart-plus";
+                                $site_modulo->icone = "fa fa-cart-plus";
                                 break;
                         }
                     }
-                    $igreja_modulo->save();
-                    $igreja_modulos[$x] = $igreja_modulo;
-                    if($modulo->gerencial) $igreja_modulos_g[$x] = $igreja_modulo;
+                    $site_modulo->save();
+                    $site_modulos[$x] = $site_modulo;
+                    if($modulo->gerencial) $site_modulos_g[$x] = $site_modulo;
                     $x++;
                 }
 
                 $configuracao = new TblConfiguracoes();
-                $configuracao->id_igreja = $igreja->id;
+                $configuracao->id_site = $site->id;
                 $configuracao->url = $request->url;
                 $configuracao->cor = 'black';
                 $configuracao->id_template = $request->template;
@@ -170,7 +172,7 @@ class PlataformaController extends Controller
                 $submenu->id_menu = $menu->id;
                 $submenu->nome = "Vídeos";
                 $submenu->ordem = 1;
-                $submenu->link = "sermoes";
+                $submenu->link = "midias";
                 $submenu->save();
 
                 $submenu = new TblSubMenu();
@@ -216,19 +218,19 @@ class PlataformaController extends Controller
 
                 $perfil = new TblPerfil();
                 $perfil->nome = "Administrador";
-                $perfil->descricao = "Perfil dos administradores da escola.";
-                $perfil->id_igreja = $igreja->id;
+                $perfil->descricao = "Perfil dos administradores da site.";
+                $perfil->id_site = $site->id;
                 $perfil->status = true;
                 $perfil->save();
 
-                $PerfisIgrejaModulos_ = null;
+                $PerfisSitesModulos_ = null;
                 $x = 0;
-                foreach($igreja_modulos_g as $igreja_modulo){
-                    $PerfisIgrejaModulos = new TblPerfisIgrejasModulos();
-                    $PerfisIgrejaModulos->id_perfil = $perfil->id;
-                    $PerfisIgrejaModulos->id_modulo_igreja = $igreja_modulo->id;
-                    $PerfisIgrejaModulos->save();
-                    $PerfisIgrejaModulos_[$x] = $PerfisIgrejaModulos;
+                foreach($site_modulos_g as $site_modulo){
+                    $PerfisSitesModulos = new TblPerfisSitesModulos();
+                    $PerfisSitesModulos->id_perfil = $perfil->id;
+                    $PerfisSitesModulos->id_modulo_site = $site_modulo->id;
+                    $PerfisSitesModulos->save();
+                    $PerfisSitesModulos_[$x] = $PerfisSitesModulos;
                     $x++;
                 }
 
@@ -243,7 +245,7 @@ class PlataformaController extends Controller
                 $usuario->save();
                 // ===========================================================================
 
-                /*\Mail::to($igreja->email)
+                /*\Mail::to($site->email)
                     ->send(new SendMailUser($usuario->nome, "administrador"));*/
 
                 $notification = array(
@@ -251,10 +253,10 @@ class PlataformaController extends Controller
                     'alert-type' => 'success'
                 );
 
-                return redirect(route('igreja.index',['url'=>$configuracao->url]))->with($notification);
+                return redirect(route('site.index',['url'=>$configuracao->url]))->with($notification);
             }else{
                 $notification = array(
-                    'message' => 'Já existe uma escola com essa URL, por favor escolha outra URL.', 
+                    'message' => 'Já existe uma site com essa URL, por favor escolha outra URL.', 
                     'alert-type' => 'error'
                 );
     
@@ -263,7 +265,7 @@ class PlataformaController extends Controller
         }else{
 
             $notification = array(
-                'message' => 'Já existe uma escola com esse nome, por favor escolha outro nome.', 
+                'message' => 'Já existe uma site com esse nome, por favor escolha outro nome.', 
                 'alert-type' => 'error'
             );
 
@@ -303,8 +305,8 @@ class PlataformaController extends Controller
                     $perfil = TblPerfil::find(\Auth::user()->id_perfil);
                     if($perfil->status == true){
                         // VERIFICAÇÃO BÁSICA 2: PARA AUTENTICAR O PERFIL PRECISA ESTAR ATIVO
-                        $igreja = TblIgreja::find($perfil->id_igreja);
-                        if($igreja->status == true){
+                        $site = TblSites::find($perfil->id_site);
+                        if($site->status == true){
                             // VERIFICAÇÃO BÁSICA 3: PARA AUTENTICAR A CONGREGAÇÃO PRECISA ESTAR ATIVO
                             return redirect()->route('usuario.home')->with($notification);
                         }else{

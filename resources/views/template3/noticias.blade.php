@@ -38,7 +38,7 @@
                             </div>
                         </div>
                         <div class="blog-content">
-                            <a href="{{route('igreja.noticia', ['url'=>$igreja->url,'id'=>$noticia->id])}}" class="blog-title">{{$noticia->nome}}</a>
+                            <a href="{{route('site.noticia', ['url'=>$site->url,'id'=>$noticia->id])}}" class="blog-title">{{$noticia->nome}}</a>
                             <p>{{$noticia->descricao}}</p>
                             <?php
                             if($noticia->updated_at != null && $noticia->updated_at != $noticia->created_at){

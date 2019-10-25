@@ -27,18 +27,18 @@
 
 								<div class="post-title">
 
-									<h1><a href="{{$sermao->link}}">{{ $sermao->nome }}<a></h1>
+									<h1><a href="{{$midia->link}}">{{ $midia->nome }}<a></h1>
 								</div><!--/ post-title-->
 
 								<div class="border-shadow">
 									<figure>
-										<iframe width="544" height="255" frameborder="0" src="{{$sermao->link}}"></iframe>
+										<iframe width="544" height="255" frameborder="0" src="{{$midia->link}}"></iframe>
 									</figure>
 								</div><!--/ post-thumb-->
 
 								<div class="entry">
                                     <p>
-                                    	{{ $sermao->descricao }}
+                                    	{{ $midia->descricao }}
                                     </p>
 								</div><!--/ entry--> 
 
@@ -46,7 +46,7 @@
 
 							<div class="post-footer clearfix">
 
-								Adicionado em {{\Carbon\Carbon::parse($sermao->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}
+								Adicionado em {{\Carbon\Carbon::parse($midia->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}
 
 							</div><!--/ post-footer-->
 

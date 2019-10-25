@@ -14,7 +14,7 @@ $(function(){
 <?php $__env->stopPush(); ?>
 <?php $__env->startSection('content'); ?>
 <!-- ##### Breadcumb Area Start ##### -->
-<div class="breadcumb-area bg-img" style="background-image: url(<?php echo e(asset('template_igreja/template-escuro/img/bg-img/bg-7.jpg')); ?>);">
+<div class="breadcumb-area bg-img" style="background-image: url(<?php echo e(asset('template_site/template-escuro/img/bg-img/bg-7.jpg')); ?>);">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12 col-md-6">
@@ -41,21 +41,21 @@ $(function(){
                                 <!-- Single Contact Area -->
                                 <div class="single-contact-area mb-30">
                                     <p>Endereço:</p>
-                                    <span>Cidade: <?php echo e($igreja->cidade); ?> - <?php echo e($igreja->estado); ?><br />
-                                    Bairro: <?php echo e($igreja->bairro); ?><br />
-                                    Rua: <?php echo e($igreja->rua); ?>, n°: <?php echo e($igreja->num); ?></span>
+                                    <span>Cidade: <?php echo e($site->cidade); ?> - <?php echo e($site->estado); ?><br />
+                                    Bairro: <?php echo e($site->bairro); ?><br />
+                                    Rua: <?php echo e($site->rua); ?>, n°: <?php echo e($site->num); ?></span>
                                 </div>
 
                                 <!-- Single Contact Area -->
                                 <div class="single-contact-area mb-30">
                                     <p>Telefone:</p>
-                                    <?php if($igreja->telefone != null){ ?> <span><?php echo e($igreja->telefone); ?></span> <?php }else{ ?> <span class="text-red">Não informado</span> <?php } ?>
+                                    <?php if($site->telefone != null){ ?> <span><?php echo e($site->telefone); ?></span> <?php }else{ ?> <span class="text-red">Não informado</span> <?php } ?>
                                 </div>
 
                                 <!-- Single Contact Area -->
                                 <div class="single-contact-area mb-30">
                                     <p>Email:</p>
-                                    <?php if($igreja->email != null){ ?> <span><?php echo e($igreja->email); ?></span> <?php }else{ ?> <span class="text-red">Não informado</span> <?php } ?>
+                                    <?php if($site->email != null){ ?> <span><?php echo e($site->email); ?></span> <?php }else{ ?> <span class="text-red">Não informado</span> <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,7 @@ $(function(){
                         <div class="col-12 col-lg-6">
                             <div class="contact-form-area">
                                 <h5>Envie uma mensagem</h5>
-                                <form action="/<?php echo e($igreja->url); ?>/enviaContato" id="contactForm" name="contactForm" method="get">
+                                <form action="/<?php echo e($site->url); ?>/enviaContato" id="contactForm" name="contactForm" method="get">
                                     <?php echo csrf_field(); ?>
                                     <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome" required>
                                     <input name="email" type="email" class="form-control" id="email" placeholder="Email" required>
@@ -84,7 +84,7 @@ $(function(){
 
 <!-- ##### Google Maps ##### -->
 <div class="map-area">
-    <iframe id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q=<?php echo e(muda_cep($igreja->cep)); ?>&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
+    <iframe id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q=<?php echo e(muda_cep($site->cep)); ?>&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
 </div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.template3', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

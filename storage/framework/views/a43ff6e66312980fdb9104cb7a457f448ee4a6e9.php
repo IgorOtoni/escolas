@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\adm_eglise\resources\views\usuario\sermoes.blade.php */ ?>
+<?php /* C:\xampp\htdocs\adm_eglise\resources\views\usuario\midias.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- InputFilePTBR -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/input.file.js/fileinput.min.css')); ?>">
@@ -49,7 +49,7 @@ function valida(txt){
 
 $(function(){
     
-    var table = $('#tbl_sermoes').DataTable({
+    var table = $('#tbl_midias').DataTable({
         'paging'      : true,
         'lengthChange': true,
         'searching'   : true,
@@ -90,7 +90,7 @@ $(function(){
         'processing': true,
         'autoWidth': false,
         //'serverSide': false,
-        'ajax': '<?php echo e(route('usuario.tbl_sermoes')); ?>',
+        'ajax': '<?php echo e(route('usuario.tbl_midias')); ?>',
         'columns': [
                 {
                 "className":      'details-control',
@@ -106,7 +106,7 @@ $(function(){
     });
 
     // Add event listener for opening and closing details
-    $('#tbl_sermoes tbody').on('click', 'td.details-control', function () {
+    $('#tbl_midias tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var row = table.row( tr );
 
@@ -151,14 +151,14 @@ $(function(){
     <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title"></h3>
-        <?php if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.sermoesg'), \Config::get('constants.permissoes.incluir'))[2] == true){ ?>
+        <?php if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.midiasg'), \Config::get('constants.permissoes.incluir'))[2] == true){ ?>
             <div class="pull-right">
             <a class="btn btn-success" data-toggle="modal" data-target="#modal-incluir"><i class="fa fa-plus"></i>&nbspIncluir sermão</a>
             </div>
         <?php } ?>
     </div>
     <div class="box-body table-responsive">
-        <table id="tbl_sermoes" class="table table-bordered table-striped">
+        <table id="tbl_midias" class="table table-bordered table-striped">
         <thead>
         <tr>
             <th>Expandir</th>
@@ -187,9 +187,9 @@ $(function(){
 
 <!-- Modals -->
 <div class="modal fade" id="modal-incluir">
-<form id="incluirSermaoFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.incluirSermao')); ?>" enctype="multipart/form-data">
+<form id="incluirMidiaFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.incluirMidia')); ?>" enctype="multipart/form-data">
 <?php echo csrf_field(); ?>
-    <input type="hidden" name="igreja" id="igreja" value="<?php echo e($igreja->id); ?>">
+    <input type="hidden" name="site" id="site" value="<?php echo e($site->id); ?>">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">

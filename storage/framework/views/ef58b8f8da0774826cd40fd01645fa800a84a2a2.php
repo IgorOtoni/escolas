@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template7/contato.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template7/contato.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -31,12 +31,12 @@
 					</div>
 					<div class="address__inner">
 						<h2>Endereço</h2>
-						<p>Cidade: <?php echo e($igreja->cidade); ?> - <?php echo e($igreja->estado); ?>, bairro: <?php echo e($igreja->bairro); ?>, rua: <?php echo e($igreja->rua); ?>, n°: <?php echo e($igreja->num); ?></p>
+						<p>Cidade: <?php echo e($site->cidade); ?> - <?php echo e($site->estado); ?>, bairro: <?php echo e($site->bairro); ?>, rua: <?php echo e($site->rua); ?>, n°: <?php echo e($site->num); ?></p>
 					</div>
 				</div>
 			</div>
 			<!-- End Single Address -->
-			<?php if($igreja->telefone != null): ?>
+			<?php if($site->telefone != null): ?>
 				<!-- Start Single Address -->
 				<div class="col-md-6 col-sm-6 col-12 col-lg-4 xs-mt-60">
 					<div class="address phone">
@@ -45,13 +45,13 @@
 						</div>
 						<div class="address__inner">
 							<h2>Telefone</h2>
-							<p><?php echo e($igreja->telefone); ?></p>
+							<p><?php echo e($site->telefone); ?></p>
 						</div>
 					</div>
 				</div>
 				<!-- End Single Address -->
 			<?php endif; ?>
-			<?php if($igreja->email != null): ?>
+			<?php if($site->email != null): ?>
 				<!-- Start Single Address -->
 				<div class="col-md-6 col-sm-6 col-12 col-lg-4 md-mt-60 sm-mt-60">
 					<div class="address email">
@@ -60,7 +60,7 @@
 						</div>
 						<div class="address__inner">
 							<h2>Email</h2>
-							<p><?php echo e($igreja->email); ?></p>
+							<p><?php echo e($site->email); ?></p>
 						</div>
 					</div>
 				</div>
@@ -83,7 +83,7 @@
 		<div class="row mt--80">
 			<div class="col-lg-12">
 			<div class="contact-form-wrap">
-                    <form id="contact-form" action="/<?php echo e($igreja->url); ?>/enviaContato" method="get">
+                    <form id="contact-form" action="/<?php echo e($site->url); ?>/enviaContato" method="get">
                         <div class="single-contact-form name">
                             <input type="text" name="nome" placeholder="Nome" required>
                             <input type="email" name="email" placeholder="Email" required>
@@ -111,7 +111,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="google__map">
-					<iframe width="100%" height="500px" src="https://maps.google.com/?ie=UTF8&amp;q=<?php echo e(muda_cep($igreja->cep)); ?>&amp;t=m&amp;z=14&amp;output=embed"></iframe>
+					<iframe width="100%" height="500px" src="https://maps.google.com/?ie=UTF8&amp;q=<?php echo e(muda_cep($site->cep)); ?>&amp;t=m&amp;z=14&amp;output=embed"></iframe>
 				</div>
 			</div>
 		</div>

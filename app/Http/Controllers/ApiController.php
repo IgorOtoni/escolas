@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TblIgreja;
+use App\TblSites;
 use App\TblConfiguracoes;
-use App\TblIgrejasModulos;
+use App\TblSitessModulos;
 use App\TblContatos;
 use App\TblInscricoes;
 use App\TblMembros;
@@ -57,7 +57,7 @@ class ApiController extends Controller{
 	 *
 	 */
     public function sites(){
-    	$sites = TblIgreja::all();
+    	$sites = TblSites::all();
     	$configuracoes = [];
     	$menus = [];
     	foreach($sites as $site){
@@ -68,7 +68,7 @@ class ApiController extends Controller{
 				}
 			)->encode()->encoded);
 
-    		$configuracao = TblConfiguracoes::where('id_igreja','=',$site->id)->get();
+    		$configuracao = TblConfiguracoes::where('id_site','=',$site->id)->get();
     		if($configuracao != null && sizeof($configuracao) == 1){
     			$configuracoes[$site->id] = $configuracao[0];
 
@@ -117,7 +117,7 @@ class ApiController extends Controller{
 	        , 400);
     	}
     	$configuracao = $configuracao[0];
-    	$site = TblIgreja::find($configuracao->id_igreja);
+    	$site = TblSites::find($configuracao->id_site);
     	$site->logo = base64_encode(Image::make($site->logo)->resize(350,null,
 			function ($constraint) {
 			    $constraint->aspectRatio();
@@ -158,9 +158,9 @@ class ApiController extends Controller{
 	 *
 	 */
     public function banners($url){
-    	$igreja = obter_dados_igreja($url);
+    	$site = obter_dados_site($url);
         $banners = \DB::table('tbl_banners')
-            ->where('id_igreja', '=', $igreja->id)
+            ->where('id_site', '=', $site->id)
             ->orderBy('created_at', 'DESC')
             ->get();
         foreach($banners as $banner){
@@ -207,9 +207,9 @@ class ApiController extends Controller{
 	 *
 	 */
     public function banner($url, $id){
-    	$igreja = obter_dados_igreja($url);
+    	$site = obter_dados_site($url);
         $banner = \DB::table('tbl_banners')
-            ->where('id_igreja', '=', $igreja->id)
+            ->where('id_site', '=', $site->id)
             ->where('id', '=', $id)
             ->get();
         if($banner != null && sizeof($banner) > 0){
@@ -254,9 +254,9 @@ class ApiController extends Controller{
 	 *
 	 */
     public function noticias($url){
-    	$igreja = obter_dados_igreja($url);
+    	$site = obter_dados_site($url);
         $noticias = \DB::table('tbl_noticias')
-            ->where('id_igreja', '=', $igreja->id)
+            ->where('id_site', '=', $site->id)
             ->orderBy('created_at', 'DESC')
             ->get();
         foreach($noticias as $noticia){
@@ -307,9 +307,9 @@ class ApiController extends Controller{
 	 *
 	 */
     public function noticia($url, $id){
-    	$igreja = obter_dados_igreja($url);
+    	$site = obter_dados_site($url);
         $noticia = \DB::table('tbl_noticias')
-            ->where('id_igreja', '=', $igreja->id)
+            ->where('id_site', '=', $site->id)
             ->where('id','=',$id)
             ->get();
         if($noticia != null && sizeof($noticia) > 0){
@@ -359,13 +359,13 @@ class ApiController extends Controller{
 	 *
 	 */
     public function apresentacao($url){
-    	$igreja = obter_dados_igreja($url);
-        $funcoes = TblFuncoes::where('id_igreja','=',$igreja->id)->where('apresentar','=',true)->get();
+    	$site = obter_dados_site($url);
+        $funcoes = TblFuncoes::where('id_site','=',$site->id)->where('apresentar','=',true)->get();
         $membros = null;
         foreach($funcoes as $funcao){
             $membros[$funcao->id] = TblMembros::where('id_funcao','=',$funcao->id)
             	->where('ativo','=',true)
-            	->where('id_igreja','=',$funcao->id_igreja)
+            	->where('id_site','=',$funcao->id_site)
             	->orderBy('nome', 'ASC')
             	->get();
             foreach($membros[$funcao->id] as $membro){
@@ -407,9 +407,9 @@ class ApiController extends Controller{
 	 *
 	 */
     public function galerias($url){
-    	$igreja = obter_dados_igreja($url);
+    	$site = obter_dados_site($url);
         $galerias = \DB::table('tbl_galerias')
-            ->where('id_igreja', '=', $igreja->id)
+            ->where('id_site', '=', $site->id)
             ->orderBy('data', 'DESC')
             ->orderBy('created_at', 'DESC')
             ->get();
@@ -467,9 +467,9 @@ class ApiController extends Controller{
 	 *
 	 */
     public function galeria($url, $id){
-    	$igreja = obter_dados_igreja($url);
+    	$site = obter_dados_site($url);
         $galeria = \DB::table('tbl_galerias')
-            ->where('id_igreja', '=', $igreja->id)
+            ->where('id_site', '=', $site->id)
             ->where('id','=',$id)
             ->get();
         if($galeria != null && sizeof($galeria) > 0){
@@ -499,8 +499,8 @@ class ApiController extends Controller{
 
     /**
 	 * @SWG\Get(
-	 *      path="/api/sermoes/{url}",
-	 *      operationId="sermoes",
+	 *      path="/api/midias/{url}",
+	 *      operationId="midias",
 	 *      tags={"Mídias"},
 	 *      summary="Obtêm as mídias do site.",
 	 *      @SWG\Parameter(
@@ -520,25 +520,25 @@ class ApiController extends Controller{
 	 * )
 	 *
 	 */
-    public function sermoes($url){
-    	$igreja = obter_dados_igreja($url);
-    	$sermoes = \DB::table('tbl_sermoes')
-            ->where('id_igreja', '=', $igreja->id)
+    public function midias($url){
+    	$site = obter_dados_site($url);
+    	$midias = \DB::table('tbl_midias')
+            ->where('id_site', '=', $site->id)
             ->orderBy('created_at', 'DESC')
             ->get();
-        foreach($sermoes as $sermao){
-        	if($sermao->created_at != null) $sermao->created_at = \Carbon\Carbon::parse($sermao->created_at)->format('d/m/Y H:m');
-        	if($sermao->updated_at != null) $sermao->updated_at = \Carbon\Carbon::parse($sermao->updated_at)->format('d/m/Y H:m');
+        foreach($midias as $midia){
+        	if($midia->created_at != null) $midia->created_at = \Carbon\Carbon::parse($midia->created_at)->format('d/m/Y H:m');
+        	if($midia->updated_at != null) $midia->updated_at = \Carbon\Carbon::parse($midia->updated_at)->format('d/m/Y H:m');
         }
         return response()->json(
-        	['sermoes'=>$sermoes]
+        	['midias'=>$midias]
         , 200);
 	}
 
 	/**
 	 * @SWG\Get(
-	 *      path="/api/sermao/{url}/{id}",
-	 *      operationId="sermao",
+	 *      path="/api/midia/{url}/{id}",
+	 *      operationId="midia",
 	 *      tags={"Mídias"},
 	 *      summary="Obtêm a mídia do site.",
 	 *      @SWG\Parameter(
@@ -565,25 +565,25 @@ class ApiController extends Controller{
 	 * )
 	 *
 	 */
-    public function sermao($url,$id){
-    	$igreja = obter_dados_igreja($url);
-    	$sermao = \DB::table('tbl_sermoes')
-            ->where('id_igreja', '=', $igreja->id)
+    public function midia($url,$id){
+    	$site = obter_dados_site($url);
+    	$midia = \DB::table('tbl_midias')
+            ->where('id_site', '=', $site->id)
             ->where('id','=',$id)
             ->get();
-        if($sermao != null && sizeof($sermao) > 0){
-        	$sermao = $sermao[0];
+        if($midia != null && sizeof($midia) > 0){
+        	$midia = $midia[0];
         }else{
         	return response()->json(
 	        	['msg'=>'Dados inválidos.']
 	        , 400);
         }
 
-    	if($sermao->created_at != null) $sermao->created_at = \Carbon\Carbon::parse($sermao->created_at)->format('d/m/Y H:m');
-    	if($sermao->updated_at != null) $sermao->updated_at = \Carbon\Carbon::parse($sermao->updated_at)->format('d/m/Y H:m');
+    	if($midia->created_at != null) $midia->created_at = \Carbon\Carbon::parse($midia->created_at)->format('d/m/Y H:m');
+    	if($midia->updated_at != null) $midia->updated_at = \Carbon\Carbon::parse($midia->updated_at)->format('d/m/Y H:m');
 
         return response()->json(
-        	['sermao'=>$sermao]
+        	['midia'=>$midia]
         , 200);
 	}
 
@@ -611,9 +611,9 @@ class ApiController extends Controller{
 	 *
 	 */
     public function publicacoes($url){
-    	$igreja = obter_dados_igreja($url);
+    	$site = obter_dados_site($url);
     	$publicacoes = \DB::table('tbl_publicacoes')
-            ->where('id_igreja', '=', $igreja->id)
+            ->where('id_site', '=', $site->id)
             ->orderBy('created_at', 'DESC')
             ->get();
         foreach($publicacoes as $publicacao){
@@ -656,9 +656,9 @@ class ApiController extends Controller{
 	 *
 	 */
     public function publicacao($url,$id){
-    	$igreja = obter_dados_igreja($url);
+    	$site = obter_dados_site($url);
     	$publicacao = \DB::table('tbl_publicacoes')
-            ->where('id_igreja', '=', $igreja->id)
+            ->where('id_site', '=', $site->id)
             ->where('id', '=', $id)
             ->get();
         if($publicacao != null && sizeof($publicacao) > 0){
@@ -701,9 +701,9 @@ class ApiController extends Controller{
 	 *
 	 */
     public function eventos($url){
-    	$igreja = obter_dados_igreja($url);
+    	$site = obter_dados_site($url);
     	$eventos = \DB::table('tbl_eventos')
-            ->where('id_igreja', '=', $igreja->id)
+            ->where('id_site', '=', $site->id)
             ->where(function ($query) {
                 $query->where('dados_horario_inicio', '>=', date('Y-m-d h:i:s', time()))
                     ->orWhere('dados_horario_fim', '>=', date('Y-m-d h:i:s', time()));
@@ -757,9 +757,9 @@ class ApiController extends Controller{
 	 *
 	 */
     public function evento($url, $id){
-    	$igreja = obter_dados_igreja($url);
+    	$site = obter_dados_site($url);
     	$evento = \DB::table('tbl_eventos')
-            ->where('id_igreja', '=', $igreja->id)
+            ->where('id_site', '=', $site->id)
             ->where('id', '=', $id)
             ->where(function ($query) {
                 $query->where('dados_horario_inicio', '>=', date('Y-m-d h:i:s', time()))
@@ -814,9 +814,9 @@ class ApiController extends Controller{
 	 *
 	 */
     public function eventosfixos($url){
-    	$igreja = obter_dados_igreja($url);
+    	$site = obter_dados_site($url);
     	$eventos_fixos = \DB::table('tbl_eventos_fixos')
-            ->where('id_igreja', '=', $igreja->id)
+            ->where('id_site', '=', $site->id)
             ->get();
         foreach($eventos_fixos as $evento_fixo){
         	if($evento_fixo->foto == null) $evento_fixo->foto = base64_encode(file_get_contents(getcwd()."\\storage\\no-event.jpg"));
@@ -863,9 +863,9 @@ class ApiController extends Controller{
 	 *
 	 */
     public function eventofixo($url, $id){
-    	$igreja = obter_dados_igreja($url);
+    	$site = obter_dados_site($url);
     	$evento_fixo = \DB::table('tbl_eventos_fixos')
-            ->where('id_igreja', '=', $igreja->id)
+            ->where('id_site', '=', $site->id)
             ->where('id', '=', $id)
             ->get();
         if($evento_fixo != null && sizeof($evento_fixo) > 0){
@@ -913,15 +913,15 @@ class ApiController extends Controller{
 	 *
 	 */
 	public function produtos($url){
-		$igreja = obter_dados_igreja($url);
-		$categorias_ = TblCategoriasProdutos::where('id_igreja','=',$igreja->id)
+		$site = obter_dados_site($url);
+		$categorias_ = TblCategoriasProdutos::where('id_site','=',$site->id)
             ->orderBy('nome', 'ASC')
             ->get();
         $categorias = [];
         foreach($categorias_ as $categoria){
         	$categorias[$categoria->id] = $categoria;
         }
-        $produtos = TblProdutos::where('id_igreja','=',$igreja->id)
+        $produtos = TblProdutos::where('id_site','=',$site->id)
             ->where('situacao','=',true)
             ->orderBy('nome', 'ASC')
             ->get();
@@ -935,7 +935,7 @@ class ApiController extends Controller{
 			)->encode()->encoded);
 
             $ofertas_ = TblOfertasProdutos::where('id_produto','=',$produto->id)
-                ->where('id_igreja','=',$igreja->id)
+                ->where('id_site','=',$site->id)
                 ->where('data_inicio','<=', \Carbon\Carbon::parse(time())->format('Y-m-d'))
                 ->where('data_fim','>=', \Carbon\Carbon::parse(time())->format('Y-m-d'))
                 ->get();
@@ -986,7 +986,7 @@ class ApiController extends Controller{
 	 *
 	 */
 	public function login($url, Request $request){
-		$igreja = obter_dados_igreja($url);
+		$site = obter_dados_site($url);
 		$user = User::where('email','=',$request->email)->get();
         if($user != null && sizeof($user) == 1){
           $user = $user[0];
@@ -1004,28 +1004,47 @@ class ApiController extends Controller{
 
                     // SE O USUÁRIO NÃO TÊM UM PERFIL OU ESSE É IGUAL A 1 ELE É UM ADMINISTRADOR
                     return response()->json(
-			        	['usuario'=>$user]
-			        , 200);
+			        	['msg'=>'Dados inválidos!']
+			        , 400);
 
                 }else if ($user->id_perfil == 100){
 
                     // SE O USUÁRIO TÊM UM PERFIL E ESSE É IGUAL A 100 ELE É UM COMPRADOR
                     return response()->json(
-			        	['usuario'=>$user]
-			        , 200);
+			        	['msg'=>'Dados inválidos!']
+			        , 400);
 
-                }else if($user->id_perfil != null && $user->id_perfil != 1){
-                    // SE O USUÁRIO TÊM UM PERFIL E ESSE É DIFERENTE DE 1 ELE NÃO É UM AMINISTRADOR
+                }else if($user->id_perfil != null && $user->id_perfil != 1 && $user->id_perfil != 100){
+                    // SE O USUÁRIO TÊM UM PERFIL E ESSE É DIFERENTE DE 1 ELE NÃO É UM AMINISTRADOR NEM UM COMPRADOR
                     $perfil = TblPerfil::find($user->id_perfil);
                     if($perfil->status == true){
                         // VERIFICAÇÃO BÁSICA 2: PARA AUTENTICAR O PERFIL PRECISA ESTAR ATIVO
-                        $igreja = TblIgreja::find($perfil->id_igreja);
-                        if($igreja->status == true){
-
-                            // VERIFICAÇÃO BÁSICA 3: PARA AUTENTICAR A CONGREGAÇÃO PRECISA ESTAR ATIVA
-                            return response()->json(
-					        	['usuario'=>$user]
-					        , 200);
+                        $site = TblSites::find($perfil->id_site);
+                        if($site->status == true){
+                            // VERIFICAÇÃO BÁSICA 3: PARA AUTENTICAR O SITE PRECISA ESTAR ATIVA
+                            if($user->id_membro != null){
+                            	// VERIFICAÇÃO BÁSICA 4: PARA AUTENTICAR PRECISA SER UM MEMBRO
+                            	$perfil = TblPerfil::find($user->id_perfil);
+                            	$membro = TblMembros::find($user->id_membro);
+                            	$funcao = null;
+                            	if($membro->id_funcao != null){
+                            		$funcao = TblFuncoes::find($membro->id_funcao);
+                            	}
+                            	if($membro->foto == null) $membro->foto = base64_encode(file_get_contents(getcwd()."\\storage\\no-foto.jpg"));
+                            	else $membro->foto = base64_encode(Image::make($membro->foto)->resize(250,null,
+									function ($constraint) {
+									    $constraint->aspectRatio();
+									    $constraint->upsize();
+									}
+								)->encode()->encoded);
+	                            return response()->json(
+						        	['usuario'=>$user,'perfil'=>$perfil,'membro'=>$membro,'funcao'=>$funcao]
+						        , 200);
+                            }else{
+								return response()->json(
+						        	['msg'=>'Dados inválidos!']
+						        , 400);
+                            }
 
                         }else{
 

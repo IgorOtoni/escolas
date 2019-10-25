@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/auth/login.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/auth/login.blade.php */ ?>
 <!DOCTYPE html>
 <html>
 <head>

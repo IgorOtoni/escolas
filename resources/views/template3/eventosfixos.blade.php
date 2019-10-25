@@ -37,7 +37,7 @@
                             </div>
                             <!-- Events Content -->
                             <div class="events-content">
-                                <a href="{{route('igreja.eventofixo', ['url'=>$igreja->url,'id'=>$evento->id])}}"><h6>{{$evento->nome}}</h6></a>
+                                <a href="{{route('site.eventofixo', ['url'=>$site->url,'id'=>$evento->id])}}"><h6>{{$evento->nome}}</h6></a>
                                 <p>{{$evento->dados_horario_local}}</p>
                                 <p>{{$evento->descricao}}</p>
                             </div>

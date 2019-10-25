@@ -21,16 +21,16 @@ use App\TblMenu;
 use App\TblSubMenu;
 use App\TblSubSubMenu;
 use App\TblConfiguracoes;
-use App\TblSermoes;
+use App\TblMidias;
 use App\TblPublicacaoFotos;
 use App\TblPublicacoes;
 use App\TblComunidades;
 use App\TblMembrosComunidades;
 use App\TblReunioes;
 use App\User;
-use App\TblPerfisIgrejasModulos;
-use App\TblIgreja;
-use App\TblIgrejasModulos;
+use App\TblPerfisSitesModulos;
+use App\TblSites;
+use App\TblSitessModulos;
 use App\TblPerfisPermissoes;
 use App\TblFrequencias;
 use App\TblCategoriasProdutos;
@@ -68,7 +68,7 @@ class HomeController extends Controller
         if(\Auth::user()->id_perfil == null || \Auth::user()->id_perfil == 1){
             $x = 0;
 
-            $qtd_congregacoes = TblIgreja::all()->count();
+            $qtd_congregacoes = TblSites::all()->count();
 
             $usuarios_ativos = User::where('status','=',1)->get();
 
@@ -91,7 +91,7 @@ class HomeController extends Controller
             $quadros[$x]['title'] = 'Total de sites';
             $quadros[$x]['icon'] = 'fa-university';
             $quadros[$x]['color'] = 'green';
-            $quadros[$x]['link'] = 'igrejas';
+            $quadros[$x]['link'] = 'sites';
             $x++;
 
             $quadros[$x]['info'] = $qtd_usuarios;
@@ -104,9 +104,9 @@ class HomeController extends Controller
             return view('home', compact('quadros'));
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
+            $site = obter_dados_site_id($perfil->id_site);
 
-            $compras = TblVendas::where('id_igreja','=',$igreja->id)
+            $compras = TblVendas::where('id_site','=',$site->id)
                 ->orderBy('data','ASC')
                 ->paginate(10);
 
@@ -120,15 +120,15 @@ class HomeController extends Controller
             $x = 0;
 
             $vendas_atrasadas = TblVendas::where('id_situacao','=',2)
-                ->where('id_igreja','=',$igreja->id)
+                ->where('id_site','=',$site->id)
                 ->count();
 
             $vendas_pendentes = TblVendas::where('id_situacao','=',1)
-                ->where('id_igreja','=',$igreja->id)
+                ->where('id_site','=',$site->id)
                 ->count();
 
             $eventos = TblEventos::where('dados_horario_inicio','>', Carbon::parse(date('Y-m-d h:i:s', time())))
-                ->where('id_igreja','=',$igreja->id)
+                ->where('id_site','=',$site->id)
                 ->get();
             $qtd_inscricoes = 0;
             $qtd_feventos = 0;
@@ -175,7 +175,7 @@ class HomeController extends Controller
             $usuarios_ativos = \DB::table('users')->leftJoin('tbl_perfis','users.id_perfil','=','tbl_perfis.id')
                 ->where('users.status','=',true)
                 ->where('tbl_perfis.status','=',true)
-                ->where('id_igreja','=',$igreja->id)->get();
+                ->where('id_site','=',$site->id)->get();
 
             $qtd_usuarios_on = 0;
 
@@ -197,60 +197,60 @@ class HomeController extends Controller
             $quadros[$x]['link'] = 'usuarios';
             $x++;
 
-            $quadros[$x]['info'] = TblBanner::where('id_igreja','=',$igreja->id)->count();
+            $quadros[$x]['info'] = TblBanner::where('id_site','=',$site->id)->count();
             $quadros[$x]['title'] = 'Banners';
             $quadros[$x]['icon'] = 'fa-image';
             $quadros[$x]['color'] = 'green';
             $quadros[$x]['link'] = 'banners';
             $x++;
 
-            $quadros[$x]['info'] = TblEventos::where('id_igreja','=',$igreja->id)->count();
+            $quadros[$x]['info'] = TblEventos::where('id_site','=',$site->id)->count();
             $quadros[$x]['title'] = 'Linha do tempo';
             $quadros[$x]['icon'] = 'fa-clock-o';
             $quadros[$x]['color'] = 'green';
             $quadros[$x]['link'] = 'eventos';
             $x++;
 
-            $quadros[$x]['info'] = TblEventosFixos::where('id_igreja','=',$igreja->id)->count();
+            $quadros[$x]['info'] = TblEventosFixos::where('id_site','=',$site->id)->count();
             $quadros[$x]['title'] = 'Eventos fixos';
             $quadros[$x]['icon'] = 'fa-calendar';
             $quadros[$x]['color'] = 'green';
             $quadros[$x]['link'] = 'eventosfixos';
             $x++;
 
-            $quadros[$x]['info'] = TblGalerias::where('id_igreja','=',$igreja->id)->count();
+            $quadros[$x]['info'] = TblGalerias::where('id_site','=',$site->id)->count();
             $quadros[$x]['title'] = 'Galerias';
             $quadros[$x]['icon'] = 'fa-file-image-o';
             $quadros[$x]['color'] = 'green';
             $quadros[$x]['link'] = 'galerias';
             $x++;
 
-            $quadros[$x]['info'] = TblNoticias::where('id_igreja','=',$igreja->id)->count();
+            $quadros[$x]['info'] = TblNoticias::where('id_site','=',$site->id)->count();
             $quadros[$x]['title'] = 'Notícias';
             $quadros[$x]['icon'] = 'fa-newspaper-o';
             $quadros[$x]['color'] = 'green';
             $quadros[$x]['link'] = 'noticias';
             $x++;
 
-            $quadros[$x]['info'] = TblPerfil::where('id_igreja','=',$igreja->id)->count();
+            $quadros[$x]['info'] = TblPerfil::where('id_site','=',$site->id)->count();
             $quadros[$x]['title'] = 'Perfis';
             $quadros[$x]['icon'] = 'fa-user';
             $quadros[$x]['color'] = 'green';
             $quadros[$x]['link'] = 'perfis';
             $x++;
 
-            $quadros[$x]['info'] = TblPublicacoes::where('id_igreja','=',$igreja->id)->count();
+            $quadros[$x]['info'] = TblPublicacoes::where('id_site','=',$site->id)->count();
             $quadros[$x]['title'] = 'Publicações';
             $quadros[$x]['icon'] = 'fa-thumbs-o-up';
             $quadros[$x]['color'] = 'green';
             $quadros[$x]['link'] = 'publicacoes';
             $x++;
 
-            $quadros[$x]['info'] = TblSermoes::where('id_igreja','=',$igreja->id)->count();
+            $quadros[$x]['info'] = TblMidias::where('id_site','=',$site->id)->count();
             $quadros[$x]['title'] = 'Vídeos';
             $quadros[$x]['icon'] = 'fa-play';
             $quadros[$x]['color'] = 'green';
-            $quadros[$x]['link'] = 'sermoes';
+            $quadros[$x]['link'] = 'midias';
             $x++;
 
             return view('usuario.home', compact('quadros'));
@@ -258,11 +258,11 @@ class HomeController extends Controller
     }
 
     // FUNCOES ÚTEIS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public function modulos_igreja($id){
+    public function modulos_site($id){
         $modulos['data'] = \DB::table('tbl_modulos')
             ->select('tbl_modulos.*')
-            ->leftJoin('tbl_igrejas_modulos', 'tbl_igrejas_modulos.id_modulo', '=', 'tbl_modulos.id')
-            ->where('tbl_igrejas_modulos.id_igreja','=',$id)
+            ->leftJoin('tbl_sites_modulos', 'tbl_sites_modulos.id_modulo', '=', 'tbl_modulos.id')
+            ->where('tbl_sites_modulos.id_site','=',$id)
             ->get();
         return json_encode($modulos);
     }
@@ -275,9 +275,9 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.banners', compact('igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.banners', compact('site','modulos_site'));
         }
     }
 
@@ -286,7 +286,7 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $banners = TblBanner::where('id_igreja','=',$perfil->id_igreja)->get();
+            $banners = TblBanner::where('id_site','=',$perfil->id_site)->get();
             return DataTables::of($banners)->addColumn('action',function($banners){
                 $btn_editar = '';
                 if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.bannersg'), \Config::get('constants.permissoes.alterar'))[2] == true){
@@ -317,9 +317,9 @@ class HomeController extends Controller
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.bannersg'), \Config::get('constants.permissoes.alterar'))[2] == true){
             $banner = TblBanner::find($id);
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editarbanner', compact('banner','igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.editarbanner', compact('banner','site','modulos_site'));
         }else{ return view('error'); }
     }
 
@@ -341,7 +341,7 @@ class HomeController extends Controller
             }else if($request->link == 5){
                 $banner->link = 'noticia/'.$request->noticia;
             }else if($request->link == 6){
-                $banner->link = 'sermao/'.$request->sermao;
+                $banner->link = 'midia/'.$request->midia;
             }else if($request->link == 7){
                 $banner->link = 'galeria/'.$request->galeria;
             }else if($request->link == 8){
@@ -364,7 +364,7 @@ class HomeController extends Controller
     public function incluirBanner(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.bannersg'), \Config::get('constants.permissoes.incluir'))[2] == true){
             $banner = new TblBanner();
-            $banner->id_igreja = $request->igreja;
+            $banner->id_site = $request->site;
             $banner->nome = $request->nome;
             $banner->ordem = $request->ordem;
             $banner->descricao = $request->descricao;
@@ -380,7 +380,7 @@ class HomeController extends Controller
             }else if($request->link == 5){
                 $menu->link = 'noticia/'.$request->noticia;
             }else if($request->link == 6){
-                $menu->link = 'sermao/'.$request->sermao;
+                $menu->link = 'midia/'.$request->midia;
             }else if($request->link == 7){
                 $menu->link = 'galeria/'.$request->galeria;
             }else if($request->link == 8){
@@ -430,9 +430,9 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.galerias', compact('igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.galerias', compact('site','modulos_site'));
         }
     }
 
@@ -441,7 +441,7 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $galeria = TblGalerias::where('id_igreja','=',$perfil->id_igreja)->get();
+            $galeria = TblGalerias::where('id_site','=',$perfil->id_site)->get();
             return DataTables::of($galeria)->addColumn('action',function($galeria){
                 $btn_editar = '';
                 if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.galeriasg'), \Config::get('constants.permissoes.alterar'))[2] == true){
@@ -476,7 +476,7 @@ class HomeController extends Controller
     public function incluirGaleria(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.galeriasg'), \Config::get('constants.permissoes.incluir'))[2] == true){
             $galeria = new TblGalerias();
-            $galeria->id_igreja = $request->igreja;
+            $galeria->id_site = $request->site;
             $galeria->nome = $request->nome;
             $galeria->descricao = $request->descricao;
             $galeria->data = muda_data($request->data);
@@ -522,9 +522,9 @@ class HomeController extends Controller
             $galeria = TblGalerias::find($id);
             $fotos = TblFotos::where('id_galeria','=',$galeria->id)->get();
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editargaleria', compact('galeria','fotos','igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.editargaleria', compact('galeria','fotos','site','modulos_site'));
         }else{ return view('error'); }
     }
 
@@ -569,9 +569,9 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_apresentativos_igreja($igreja);
-            return view('usuario.eventosfixos', compact('igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_apresentativos_site($site);
+            return view('usuario.eventosfixos', compact('site','modulos_site'));
         }
     }
 
@@ -580,7 +580,7 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $eventofixo = TblEventosFixos::where('id_igreja','=',$perfil->id_igreja)->get();
+            $eventofixo = TblEventosFixos::where('id_site','=',$perfil->id_site)->get();
             return DataTables::of($eventofixo)->addColumn('action',function($eventofixo){
                 $btn_editar = '';
                 if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.eventosfixosg'), \Config::get('constants.permissoes.alterar'))[2] == true){
@@ -610,7 +610,7 @@ class HomeController extends Controller
     public function incluirEventoFixo(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.eventosfixosg'), \Config::get('constants.permissoes.incluir'))[2] == true){
             $eventofixo = new TblEventosFixos();
-            $eventofixo->id_igreja = $request->igreja;
+            $eventofixo->id_site = $request->site;
             $eventofixo->nome = $request->nome;
             $eventofixo->dados_horario_local = $request->dados_horario_local;
             $eventofixo->descricao = $request->descricao;
@@ -634,9 +634,9 @@ class HomeController extends Controller
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.eventosfixosg'), \Config::get('constants.permissoes.alterar'))[2] == true){
             $eventofixo = TblEventosFixos::find($id);
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editareventofixo', compact('eventofixo','igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.editareventofixo', compact('eventofixo','site','modulos_site'));
         }else{ return view('error'); }
     }
 
@@ -696,9 +696,9 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.noticias', compact('igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.noticias', compact('site','modulos_site'));
         }
     }
 
@@ -707,7 +707,7 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $noticia = TblNoticias::where('id_igreja','=',$perfil->id_igreja)->get();
+            $noticia = TblNoticias::where('id_site','=',$perfil->id_site)->get();
             return DataTables::of($noticia)->addColumn('action',function($noticia){
                 $btn_editar = '';
                 if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.noticiasg'), \Config::get('constants.permissoes.alterar'))[2] == true){
@@ -737,7 +737,7 @@ class HomeController extends Controller
     public function incluirNoticia(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.noticiasg'), \Config::get('constants.permissoes.incluir'))[2] == true){
             $noticia = new TblNoticias();
-            $noticia->id_igreja = $request->igreja;
+            $noticia->id_site = $request->site;
             $noticia->nome = $request->nome;
             $noticia->descricao = $request->descricao;
             $noticia->save();
@@ -760,9 +760,9 @@ class HomeController extends Controller
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.noticiasg'), \Config::get('constants.permissoes.alterar'))[2] == true){
             $noticia = TblNoticias::find($id);
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editarnoticia', compact('noticia','igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.editarnoticia', compact('noticia','site','modulos_site'));
         }else{ return view('error'); }
     }
 
@@ -815,41 +815,41 @@ class HomeController extends Controller
     ////////////////////////////////////////////////////////////////////////////////////////
     
     // SERMÕES AREA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public function sermoes(){
-        if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.sermoesg')) == false){
+    public function midias(){
+        if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.midiasg')) == false){
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.sermoes', compact('igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.midias', compact('site','modulos_site'));
         }
     }
 
-    public function tbl_sermoes(){
-        if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.sermoesg')) == false){
+    public function tbl_midias(){
+        if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.midiasg')) == false){
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $sermao = TblSermoes::where('id_igreja','=',$perfil->id_igreja)->get();
-            return DataTables::of($sermao)->addColumn('action',function($sermao){
+            $midia = TblMidias::where('id_site','=',$perfil->id_site)->get();
+            return DataTables::of($midia)->addColumn('action',function($midia){
                 $btn_editar = '';
-                if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.sermoesg'), \Config::get('constants.permissoes.alterar'))[2] == true){
-                    $btn_editar = '<a href="'.route('usuario.editarSermao',['id'=>$sermao->id]).'" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>';
+                if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.midiasg'), \Config::get('constants.permissoes.alterar'))[2] == true){
+                    $btn_editar = '<a href="'.route('usuario.editarMidia',['id'=>$midia->id]).'" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>';
                 }
                 $btn_excluir = '';
-                if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.sermoesg'), \Config::get('constants.permissoes.desativar'))[2] == true){
-                    $btn_excluir = '<a href="'.route('usuario.excluirSermao',['id'=>$sermao->id]).'" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>';
+                if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.midiasg'), \Config::get('constants.permissoes.desativar'))[2] == true){
+                    $btn_excluir = '<a href="'.route('usuario.excluirMidia',['id'=>$midia->id]).'" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>';
                 }
                 return $btn_editar.'&nbsp'.$btn_excluir;
-            })->editColumn('created_at', function($sermao) {
-                if($sermao->created_at != null)
-                    return Carbon::parse($sermao->created_at)->format('d/m/Y');
+            })->editColumn('created_at', function($midia) {
+                if($midia->created_at != null)
+                    return Carbon::parse($midia->created_at)->format('d/m/Y');
                 else
                     return null;
-            })->editColumn('updated_at', function($sermao) {
-                if($sermao->updated_at != null){
-                    $upd = Carbon::parse($sermao->updated_at)->diffForHumans();
+            })->editColumn('updated_at', function($midia) {
+                if($midia->updated_at != null){
+                    $upd = Carbon::parse($midia->updated_at)->diffForHumans();
                     return $upd;
                 }else
                     return null;
@@ -858,62 +858,62 @@ class HomeController extends Controller
         }
     }
 
-    public function incluirSermao(Request $request){
-        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.sermoesg'), \Config::get('constants.permissoes.incluir'))[2] == true){
-            $sermao = new TblSermoes();
-            $sermao->id_igreja = $request->igreja;
-            $sermao->nome = $request->nome;
-            $sermao->link = $request->link;
-            $sermao->descricao = $request->descricao;
-            $sermao->save();
+    public function incluirMidia(Request $request){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.midiasg'), \Config::get('constants.permissoes.incluir'))[2] == true){
+            $midia = new TblMidias();
+            $midia->id_site = $request->site;
+            $midia->nome = $request->nome;
+            $midia->link = $request->link;
+            $midia->descricao = $request->descricao;
+            $midia->save();
 
             $notification = array(
-                'message' => 'Sermão "' . $sermao->nome . '" foi adicionado com sucesso!', 
+                'message' => 'Sermão "' . $midia->nome . '" foi adicionado com sucesso!', 
                 'alert-type' => 'success'
             );
 
-            return redirect()->route('usuario.sermoes')->with($notification);
+            return redirect()->route('usuario.midias')->with($notification);
         }else{ return view('error'); }
     }
 
-    public function editarSermao($id){
-        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.sermoesg'), \Config::get('constants.permissoes.alterar'))[2] == true){
-            $sermao = TblSermoes::find($id);
+    public function editarMidia($id){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.midiasg'), \Config::get('constants.permissoes.alterar'))[2] == true){
+            $midia = TblMidias::find($id);
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editarsermao', compact('sermao','igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.editarmidia', compact('midia','site','modulos_site'));
         }else{ return view('error'); }
     }
 
-    public function atualizarSermao(Request $request){
-        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.sermoesg'), \Config::get('constants.permissoes.alterar'))[2] == true){
-            $sermao = TblSermoes::find($request->id);
-            $sermao->nome = $request->nome;
-            $sermao->link = $request->link;
-            $sermao->descricao = $request->descricao;
-            $sermao->save();
+    public function atualizarMidia(Request $request){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.midiasg'), \Config::get('constants.permissoes.alterar'))[2] == true){
+            $midia = TblMidias::find($request->id);
+            $midia->nome = $request->nome;
+            $midia->link = $request->link;
+            $midia->descricao = $request->descricao;
+            $midia->save();
 
             $notification = array(
-                'message' => 'Sermão "' . $sermao->nome . '" foi alterado com sucesso!', 
+                'message' => 'Sermão "' . $midia->nome . '" foi alterado com sucesso!', 
                 'alert-type' => 'success'
             );
 
-            return redirect()->route('usuario.sermoes')->with($notification);
+            return redirect()->route('usuario.midias')->with($notification);
         }else{ return view('error'); }
     }
 
-    public function excluirSermao($id){
-        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.sermoesg'), \Config::get('constants.permissoes.desativar'))[2] == true){
-            $sermao = TblSermoes::find($id);
-            $sermao->delete();
+    public function excluirMidia($id){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.midiasg'), \Config::get('constants.permissoes.desativar'))[2] == true){
+            $midia = TblMidias::find($id);
+            $midia->delete();
 
             $notification = array(
-                'message' => 'Sermão "' . $sermao->nome . '" foi excluído com sucesso!', 
+                'message' => 'Sermão "' . $midia->nome . '" foi excluído com sucesso!', 
                 'alert-type' => 'success'
             );
 
-            return redirect()->route('usuario.sermoes')->with($notification);
+            return redirect()->route('usuario.midias')->with($notification);
         }else{ return view('error'); }
     }
     ////////////////////////////////////////////////////////////////////////////////////////
@@ -924,15 +924,15 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_igreja($igreja);
-            $retorno = obter_menus_configuracao($igreja->id_configuracao);
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_site($site);
+            $retorno = obter_menus_configuracao($site->id_configuracao);
             $menus = $retorno[0];
             $submenus = $retorno[1];
             $subsubmenus = $retorno[2];
-            $menus_aplicativo = obter_menus_aplicativo_configuracao($igreja->id_configuracao);
-            $modulos_aplicativo = obter_modulos_igreja_aplicativo($igreja);
-            return view('usuario.configuracoes', compact('igreja','modulos_igreja','modulos_aplicativo','menus','submenus','subsubmenus','menus_aplicativo'));
+            $menus_aplicativo = obter_menus_aplicativo_configuracao($site->id_configuracao);
+            $modulos_aplicativo = obter_modulos_site_aplicativo($site);
+            return view('usuario.configuracoes', compact('site','modulos_site','modulos_aplicativo','menus','submenus','subsubmenus','menus_aplicativo'));
         }
     }
 
@@ -954,7 +954,7 @@ class HomeController extends Controller
             }else if($request->link == 5){
                 $menu->link = 'noticia/'.$request->noticia;
             }else if($request->link == 6){
-                $menu->link = 'sermao/'.$request->sermao;
+                $menu->link = 'midia/'.$request->midia;
             }else if($request->link == 7){
                 $menu->link = 'galeria/'.$request->galeria;
             }else if($request->link == 8){
@@ -988,7 +988,7 @@ class HomeController extends Controller
             }else if($request->link == 5){
                 $menu->link = 'noticia/'.$request->noticia;
             }else if($request->link == 6){
-                $menu->link = 'sermao/'.$request->sermao;
+                $menu->link = 'midia/'.$request->midia;
             }else if($request->link == 7){
                 $menu->link = 'galeria/'.$request->galeria;
             }else if($request->link == 8){
@@ -1055,7 +1055,7 @@ class HomeController extends Controller
             }else if($request->link == 5){
                 $submenu->link = 'noticia/'.$request->noticia;
             }else if($request->link == 6){
-                $submenu->link = 'sermao/'.$request->sermao;
+                $submenu->link = 'midia/'.$request->midia;
             }else if($request->link == 7){
                 $submenu->link = 'galeria/'.$request->galeria;
             }else if($request->link == 8){
@@ -1090,7 +1090,7 @@ class HomeController extends Controller
             }else if($request->link == 5){
                 $submenu->link = 'noticia/'.$request->noticia;
             }else if($request->link == 6){
-                $submenu->link = 'sermao/'.$request->sermao;
+                $submenu->link = 'midia/'.$request->midia;
             }else if($request->link == 7){
                 $submenu->link = 'galeria/'.$request->galeria;
             }else if($request->link == 8){
@@ -1148,7 +1148,7 @@ class HomeController extends Controller
             }else if($request->link == 5){
                 $subsubmenu->link = 'noticia/'.$request->noticia;
             }else if($request->link == 6){
-                $subsubmenu->link = 'sermao/'.$request->sermao;
+                $subsubmenu->link = 'midia/'.$request->midia;
             }else if($request->link == 7){
                 $subsubmenu->link = 'galeria/'.$request->galeria;
             }else if($request->link == 8){
@@ -1183,7 +1183,7 @@ class HomeController extends Controller
             }else if($request->link == 5){
                 $subsubmenu->link = 'noticia/'.$request->noticia;
             }else if($request->link == 6){
-                $subsubmenu->link = 'sermao/'.$request->sermao;
+                $subsubmenu->link = 'midia/'.$request->midia;
             }else if($request->link == 7){
                 $subsubmenu->link = 'galeria/'.$request->galeria;
             }else if($request->link == 8){
@@ -1216,9 +1216,9 @@ class HomeController extends Controller
 
     public function excluirLogo(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.configuracoesg'), \Config::get('constants.permissoes.alterar'))[2] == true){
-            $igreja = TblIgreja::find($request->id);
-            $igreja->logo = null;
-            $igreja->save();
+            $site = TblSites::find($request->id);
+            $site->logo = null;
+            $site->save();
             return \Response::json(['message' => 'File successfully delete'], 200);
         }
     }
@@ -1232,27 +1232,30 @@ class HomeController extends Controller
             if($request->custom_style){
                 $configuracao->custom_style = file_get_contents($request->custom_style);
             }
+            if($request->remover_estilo){
+                $configuracao->custom_style = null;
+            }
 
-            $igreja = TblIgreja::find($configuracao->id_igreja);
-            $igreja->nome = fistCharFromWord_toUpper($request->nome);
-            $igreja->cnpj = $request->cnpj;
-            $igreja->cep = $request->cep;
-            $igreja->num = $request->num;
-            $igreja->rua = $request->rua;
-            $igreja->cidade = $request->cidade;
-            $igreja->complemento = $request->complemento;
-            $igreja->bairro = $request->bairro;
-            $igreja->estado = $request->estado;
-            $igreja->telefone = $request->telefone;
-            $igreja->email = $request->email;
+            $site = TblSites::find($configuracao->id_site);
+            $site->nome = fistCharFromWord_toUpper($request->nome);
+            $site->cnpj = $request->cnpj;
+            $site->cep = $request->cep;
+            $site->num = $request->num;
+            $site->rua = $request->rua;
+            $site->cidade = $request->cidade;
+            $site->complemento = $request->complemento;
+            $site->bairro = $request->bairro;
+            $site->estado = $request->estado;
+            $site->telefone = $request->telefone;
+            $site->email = $request->email;
             if($request->logo){
-                $igreja->logo =file_get_contents($request->logo);
+                $site->logo =file_get_contents($request->logo);
             }
             
-            $count = TblIgreja::where("nome", "=", $igreja->nome)->where("id", "<>", $request->id)->count();
+            $count = TblSites::where("nome", "=", $site->nome)->where("id", "<>", $site->id)->count();
             if($count == 0){
                 
-                $igreja->save();
+                $site->save();
                 $configuracao->save();
 
                 $notification = array(
@@ -1293,10 +1296,10 @@ class HomeController extends Controller
                 $menu->link = 'eventofixo-'.$request->eventofixo;
             }else if($request->link == 5){ // notica
                 $menu->link = 'noticia-'.$request->noticia;
-            }else if($request->link == 6){ // sermao
-                $menu->link = 'sermao-'.$request->sermao;
+            }else if($request->link == 6){ // midia
+                $menu->link = 'midia-'.$request->midia;
             }else if($request->link == 7){ // galeria
-                $menu->link = 'galeria-'.$request->sermao;
+                $menu->link = 'galeria-'.$request->midia;
             }else if($request->link == 8){ // link
                 $menu->link = $request->url;
             }
@@ -1328,10 +1331,10 @@ class HomeController extends Controller
                 $menu->link = 'eventofixo-'.$request->eventofixo;
             }else if($request->link == 5){ // notica
                 $menu->link = 'noticia-'.$request->noticia;
-            }else if($request->link == 6){ // sermao
-                $menu->link = 'sermao-'.$request->sermao;
+            }else if($request->link == 6){ // midia
+                $menu->link = 'midia-'.$request->midia;
             }else if($request->link == 7){ // galeria
-                $menu->link = 'galeria-'.$request->sermao;
+                $menu->link = 'galeria-'.$request->midia;
             }else if($request->link == 8){ // link
                 $menu->link = $request->url;
             }
@@ -1368,11 +1371,11 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
 
             $eventos = [];
-            $data = TblEventos::where('id_igreja','=',$igreja->id)->get();
+            $data = TblEventos::where('id_site','=',$site->id)->get();
             if($data->count()) {
                 foreach ($data as $key => $value) {
                     $eventos[] = Calendar::event(
@@ -1391,14 +1394,14 @@ class HomeController extends Controller
             }
             $calendar = Calendar::addEvents($eventos);
 
-            return view('usuario.eventos', compact('igreja','modulos_igreja','calendar'));
+            return view('usuario.eventos', compact('site','modulos_site','calendar'));
         }
     }
 
     public function incluirEvento(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.eventosg'), \Config::get('constants.permissoes.incluir'))[2] == true){
             $evento = new TblEventos();
-            $evento->id_igreja = $request->igreja;
+            $evento->id_site = $request->site;
             $evento->nome = $request->nome;
             $evento->descricao = $request->descricao;
             $evento->descricao = $request->descricao;
@@ -1431,9 +1434,9 @@ class HomeController extends Controller
             $evento = TblEventos::find($id);
             $inscricoes = TblInscricoes::where('id_evento','=',$evento->id)->get();
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editarevento', compact('evento','igreja','modulos_igreja','inscricoes'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.editarevento', compact('evento','site','modulos_site','inscricoes'));
         }else{ return view('error'); }
     }
 
@@ -1538,9 +1541,9 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_apresentativos_igreja($igreja);
-            return view('usuario.publicacoes', compact('igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_apresentativos_site($site);
+            return view('usuario.publicacoes', compact('site','modulos_site'));
         }
     }
 
@@ -1549,7 +1552,7 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $publicacoes = TblPublicacoes::where('id_igreja','=',$perfil->id_igreja)->get();
+            $publicacoes = TblPublicacoes::where('id_site','=',$perfil->id_site)->get();
             return DataTables::of($publicacoes)->addColumn('action',function($publicacoes){
                 $btn_editar = '';
                 if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.publicacoesg'), \Config::get('constants.permissoes.alterar'))[2] == true){
@@ -1569,7 +1572,7 @@ class HomeController extends Controller
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.publicacoesg'), \Config::get('constants.permissoes.incluir'))[2] == true){
             if($request->html != null){
                 $publicacao = new TblPublicacoes();
-                $publicacao->id_igreja = $request->igreja;
+                $publicacao->id_site = $request->site;
                 $publicacao->nome = $request->nome;
                 $publicacao->html = $request->html;
                 $publicacao->save();
@@ -1603,9 +1606,9 @@ class HomeController extends Controller
             $publicacao = TblPublicacoes::find($id);
             $fotos = TblPublicacaoFotos::where('id_publicacao','=',$publicacao->id)->get();
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editarpublicacao', compact('publicacao','fotos','igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.editarpublicacao', compact('publicacao','fotos','site','modulos_site'));
         }else{ return view('error'); }
     }
 
@@ -1712,9 +1715,9 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_apresentativos_igreja($igreja);
-            return view('usuario.usuarios', compact('igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_apresentativos_site($site);
+            return view('usuario.usuarios', compact('site','modulos_site'));
         }
     }
 
@@ -1726,7 +1729,7 @@ class HomeController extends Controller
             $usuarios = \DB::table('users')
                 ->select('users.*')
                 ->leftJoin('tbl_perfis','users.id_perfil','=','tbl_perfis.id')
-                ->where('tbl_perfis.id_igreja','=',$perfil->id_igreja)
+                ->where('tbl_perfis.id_site','=',$perfil->id_site)
                 ->get();
             return DataTables::of($usuarios)->addColumn('action',function($usuarios){
                 $btn_editar = '';
@@ -1824,9 +1827,9 @@ class HomeController extends Controller
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.usuariosg'), \Config::get('constants.permissoes.alterar'))[2] == true){
             $usuario = User::find($id);
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editarusuario', compact('usuario','igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.editarusuario', compact('usuario','site','modulos_site'));
         }else{ return view('error'); }
     }
 
@@ -1893,9 +1896,9 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_apresentativos_igreja($igreja);
-            return view('usuario.perfis', compact('igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_apresentativos_site($site);
+            return view('usuario.perfis', compact('site','modulos_site'));
         }
     }
 
@@ -1904,7 +1907,7 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $perfis = TblPerfil::where('id_igreja','=',$perfil->id_igreja)->get();
+            $perfis = TblPerfil::where('id_site','=',$perfil->id_site)->get();
             return DataTables::of($perfis)->addColumn('action',function($perfis){
                 $btn_editar = '';
                 if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.perfisg'), \Config::get('constants.permissoes.alterar'))[2] == true){
@@ -1945,20 +1948,20 @@ class HomeController extends Controller
             $perfil = new TblPerfil();
             $perfil->nome = $request->nome;
             $perfil->descricao = $request->descricao;
-            $perfil->id_igreja = $request->igreja;
+            $perfil->id_site = $request->site;
 
-            $count = TblPerfil::where("nome", "=", $perfil->nome)->where("id_igreja", "=", $perfil->id_igreja)->count();
+            $count = TblPerfil::where("nome", "=", $perfil->nome)->where("id_site", "=", $perfil->id_site)->count();
             if($count == 0){
                 $perfil->save();
-                $perfil_modulo = new TblPerfisIgrejasModulos();
+                $perfil_modulo = new TblPerfisSitesModulos();
 
                 foreach ($request->modulos as $key => $value) {
-                    $modulo_igreja = TblIgrejasModulos::where('id_modulo', '=', $value)->where('id_igreja', '=', $perfil->id_igreja)->get();
-                    $modulo_igreja = $modulo_igreja[0];
+                    $modulo_site = TblSitessModulos::where('id_modulo', '=', $value)->where('id_site', '=', $perfil->id_site)->get();
+                    $modulo_site = $modulo_site[0];
 
                     $data = [
                         'id_perfil' => $perfil->id,
-                        'id_modulo_igreja' => $modulo_igreja->id,
+                        'id_modulo_site' => $modulo_site->id,
                     ];
                     $perfil_modulo->create($data);
                 }
@@ -1984,11 +1987,11 @@ class HomeController extends Controller
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.perfisg'), \Config::get('constants.permissoes.alterar'))[2] == true){
             $usuario = User::find($id);
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
             $perfil = TblPerfil::find($id);
             $modulos = obter_modulos_perfil($perfil);
-            return view('usuario.editarperfil', compact('usuario','igreja','modulos_igreja','perfil','modulos'));
+            return view('usuario.editarperfil', compact('usuario','site','modulos_site','perfil','modulos'));
         }else{ return view('error'); }
     }
 
@@ -1998,39 +2001,39 @@ class HomeController extends Controller
             $perfil->nome = $request->nome;
             $perfil->descricao = $request->descricao;
 
-            $count = TblPerfil::where("nome", "=", $perfil->nome)->where("id_igreja", "=", $perfil->id_igreja)->where("id","<>",$perfil->id)->count();
+            $count = TblPerfil::where("nome", "=", $perfil->nome)->where("id_site", "=", $perfil->id_site)->where("id","<>",$perfil->id)->count();
             if($count == 0){
                 $perfil->save();
 
                 $permissoes_backup = null;
                 $cp = 0;
 
-                $modulos_do_perfil = TblPerfisIgrejasModulos::where("id_perfil","=",$perfil->id)->get();
+                $modulos_do_perfil = TblPerfisSitesModulos::where("id_perfil","=",$perfil->id)->get();
                 if(count($modulos_do_perfil) > 0) foreach($modulos_do_perfil as $modulo_perfil){
-                    $permissoes_perfil = TblPerfisPermissoes::where("id_perfil_igreja_modulo","=",$modulo_perfil->id)->get();
+                    $permissoes_perfil = TblPerfisPermissoes::where("id_perfil_site_modulo","=",$modulo_perfil->id)->get();
                     foreach($permissoes_perfil as $permisssao_perfil){
-                        $permissoes_backup[$modulo_perfil->id_modulo_igreja][$cp] = $permisssao_perfil->id_permissao;
+                        $permissoes_backup[$modulo_perfil->id_modulo_site][$cp] = $permisssao_perfil->id_permissao;
                         $cp++;
                     }
                     $cp = 0;
 
-                    TblPerfisPermissoes::where("id_perfil_igreja_modulo","=",$modulo_perfil->id)->delete();
+                    TblPerfisPermissoes::where("id_perfil_site_modulo","=",$modulo_perfil->id)->delete();
                 }
-                TblPerfisIgrejasModulos::where("id_perfil","=",$perfil->id)->delete();
+                TblPerfisSitesModulos::where("id_perfil","=",$perfil->id)->delete();
 
                 foreach ($request->modulos as $key => $value) {
-                    $perfil_modulo = new TblPerfisIgrejasModulos();
+                    $perfil_modulo = new TblPerfisSitesModulos();
 
-                    $modulo_igreja = TblIgrejasModulos::where('id_modulo', '=', $value)->where('id_igreja', '=', $perfil->id_igreja)->get();
-                    $modulo_igreja = $modulo_igreja[0];
+                    $modulo_site = TblSitessModulos::where('id_modulo', '=', $value)->where('id_site', '=', $perfil->id_site)->get();
+                    $modulo_site = $modulo_site[0];
 
                     $perfil_modulo->id_perfil = $perfil->id;
-                    $perfil_modulo->id_modulo_igreja = $modulo_igreja->id;
+                    $perfil_modulo->id_modulo_site = $modulo_site->id;
                     $perfil_modulo->save();
 
-                    if(isset($permissoes_backup[$modulo_igreja->id])) foreach($permissoes_backup[$modulo_igreja->id] as $permissao_preservada_id){
+                    if(isset($permissoes_backup[$modulo_site->id])) foreach($permissoes_backup[$modulo_site->id] as $permissao_preservada_id){
                         $permissao_nova = new TblPerfisPermissoes();
-                        $permissao_nova->id_perfil_igreja_modulo = $perfil_modulo->id;
+                        $permissao_nova->id_perfil_site_modulo = $perfil_modulo->id;
                         $permissao_nova->id_permissao = $permissao_preservada_id;
                         $permissao_nova->save();
                     }
@@ -2056,18 +2059,18 @@ class HomeController extends Controller
     public function carregarPermissoesPerfil($id){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.perfisg'), \Config::get('constants.permissoes.alterar'))[2] == true){
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_apresentativos_igreja($igreja);
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_apresentativos_site($site);
             $perfil = \DB::table('tbl_perfis')
                 ->select('tbl_perfis.*')
                 ->where('tbl_perfis.id','=',$id)
                 ->get();
             $perfil = $perfil[0];
             $modulos = \DB::table('tbl_modulos')
-                ->select('tbl_modulos.*', 'tbl_perfis_igrejas_modulos.id as id_perfis_igrejas_modulos')
-                ->leftJoin('tbl_igrejas_modulos', 'tbl_modulos.id', '=', 'tbl_igrejas_modulos.id_modulo')
-                ->leftJoin('tbl_perfis_igrejas_modulos', 'tbl_igrejas_modulos.id', '=', 'tbl_perfis_igrejas_modulos.id_modulo_igreja')
-                ->leftJoin('tbl_perfis', 'tbl_perfis_igrejas_modulos.id_perfil', '=', 'tbl_perfis.id')
+                ->select('tbl_modulos.*', 'tbl_perfis_sites_modulos.id as id_perfis_sites_modulos')
+                ->leftJoin('tbl_sites_modulos', 'tbl_modulos.id', '=', 'tbl_sites_modulos.id_modulo')
+                ->leftJoin('tbl_perfis_sites_modulos', 'tbl_sites_modulos.id', '=', 'tbl_perfis_sites_modulos.id_modulo_site')
+                ->leftJoin('tbl_perfis', 'tbl_perfis_sites_modulos.id_perfil', '=', 'tbl_perfis.id')
                 ->where('tbl_perfis.id','=',$id)
                 //->groupBy('tbl_modulos.id')
                 ->orderBy('nome', 'ASC')
@@ -2077,10 +2080,10 @@ class HomeController extends Controller
                 $permissoes_ativas = \DB::table('tbl_permissoes')
                     ->select('tbl_permissoes.*')
                     ->leftJoin('tbl_perfis_permissoes', 'tbl_permissoes.id', '=', 'tbl_perfis_permissoes.id_permissao')
-                    ->leftJoin('tbl_perfis_igrejas_modulos', 'tbl_perfis_permissoes.id_perfil_igreja_modulo', '=', 'tbl_perfis_igrejas_modulos.id')
-                    ->leftJoin('tbl_igrejas_modulos', 'tbl_perfis_igrejas_modulos.id_modulo_igreja', '=', 'tbl_igrejas_modulos.id')
-                    ->where('tbl_igrejas_modulos.id_modulo','=',$modulo->id)
-                    ->where('tbl_perfis_igrejas_modulos.id_perfil','=',$id)
+                    ->leftJoin('tbl_perfis_sites_modulos', 'tbl_perfis_permissoes.id_perfil_site_modulo', '=', 'tbl_perfis_sites_modulos.id')
+                    ->leftJoin('tbl_sites_modulos', 'tbl_perfis_sites_modulos.id_modulo_site', '=', 'tbl_sites_modulos.id')
+                    ->where('tbl_sites_modulos.id_modulo','=',$modulo->id)
+                    ->where('tbl_perfis_sites_modulos.id_perfil','=',$id)
                     ->get();
                 $permissoes[$modulo->id]['ativas'] = $permissoes_ativas;
                 $permissoes_todas = \DB::table('tbl_permissoes')
@@ -2092,7 +2095,7 @@ class HomeController extends Controller
                     ->get();
                 $permissoes[$modulo->id]['todas'] = $permissoes_todas;
             }
-            return view('usuario.permissoesperfil', compact('igreja','modulos_igreja','perfil','modulos','permissoes'));
+            return view('usuario.permissoesperfil', compact('site','modulos_site','perfil','modulos','permissoes'));
         }else{ return view('error'); }
     }
 
@@ -2101,13 +2104,13 @@ class HomeController extends Controller
             unset($request["_token"]);
             $id_perfil = $request["id_perfil"];
             unset($request["id_perfil"]);
-            foreach ($request->all() as $id_perfil_modulo_igreja => $permissao) {
-                TblPerfisPermissoes::where('id_perfil_igreja_modulo', '=', $id_perfil_modulo_igreja)->delete();
+            foreach ($request->all() as $id_perfil_modulo_site => $permissao) {
+                TblPerfisPermissoes::where('id_perfil_site_modulo', '=', $id_perfil_modulo_site)->delete();
                 foreach($permissao as $posicao => $id_permissao){
                     $perfil_permissao = new TblPerfisPermissoes();
 
                     $data = [
-                        'id_perfil_igreja_modulo' => $id_perfil_modulo_igreja,
+                        'id_perfil_site_modulo' => $id_perfil_modulo_site,
                         'id_permissao' => $id_permissao,
                     ];
 
@@ -2144,9 +2147,9 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.funcoes', compact('igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.funcoes', compact('site','modulos_site'));
         }
     }
 
@@ -2155,7 +2158,7 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $funcoes = TblFuncoes::where('id_igreja','=',$perfil->id_igreja)->get();
+            $funcoes = TblFuncoes::where('id_site','=',$perfil->id_site)->get();
             return DataTables::of($funcoes)->addColumn('action',function($funcoes){
                 $btn_editar = '';
                 if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.funcoesg'), \Config::get('constants.permissoes.alterar'))[2] == true){
@@ -2190,7 +2193,7 @@ class HomeController extends Controller
     public function incluirFuncao(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.funcoesg'), \Config::get('constants.permissoes.incluir'))[2] == true){
             $funcao = new TblFuncoes();
-            $funcao->id_igreja = $request->igreja;
+            $funcao->id_site = $request->site;
             $funcao->nome = $request->nome;
             $funcao->descricao = $request->descricao;
             if($request->apresentar) $funcao->apresentar = true;
@@ -2209,9 +2212,9 @@ class HomeController extends Controller
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.funcoesg'), \Config::get('constants.permissoes.alterar'))[2] == true){
             $funcao = TblFuncoes::find($id);
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editarfuncao', compact('funcao','igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.editarfuncao', compact('funcao','site','modulos_site'));
         }else{ return view('error'); }
     }
 
@@ -2257,9 +2260,9 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.membros', compact('igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.membros', compact('site','modulos_site'));
         }
     }
 
@@ -2268,7 +2271,7 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $membros = TblMembros::where('id_igreja','=',$perfil->id_igreja)->get();
+            $membros = TblMembros::where('id_site','=',$perfil->id_site)->get();
             return DataTables::of($membros)->addColumn('action',function($membros){
                 $btn_editar = '';
                 if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.membrosg'), \Config::get('constants.permissoes.alterar'))[2] == true){
@@ -2318,7 +2321,7 @@ class HomeController extends Controller
     public function incluirMembro(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.membrosg'), \Config::get('constants.permissoes.incluir'))[2] == true){
             $membro = new TblMembros();
-            $membro->id_igreja = $request->igreja;
+            $membro->id_site = $request->site;
             $membro->nome = $request->nome;
             if($request->funcao > 0) $membro->id_funcao = $request->funcao;
             else $membro->id_funcao = null;
@@ -2353,9 +2356,9 @@ class HomeController extends Controller
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.membrosg'), \Config::get('constants.permissoes.alterar'))[2] == true){
             $membro = TblMembros::find($id);
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editarmembro', compact('membro','igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.editarmembro', compact('membro','site','modulos_site'));
         }else{ return view('error'); }
     }
 
@@ -2427,9 +2430,10 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.produtos', compact('igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            $categorias = TblCategoriasProdutos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get();
+            return view('usuario.produtos', compact('site','modulos_site','categorias'));
         }
     }
 
@@ -2438,7 +2442,7 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $produto = TblProdutos::where('id_igreja','=',$perfil->id_igreja)->get();
+            $produto = TblProdutos::where('id_site','=',$perfil->id_site)->get();
             return DataTables::of($produto)->addColumn('action',function($produto){
                 $btn_editar = '';
                 if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.alterar'))[2] == true){
@@ -2477,7 +2481,7 @@ class HomeController extends Controller
     public function incluirProduto(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.incluir'))[2] == true){
             $produto = new TblProdutos();
-            $produto->id_igreja = $request->igreja;
+            $produto->id_site = $request->site;
             $produto->nome = $request->nome;
             $produto->valor = $request->valor;
             $produto->descricao = $request->descricao;
@@ -2515,9 +2519,9 @@ class HomeController extends Controller
             $produto = TblProdutos::find($id);
             $fotos = TblProdutosFotos::where('id_produto','=',$id)->get();
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editarProduto', compact('produto','fotos','igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.editarProduto', compact('produto','fotos','site','modulos_site'));
         }else{ return view('error'); }
     }
 
@@ -2578,9 +2582,9 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.categorias', compact('igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.categorias', compact('site','modulos_site'));
         }
     }
 
@@ -2589,7 +2593,7 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $categoria = TblCategoriasProdutos::where('id_igreja','=',$perfil->id_igreja)->get();
+            $categoria = TblCategoriasProdutos::where('id_site','=',$perfil->id_site)->get();
             return DataTables::of($categoria)->addColumn('action',function($categoria){
                 $btn_editar = '';
                 if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.alterar'))[2] == true){
@@ -2619,7 +2623,7 @@ class HomeController extends Controller
     public function incluirCategoria(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.incluir'))[2] == true){
             $categoria = new TblCategoriasProdutos();
-            $categoria->id_igreja = $request->igreja;
+            $categoria->id_site = $request->site;
             $categoria->nome = $request->nome;
             $categoria->descricao = $request->descricao;
             $categoria->save();
@@ -2637,9 +2641,9 @@ class HomeController extends Controller
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.alterar'))[2] == true){
             $categoria = TblCategoriasProdutos::find($id);
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editarcategoria', compact('categoria','igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.editarcategoria', compact('categoria','site','modulos_site'));
         }else{ return view('error'); }
     }
 
@@ -2681,9 +2685,10 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.ofertas', compact('igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            $produtos = TblProdutos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get();
+            return view('usuario.ofertas', compact('site','modulos_site','produtos'));
         }
     }
 
@@ -2692,7 +2697,7 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $oferta = TblOfertasProdutos::where('id_igreja','=',$perfil->id_igreja)->get();
+            $oferta = TblOfertasProdutos::where('id_site','=',$perfil->id_site)->get();
             return DataTables::of($oferta)->addColumn('action',function($oferta){
                 $btn_editar = '';
                 if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.alterar'))[2] == true){
@@ -2725,7 +2730,7 @@ class HomeController extends Controller
     public function incluirOferta(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.incluir'))[2] == true){
             $oferta = new TblOfertasProdutos();
-            $oferta->id_igreja = $request->igreja;
+            $oferta->id_site = $request->site;
             $oferta->desconto = $request->desconto;
             $oferta->id_produto = $request->produto;
             $oferta->data_inicio = muda_data($request->data_inicio);
@@ -2745,9 +2750,10 @@ class HomeController extends Controller
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.alterar'))[2] == true){
             $oferta = TblOfertasProdutos::find($id);
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editaroferta', compact('oferta','igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            $produtos = TblProdutos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get();
+            return view('usuario.editaroferta', compact('oferta','site','modulos_site','produtos'));
         }else{ return view('error'); }
     }
 
@@ -2791,9 +2797,9 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.vendas', compact('igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.vendas', compact('site','modulos_site'));
         }
     }
 
@@ -2802,7 +2808,7 @@ class HomeController extends Controller
             return view('error');
         }else{
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $venda = TblVendas::where('id_igreja','=',$perfil->id_igreja)->get();
+            $venda = TblVendas::where('id_site','=',$perfil->id_site)->get();
             return DataTables::of($venda)->addColumn('action',function($venda){
                 $btn_editar = '';
                 if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.alterar'))[2] == true){
@@ -2857,7 +2863,7 @@ class HomeController extends Controller
     /*public function incluirVenda(Request $request){
         if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.carrinhog'), \Config::get('constants.permissoes.incluir'))[2] == true){
             $venda = new TblVendas();
-            $venda->id_igreja = $request->igreja;
+            $venda->id_site = $request->site;
             $venda->nome = $request->nome;
             $venda->descricao = $request->descricao;
             $venda->save();
@@ -2881,9 +2887,9 @@ class HomeController extends Controller
                 ->where('tbl_vendas_produtos.id','=',$venda->id)
                 ->orderBy('tbl_produtos.nome','ASC')->get();
             $perfil = TblPerfil::find(\Auth::user()->id_perfil);
-            $igreja = obter_dados_igreja_id($perfil->id_igreja);
-            $modulos_igreja = obter_modulos_gerenciais_igreja($igreja);
-            return view('usuario.editarvenda', compact('venda','produtos','igreja','modulos_igreja'));
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.editarvenda', compact('venda','produtos','site','modulos_site'));
         }else{ return view('error'); }
     }
 
@@ -2917,4 +2923,271 @@ class HomeController extends Controller
         }else{ return view('error'); }
     }*/
     ////////////////////////////////////////////////////////////////////////////////
+
+    // COMUNIDADE AREA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public function comunidades()
+    {
+        if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg')) == false){
+            return view('error');
+        }else{
+            $perfil = TblPerfil::find(\Auth::user()->id_perfil);
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.comunidades', compact('site','modulos_site'));
+        }
+    }
+
+    public function tbl_comunidades(){
+        if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg')) == false){
+            return view('error');
+        }else{
+            $perfil = TblPerfil::find(\Auth::user()->id_perfil);
+            $comunidade = TblComunidades::where('id_site','=',$perfil->id_site)->get();
+            return DataTables::of($comunidade)->addColumn('action',function($comunidade){
+                $btn_reunioes = '';
+                if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg')) == true){
+                    $btn_reunioes = '<a href="'.route('usuario.listarReunioes',['id'=>$comunidade->id]).'" class="btn btn-xs btn-warning"><i class="fa fa-group"></i></a>';
+                }
+                $btn_editar = '';
+                if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg'), \Config::get('constants.permissoes.alterar'))[2] == true){
+                    $btn_editar = '<a href="'.route('usuario.editarComunidade',['id'=>$comunidade->id]).'" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>';
+                }
+                $btn_excluir = '';
+                if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg'), \Config::get('constants.permissoes.desativar'))[2] == true){
+                    $btn_excluir = '<a href="'.route('usuario.excluirComunidade',['id'=>$comunidade->id]).'" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>';
+                }
+                return $btn_reunioes.'&nbsp'.$btn_editar.'&nbsp'.$btn_excluir;
+            })->editColumn('created_at', function($comunidade) {
+                if($comunidade->created_at != null)
+                    return Carbon::parse($comunidade->created_at)->format('d/m/Y');
+                else
+                    return null;
+            })->editColumn('updated_at', function($comunidade) {
+                if($comunidade->updated_at != null){
+                    $upd = Carbon::parse($comunidade->updated_at)->diffForHumans();
+                    return $upd;
+                }else
+                    return null;
+            })->editColumn('quantidade_membros', function($comunidade) {
+                $count = TblMembrosComunidades::where('id_comunidade','=',$comunidade->id)->where('ativo','=',true)->count();
+                return $count;
+            })
+            ->rawColumns(['quantidade_membros', 'action'])->make(true);
+        }
+    }
+
+    public function listarReunioes($id)
+    {
+        if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg')) == false){
+            return view('error');
+        }else{
+            $perfil = TblPerfil::find(\Auth::user()->id_perfil);
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            $comunidade = TblComunidades::find($id);
+
+            $reunioes = [];
+            $data = TblReunioes::where('id_comunidade','=',$id)->get();
+            if($data->count()) {
+                foreach ($data as $key => $value) {
+                    $reunioes[] = Calendar::event(
+                        $value->descricao,
+                        false,
+                        $value->inicio,
+                        $value->fim,
+                        null,
+                        // Add color and link on event
+                        [
+                            'color' => cor_aleatoria(),
+                            'url' => route('usuario.listarPresencas',['id'=>$data->id]),
+                        ]
+                    );
+                }
+            }
+            $calendar = Calendar::addEvents($reunioes);
+
+            return view('usuario.reunioes', compact('comunidade','site','modulos_site','calendar'));
+        }
+    }
+
+    public function tbl_reunioes(Request $request){
+        if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg')) == false){
+            return view('error');
+        }else{
+            $reunioes = TblReunioes::where('id_comunidade','=',$request->id)->get();
+            return DataTables::of($reunioes)->addColumn('action',function($reunioes){
+                $btn_presenca = '';
+                if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg')) == true){
+                    $btn_presenca = '<a href="'.route('usuario.listarPresencas',['id'=>$reunioes->id]).'" class="btn btn-xs btn-warning"><i class="fa fa-list"></i></a>';
+                }
+                return $btn_presenca.'&nbsp';
+            })->addColumn('duracao', function($reunioes) {
+                $duracao = Carbon::parse($reunioes->fim)->diffForHumans($reunioes->inicio);
+                return $duracao;
+            })->addColumn('quantidade_presentes', function($reunioes) {
+                $count = TblFrequencias::where('id_reuniao','=',$reunioes->id)->where('ausente','=',false)->count();
+                return $count;
+            })->editColumn('created_at', function($reunioes) {
+                if($reunioes->created_at != null)
+                    return Carbon::parse($reunioes->created_at)->format('d/m/Y');
+                else
+                    return null;
+            })->editColumn('updated_at', function($reunioes) {
+                if($reunioes->updated_at != null){
+                    $upd = Carbon::parse($reunioes->updated_at)->diffForHumans();
+                    return $upd;
+                }else
+                    return null;
+            })->editColumn('inicio', function($reunioes) {
+                if($reunioes->inicio != null)
+                    return Carbon::parse($reunioes->inicio)->format('d/m/Y H:m');
+                else
+                    return null;
+            })->editColumn('fim', function($reunioes) {
+                if($reunioes->fim != null)
+                    return Carbon::parse($reunioes->fim)->format('d/m/Y H:m');
+                else
+                    return null;
+            })
+            ->rawColumns(['quantidade_presentes','duracao','action'])->make(true);
+        }
+    }
+
+    public function listarPresencas($id)
+    {
+        if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg')) == false){
+            return view('error');
+        }else{
+            $perfil = TblPerfil::find(\Auth::user()->id_perfil);
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            $reuniao = TblReunioes::find($id);
+            return view('usuario.presencas', compact('reuniao','site','modulos_site'));
+        }
+    }
+
+    public function tbl_presencas(Request $request){
+        if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg')) == false){
+            return view('error');
+        }else{
+            $frequencias = TblFrequencias::where('id_reuniao','=',$request->id)->get();
+            return DataTables::of($frequencias)->addColumn('parecer', function($frequencias) {
+                $parecer = ($frequencias->ausente == false) ? '<span class="label bg-green">Presente</span>' : '<span class="label bg-red">Ausente</span>';
+                return $parecer;
+            })->addColumn('nome', function($frequencias) {
+                $membro_comunidade = TblMembrosComunidades::find($frequencias->id_membro_comunidade);
+                $membro = TblMembros::find($membro_comunidade->id_membro);
+                return $membro->nome;
+            })->editColumn('created_at', function($frequencias) {
+                if($frequencias->created_at != null)
+                    return Carbon::parse($frequencias->created_at)->format('d/m/Y');
+                else
+                    return null;
+            })->editColumn('updated_at', function($frequencias) {
+                if($frequencias->updated_at != null){
+                    $upd = Carbon::parse($frequencias->updated_at)->diffForHumans();
+                    return $upd;
+                }else
+                    return null;
+            })
+            ->rawColumns(['parecer','nome'])->make(true);
+        }
+    }
+
+    public function incluirComunidade(Request $request){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg'), \Config::get('constants.permissoes.incluir'))[2] == true){
+            $comunidade = new TblComunidades();
+            $comunidade->id_site = $request->site;
+            $comunidade->nome = $request->nome;
+            $comunidade->descricao = $request->descricao;
+            $comunidade->save();
+
+            foreach($request->membros as $id_membro){
+                $membro_comunidade = new TblMembrosComunidades();
+                $membro_comunidade->id_membro = $id_membro;
+                $membro_comunidade->id_comunidade = $comunidade->id;
+                if(in_array($id_membro, $request->lideres)) $membro_comunidade->lider = true;
+                else $membro_comunidade->lider = false;
+                $membro_comunidade->ativo = true;
+                $membro_comunidade->save();
+            }
+
+            $notification = array(
+                'message' => 'Comunidade "' . $comunidade->nome . '" foi adicionada com sucesso!', 
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route('usuario.comunidades')->with($notification);
+        }else{ return view('error'); }
+    }
+
+    public function editarComunidade($id){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg'), \Config::get('constants.permissoes.alterar'))[2] == true){
+            $comunidade = TblComunidades::find($id);
+            $membros_comunidade = \DB::table('tbl_membros')
+                ->select('tbl_membros.*','tbl_membros_comunidades.lider')
+                ->join('tbl_membros_comunidades', 'tbl_membros_comunidades.id_membro', '=', 'tbl_membros.id')
+                ->where('tbl_membros.ativo', '=', true)
+                ->where('tbl_membros_comunidades.ativo', '=', true)
+                ->where('tbl_membros_comunidades.id_comunidade', '=', $comunidade->id)
+                ->orderBy('nome', 'ASC')
+                ->get();
+            $perfil = TblPerfil::find(\Auth::user()->id_perfil);
+            $site = obter_dados_site_id($perfil->id_site);
+            $modulos_site = obter_modulos_gerenciais_site($site);
+            return view('usuario.editarcomunidade', compact('comunidade', 'membros_comunidade','site','modulos_site'));
+        }else{ return view('error'); }
+    }
+
+    public function atualizarComunidade(Request $request){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg'), \Config::get('constants.permissoes.alterar'))[2] == true){
+            $comunidade = TblComunidades::find($request->id);
+            $comunidade->nome = $request->nome;
+            $comunidade->descricao = $request->descricao;
+            $comunidade->save();
+
+            TblMembrosComunidades::where('id_comunidade', '=', $comunidade->id)
+                        ->update(['ativo' => false]);
+
+            foreach($request->membros as $id_membro){
+                $membro_comunidade = null;
+                $results = TblMembrosComunidades::where('id_comunidade','=',$comunidade->id)
+                    ->where('id_membro','=',$id_membro)->get();
+                if($results == null || sizeof($results) != 1){
+                    $membro_comunidade = new TblMembrosComunidades();
+                    $membro_comunidade->id_membro = $id_membro;
+                    $membro_comunidade->id_comunidade = $comunidade->id;
+                }else{
+                    $membro_comunidade = $results[0];
+                }
+                if(in_array($id_membro, $request->lideres)) $membro_comunidade->lider = true;
+                else $membro_comunidade->lider = false;
+                $membro_comunidade->ativo = true;
+                $membro_comunidade->save();
+            }
+
+            $notification = array(
+                'message' => 'Comunidade "' . $comunidade->nome . '" foi alterada com sucesso!', 
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route('usuario.comunidades')->with($notification);
+        }else{ return view('error'); }
+    }
+
+    public function excluirComunidade($id){
+        if( valida_permissao(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg'), \Config::get('constants.permissoes.desativar'))[2] == true){
+            $comunidade = TblComunidades::find($id);
+            TblMembrosComunidades::where('id_comunidade','=',$comunidade->id)->delete();
+            $comunidade->delete();
+
+            $notification = array(
+                'message' => 'Comunidade "' . $comunidade->nome . '" foi excluída com sucesso!', 
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route('usuario.comunidades')->with($notification);
+        }else{ return view('error'); }
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////
 }

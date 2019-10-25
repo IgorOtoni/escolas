@@ -18,13 +18,13 @@
                                 	<img src="{{($evento->foto != null) ? '/carrega_imagem/330,206,eventos,'.$evento->foto : '/carrega_imagem/330,206,X,no-event.jpg'}}" alt="">
                                 </a>
                                 <div class="grid-content">
-                                	<h3><a href="/{{$igreja->url}}/eventos/{{$evento->id}}" class="event-title">{{$evento->nome}}</a></h3>
+                                	<h3><a href="/{{$site->url}}/eventos/{{$evento->id}}" class="event-title">{{$evento->nome}}</a></h3>
                                 	<span class="meta-data"><i class="fa fa-calendar"></i> Incício: {{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YY h:mm A')}}</span>
                                 	<span class="meta-data"><i class="fa fa-calendar"></i> Fim: {{\Carbon\Carbon::parse($evento->dados_horario_fim, 'UTC')->isoFormat('Do MMMM YY h:mm A')}}</span>
                                     <span class="meta-data event-location-address"> <i class="fa fa-map-marker"></i> {{$evento->dados_local}}</span>
                                 </div>
                                 <div class="grid-footer clearfix">
-                            		<a href="/{{$igreja->url}}/eventos/{{$evento->id}}" class="pull-right btn btn-primary btn-sm">Detalhes</a>
+                            		<a href="/{{$site->url}}/eventos/{{$evento->id}}" class="pull-right btn btn-primary btn-sm">Detalhes</a>
                                 </div>
                             </div>
                         </li>

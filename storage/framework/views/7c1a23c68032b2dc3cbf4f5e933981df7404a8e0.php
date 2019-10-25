@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/carrinho/finalizar.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/carrinho/finalizar.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- InputMask -->
 <script src="<?php echo e(asset('template_adm/plugins/input-mask/jquery.inputmask.js')); ?>"></script>
@@ -59,7 +59,7 @@ if(isset(\Auth::user()->id_perfil) && \Auth::user()->id_perfil == 100){
                 <h1>Finalizar pedido</h1>
             </div>
             <div>
-                <form data-toggle="validator" method="POST" action="<?php echo e(route('igreja.salvarCompra', $igreja->url)); ?>" class="form-group">
+                <form data-toggle="validator" method="POST" action="<?php echo e(route('site.salvarCompra', $site->url)); ?>" class="form-group">
                 <?php echo csrf_field(); ?>
 
                     <?php /* ?><div class="panel panel-primary">
@@ -160,7 +160,7 @@ if(isset(\Auth::user()->id_perfil) && \Auth::user()->id_perfil == 100){
                             </div>
                         </div>
                         <div class="panel-footer">
-                            <a class="btn btn-danger" href="<?php echo e(route('igreja.finalizarCompra', $igreja->url)); ?>">Cancelar compra</a>
+                            <a class="btn btn-danger" href="<?php echo e(route('site.finalizarCompra', $site->url)); ?>">Cancelar compra</a>
                             <input class="btn btn-warning" type="reset" value="Limpar campos">
                             <input class="btn btn-success" type="submit" value="Realizar compra">
                         </div>
@@ -175,7 +175,7 @@ if(isset(\Auth::user()->id_perfil) && \Auth::user()->id_perfil == 100){
             'alert-type' => 'warning'
         );
 
-        return redirect('igrejas.produtos', $igreja->url)->with($notification);
+        return redirect('sites.produtos', $site->url)->with($notification);
     }
 }else{
     $notification = array(
@@ -183,7 +183,7 @@ if(isset(\Auth::user()->id_perfil) && \Auth::user()->id_perfil == 100){
         'alert-type' => 'warning'
     );
 
-    return redirect('igrejas.carrinho', $igreja->url)->with($notification);
+    return redirect('sites.carrinho', $site->url)->with($notification);
 }
 ?>
 <?php $__env->stopSection(); ?>

@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template5/noticias.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template5/noticias.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -21,7 +21,7 @@
 	                    	<span class="post-image-mask"></span>
 	                        <img src="<?php echo e(($noticia->foto != null) ? "/storage/noticias/".$noticia->foto : "/storage/no-news.jpg"); ?>" width="172" height="140" alt="" title="" />
 	                    </a>
-	                    <h2 class="title"><a href="/<?php echo e($igreja->url); ?>/noticia/<?php echo e($noticia->id); ?>"><?php echo e($noticia->nome); ?></a></h2>
+	                    <h2 class="title"><a href="/<?php echo e($site->url); ?>/noticia/<?php echo e($noticia->id); ?>"><?php echo e($noticia->nome); ?></a></h2>
 	                    <p class="meta">
 	                        <span>Publicada: <a class="date" title="" href="#"> <?php echo e(\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()); ?></a></span>
                             <span>Atualizada: <a class="date" title="" href="#"> <?php echo e(\Carbon\Carbon::parse($noticia->updated_at)->diffForHumans()); ?></a></span>
@@ -30,7 +30,7 @@
 	                        <p><?php echo e($noticia->descricao); ?></p>
 	                    </div>
 	                    <p class="actions">
-	                    	<a href="/<?php echo e($igreja->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="read-more">Detalhes<span class="circle-arrow"></span></a>
+	                    	<a href="/<?php echo e($site->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="read-more">Detalhes<span class="circle-arrow"></span></a>
 	                    </p>
 	                </div>
             	<?php } ?>

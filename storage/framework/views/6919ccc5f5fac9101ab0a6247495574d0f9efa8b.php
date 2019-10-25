@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template7/index.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template7/index.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -20,7 +20,7 @@
 									</div>
 									<?php if($banner->link != null){
 			                            ?> <div class="slider__btn">
-											<a class="dcare__btn" href="<?php echo e(verifica_link($banner->link, $igreja)); ?>">Detalhes</a>
+											<a class="dcare__btn" href="<?php echo e(verifica_link($banner->link, $site)); ?>">Detalhes</a>
 										</div> <?php
 			                        } ?>
 								</div>
@@ -54,7 +54,7 @@
 							<span>Publicada <?php echo e(\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()); ?></span>
 						</div>
 						<div class="blog__thumb">
-							<a href="/<?php echo e($igreja->url); ?>/noticia/<?php echo e($noticia->id); ?>">
+							<a href="/<?php echo e($site->url); ?>/noticia/<?php echo e($noticia->id); ?>">
 								<img width="370" height="215" src="<?php echo e(($noticia->foto != null) ? '/storage/noticias/'.$noticia->foto : '/storage/no-news.jpg'); ?>" alt="blog images">
 							</a>
 						</div>
@@ -69,7 +69,7 @@
 							<h4><a href="blog-details.html"><?php echo e($noticia->nome); ?></a></h4>
 							<p><?php echo e($noticia->descricao); ?></p>
 							<ul class="blog__meta d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
-								<li><a href="/<?php echo e($igreja->url); ?>/noticia/<?php echo e($noticia->id); ?>">Detalhes</a></li>
+								<li><a href="/<?php echo e($site->url); ?>/noticia/<?php echo e($noticia->id); ?>">Detalhes</a></li>
 							</ul>
 						</div>
 					</article>
@@ -98,10 +98,10 @@
 					<div class="upcomming__event">
 						<div class="upcomming__thumb">
 							<img src="<?php echo e(($evento->foto != null) ? '/storage/timeline/'.$evento->foto : '/storage/no-event.jpg'); ?>" alt="upcomming images">
-							<!--<img src="<?php echo e(asset('/template_igreja/template-padrao-2/images/upcomming/1.png')); ?>" alt="upcomming images">-->
+							<!--<img src="<?php echo e(asset('/template_site/template-padrao-2/images/upcomming/1.png')); ?>" alt="upcomming images">-->
 						</div>
 						<div class="upcomming__inner">
-							<h6><a href="/<?php echo e($igreja->url); ?>/evento/<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></a></h6>
+							<h6><a href="/<?php echo e($site->url); ?>/evento/<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></a></h6>
 							<p><?php echo e($evento->descricao); ?></p>
 							<ul class="event__time">
 								<li><i class="fa fa-home"></i><?php echo e($evento->dados_local); ?></li>
@@ -109,7 +109,7 @@
 							</ul>
 						</div>
 						<div class="event__occur">
-							<img src="<?php echo e(asset('/template_igreja/template-padrao-2/images/upcomming/shape/1.png')); ?>" alt="shape images">
+							<img src="<?php echo e(asset('/template_site/template-padrao-2/images/upcomming/shape/1.png')); ?>" alt="shape images">
 							<div class="enent__pub">
 								<span class="time">21st </span>
 								<span class="bate">Dec,2017</span>
@@ -151,9 +151,9 @@
 								<div class="gallery__hover__action">
 									<ul class="gallery__zoom">
 										<li><a href="/storage/galerias/<?php echo e($foto->foto); ?>" data-lightbox="grportimg" data-title="My caption"><i class="fa fa-search"></i></a></li>
-										<li><a href="/<?php echo e($igreja->url); ?>/galeria"><i class="fa fa-link"></i></a></li>
+										<li><a href="/<?php echo e($site->url); ?>/galeria"><i class="fa fa-link"></i></a></li>
 									</ul>
-									<h4 class="gallery__title"><a href="/<?php echo e($igreja->url); ?>/galeria"><?php echo e($galeria->nome); ?></a></h4>
+									<h4 class="gallery__title"><a href="/<?php echo e($site->url); ?>/galeria"><?php echo e($galeria->nome); ?></a></h4>
 								</div>
 							</div>
 						</div>	

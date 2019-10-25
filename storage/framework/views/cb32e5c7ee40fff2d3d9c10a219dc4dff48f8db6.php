@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/app.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/app.blade.php */ ?>
 <!DOCTYPE html>
 <html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>

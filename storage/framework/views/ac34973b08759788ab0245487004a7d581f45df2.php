@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/template2/sermoes.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/template2/midias.blade.php */ ?>
 <?php $__env->startSection('content'); ?>
 <!-- ##### Breadcrumb Area Start ##### -->
 <div class="breadcrumb-area">
@@ -7,7 +7,7 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/<?php echo e($igreja->url); ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/<?php echo e($site->url); ?>">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Vídeos</li>
                     </ol>
                 </nav>
@@ -32,7 +32,7 @@
         <div class="row d-flex justify-content-center section-padding-0-100">
             <div class="pagination-area mt-70">
                 <nav aria-label="Page navigation example">
-                    <?php echo e($sermoes->appends(request()->query())->links()); ?>
+                    <?php echo e($midias->appends(request()->query())->links()); ?>
 
                 </nav>
             </div>
@@ -40,19 +40,19 @@
 
         <div class="row">
 
-            <?php foreach($sermoes as $sermao){ ?>
+            <?php foreach($midias as $midia){ ?>
                 <!-- Single Latest Sermons -->
                 <div class="col-12 col-sm-6 col-lg-6">
                     <div class="single-latest-sermons mb-100">
                         <!--<div class="sermons-thumbnail">-->
-                        <iframe frameborder="0" src="<?php echo e($sermao->link); ?>"></iframe>
+                        <iframe frameborder="0" src="<?php echo e($midia->link); ?>"></iframe>
                         <!--</div>-->
                         <div class="sermons-content">
-                            <a href="/<?php echo e($igreja->url); ?>/sermao/<?php echo e($sermao->id); ?>"><h4><?php echo e($sermao->nome); ?></h4></a>
+                            <a href="/<?php echo e($site->url); ?>/midia/<?php echo e($midia->id); ?>"><h4><?php echo e($midia->nome); ?></h4></a>
                             <div class="sermons-meta-data">
-                                <p><i class="fa fa-tag" aria-hidden="true"></i> <?php echo e($sermao->descricao); ?></p>
-                                <p><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo e(\Carbon\Carbon::parse($sermao->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')); ?></p>
-                                <p><a href="<?php echo e($sermao->link); ?>" class="btn crose-btn btn-2">Assistir sermão</a></p>
+                                <p><i class="fa fa-tag" aria-hidden="true"></i> <?php echo e($midia->descricao); ?></p>
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo e(\Carbon\Carbon::parse($midia->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')); ?></p>
+                                <p><a href="<?php echo e($midia->link); ?>" class="btn crose-btn btn-2">Assistir sermão</a></p>
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
         <div class="row d-flex justify-content-center section-padding-0-100">
             <div class="pagination-area mt-70">
                 <nav aria-label="Page navigation example">
-                    <?php echo e($sermoes->appends(request()->query())->links()); ?>
+                    <?php echo e($midias->appends(request()->query())->links()); ?>
 
                 </nav>
             </div>

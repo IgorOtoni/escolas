@@ -67,13 +67,13 @@ $(function(){
     var vetor = [];
 
     <?php
-    foreach($modulos_igreja as $modulo){
+    foreach($modulos_site as $modulo){
         ?> vetor.push({{$modulo->id}}); <?php
     }
     ?>
 
     $.ajax({
-        url: '{{route('usuario.carregarModulosIgreja', ['id'=>''])}}/'+{{$igreja->id}},
+        url: '{{route('usuario.carregarModulosSite', ['id'=>''])}}/'+{{$site->id}},
         type: 'get',
         dataType: 'json',
         success: function(response){
@@ -273,7 +273,7 @@ $(function () {
 <div class="modal fade" id="modal-incluir">
   <form id="incluirPerfilFormulario" data-toggle="validator" method="POST" role="form" action="{{route('usuario.incluirPerfil')}}" enctype="multipart/form-data">
   @csrf
-    <input type="hidden" name="igreja" value="{{$igreja->id}}">
+    <input type="hidden" name="site" value="{{$site->id}}">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -302,7 +302,7 @@ $(function () {
                   </div>
                   <div class="col-md-12" id="list-area">
                     <div class="form-group has-feedback">
-                      <label>Selecione quais módulos da igreja o perfil irá acessar:</label>
+                      <label>Selecione quais módulos da site o perfil irá acessar:</label>
                       <select id="select_2_modulos" name="modulos[]" data-placeholder="Selecione os módulos" class="form-control select2" style="width: 100%;" multiple="multiple" required></select>
                       <div class="help-block with-errors"></div>
                     </div>

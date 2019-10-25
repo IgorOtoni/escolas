@@ -4,7 +4,7 @@
 @endpush
 @section('content')
 <!-- ##### Breadcumb Area Start ##### -->
-<!--<div class="breadcumb-area bg-img" style="background-image: url({{asset('template_igreja/template-escuro/img/bg-img/bg-4.jpg')}});">
+<!--<div class="breadcumb-area bg-img" style="background-image: url({{asset('template_site/template-escuro/img/bg-img/bg-4.jpg')}});">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12 col-md-6">
@@ -24,7 +24,7 @@
             <div class="col-12">
                 <div class="section-heading text-center mx-auto">
                     <h3>Sobre nós/Visões e valores</h3>
-                    <p>{{$igreja->texto_apresentativo}}</p>
+                    <p>{{$site->texto_apresentativo}}</p>
                 </div>
             </div>
         </div>
@@ -33,13 +33,13 @@
 <!-- ##### Ministries Area End ##### -->
 
 <!-- ##### Pastors Area Start ##### -->
-<section class="pastors-area section-padding-100-0 bg-img bg-overlay" style="background-image: url({{asset('/template_igreja/template-escuro/img/bg-img/bg-5.jpg')}});">
+<section class="pastors-area section-padding-100-0 bg-img bg-overlay" style="background-image: url({{asset('/template_site/template-escuro/img/bg-img/bg-5.jpg')}});">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="section-heading white text-center mx-auto">
-                    <!-- <img src="{{asset('/template_igreja/template-escuro/img/core-img/cross.png')}}" alt=""> -->
-                    <h3>Equipe</h3>
+                    <!-- <img src="{{asset('/template_site/template-escuro/img/core-img/cross.png')}}" alt=""> -->
+                    <h3>Membros</h3>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
                         <!-- Single Pastors Area -->
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="single-pastor-area mb-100">
-                                <img width="250" height="250" src="{{asset($membro->foto != null ? 'data:image;base64,'.base64_encode($membro->foto) : asset('/storage/no-foto.png')}}" alt="">
+                                <img width="250" height="250" src="{{$membro->foto != null ? 'data:image;base64,'.base64_encode($membro->foto) : asset('/storage/no-foto.png')}}" alt="">
                                 <div class="pastor-content">
                                     <h5>{{$membro->nome}} ({{$funcao->nome}})</h5>
                                     <h6>{{$membro->descricao}}</h6>

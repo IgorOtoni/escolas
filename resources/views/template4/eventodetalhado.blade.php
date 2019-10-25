@@ -63,7 +63,7 @@
 					
 					<div class="l-grid-9 l-float-left">
 
-						<form method="get" action="/{{$igreja->url}}/inscreveEnvento" id="contactform" class="contactForm">
+						<form method="get" action="/{{$site->url}}/inscreveEnvento" id="contactform" class="contactForm">
 							
 							<fieldset>
 								

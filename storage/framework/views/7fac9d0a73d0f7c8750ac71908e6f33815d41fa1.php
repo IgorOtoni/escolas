@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template7/sermoes.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template7/midias.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -31,22 +31,22 @@
 			</div>
 		</div>-->
 		<div class="row galler__wrap mt--40">
-			<?php foreach($sermoes as $sermao){ ?>
+			<?php foreach($midias as $midia){ ?>
 				<!-- Start Single Gallery -->
 				<div class="col-lg-4 col-md-6 col-sm-6 col-12">
 					<div class="gallery wow fadeInUp">
 						<div class="gallery__thumb text-center">
-							<a href="<?php echo e($sermao->link); ?>">
-								<iframe width="360" height="360" frameborder="0" src="<?php echo e($sermao->link); ?>"></iframe>
+							<a href="<?php echo e($midia->link); ?>">
+								<iframe width="360" height="360" frameborder="0" src="<?php echo e($midia->link); ?>"></iframe>
 							</a>
 						</div>
 						<div class="gallery__hover__inner">
 							<div class="gallery__hover__action">
 								<ul class="gallery__zoom">
-									<li><a href="/<?php echo e($igreja->url); ?>/sermao/<?php echo e($sermao->id); ?>"><i class="fa fa-search"></i></a></li>
-									<li><a href="/<?php echo e($sermao->link); ?>"><i class="fa fa-link"></i></a></li>
+									<li><a href="/<?php echo e($site->url); ?>/midia/<?php echo e($midia->id); ?>"><i class="fa fa-search"></i></a></li>
+									<li><a href="/<?php echo e($midia->link); ?>"><i class="fa fa-link"></i></a></li>
 								</ul>
-								<h4 class="gallery__title"><a href="/<?php echo e($igreja->url); ?>/sermao/<?php echo e($sermao->id); ?>"><?php echo e($sermao->nome); ?></a></h4>
+								<h4 class="gallery__title"><a href="/<?php echo e($site->url); ?>/midia/<?php echo e($midia->id); ?>"><?php echo e($midia->nome); ?></a></h4>
 							</div>
 						</div>
 					</div>	
@@ -56,7 +56,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12" style="margin-top: 50px;">
-		        <?php echo e($sermoes->appends(request()->query())->links()); ?>
+		        <?php echo e($midias->appends(request()->query())->links()); ?>
 
 		    </div>
 	    </div>

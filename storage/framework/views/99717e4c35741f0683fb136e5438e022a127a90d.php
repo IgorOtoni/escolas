@@ -1,4 +1,3 @@
-<?php /* E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/admin/perfis/permissoes.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <script>
 $(document).ready(function() {
@@ -36,7 +35,7 @@ $(document).ready(function() {
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label ><?php echo e($modulo->nome); ?></label>&nbsp;<input type="checkbox" class="selecao" id="selecao_<?php echo e($modulo->id); ?>" style="margin: 0px 800px 2px 6px;">
+                                <input type="checkbox" class="selecao" id="selecao_<?php echo e($modulo->id); ?>"> <label ><?php echo e($modulo->nome); ?></label>
                                 <br>
                                 <?php $__currentLoopData = $permissoes[$modulo->id]['todas']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permissao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                   <?php
@@ -48,7 +47,7 @@ $(document).ready(function() {
                                     }
                                   }
                                   ?>
-                                  <input name="<?php echo e($modulo->id_perfis_igrejas_modulos); ?>[]" value="<?php echo e($permissao->id); ?>" type="checkbox" <?php echo e($marcacao); ?>> <?php echo e($permissao->nome); ?>
+                                  <input name="<?php echo e($modulo->id_perfis_sites_modulos); ?>[]" value="<?php echo e($permissao->id); ?>" type="checkbox" <?php echo e($marcacao); ?>> <?php echo e($permissao->nome); ?>
 
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
@@ -69,4 +68,4 @@ $(document).ready(function() {
         </div>
         <!-- /.content-wrapper -->
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.admin_site.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.admin_site.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/admin/perfis/permissoes.blade.php ENDPATH**/ ?>

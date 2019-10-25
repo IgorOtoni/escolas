@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template4/sermoes.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template4/midias.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -26,21 +26,21 @@
 						
 						<ul id="gallery">
 
-							<?php foreach($sermoes as $sermao){ ?>
+							<?php foreach($midias as $midia){ ?>
 
 								<li data-categories="web" class="gallery-item">
 
 									<div class="border-shadow alignleft">
 										<figure>
-											<iframe frameborder="0" src="<?php echo e($sermao->link); ?>"></iframe>
+											<iframe frameborder="0" src="<?php echo e($midia->link); ?>"></iframe>
 										</figure>
 									</div><!--/ gallery-image-->
 
 									<div class="gallery-text">
-										<h1><a class="link" href="#"><?php echo e($sermao->nome); ?></a></h1>
-	                                    <p class="date"><i><?php echo e(\Carbon\Carbon::parse($sermao->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')); ?></i></p>
-										<p><?php echo e($sermao->descricao); ?></p>
-										<p><a href="/<?php echo e($igreja->url); ?>/sermao/<?php echo e($sermao->id); ?>" class="button medium button-style1 align-btn-right">Detalhes</a></p>
+										<h1><a class="link" href="#"><?php echo e($midia->nome); ?></a></h1>
+	                                    <p class="date"><i><?php echo e(\Carbon\Carbon::parse($midia->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')); ?></i></p>
+										<p><?php echo e($midia->descricao); ?></p>
+										<p><a href="/<?php echo e($site->url); ?>/midia/<?php echo e($midia->id); ?>" class="button medium button-style1 align-btn-right">Detalhes</a></p>
 									</div><!--/ gallery-text-->
 
 									<div class="kids_clear"></div>

@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/carrinho/cadastro.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/carrinho/cadastro.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -7,7 +7,7 @@
     <h1>Cadastro</h1>
 
     <div>
-    	<form data-toggle="validator" method="POST" action="<?php echo e(route('igreja.cadastrar', $igreja->url)); ?>" class="form-group">
+    	<form data-toggle="validator" method="POST" action="<?php echo e(route('site.cadastrar', $site->url)); ?>" class="form-group">
         <?php echo csrf_field(); ?>
         	 <div class="panel panel-primary">
                 <div class="panel-heading"><h3 class="panel-title">Dados:</h3></div>

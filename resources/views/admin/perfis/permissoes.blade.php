@@ -36,7 +36,7 @@ $(document).ready(function() {
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label >{{$modulo->nome}}</label>&nbsp;<input type="checkbox" class="selecao" id="selecao_{{$modulo->id}}" style="margin: 0px 800px 2px 6px;">
+                                <input type="checkbox" class="selecao" id="selecao_{{$modulo->id}}"> <label >{{$modulo->nome}}</label>
                                 <br>
                                 @foreach ($permissoes[$modulo->id]['todas'] as $permissao)
                                   <?php
@@ -48,7 +48,7 @@ $(document).ready(function() {
                                     }
                                   }
                                   ?>
-                                  <input name="{{$modulo->id_perfis_igrejas_modulos}}[]" value="{{$permissao->id}}" type="checkbox" {{$marcacao}}> {{$permissao->nome}}
+                                  <input name="{{$modulo->id_perfis_sites_modulos}}[]" value="{{$permissao->id}}" type="checkbox" {{$marcacao}}> {{$permissao->nome}}
                                 @endforeach
 
                             </div>

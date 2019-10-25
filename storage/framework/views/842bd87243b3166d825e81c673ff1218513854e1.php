@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/usuario/editarProduto.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/usuario/editarProduto.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- InputFilePTBR -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/input.file.js/fileinput.min.css')); ?>">
@@ -159,7 +159,7 @@ $(function(){
                 <div class="col-md-12">
                     <div class="form-group has-feedback">
                 		<select id="categoria" name="categoria" class="form-control select2" style="width: 100%;" required>
-	                        <?php $categorias = App\TblCategoriasProdutos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+	                        <?php $categorias = App\TblCategoriasProdutos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
 	                        <?php $__currentLoopData = $categorias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categoria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 	                        <option value="<?php echo e($categoria->id); ?>" <?php echo e(($produto->id_categoria == $categoria->id) ? 'selected' : ''); ?>><?php echo e($categoria->nome); ?></option>
 	                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

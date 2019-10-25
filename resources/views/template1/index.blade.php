@@ -1,11 +1,11 @@
 @extends('layouts.template1')
 @push('script')
 <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-<script type="text/javascript" src="{{asset('template_igreja/template-padrao/plugins/rs-plugin/js/jquery.themepunch.tools.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('template_site/template-padrao/plugins/rs-plugin/js/jquery.themepunch.tools.min.js')}}"></script>
 
-<script type="text/javascript" src="{{asset('template_igreja/template-padrao/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('template_site/template-padrao/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
 
-<script src="{{asset('template_igreja/template-padrao/plugins/flexslider/js/jquery.flexslider.js')}}"></script>
+<script src="{{asset('template_site/template-padrao/plugins/flexslider/js/jquery.flexslider.js')}}"></script>
 
 <script type="text/javascript">
     jQuery(document).ready(function() {
@@ -104,7 +104,7 @@ if($banners != null && sizeof($banners)){
             
                         <?php
                         if($banner->link != null){
-                            ?> <a href="{{verifica_link($banner->link, $igreja)}}"> <?php
+                            ?> <a href="{{verifica_link($banner->link, $site)}}"> <?php
                         }
                         ?>
                         <!-- LAYER NR. 1 --><!--data-end="3000"-->
@@ -129,7 +129,7 @@ if($banners != null && sizeof($banners)){
                         }
                         
                         if($banner->link != null){
-                            ?> <a href="{{verifica_link($banner->link, $igreja)}}"> <?php
+                            ?> <a href="{{verifica_link($banner->link, $site)}}"> <?php
                         }
                         ?>
                         <!-- LAYER NR. 2 --><!--data-end="4000"-->
@@ -200,7 +200,7 @@ if($noticias != null && sizeof($noticias) != 0){
                         <?php /* ?>
                         <h3><a data-publicacao="{{\Carbon\Carbon::parse($noticia->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}" data-atualizacao="{{(($noticia->updated_at != null) ? \Carbon\Carbon::parse($noticia->updated_at)->diffForHumans() : '')}}" data-foto="{{$noticia->foto}}" data-nome="{{$noticia->nome}}" data-descricao="{{$noticia->descricao}}" data-toggle="modal" data-target="#modal-noticia" href="">{{$noticia->nome}}</a></h3>
                         <?php */ ?>
-                        <h3><a href="{{route('igreja.noticia', ['url'=>$igreja->url,'id'=>$noticia->id])}}"><?php echo $noticia->nome ?></a></h3>
+                        <h3><a href="{{route('site.noticia', ['url'=>$site->url,'id'=>$noticia->id])}}"><?php echo $noticia->nome ?></a></h3>
                         <span class="meta-data"><span><i class="fa fa-calendar"></i> Publicada {{\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()}}</span><!--<span><a href="#"><i class="fa fa-tag"></i>Uncategoried</a></span>--></span>
                         <?php
                         if($noticia->updated_at != null && $noticia->updated_at != $noticia->created_at){
@@ -254,7 +254,7 @@ if($eventos != null && sizeof($eventos) != 0){
                     <div class="timeline-panel">
                     <div class="timeline-heading">
                         <h3 class="timeline-title">
-                        <a href="{{route('igreja.evento', ['url'=>$igreja->url,'id'=>$evento->id])}}"><?php echo $evento->nome ?></a>
+                        <a href="{{route('site.evento', ['url'=>$site->url,'id'=>$evento->id])}}"><?php echo $evento->nome ?></a>
                         </h3>
                     </div>
                     <div class="timeline-body">

@@ -20,8 +20,8 @@ $(function(){
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('igreja.index',['url'=>$igreja->url])}}"><i class="fa fa-home"></i> Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><a href="{{route('igreja.eventos',['url'=>$igreja->url])}}">Linha do tempo</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('site.index',['url'=>$site->url])}}"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="{{route('site.eventos',['url'=>$site->url])}}">Linha do tempo</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Evento</li>
                     </ol>
                 </nav>
@@ -77,7 +77,7 @@ $(function(){
             <!-- Subscribe Form -->
             <div class="col-12 col-lg-6">
                 <div class="subscribe-form text-right">
-                    <form action="{{route('igreja.inscreveEnvento',['url'=>$igreja->url])}}" method="get" id="subscribeForm" name="subscribeForm">
+                    <form action="{{route('site.inscreveEnvento',['url'=>$site->url])}}" method="get" id="subscribeForm" name="subscribeForm">
                         <input type="hidden" name="id_evento" value="{{$evento->id}}">
                         @csrf
                         <input type="text" data-inputmask='"mask": "(99) 99999-9999"' data-mask name="telefone" id="subscribeTel" placeholder="Telefone" required>

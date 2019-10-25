@@ -1,4 +1,3 @@
-<?php /* E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/usuario/editarmembro.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- Select2 -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/select2/dist/css/select2.min.css')); ?>">
@@ -22,6 +21,8 @@
 <script>
 
 $(function(){
+
+    $('.select2').select2();
 
     $('[data-mask]').inputmask();
 
@@ -145,7 +146,7 @@ $(function(){
                             <label >Função</label>
                             <select id="funcao" name="funcao" class="form-control select2" style="width: 100%;" required>
                                 <option value="0">Sem função</option>
-                                <?php $funcoes = App\TblFuncoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                                <?php $funcoes = App\TblFuncoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                                 <?php $__currentLoopData = $funcoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $funcao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($funcao->id); ?>" <?php echo e(($membro->id_funcao != null && $membro->id_funcao == $funcao->id) ? "selected" : ""); ?>><?php echo e($funcao->nome); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -251,4 +252,4 @@ $(function(){
 </div>
 <!-- /.content-wrapper -->
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.usuario.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.usuario.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/usuario/editarmembro.blade.php ENDPATH**/ ?>

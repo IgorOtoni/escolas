@@ -16,6 +16,10 @@
 <script src="{{asset('template_adm/bower_components/datatables.plugins/vfs_fonts.js') }}"></script>
 <script src="{{asset('template_adm/bower_components/datatables.plugins/buttons.colVis.min.js') }}"></script>
 <script src="{{asset('template_adm/bower_components/datatables.plugins/buttons.bootstrap.min.js') }}"></script>
+<!-- Select2 -->
+<link rel="stylesheet" href="{{asset('template_adm/bower_components/select2/dist/css/select2.min.css')}}">
+<!-- Select2 -->
+<script src="{{asset('template_adm/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
 
 <style>
 td.details-control {
@@ -134,13 +138,7 @@ $(function(){
     });
 
     $('.select2').select2();
-
-    //Date picker
-    $('.datepicker').datepicker({
-        format: 'dd/mm/yyyy',
-        autoclose: true
-    });
-
+    
     $('#incluirProdutoFormulario').validator({
         update: true,
         ignore: [],       
@@ -224,7 +222,7 @@ $(function(){
 <div class="modal fade" id="modal-incluir">
 <form id="incluirProdutoFormulario" data-toggle="validator" method="POST" role="form" action="{{route('usuario.incluirProduto')}}" enctype="multipart/form-data">
 @csrf
-    <input type="hidden" name="igreja" id="igreja" value="{{$igreja->id}}">
+    <input type="hidden" name="site" id="site" value="{{$site->id}}">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -271,7 +269,6 @@ $(function(){
                 <div class="col-md-12">
                     <div class="form-group has-feedback">
                 		<select id="categoria" name="categoria" class="form-control select2" style="width: 100%;" required>
-	                        <?php $categorias = App\TblCategoriasProdutos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
 	                        @foreach ($categorias as $categoria)
 	                        <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
 	                        @endforeach

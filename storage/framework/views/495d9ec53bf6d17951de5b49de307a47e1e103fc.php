@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\adm_eglise\resources\views\layouts\template1\sermoes.blade.php */ ?>
+<?php /* C:\xampp\htdocs\adm_eglise\resources\views\layouts\template1\midias.blade.php */ ?>
 <?php $__env->startSection('content'); ?>
 <!-- Start Nav Backed Header -->
 <div class="nav-backed-header parallax">
@@ -6,7 +6,7 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/<?php echo e($igreja->url); ?>/">Home</a></li>
+        <li><a href="/<?php echo e($site->url); ?>/">Home</a></li>
         <li class="active">Sermões</li>
         </ol>
     </div>
@@ -30,27 +30,27 @@
 <div id="content" class="content full">
     <div class="container">
     <center>
-        <?php echo e($sermoes->appends(request()->query())->links()); ?>
+        <?php echo e($midias->appends(request()->query())->links()); ?>
 
     </center>
     <div class="row">
         <div class="col-md-12 sermon-archive"> 
         <!-- Sermons Listing -->
-        <?php foreach($sermoes as $sermao){ ?>
+        <?php foreach($midias as $midia){ ?>
             <article class="post sermon">
                 <header class="post-title">
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
-                    <h3><a href="/<?php echo e($igreja->url); ?>/sermao/<?php echo e($sermao->id); ?>"><?php echo e($sermao->nome); ?></a></h3>
-                    <span class="meta-data"><i class="fa fa-calendar"></i> <?php echo e(\Carbon\Carbon::parse($sermao->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')); ?> </div>
+                    <h3><a href="/<?php echo e($site->url); ?>/midia/<?php echo e($midia->id); ?>"><?php echo e($midia->nome); ?></a></h3>
+                    <span class="meta-data"><i class="fa fa-calendar"></i> <?php echo e(\Carbon\Carbon::parse($midia->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')); ?> </div>
                 </div>
                 </header>
                 <div class="post-content">
                 <div class="row">
-                    <div class="col-md-5"> <iframe frameborder="0" src="<?php echo e($sermao->link); ?>"></iframe> </div>
+                    <div class="col-md-5"> <iframe frameborder="0" src="<?php echo e($midia->link); ?>"></iframe> </div>
                     <div class="col-md-7">
-                    <p><?php echo e($sermao->descricao); ?></p>
-                    <p><a href="<?php echo e($sermao->link); ?>" class="btn btn-primary">Assistir sermão <i class="fa fa-long-arrow-right"></i></a></p>
+                    <p><?php echo e($midia->descricao); ?></p>
+                    <p><a href="<?php echo e($midia->link); ?>" class="btn btn-primary">Assistir sermão <i class="fa fa-long-arrow-right"></i></a></p>
                     </div>
                 </div>
                 </div>
@@ -59,7 +59,7 @@
         </div>
     </div>
     <center>
-        <?php echo e($sermoes->appends(request()->query())->links()); ?>
+        <?php echo e($midias->appends(request()->query())->links()); ?>
 
     </center>
     </div>

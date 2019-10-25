@@ -12,6 +12,16 @@
 <script src="{{asset('template_adm/bower_components/datatables.plugins/buttons.colVis.min.js') }}"></script>
 <script src="{{asset('template_adm/bower_components/datatables.plugins/buttons.bootstrap.min.js') }}"></script>
 
+<!-- fullCalendar -->
+<link rel="stylesheet" href="{{asset('template_adm/bower_components/fullcalendar/dist/fullcalendar.min.css')}}">
+<link rel="stylesheet" href="{{asset('template_adm/bower_components/fullcalendar/dist/fullcalendar.print.min.css')}}" media="print">
+<!-- fullCalendar -->
+<script src="{{asset('template_adm/bower_components/moment/moment.js')}}"></script>
+<script src="{{asset('template_adm/bower_components/fullcalendar/dist/fullcalendar.min.js')}}"></script>
+<script src="{{asset('template_adm/bower_components/fullcalendar/dist/locale/pt-br.js')}}"></script>
+{!! $calendar->script() !!}
+
+<?php /* ?>
 <style>
 td.details-control {
     background: url({{asset('/images/details_open.jpeg')}}) no-repeat center center;
@@ -21,9 +31,10 @@ tr.shown td.details-control {
     background: url({{asset('/images/details_close.jpeg')}}) no-repeat center center;
 }
 </style>
+<?php */ ?>
 
 <script>
-function format ( d ) {
+/*function format ( d ) {
     // `d` is the original data object for the row
     return '<div class=" table-responsive"><table class="table table-bordered">'+
         '<tr>'+
@@ -43,11 +54,11 @@ function format ( d ) {
 
 function valida(txt){
   return (txt ? txt : '<span class="label bg-red">Não informado</span>')
-}
+}*/
 
 $(function(){
 
-    var table = $('#tbl_reunioes').DataTable({
+    /*var table = $('#tbl_reunioes').DataTable({
         'paging'      : true,
         'lengthChange': true,
         'searching'   : true,
@@ -106,8 +117,8 @@ $(function(){
                 { data: 'inicio', name: 'inicio' },
                 { data: 'fim', name: 'fim' },
                 { data: 'action', name: 'action' },
-                ]/*,
-                order: [[1, 'asc']]*/
+                ]
+                //,order: [[1, 'asc']]
     });
 
     // Add event listener for opening and closing details
@@ -125,7 +136,7 @@ $(function(){
             row.child( format(row.data()) ).show();
             tr.addClass('shown');
         }
-    });
+    });*/
 
 });
 
@@ -149,6 +160,10 @@ $(function(){
     <!-- Default box -->
     <div class="box">
     <div class="box-body">
+        {!! $calendar->calendar() !!}
+    </div>
+    <?php /* ?>
+    <div class="box-body">
         <table id="tbl_reunioes" class="table table-bordered table-striped">
         <thead>
         <tr>
@@ -164,9 +179,10 @@ $(function(){
         </tbody>
         </table>
     </div>
+    <?php */ ?>
     <!-- /.box-body -->
     <div class="box-footer">
-        Footer
+        <a href="{{route('usuario.comunidades')}}" class="btn btn-warning pull-left">Voltar</a>
     </div>
     <!-- /.box-footer-->
     </div>

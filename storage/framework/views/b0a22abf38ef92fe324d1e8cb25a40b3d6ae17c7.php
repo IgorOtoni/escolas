@@ -1,8 +1,8 @@
 <?php /* C:\xampp\htdocs\adm_eglise\resources\views\layouts\template1\index.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-<script type="text/javascript" src="<?php echo e(asset('template_igreja/template-padrao/plugins/rs-plugin/js/jquery.themepunch.tools.min.js')); ?>"></script>   
-<script type="text/javascript" src="<?php echo e(asset('template_igreja/template-padrao/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js')); ?>"></script>
+<script type="text/javascript" src="<?php echo e(asset('template_site/template-padrao/plugins/rs-plugin/js/jquery.themepunch.tools.min.js')); ?>"></script>   
+<script type="text/javascript" src="<?php echo e(asset('template_site/template-padrao/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js')); ?>"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         jQuery('.tp-banner').show().revolution(
@@ -78,7 +78,7 @@
     });	//ready
 </script>
 <!-- FlexSlider --> 
-<script src="<?php echo e(asset('template_igreja/template-padrao/plugins/flexslider/js/jquery.flexslider.js')); ?>"></script>
+<script src="<?php echo e(asset('template_site/template-padrao/plugins/flexslider/js/jquery.flexslider.js')); ?>"></script>
 <script>
 $('#modal-noticia').on('hide.bs.modal', function (event) {
     var button = $(event.relatedTarget) ;
@@ -183,7 +183,7 @@ if($banners != null && sizeof($banners)){
             
                         <?php
                         if($banner->link != null){
-                            ?> <a href="<?php echo e(verifica_link($banner->link, $igreja)); ?>"> <?php
+                            ?> <a href="<?php echo e(verifica_link($banner->link, $site)); ?>"> <?php
                         }
                         ?>
                         <!-- LAYER NR. 1 --><!--data-end="3000"-->
@@ -208,7 +208,7 @@ if($banners != null && sizeof($banners)){
                         }
                         
                         if($banner->link != null){
-                            ?> <a href="<?php echo e(verifica_link($banner->link, $igreja)); ?>"> <?php
+                            ?> <a href="<?php echo e(verifica_link($banner->link, $site)); ?>"> <?php
                         }
                         ?>
                         <!-- LAYER NR. 2 --><!--data-end="4000"-->
@@ -279,7 +279,7 @@ if($noticias != null && sizeof($noticias) != 0){
                         <?php /* ?>
                         <h3><a data-publicacao="{{\Carbon\Carbon::parse($noticia->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}" data-atualizacao="{{(($noticia->updated_at != null) ? \Carbon\Carbon::parse($noticia->updated_at)->diffForHumans() : '')}}" data-foto="{{$noticia->foto}}" data-nome="{{$noticia->nome}}" data-descricao="{{$noticia->descricao}}" data-toggle="modal" data-target="#modal-noticia" href="">{{$noticia->nome}}</a></h3>
                         <?php */ ?>
-                        <h3><a href="/<?php echo e($igreja->url); ?>/noticia/<?php echo e($noticia->id); ?>"><?php echo e($noticia->nome); ?></a></h3>
+                        <h3><a href="/<?php echo e($site->url); ?>/noticia/<?php echo e($noticia->id); ?>"><?php echo e($noticia->nome); ?></a></h3>
                         <span class="meta-data"><span><i class="fa fa-calendar"></i> Publicada <?php echo e(\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()); ?></span><!--<span><a href="#"><i class="fa fa-tag"></i>Uncategoried</a></span>--></span>
                         <?php
                         if($noticia->updated_at != null && $noticia->updated_at != $noticia->created_at){

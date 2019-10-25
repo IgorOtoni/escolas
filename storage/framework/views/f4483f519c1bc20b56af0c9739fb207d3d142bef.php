@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/carrinho.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/carrinho.blade.php */ ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -7,7 +7,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<title><?php echo e($igreja->nome); ?></title>
+		<title><?php echo e($site->nome); ?></title>
 
 		<!-- Bootstrap 3.3.7 -->
   		<link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/bootstrap/dist/css/bootstrap.min.css')); ?>">
@@ -62,16 +62,16 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a href="/<?php echo e($igreja->url); ?>" class="navbar-brand"><?php echo e($igreja->nome); ?></a>
+		          <a href="/<?php echo e($site->url); ?>" class="navbar-brand"><?php echo e($site->nome); ?></a>
 		        </div>
 			    <div id="navbar" class="navbar-collapse collapse">
 				    <ul class="nav navbar-nav">
 				        <?php
 				        if(!isset(\Auth::user()->id_perfil)){
 				            ?>
-				            <li><a href="/<?php echo e($igreja->url); ?>/produtos">Produtos</a></li>
-				            <li><a href="/<?php echo e($igreja->url); ?>/carrinho">Carrinho</a></li>
-				            <form data-toggle="validator" method="post" action="<?php echo e(route('autenticar_', $igreja->url)); ?>" class="navbar-form navbar-right">
+				            <li><a href="/<?php echo e($site->url); ?>/produtos">Produtos</a></li>
+				            <li><a href="/<?php echo e($site->url); ?>/carrinho">Carrinho</a></li>
+				            <form data-toggle="validator" method="post" action="<?php echo e(route('autenticar_', $site->url)); ?>" class="navbar-form navbar-right">
 			            	<?php echo csrf_field(); ?>
 					            <div class="form-group">
 					              	<input type="email" placeholder="E-mail" name="email" class="form-control" required>
@@ -80,13 +80,13 @@
 					              	<input type="password" placeholder="Senha" name="password" class="form-control" required>
 					            </div>
 					            <button type="submit" class="btn btn-success">Entrar</button>
-					            <a href="/<?php echo e($igreja->url); ?>/cadastro" class="btn btn-info">Cadastrar</a>
+					            <a href="/<?php echo e($site->url); ?>/cadastro" class="btn btn-info">Cadastrar</a>
 					        </form>
 				            <?php
 				        }else{
 				            ?>
-				            <li><a href="/<?php echo e($igreja->url); ?>/produtos">Produtos</a></li>
-				            <li><a href="/<?php echo e($igreja->url); ?>/carrinho">Carrinho</a></li>
+				            <li><a href="/<?php echo e($site->url); ?>/produtos">Produtos</a></li>
+				            <li><a href="/<?php echo e($site->url); ?>/carrinho">Carrinho</a></li>
 				            <?php
 				        }
 				        ?>
@@ -99,10 +99,10 @@
 				      		<li class="dropdown">
 					      		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Minha conta <span class="caret"></span></a>
 					      		<ul class="dropdown-menu" role="menu">
-						        	<li><a href="/<?php echo e($igreja->url); ?>/compras">Minha compras</a></li>
-						        	<li><a href="/<?php echo e($igreja->url); ?>/conta">Meus dados</a></li>
+						        	<li><a href="/<?php echo e($site->url); ?>/compras">Minha compras</a></li>
+						        	<li><a href="/<?php echo e($site->url); ?>/conta">Meus dados</a></li>
 						        	<li class="divider"></li>
-						        	<li><a href="/<?php echo e($igreja->url); ?>/desativar_conta">Desativar conta</a></li>
+						        	<li><a href="/<?php echo e($site->url); ?>/desativar_conta">Desativar conta</a></li>
 						        	<li class="divider"></li>
 						        	<li><a href="<?php echo e(route('logout')); ?>">Sair</a></li>
 					        	</ul>
@@ -131,13 +131,13 @@
 			          	</div>
 		          	</div>-->
 
-		          	<?php if($igreja->logo != null): ?>
+		          	<?php if($site->logo != null): ?>
 			          	<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
 				          	<div class="sidebar-module sidebar-module-inset">
-					            <!--<h4><?php echo e($igreja->nome); ?></h4>-->
+					            <!--<h4><?php echo e($site->nome); ?></h4>-->
 					            <div class="row">
 									<div class="col-md-12">
-										<img width="100%" class="img-thumbnail" src="<?php echo e(asset('/storage/igrejas/'.$igreja->logo)); ?>">
+										<img width="100%" class="img-thumbnail" src="<?php echo e(asset('/storage/sites/'.$site->logo)); ?>">
 									</div>
 								</div>
 				          	</div>
@@ -151,7 +151,7 @@
 	    	<hr>
 
 	      	<footer>
-		        <p><?php echo e($igreja->nome); ?> - <b> powered by hotsystems</b></p>
+		        <p><?php echo e($site->nome); ?> - <b> powered by hotsystems</b></p>
 	      	</footer>
 
 		</div>

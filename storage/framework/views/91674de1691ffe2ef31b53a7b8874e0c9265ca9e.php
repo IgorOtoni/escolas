@@ -49,9 +49,9 @@ $perfil = \DB::table('tbl_perfis')
   ->where('id','=',$id_perfil)
   ->get();
 $perfil = $perfil[0];
-$igreja = obter_dados_igreja_id($perfil->id_igreja);
+$site = obter_dados_site_id($perfil->id_site);
 ?>
-<body class="hold-transition skin-<?php echo e(($igreja->cor != null) ? $igreja->cor : 'blue'); ?> sidebar-mini">
+<body class="hold-transition skin-<?php echo e(($site->cor != null) ? $site->cor : 'blue'); ?> sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -107,10 +107,10 @@ $igreja = obter_dados_igreja_id($perfil->id_igreja);
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="/storage/<?php echo e(($igreja->logo != null) ? "igrejas/" . $igreja->logo : "no-logo.jpg"); ?>" class="img" alt="User Image">
+          <img src="/storage/<?php echo e(($site->logo != null) ? "sites/" . $site->logo : "no-logo.jpg"); ?>" class="img" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><?php echo e($igreja->nome); ?></p>
+          <p><?php echo e($site->nome); ?></p>
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -120,10 +120,10 @@ $igreja = obter_dados_igreja_id($perfil->id_igreja);
         $id_perfil = \Auth::user()->id_perfil;
 
         $modulos = \DB::table('tbl_modulos')
-            ->select('tbl_modulos.*', 'tbl_igrejas_modulos.icone')
-            ->leftJoin('tbl_igrejas_modulos', 'tbl_modulos.id', '=', 'tbl_igrejas_modulos.id_modulo')
-            ->leftJoin('tbl_perfis_igrejas_modulos', 'tbl_igrejas_modulos.id', '=', 'tbl_perfis_igrejas_modulos.id_modulo_igreja')
-            ->where('tbl_perfis_igrejas_modulos.id_perfil','=',$id_perfil)
+            ->select('tbl_modulos.*', 'tbl_sites_modulos.icone')
+            ->leftJoin('tbl_sites_modulos', 'tbl_modulos.id', '=', 'tbl_sites_modulos.id_modulo')
+            ->leftJoin('tbl_perfis_sites_modulos', 'tbl_sites_modulos.id', '=', 'tbl_perfis_sites_modulos.id_modulo_site')
+            ->where('tbl_perfis_sites_modulos.id_perfil','=',$id_perfil)
             ->where('tbl_modulos.sistema','like','%web%')
             ->where('tbl_modulos.gerencial','=',true)
             ->orderBy('tbl_modulos.nome', 'ASC')

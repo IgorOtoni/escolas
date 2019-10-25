@@ -58,7 +58,7 @@ $(function(){
             <div class="col-md-12">
                 <div class="form-group has-feedback">
             		<select id="produto" name="produto" class="form-control select2" style="width: 100%;" required>
-                        <?php $produtos = App\TblProdutos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $produtos = App\TblProdutos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         @foreach ($produtos as $produto)
                         <option value="{{$produto->id}}" {{$oferta->id_produto == $produto->id ? "selected" : ""}}>{{$produto->nome}}</option>
                         @endforeach

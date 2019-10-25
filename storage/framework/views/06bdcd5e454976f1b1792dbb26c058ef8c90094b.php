@@ -11,8 +11,8 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/<?php echo e($igreja->url); ?>/">Home</a></li>
-        <li><a href="/<?php echo e($igreja->url); ?>/eventosfixos">Eventos fixos</a></li>
+        <li><a href="/<?php echo e($site->url); ?>/">Home</a></li>
+        <li><a href="/<?php echo e($site->url); ?>/eventosfixos">Eventos fixos</a></li>
         <li class="active">Evento fixo</li>
         </ol>
     </div>

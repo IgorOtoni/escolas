@@ -6,7 +6,7 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/<?php echo e($igreja->url); ?>/">Home</a></li>
+        <li><a href="/<?php echo e($site->url); ?>/">Home</a></li>
         <li class="active">Eventos fixos</li>
         </ol>
     </div>
@@ -47,7 +47,7 @@
                         <img src="/storage/no-event.jpg" alt="">
                     <?php } ?>
                     <div class="grid-content">
-                    <h3><a href="/<?php echo e($igreja->url); ?>/eventofixo/<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></a></h3>
+                    <h3><a href="/<?php echo e($site->url); ?>/eventofixo/<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></a></h3>
                     <?php if($evento->descricao != null){ ?> <p><?php echo e($evento->descricao); ?></p> <?php } ?>
                     </div>
                     <ul class="info-table">

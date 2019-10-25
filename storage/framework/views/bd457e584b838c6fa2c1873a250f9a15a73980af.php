@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/usuarios/index.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/usuarios/index.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- Select2 -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/select2/dist/css/select2.min.css')); ?>">
@@ -49,14 +49,14 @@ function format ( d ) {
             '<th>Nome:</th>'+
             '<th>Email:</th>'+
             '<th>Perfil:</th>'+
-            '<th>Igreja:</th>'+
+            '<th>Site:</th>'+
             '<th>Data de criação:</th>'+
             '</tr>'+
         '<tr>'+
             '<td>'+valida(d.nome)+'</td>'+
             '<td>'+valida(d.email)+'</td>'+
             '<td>'+valida(d.perfil)+'</td>'+
-            '<td>'+valida_congregacao(d.igreja)+'</td>'+
+            '<td>'+valida_congregacao(d.site)+'</td>'+
             '<td>'+valida(d.created_at)+'</td>'+
             '</tr>'+
         '</table></div>';
@@ -126,7 +126,7 @@ $(function () {
             { data: 'id', name: 'id' },
             { data: 'nome', name: 'nome' },
             { data: 'perfil', name: 'perfil' },
-            { data: 'igreja', name: 'igreja' },
+            { data: 'site', name: 'site' },
             { data: 'status', name: 'status' },
             { data: 'action', name: 'action' },
           ],
@@ -183,7 +183,7 @@ $(function () {
           <th>#</th>
           <th>Nome</th>
           <th>Perfil</th>
-          <th>Escola</th>
+          <th>Site</th>
           <th>Situação</th>
           <th>Ações</th>
       </tr>
@@ -260,13 +260,13 @@ $(function () {
                         <?php 
                         //$perfis = App\TblPerfil::orderBy('nome','ASC')->get();
                         $perfis = \DB::table('tbl_perfis')
-                            ->select('tbl_perfis.*', 'tbl_igrejas.nome as nome_congregacao')
-                            ->leftJoin('tbl_igrejas','tbl_igrejas.id','=','tbl_perfis.id_igreja')
+                            ->select('tbl_perfis.*', 'tbl_sites.nome as nome_congregacao')
+                            ->leftJoin('tbl_sites','tbl_sites.id','=','tbl_perfis.id_site')
                             ->orderBy('nome', 'ASC')
                             ->get();
                         ?>
                         <?php $__currentLoopData = $perfis; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $perfil): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($perfil->id); ?>"><?php echo e($perfil->nome); ?> - <?php echo e(($perfil->id_igreja == null || $perfil->id_igreja == 1) ? "Administador" : $perfil->nome_congregacao); ?></option>
+                        <option value="<?php echo e($perfil->id); ?>"><?php echo e($perfil->nome); ?> - <?php echo e(($perfil->id_site == null || $perfil->id_site == 1) ? "Administador" : $perfil->nome_congregacao); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                       </select>
                       <div class="help-block with-errors"></div>

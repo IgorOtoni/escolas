@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/usuario/publicacoes.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/usuario/publicacoes.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- InputFilePTBR -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/input.file.js/fileinput.min.css')); ?>">
@@ -201,7 +201,7 @@ $(function () {
 <div class="modal fade" id="modal-incluir">
 <form id="incluirPublicacoesFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.incluirPublicacao')); ?>" enctype="multipart/form-data">
 <?php echo csrf_field(); ?>
-    <input type="hidden" name="igreja" value="<?php echo e($igreja->id); ?>">
+    <input type="hidden" name="site" value="<?php echo e($site->id); ?>">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">

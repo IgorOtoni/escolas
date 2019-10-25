@@ -10,17 +10,17 @@
 	<link href='http://fonts.googleapis.com/css?family=Salsa|Jockey+One' rel='stylesheet' type='text/css'>
     <meta charset="utf-8" />	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title><?php echo strip_tags($igreja->nome) ?></title>
+    <title><?php echo strip_tags($site->nome) ?></title>
 
-    <link rel="stylesheet" href="{{asset('template_igreja/template-azul/css/styles.css')}}" />
-	<link rel="stylesheet" href="{{asset('template_igreja/template-azul/css/camera.css')}}" />
-	<link rel="stylesheet" href="{{asset('template_igreja/template-azul/css/video-js.css')}}" />
-	<link rel="stylesheet" href="{{asset('template_igreja/template-azul/css/prettyPhoto.css')}}" /><!-- HTML5 Shiv -->
-    <link rel="stylesheet" href="{{asset('template_igreja/template-azul/css/flexnav.css')}}" />
-    <script src="{{asset('template_igreja/template-azul/js/modernizr.custom.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('template_site/template-azul/css/styles.css')}}" />
+	<link rel="stylesheet" href="{{asset('template_site/template-azul/css/camera.css')}}" />
+	<link rel="stylesheet" href="{{asset('template_site/template-azul/css/video-js.css')}}" />
+	<link rel="stylesheet" href="{{asset('template_site/template-azul/css/prettyPhoto.css')}}" /><!-- HTML5 Shiv -->
+    <link rel="stylesheet" href="{{asset('template_site/template-azul/css/flexnav.css')}}" />
+    <script src="{{asset('template_site/template-azul/js/modernizr.custom.js')}}"></script>
 
-    <?php if($igreja->custom_style != null){ ?>
-        <style><?php echo $igreja->custom_style ?></style>
+    <?php if($site->custom_style != null){ ?>
+        <style><?php echo $site->custom_style ?></style>
     <?php } ?>
 	
 </head>
@@ -33,15 +33,15 @@
 			<div class="l-page-width clearfix">
 				
 				<ul class="kids_social">
-					<?php if($igreja->youtube != null){ ?><li class="vimeo"><a target="_blank" href="{{$igreja->youtube}}" title="Youtube"></a></li><?php } ?>
-					<?php if($igreja->twitter != null){ ?><li class="twitter"><a target="_blank" href="{{$igreja->twitter}}" title="Twitter"></a></li><?php } ?>
-					<?php if($igreja->facebook != null){ ?><li class="facebook"><a target="_blank" href="{{$igreja->facebook}}" title="Facebook"></a></li><?php } ?>
+					<?php if($site->youtube != null){ ?><li class="vimeo"><a target="_blank" href="{{$site->youtube}}" title="Youtube"></a></li><?php } ?>
+					<?php if($site->twitter != null){ ?><li class="twitter"><a target="_blank" href="{{$site->twitter}}" title="Twitter"></a></li><?php } ?>
+					<?php if($site->facebook != null){ ?><li class="facebook"><a target="_blank" href="{{$site->facebook}}" title="Facebook"></a></li><?php } ?>
 				</ul><!-- .kids_social -->
 				<div class="kids_clear"></div>
 				<div id="kids_logo_block">
-					<a id="kids_logo_text" href="/{{$igreja->url}}" title="Happy Kids">
-						<img style="witdh: 120px; height: 50px;" src="{{asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))}}" alt="" />
-						<h3><?php echo $igreja->nome ?></h3>
+					<a id="kids_logo_text" href="/{{$site->url}}" title="Happy Kids">
+						<img style="witdh: 120px; height: 50px;" src="{{asset('/storage/'.(($site->logo != null) ? 'sites/'.$site->logo : 'no-logo.jpg' ))}}" alt="" />
+						<h3><?php echo $site->nome ?></h3>
 					</a>
 				</div><!--/ #kids_logo_block-->
 			
@@ -54,15 +54,15 @@
 					<ul class="clearfix flexnav" data-breakpoint="800">
 						<?php
 						foreach($menus as $menu){
-							?><li><a href="{{verifica_link($menu->link, $igreja)}}"><?php echo $menu->nome ?></a><?php
+							?><li><a href="{{verifica_link($menu->link, $site)}}"><?php echo $menu->nome ?></a><?php
 								if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
 									<ul class="dropdown">
 										<?php foreach($submenus[$menu->id] as $submenu){
-											?><li><a href="{{verifica_link($submenu->link, $igreja)}}"><?php echo $submenu->nome ?></a><?php
+											?><li><a href="{{verifica_link($submenu->link, $site)}}"><?php echo $submenu->nome ?></a><?php
 											if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
 												<ul class="dropdown">
 													<?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-														?> <li><a href="{{verifica_link($subsubmenu->link, $igreja)}}"><?php echo $subsubmenu->nome ?></a></li> <?php
+														?> <li><a href="{{verifica_link($subsubmenu->link, $site)}}"><?php echo $subsubmenu->nome ?></a></li> <?php
 													} ?>
 												</ul>
 											<?php
@@ -92,7 +92,7 @@
 
 		<div class="l-page-width clearfix">
 					
-			<h3 class="widget-title"><?php echo strip_tags($igreja->nome) ?> - <b> powered by hotsystems</b></h3>
+			<h3 class="widget-title"><?php echo strip_tags($site->nome) ?> - <b> powered by hotsystems</b></h3>
 
 		</div><!--/ l-page-width-->
 
@@ -100,23 +100,23 @@
     
     @stack('script')
 
-    <script src="{{asset('template_igreja/template-azul/js/jquery.js')}}"></script>
+    <script src="{{asset('template_site/template-azul/js/jquery.js')}}"></script>
     <!--[if lt IE 9]>
       <script src="js/selectivizr-and-extra-selectors.min.js"></script>
     <![endif]-->
-	<script src="{{asset('template_igreja/template-azul/js/jquery-ui-1.8.16.custom.min.js')}}"></script>
-    <script src="{{asset('template_igreja/template-azul/js/jquery.easing-1.3.min.js')}}"></script>
-    <script src="{{asset('template_igreja/template-azul/js/camera.min.js')}}"></script>
-    <script src="{{asset('template_igreja/template-azul/js/jquery.jcarousel.min.js')}}"></script>
-    <script src="{{asset('template_igreja/template-azul/js/video.js')}}"></script>
-    <script src="{{asset('template_igreja/template-azul/js/jquery.flexnav.min.js')}}"></script>
-    <script src="{{asset('template_igreja/template-azul/js/jquery.prettyPhoto.js')}}"></script>
-	<script src="{{asset('template_igreja/template-azul/js/scripts.js')}}"></script>
+	<script src="{{asset('template_site/template-azul/js/jquery-ui-1.8.16.custom.min.js')}}"></script>
+    <script src="{{asset('template_site/template-azul/js/jquery.easing-1.3.min.js')}}"></script>
+    <script src="{{asset('template_site/template-azul/js/camera.min.js')}}"></script>
+    <script src="{{asset('template_site/template-azul/js/jquery.jcarousel.min.js')}}"></script>
+    <script src="{{asset('template_site/template-azul/js/video.js')}}"></script>
+    <script src="{{asset('template_site/template-azul/js/jquery.flexnav.min.js')}}"></script>
+    <script src="{{asset('template_site/template-azul/js/jquery.prettyPhoto.js')}}"></script>
+	<script src="{{asset('template_site/template-azul/js/scripts.js')}}"></script>
 	<script>
 	    $(document).ready(function () {
 	        url = window.location.href;
 	        $('li a').each(function(index) {
-	          if(($(this).attr('href') === url || url.indexOf($(this).attr('href')) >= 0) && $(this).attr('href') !== '/{{$igreja->url}}'){
+	          if(($(this).attr('href') === url || url.indexOf($(this).attr('href')) >= 0) && $(this).attr('href') !== '/{{$site->url}}'){
 	            $(this).parent().addClass('current-menu-item');
 	          }
 	        });

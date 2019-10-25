@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/template8banner.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/template8banner.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <?php echo $__env->yieldPushContent('script-x'); ?>
 <?php $__env->stopPush(); ?>
@@ -16,9 +16,9 @@
                     <div class="content_wrap clearfix">
 						<!-- Logo -->
                         <div class="logo">
-                            <a href="/<?php echo e($igreja->url); ?>">
-								<img style="width: 125px; height: 80px;" src="<?php echo e(asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))); ?>" class="logo_main" alt="">
-								<img style="width: 105px; height: 80px;" src="<?php echo e(asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))); ?>" class="logo_fixed" alt="">
+                            <a href="/<?php echo e($site->url); ?>">
+								<img style="width: 125px; height: 80px;" src="<?php echo e(asset('/storage/'.(($site->logo != null) ? 'sites/'.$site->logo : 'no-logo.jpg' ))); ?>" class="logo_main" alt="">
+								<img style="width: 105px; height: 80px;" src="<?php echo e(asset('/storage/'.(($site->logo != null) ? 'sites/'.$site->logo : 'no-logo.jpg' ))); ?>" class="logo_fixed" alt="">
 							</a>
                         </div>
 						<!-- Logo -->
@@ -29,15 +29,15 @@
 							<ul id="menu_main" class="menu_main_nav">
 								<?php
 								foreach($menus as $menu){
-									?><li class="menu-item menu-item-has-children"><a href="<?php echo e(verifica_link($menu->link, $igreja)); ?>"><?php echo e($menu->nome); ?></a><?php
+									?><li class="menu-item menu-item-has-children"><a href="<?php echo e(verifica_link($menu->link, $site)); ?>"><?php echo e($menu->nome); ?></a><?php
 										if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
 											<ul class="sub-menu">
 												<?php foreach($submenus[$menu->id] as $submenu){
-													?><li class="menu-item menu-item-has-children"><a href="<?php echo e(verifica_link($submenu->link, $igreja)); ?>"><?php echo e($submenu->nome); ?></a><?php
+													?><li class="menu-item menu-item-has-children"><a href="<?php echo e(verifica_link($submenu->link, $site)); ?>"><?php echo e($submenu->nome); ?></a><?php
 													if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
 														<ul class="sub-menu">
 															<?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-																?> <li><a href="<?php echo e(verifica_link($subsubmenu->link, $igreja)); ?>"><?php echo e($subsubmenu->nome); ?></a></li> <?php
+																?> <li><a href="<?php echo e(verifica_link($subsubmenu->link, $site)); ?>"><?php echo e($subsubmenu->nome); ?></a></li> <?php
 															} ?>
 														</ul>
 													<?php
@@ -81,7 +81,7 @@
 			<!-- Copyright -->
             <div class="copyright_wrap">
                 <div class="content_wrap">
-                    <p>© <?php echo e($igreja->nome); ?> - <b> powered by hotsystems</b></p>
+                    <p>© <?php echo e($site->nome); ?> - <b> powered by hotsystems</b></p>
                 </div>
             </div>
 			<!-- /Copyright -->

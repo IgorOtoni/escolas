@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/exemplo2.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/exemplo2.blade.php */ ?>
 <?php
 use App\Libs\Canvas;
 if($pasta == "X")

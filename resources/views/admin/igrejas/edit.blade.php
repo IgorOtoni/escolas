@@ -30,7 +30,7 @@ function switch_status(comp){
   var id = $(comp).prop('id');
   var nome = $(comp).prop('name');
   $.ajax({
-    url: '{{route('igrejas.switchStatus',['id'=>''])}}/'+id,
+    url: '{{route('sites.switchStatus',['id'=>''])}}/'+id,
     type: 'GET'
   });
   if($(comp).prop('checked') == true){
@@ -50,18 +50,18 @@ $(function () {
       //minImageCount: 0,
       //maxImageCount: 1,
       allowedFileExtensions: ["jpeg", "jpg", "png", "gif"],
-      <?php if($igreja->logo != null){ ?>
+      <?php if($site->logo != null){ ?>
       initialPreview: [
-        "{{'data:image;base64,'.base64_encode($igreja->logo)}}",
+        "{{'data:image;base64,'.base64_encode($site->logo)}}",
       ],
       <?php } ?>
       deleteUrl: "{{'/storage'}}",
       uploadExtraData:{'_token':$("#csrf_token").val()},
       initialPreviewAsData: true,
       //initialPreviewFileType: "image",
-      <?php if($igreja->logo != null){ ?>
+      <?php if($site->logo != null){ ?>
       initialPreviewConfig: [
-        {caption: "{{$igreja->logo}}", extra: {id: {{$igreja->id}}, logo: "{{$igreja->logo}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "{{route('igrejas.excluirLogo')}}", key: 1},
+        {caption: "{{$site->logo}}", extra: {id: {{$site->id}}, logo: "{{$site->logo}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "{{route('sites.excluirLogo')}}", key: 1},
       ],
       <?php } ?>
       //overwriteInitial: false,
@@ -128,7 +128,7 @@ $(function () {
     });
   });
 
-  $('#incluirIgrejaFormulario').validator({
+  $('#incluirSiteFormulario').validator({
     update: true,
     ignore: [],       
     rules: {
@@ -149,7 +149,7 @@ $(function () {
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Editar escola
+        Editar site
         <!--<small>it all starts here</small>-->
       </h1>
     </section>
@@ -157,16 +157,16 @@ $(function () {
     <!-- Main content -->
     <section class="content">
 
-      <form id="editarIgrejaFormulario" data-toggle="validator" method="POST" role="form" action="{{route('igrejas.atualizar')}}" enctype="multipart/form-data">
+      <form id="editarSiteFormulario" data-toggle="validator" method="POST" role="form" action="{{route('sites.atualizar')}}" enctype="multipart/form-data">
         @csrf
-        <input type="hidden" name="id" value="{{$igreja->id}}">
+        <input type="hidden" name="id" value="{{$site->id}}">
         <div class="box">
           <div class="box-body">
             <div class="row">
               <div class="col-md-12">
                   <div class="form-group has-feedback">
                     <label >Nome</label>
-                    <input name="nome" type="text" class="form-control" placeholder="Nome" value="{{$igreja->nome}}" required>
+                    <input name="nome" type="text" class="form-control" placeholder="Nome" value="{{$site->nome}}" required>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     <div class="help-block with-errors"></div>
                   </div>
@@ -174,7 +174,7 @@ $(function () {
               <div class="col-md-4">
                   <div class="form-group has-feedback">
                       <label >CEP</label>
-                      <input id="cep" name="cep" type="text" class="form-control" placeholder="CEP" data-inputmask='"mask": "99.999-999"' value="{{$igreja->cep}}" data-mask required>
+                      <input id="cep" name="cep" type="text" class="form-control" placeholder="CEP" data-inputmask='"mask": "99.999-999"' value="{{$site->cep}}" data-mask required>
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -182,7 +182,7 @@ $(function () {
               <div class="col-md-4">
                   <div class="form-group has-feedback">
                       <label >Estado</label>
-                      <input id="uf" name="estado" type="text" class="form-control" placeholder="Estado" value="{{$igreja->estado}}" required>
+                      <input id="uf" name="estado" type="text" class="form-control" placeholder="Estado" value="{{$site->estado}}" required>
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -190,7 +190,7 @@ $(function () {
               <div class="col-md-4">
                   <div class="form-group has-feedback">
                       <label >Cidade</label>
-                      <input id="cidade" name="cidade" type="text" class="form-control" placeholder="Cidade" value="{{$igreja->cidade}}" required>
+                      <input id="cidade" name="cidade" type="text" class="form-control" placeholder="Cidade" value="{{$site->cidade}}" required>
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -198,7 +198,7 @@ $(function () {
               <div class="col-md-4">
                   <div class="form-group has-feedback">
                       <label >Bairro</label>
-                      <input id="bairro" name="bairro" type="text" class="form-control" placeholder="Bairro" value="{{$igreja->bairro}}" required>
+                      <input id="bairro" name="bairro" type="text" class="form-control" placeholder="Bairro" value="{{$site->bairro}}" required>
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -206,7 +206,7 @@ $(function () {
               <div class="col-md-4">
                   <div class="form-group has-feedback">
                       <label >Rua</label>
-                      <input id="rua" name="rua" type="text" class="form-control" placeholder="Rua" value="{{$igreja->rua}}" required>
+                      <input id="rua" name="rua" type="text" class="form-control" placeholder="Rua" value="{{$site->rua}}" required>
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -214,13 +214,13 @@ $(function () {
               <div class="col-md-8">
                   <div class="form-group">
                       <label >Complemento</label>
-                      <input name="complemento" type="text" class="form-control" placeholder="Complemento" value="{{$igreja->complemento}}">
+                      <input name="complemento" type="text" class="form-control" placeholder="Complemento" value="{{$site->complemento}}">
                   </div>
               </div>
               <div class="col-md-4">
                   <div class="form-group has-feedback">
                       <label >Número</label>
-                      <input name="num" type="number" class="form-control" placeholder="Número" value="{{$igreja->num}}" required>
+                      <input name="num" type="number" class="form-control" placeholder="Número" value="{{$site->num}}" required>
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -228,7 +228,7 @@ $(function () {
               <div class="col-md-4">
                   <div class="form-group has-feedback">
                       <label >Telefone</label>
-                      <input name="telefone" type="text" class="form-control" placeholder="Telefone" data-inputmask='"mask": "(99) 99999-9999"' data-mask value="{{$igreja->telefone}}">
+                      <input name="telefone" type="text" class="form-control" placeholder="Telefone" data-inputmask='"mask": "(99) 99999-9999"' data-mask value="{{$site->telefone}}">
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -236,7 +236,7 @@ $(function () {
               <div class="col-md-8">
                   <div class="form-group has-feedback">
                       <label >Email</label>
-                      <input name="email" type="text" class="form-control" placeholder="Email" value="{{$igreja->email}}" required>
+                      <input name="email" type="text" class="form-control" placeholder="Email" value="{{$site->email}}" required>
                       <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <div class="help-block with-errors"></div>
                   </div>
@@ -262,8 +262,8 @@ $(function () {
                     <?php $modulos = App\TblModulo::orderBy('nome','ASC')->get();
                     foreach ($modulos as $modulo){
                       $achou = false;
-                      foreach ($modulos_igreja as $modulo_igreja){
-                        if($modulo_igreja->id_modulo == $modulo->id){
+                      foreach ($modulos_site as $modulo_site){
+                        if($modulo_site->id_modulo == $modulo->id){
                           ?>
                           <option value="{{$modulo->id}}" selected>{{$modulo->nome}} - {{$modulo->sistema}} - {{($modulo->gerencial) ? 'Gerencial' : 'Apresentativo'}}</option>
                           <?php
@@ -286,7 +286,7 @@ $(function () {
 
           </div>
           <div class="box-footer">
-            <a href="{{route('igrejas')}}" class="btn btn-warning pull-left">Cancelar</a>
+            <a href="{{route('sites')}}" class="btn btn-warning pull-left">Cancelar</a>
             <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
           </div>
         </div>

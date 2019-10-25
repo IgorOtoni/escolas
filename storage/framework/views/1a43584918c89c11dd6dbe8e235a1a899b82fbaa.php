@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/carrinho/compraFinalizada.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/carrinho/compraFinalizada.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>

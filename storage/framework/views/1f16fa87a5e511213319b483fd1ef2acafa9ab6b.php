@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/template3/galeria.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/template3/galeria.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <script>
 $('#modal-galeria').on('hide.bs.modal', function (event) {

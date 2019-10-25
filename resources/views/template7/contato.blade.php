@@ -31,12 +31,12 @@
 					</div>
 					<div class="address__inner">
 						<h2>Endereço</h2>
-						<p>Cidade: {{$igreja->cidade}} - {{$igreja->estado}}, bairro: {{$igreja->bairro}}, rua: {{$igreja->rua}}, {{$igreja->num}}</p>
+						<p>Cidade: {{$site->cidade}} - {{$site->estado}}, bairro: {{$site->bairro}}, rua: {{$site->rua}}, {{$site->num}}</p>
 					</div>
 				</div>
 			</div>
 			<!-- End Single Address -->
-			@if($igreja->telefone != null)
+			@if($site->telefone != null)
 				<!-- Start Single Address -->
 				<div class="col-md-6 col-sm-6 col-12 col-lg-4 xs-mt-60">
 					<div class="address phone">
@@ -45,13 +45,13 @@
 						</div>
 						<div class="address__inner">
 							<h2>Telefone</h2>
-							<p>{{ $igreja->telefone }}</p>
+							<p>{{ $site->telefone }}</p>
 						</div>
 					</div>
 				</div>
 				<!-- End Single Address -->
 			@endif
-			@if($igreja->email != null)
+			@if($site->email != null)
 				<!-- Start Single Address -->
 				<div class="col-md-6 col-sm-6 col-12 col-lg-4 md-mt-60 sm-mt-60">
 					<div class="address email">
@@ -60,7 +60,7 @@
 						</div>
 						<div class="address__inner">
 							<h2>Email</h2>
-							<p>{{ $igreja->email }}</p>
+							<p>{{ $site->email }}</p>
 						</div>
 					</div>
 				</div>
@@ -83,7 +83,7 @@
 		<div class="row mt--80">
 			<div class="col-lg-12">
 			<div class="contact-form-wrap">
-                    <form id="contact-form" action="/{{$igreja->url}}/enviaContato" method="get">
+                    <form id="contact-form" action="/{{$site->url}}/enviaContato" method="get">
                         <div class="single-contact-form name">
                             <input type="text" name="nome" placeholder="Nome" required>
                             <input type="email" name="email" placeholder="Email" required>
@@ -111,7 +111,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="google__map">
-					<iframe width="100%" height="500px" src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($igreja->cep)}}&amp;t=m&amp;z=14&amp;output=embed"></iframe>
+					<iframe width="100%" height="500px" src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($site->cep)}}&amp;t=m&amp;z=14&amp;output=embed"></iframe>
 				</div>
 			</div>
 		</div>

@@ -31,7 +31,7 @@
                                 {{$eventofixo->descricao}}
                             </p>
                             <footer class="aligncenter">
-                                <a href="/{{$igreja->url}}/eventofixo/{{$eventofixo->id}}" class="button button-centering medium button-style1">Detalhes</a>
+                                <a href="/{{$site->url}}/eventofixo/{{$eventofixo->id}}" class="button button-centering medium button-style1">Detalhes</a>
                             </footer>
                         </li>
 

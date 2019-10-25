@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template4/sermaodetalhado.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template4/midiadetalhado.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -27,18 +27,18 @@
 
 								<div class="post-title">
 
-									<h1><a href="<?php echo e($sermao->link); ?>"><?php echo e($sermao->nome); ?><a></h1>
+									<h1><a href="<?php echo e($midia->link); ?>"><?php echo e($midia->nome); ?><a></h1>
 								</div><!--/ post-title-->
 
 								<div class="border-shadow">
 									<figure>
-										<iframe width="544" height="255" frameborder="0" src="<?php echo e($sermao->link); ?>"></iframe>
+										<iframe width="544" height="255" frameborder="0" src="<?php echo e($midia->link); ?>"></iframe>
 									</figure>
 								</div><!--/ post-thumb-->
 
 								<div class="entry">
                                     <p>
-                                    	<?php echo e($sermao->descricao); ?>
+                                    	<?php echo e($midia->descricao); ?>
 
                                     </p>
 								</div><!--/ entry--> 
@@ -47,7 +47,7 @@
 
 							<div class="post-footer clearfix">
 
-								Adicionado em <?php echo e(\Carbon\Carbon::parse($sermao->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')); ?>
+								Adicionado em <?php echo e(\Carbon\Carbon::parse($midia->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')); ?>
 
 
 							</div><!--/ post-footer-->

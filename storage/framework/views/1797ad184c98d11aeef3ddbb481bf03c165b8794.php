@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template6/eventos.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template6/eventos.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -18,13 +18,13 @@
                                 	<img src="<?php echo e(($evento->foto != null) ? '/carrega_imagem/330,206,eventos,'.$evento->foto : '/carrega_imagem/330,206,X,no-event.jpg'); ?>" alt="">
                                 </a>
                                 <div class="grid-content">
-                                	<h3><a href="/<?php echo e($igreja->url); ?>/eventos/<?php echo e($evento->id); ?>" class="event-title"><?php echo e($evento->nome); ?></a></h3>
+                                	<h3><a href="/<?php echo e($site->url); ?>/eventos/<?php echo e($evento->id); ?>" class="event-title"><?php echo e($evento->nome); ?></a></h3>
                                 	<span class="meta-data"><i class="fa fa-calendar"></i> Incício: <?php echo e(\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YY h:mm A')); ?></span>
                                 	<span class="meta-data"><i class="fa fa-calendar"></i> Fim: <?php echo e(\Carbon\Carbon::parse($evento->dados_horario_fim, 'UTC')->isoFormat('Do MMMM YY h:mm A')); ?></span>
                                     <span class="meta-data event-location-address"> <i class="fa fa-map-marker"></i> <?php echo e($evento->dados_local); ?></span>
                                 </div>
                                 <div class="grid-footer clearfix">
-                            		<a href="/<?php echo e($igreja->url); ?>/eventos/<?php echo e($evento->id); ?>" class="pull-right btn btn-primary btn-sm">Detalhes</a>
+                            		<a href="/<?php echo e($site->url); ?>/eventos/<?php echo e($evento->id); ?>" class="pull-right btn btn-primary btn-sm">Detalhes</a>
                                 </div>
                             </div>
                         </li>

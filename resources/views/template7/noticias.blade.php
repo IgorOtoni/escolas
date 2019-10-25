@@ -39,7 +39,7 @@
 							<span>Publicada {{\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()}}</span>
 						</div>
 						<div class="blog__thumb">
-							<a href="/{{ $igreja->url }}/noticia/{{ $noticia->id }}">
+							<a href="/{{ $site->url }}/noticia/{{ $noticia->id }}">
 								<img width="370" height="215" src="{{($noticia->foto != null) ? '/storage/noticias/'.$noticia->foto : '/storage/no-news.jpg'}}" alt="blog images">
 							</a>
 						</div>
@@ -54,7 +54,7 @@
 							<h4><a href="blog-details.html">{{ $noticia->nome }}</a></h4>
 							<p>{{ $noticia->descricao }}</p>
 							<ul class="blog__meta d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
-								<li><a href="/{{ $igreja->url }}/noticia/{{ $noticia->id }}">Detalhes</a></li>
+								<li><a href="/{{ $site->url }}/noticia/{{ $noticia->id }}">Detalhes</a></li>
 							</ul>
 						</div>
 					</article>

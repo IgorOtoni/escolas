@@ -22,7 +22,7 @@ $(function(){
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
+        <li><a href="{{route('site.index',['url'=>$site->url])}}">Home</a></li>
         <li class="active">Contato</li>
         </ol>
     </div>
@@ -51,20 +51,20 @@ $(function(){
                     <h2 class="post-title">Nossos contatos</h2>
                 </header>
                 <div class="post-content">
-                    <p>Email: <?php if($igreja->email != null){ echo $igreja->email; }else{ ?> <span class="label label-danger">Não informado</span> <?php } ?> </p>
-                    <p>Telefone: <?php if($igreja->telefone != null){ echo $igreja->telefone; }else{ ?> <span class="label label-danger">Não informado</span> <?php } ?> </p>
+                    <p>Email: <?php if($site->email != null){ echo $site->email; }else{ ?> <span class="label label-danger">Não informado</span> <?php } ?> </p>
+                    <p>Telefone: <?php if($site->telefone != null){ echo $site->telefone; }else{ ?> <span class="label label-danger">Não informado</span> <?php } ?> </p>
                 </div>
                 <header class="single-post-header clearfix">
                     <h2 class="post-title">Nossa localização</h2>
                 </header>
                     <div class="post-content">
-                    <p>Cidade: {{$igreja->cidade}} - {{$igreja->estado}}, bairro: {{$igreja->bairro}}, rua: {{$igreja->rua}}, {{$igreja->num}}</p>
+                    <p>Cidade: {{$site->cidade}} - {{$site->estado}}, bairro: {{$site->bairro}}, rua: {{$site->rua}}, {{$site->num}}</p>
                     <div id="gmap">
-                    <iframe src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($igreja->cep)}}&amp;t=m&amp;z=14&amp;output=embed"></iframe>
+                    <iframe src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($site->cep)}}&amp;t=m&amp;z=14&amp;output=embed"></iframe>
                     </div>
                     <div class="row">
                     <h2>Envie uma mensagem</h2>
-                    <form method="get" data-toggle="validator" id="contactform" name="contactform" action="{{route('igreja.enviaContato',['url'=>$igreja->url])}}">
+                    <form method="get" data-toggle="validator" id="contactform" name="contactform" action="{{route('site.enviaContato',['url'=>$site->url])}}">
                         @csrf
                         <div class="col-md-6 margin-15">
                         <div class="form-group has-feedback">

@@ -1,10 +1,10 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/termoCompromisso.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/termoCompromisso.blade.php */ ?>
 <?php
 use App\Libs\html2pdf\HTML2PDF;
 
-$content = "<h1 style='text-align: center;'>Termos de compromisso site Escolar</h1>"
+$content = "<h1 style='text-align: center;'>Termos de compromisso site Siter</h1>"
     ."<p>Este instrumento constitui um contrato firmado entre "
-    ."<b>Escola ".$nome.", C.N.P.J. ".$cnpj
+    ."<b>Site ".$nome.", C.N.P.J. ".$cnpj
     ."</b>, sediada à ".$cep."/".$rua.", nº ".$num
     .", doravante designada apenas como LICENCIADO, e "  
     ."HotSystems Soluções em TI Ltda, C.N.P.J. 13.120.361/0001-13, sediada à Rua 8 de Novembro, 11, lj 2, Centro Norte, Timóteo - MG, doravante designada como HotSystems.</p>"

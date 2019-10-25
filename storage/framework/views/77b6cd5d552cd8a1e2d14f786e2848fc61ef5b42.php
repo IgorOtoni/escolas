@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template5/sermaodetalhado.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template5/midiadetalhado.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <div id="intro">
     <div class="wrap">
@@ -14,16 +14,16 @@
         <div class="c-12 divider">
             <div class="post-list">
                 <div class="post">
-                    <h2 class="title"><?php echo e($sermao->nome); ?></h2>
+                    <h2 class="title"><?php echo e($midia->nome); ?></h2>
                     <p class="meta">
-                        <span>Adicionado: <a class="date" title="" href="#"> <?php echo e(\Carbon\Carbon::parse($sermao->created_at)->diffForHumans()); ?></a></span>
+                        <span>Adicionado: <a class="date" title="" href="#"> <?php echo e(\Carbon\Carbon::parse($midia->created_at)->diffForHumans()); ?></a></span>
                     </p>
                     <p class="image"> 
-                        <a href="<?php echo e($sermao->link); ?>" class="image" rel="example_group">
-	                    	<iframe frameborder="0" width="800" height="400" src="<?php echo e($sermao->link); ?>"></iframe>
+                        <a href="<?php echo e($midia->link); ?>" class="image" rel="example_group">
+	                    	<iframe frameborder="0" width="800" height="400" src="<?php echo e($midia->link); ?>"></iframe>
                     	</a>
                     </p>
-                    <p><?php echo e($sermao->descricao); ?></p>
+                    <p><?php echo e($midia->descricao); ?></p>
                 </div>
             </div>
         </div>

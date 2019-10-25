@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/template1/noticiadetalhada.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/template1/noticiadetalhada.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <script>
 
@@ -12,8 +12,8 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/<?php echo e($igreja->url); ?>/">Home</a></li>
-        <li><a href="/<?php echo e($igreja->url); ?>/noticias">Notícias</a></li>
+        <li><a href="/<?php echo e($site->url); ?>/">Home</a></li>
+        <li><a href="/<?php echo e($site->url); ?>/noticias">Notícias</a></li>
         <li class="active">Notícia</li>
         </ol>
     </div>

@@ -1,16 +1,16 @@
 <?php
 use App\Libs\html2pdf\HTML2PDF;
 
-$content = "<h1 style='text-align: center;'>Termos de compromisso site Escolar</h1>"
+$content = "<h1 style='text-align: center;'>Termos de compromisso site Siter</h1>"
     ."<p>Este instrumento constitui um contrato firmado entre "
-    ."<b>Escola ".$nome.", C.N.P.J. ".$cnpj
+    ."<b>Site ".$nome.", C.N.P.J. ".$cnpj
     ."</b>, sediada à ".$cep."/".$rua.", nº ".$num
     .", doravante designada apenas como LICENCIADO, e "  
     ."<b>HotSystems Soluções em TI Ltda</b>, C.N.P.J. 13.120.361/0001-13, sediada à Rua 8 de Novembro, 11, lj 2, Centro Norte, Timóteo - MG, doravante designada como HotSystems.</p>"
     ."<h3>I - DOS OBJETIVOS:</h3>"
-    ."<p>O objetivo do presente instrumento é a contratação da utilização pelo LICENCIADO do Site Escolar hospedado em nossos servidores, bem como os serviços de manutenção e suporte a ele associados.</p>"
+    ."<p>O objetivo do presente instrumento é a contratação da utilização pelo LICENCIADO do Site Siter hospedado em nossos servidores, bem como os serviços de manutenção e suporte a ele associados.</p>"
     ."<h3>II - DA EXECUÇÃO DOS SERVIÇOS:</h3>"
-    ."<p>Mediante o presente instrumento, o LICENCIADO obtém da HotSystems o direito de utilizar o Site Escolar com as funcionalidades nele implementadas bem como obter a execução do seguinte escopo de serviços:</p>"
+    ."<p>Mediante o presente instrumento, o LICENCIADO obtém da HotSystems o direito de utilizar o Site Siter com as funcionalidades nele implementadas bem como obter a execução do seguinte escopo de serviços:</p>"
     ."<ol type='A'>"
     ."<li>A disponibilização da infraestrutura (servidor, rede, banco de dados, espaço de armazenamento em nuvem, utilizados em conexão via Internet) para processamento do sistema;</li>"
     ."<li>A realização de cópias de segurança (backups diários) dos dados;</li>"

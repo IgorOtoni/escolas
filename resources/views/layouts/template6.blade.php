@@ -4,7 +4,7 @@
 <!-- Basic Page Needs
   ================================================== -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title><?php echo strip_tags($igreja->nome) ?></title>
+<title><?php echo strip_tags($site->nome) ?></title>
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
@@ -14,21 +14,21 @@
 <meta name="format-detection" content="telephone=no">
 <!-- CSS
   ================================================== -->
-<link href="{{asset('template_igreja/template-branco/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('template_igreja/template-branco/css/bootstrap-theme.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('template_igreja/template-branco/css/style.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('template_igreja/template-branco/vendor/prettyphoto/css/prettyPhoto.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('template_igreja/template-branco/vendor/mediaelement/mediaelementplayer.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('template_site/template-branco/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('template_site/template-branco/css/bootstrap-theme.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('template_site/template-branco/css/style.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('template_site/template-branco/vendor/prettyphoto/css/prettyPhoto.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('template_site/template-branco/vendor/mediaelement/mediaelementplayer.css')}}" rel="stylesheet" type="text/css">
 <!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="css/ie.css" media="screen" /><![endif]-->
-<link href="{{asset('template_igreja/template-branco/css/custom.css')}}" rel="stylesheet" type="text/css"><!-- CUSTOM STYLESHEET FOR STYLING -->
+<link href="{{asset('template_site/template-branco/css/custom.css')}}" rel="stylesheet" type="text/css"><!-- CUSTOM STYLESHEET FOR STYLING -->
 <!-- Color Style -->
-<link href="{{asset('template_igreja/template-branco/colors/color1.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('template_site/template-branco/colors/color1.css')}}" rel="stylesheet" type="text/css">
 <!-- SCRIPTS
   ================================================== -->
-<script src="{{asset('template_igreja/template-branco/js/modernizr.js')}}"></script><!-- Modernizr -->
+<script src="{{asset('template_site/template-branco/js/modernizr.js')}}"></script><!-- Modernizr -->
 
-<?php if($igreja->custom_style != null){ ?>
-    <style><?php echo $igreja->custom_style ?></style>
+<?php if($site->custom_style != null){ ?>
+    <style><?php echo $site->custom_style ?></style>
 <?php } ?>
 
 </head>
@@ -42,9 +42,9 @@
     	<div class="container for-navi">
         	<div class="site-logo">
             <h1>
-                <a href="/{{$igreja->url}}">
-                    <img style="witdh: 120px; height: 50px;" src="{{asset('/storage/'.(($igreja->logo != null) ? 'igrejas/'.$igreja->logo : 'no-logo.jpg' ))}}" alt="" />
-                    <span class="logo-text"><span>{{$igreja->nome}}</span></span>
+                <a href="/{{$site->url}}">
+                    <img style="witdh: 120px; height: 50px;" src="{{asset('/storage/'.(($site->logo != null) ? 'sites/'.$site->logo : 'no-logo.jpg' ))}}" alt="" />
+                    <span class="logo-text"><span>{{$site->nome}}</span></span>
                     <span class="logo-tagline"></span>
                 </a>
             </h1>
@@ -54,15 +54,15 @@
                 <ul class="sf-menu">
                     <?php
                     foreach($menus as $menu){
-                        ?><li><a href="{{verifica_link($menu->link, $igreja)}}"><?php echo $menu->nome ?></a><?php
+                        ?><li><a href="{{verifica_link($menu->link, $site)}}"><?php echo $menu->nome ?></a><?php
                             if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
                                 <ul class="dropdown">
                                     <?php foreach($submenus[$menu->id] as $submenu){
-                                        ?><li><a href="{{verifica_link($submenu->link, $igreja)}}"><?php echo $submenu->nome ?></a><?php
+                                        ?><li><a href="{{verifica_link($submenu->link, $site)}}"><?php echo $submenu->nome ?></a><?php
                                         if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
                                             <ul class="dropdown">
                                                 <?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-                                                    ?> <li><a href="{{verifica_link($subsubmenu->link, $igreja)}}"><?php echo $subsubmenu->nome ?></a></li> <?php
+                                                    ?> <li><a href="{{verifica_link($subsubmenu->link, $site)}}"><?php echo $subsubmenu->nome ?></a></li> <?php
                                                 } ?>
                                             </ul>
                                         <?php
@@ -92,19 +92,19 @@
         		<div class="site-footer-bottom">
             		<div class="row">
                 		<div class="col-md-6 col-sm-6 copyrights-coll">
-        					<?php echo strip_tags($igreja->nome) ?> - <b> powered by hotsystems</b>
+        					<?php echo strip_tags($site->nome) ?> - <b> powered by hotsystems</b>
             			</div>
                 		<div class="col-md-6 col-sm-6 copyrights-colr">
         					<nav class="footer-nav" role="navigation">
                         		<ul>
-                                    <?php if($igreja->twitter != null){ ?>
-                                        <li><a href="{{$igreja->twitter}}" title="Twitter">Twitter</a></li>
+                                    <?php if($site->twitter != null){ ?>
+                                        <li><a href="{{$site->twitter}}" title="Twitter">Twitter</a></li>
                                     <?php } ?>
-                                    <?php if($igreja->facebook != null){ ?>
-                                        <li><a href="{{$igreja->facebook}}" title="Facebook">Facebook</a></li>
+                                    <?php if($site->facebook != null){ ?>
+                                        <li><a href="{{$site->facebook}}" title="Facebook">Facebook</a></li>
                                     <?php } ?>
-                                    <?php if($igreja->youtube != null){ ?>
-                                        <li><a href="{{$igreja->youtube}}" title="Youtube">Youtube</a></li>
+                                    <?php if($site->youtube != null){ ?>
+                                        <li><a href="{{$site->youtube}}" title="Youtube">Youtube</a></li>
                                     <?php } ?>
                             	</ul>
                         	</nav>
@@ -231,14 +231,14 @@
         </div>
    	</div>
 </div>
-<script src="{{asset('template_igreja/template-branco/js/jquery-2.0.0.min.js')}}"></script> <!-- Jquery Library Call -->
-<script src="{{asset('template_igreja/template-branco/vendor/prettyphoto/js/prettyphoto.js')}}"></script> <!-- PrettyPhoto Plugin -->
-<script src="{{asset('template_igreja/template-branco/js/helper-plugins.js')}}"></script> <!-- Helper Plugins -->
-<script src="{{asset('template_igreja/template-branco/js/bootstrap.js')}}"></script> <!-- UI -->
-<script src="{{asset('template_igreja/template-branco/js/init.js')}}"></script> <!-- All Scripts -->
-<script src="{{asset('template_igreja/template-branco/vendor/flexslider/js/jquery.flexslider.js')}}"></script> <!-- FlexSlider -->
-<script src="{{asset('template_igreja/template-branco/vendor/countdown/js/jquery.countdown.min.js')}}"></script> <!-- Jquery Timer -->
-<script src="{{asset('template_igreja/template-branco/vendor/mediaelement/mediaelement-and-player.min.js')}}"></script> <!-- MediaElements -->
+<script src="{{asset('template_site/template-branco/js/jquery-2.0.0.min.js')}}"></script> <!-- Jquery Library Call -->
+<script src="{{asset('template_site/template-branco/vendor/prettyphoto/js/prettyphoto.js')}}"></script> <!-- PrettyPhoto Plugin -->
+<script src="{{asset('template_site/template-branco/js/helper-plugins.js')}}"></script> <!-- Helper Plugins -->
+<script src="{{asset('template_site/template-branco/js/bootstrap.js')}}"></script> <!-- UI -->
+<script src="{{asset('template_site/template-branco/js/init.js')}}"></script> <!-- All Scripts -->
+<script src="{{asset('template_site/template-branco/vendor/flexslider/js/jquery.flexslider.js')}}"></script> <!-- FlexSlider -->
+<script src="{{asset('template_site/template-branco/vendor/countdown/js/jquery.countdown.min.js')}}"></script> <!-- Jquery Timer -->
+<script src="{{asset('template_site/template-branco/vendor/mediaelement/mediaelement-and-player.min.js')}}"></script> <!-- MediaElements -->
 @stack('script')
 </body>
 </html>

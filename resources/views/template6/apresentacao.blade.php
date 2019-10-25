@@ -9,10 +9,10 @@
 	<div class="container">
        	<h2>Sobre nós/Visões e valores</h2>
       	<hr class="sm">
-       	<p>{{$igreja->texto_apresentativo}}</p>
+       	<p>{{$site->texto_apresentativo}}</p>
        	@if ($funcoes != null && sizeof($funcoes) > 0)
         	<hr class="fw">
-	        <h3>Nossa equipe</h3>
+	        <h3>Nossa membros</h3>
 	        <div class="spacer-10"></div>
 	        <div class="row">
         		<?php $x=0; foreach ($funcoes as $funcao){ $x++; ?>

@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/usuario/permissoesperfil.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/usuario/permissoesperfil.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <script>
   $(document).ready(function() {
@@ -48,7 +48,7 @@
                                     }
                                   }
                                   ?>
-                                  <input name="<?php echo e($modulo->id_perfis_igrejas_modulos); ?>[]" value="<?php echo e($permissao->id); ?>" type="checkbox" <?php echo e($marcacao); ?>> <?php echo e($permissao->nome); ?>
+                                  <input name="<?php echo e($modulo->id_perfis_sites_modulos); ?>[]" value="<?php echo e($permissao->id); ?>" type="checkbox" <?php echo e($marcacao); ?>> <?php echo e($permissao->nome); ?>
 
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 

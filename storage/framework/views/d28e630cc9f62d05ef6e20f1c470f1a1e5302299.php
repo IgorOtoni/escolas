@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\adm_eglise\resources\views\usuario\editarsermao.blade.php */ ?>
+<?php /* C:\xampp\htdocs\adm_eglise\resources\views\usuario\editarmidia.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -16,16 +16,16 @@
     <!-- Main content -->
     <section class="content">
 
-        <form id="editarSermaoFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.atualizarSermao')); ?>" enctype="multipart/form-data">
+        <form id="editarMidiaFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.atualizarMidia')); ?>" enctype="multipart/form-data">
         <?php echo csrf_field(); ?>
-        <input type="hidden" name="id" id="id" value="<?php echo e($sermao->id); ?>">
+        <input type="hidden" name="id" id="id" value="<?php echo e($midia->id); ?>">
         <div class="box">
             <div class="box-body">
                 <div class="row">
                 <div class="col-md-12">
                     <div class="form-group has-feedback">
                         <label >Nome</label>
-                        <input name="nome" type="text" class="form-control" placeholder="Nome" value="<?php echo e($sermao->nome); ?>" required>
+                        <input name="nome" type="text" class="form-control" placeholder="Nome" value="<?php echo e($midia->nome); ?>" required>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <div class="help-block with-errors"></div>
                     </div>
@@ -33,7 +33,7 @@
                 <div class="col-md-12">
                     <div class="form-group has-feedback">
                         <label >Descrição</label>
-                        <textarea name="descricao" class="form-control" rows="3" placeholder="Descrição" required><?php echo e($sermao->descricao); ?></textarea>
+                        <textarea name="descricao" class="form-control" rows="3" placeholder="Descrição" required><?php echo e($midia->descricao); ?></textarea>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <div class="help-block with-errors"></div>
                     </div>
@@ -41,7 +41,7 @@
                 <div class="col-md-12">
                     <div class="form-group has-feedback">
                     <label >Link\Url da pregação (embed):</label>
-                    <input id="link" name="link" type="url" class="form-control" placeholder="Url externa" value="<?php echo e($sermao->link); ?>" required>
+                    <input id="link" name="link" type="url" class="form-control" placeholder="Url externa" value="<?php echo e($midia->link); ?>" required>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     <div class="help-block with-errors"></div>
                     </div>
@@ -50,7 +50,7 @@
                 
             </div>
             <div class="box-footer">
-                <a href="/usuario/sermoes" class="btn btn-warning pull-left">Cancelar</a>
+                <a href="/usuario/midias" class="btn btn-warning pull-left">Cancelar</a>
                 <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
             </div>
             </div>

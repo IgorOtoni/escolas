@@ -45,7 +45,7 @@
                                     <h6>{{$evento->nome}}</h6>
                                 </a>
                                 <?php */ ?>
-                                <a href="{{route('igreja.evento', ['url'=>$igreja->url,'id'=>$evento->id])}}"><h6>{{$evento->nome}}</h6></a>
+                                <a href="{{route('site.evento', ['url'=>$site->url,'id'=>$evento->id])}}"><h6>{{$evento->nome}}</h6></a>
                                 <p>Final previsto para {{\Carbon\Carbon::parse($evento->dados_horario_fim)->diffForHumans($evento->dados_horario_inicio)}} @ {{$evento->dados_local}}</p>
                             </div>
                         </div>

@@ -12,8 +12,8 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="{{route('igreja.index',['url'=>$igreja->url])}}">Home</a></li>
-        <li><a href="{{route('igreja.sermoes',['url'=>$igreja->url])}}">Vídeos</a></li>
+        <li><a href="{{route('site.index',['url'=>$site->url])}}">Home</a></li>
+        <li><a href="{{route('site.midias',['url'=>$site->url])}}">Vídeos</a></li>
         <li class="active">Vídeo</li>
         </ol>
     </div>
@@ -26,7 +26,7 @@
 <div class="container">
     <div class="row">
     <div class="col-md-12">
-        <h1><?php echo $sermao->nome ?></h1>
+        <h1><?php echo $midia->nome ?></h1>
     </div>
     </div>
 </div>
@@ -40,13 +40,13 @@
                 <!-- Post Details Area -->
                 <div class="single-post-details-area">
                     <div class="post-content">
-                        <p><?php echo $sermao->descricao ?></p>
+                        <p><?php echo $midia->descricao ?></p>
                         <ul class="info-table">
-                        <li><i class="fa fa-calendar" id="dth_publicacao"></i> Publicado {{\Carbon\Carbon::parse($sermao->created_at)->diffForHumans()}}</li>
+                        <li><i class="fa fa-calendar" id="dth_publicacao"></i> Publicado {{\Carbon\Carbon::parse($midia->created_at)->diffForHumans()}}</li>
                         <?php
-                        if($sermao->updated_at != null && $sermao->updated_at != $sermao->created_at){
+                        if($midia->updated_at != null && $midia->updated_at != $midia->created_at){
                             ?>
-                            <li><i class="fa fa-clock-o" id="dth_atualizacao"></i> Editado {{\Carbon\Carbon::parse($sermao->updated_at)->diffForHumans()}}</li>
+                            <li><i class="fa fa-clock-o" id="dth_atualizacao"></i> Editado {{\Carbon\Carbon::parse($midia->updated_at)->diffForHumans()}}</li>
                             <?php
                         }
                         ?>
@@ -54,7 +54,7 @@
                         </ul>
                     </div>
                     <div class="post-thumbnail mb-30">
-                        <iframe frameborder="0" src="{{$sermao->link}}"></iframe>
+                        <iframe frameborder="0" src="{{$midia->link}}"></iframe>
                     </div>
                 </div>
             </div>

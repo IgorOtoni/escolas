@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/usuario/editarperfil.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/usuario/editarperfil.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- Select2 -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/select2/dist/css/select2.min.css')); ?>">
@@ -21,7 +21,7 @@ $(function(){
     ?>
 
     $.ajax({
-        url: '/usuario/carregarModulosIgreja/'+<?php echo e($igreja->id); ?>,
+        url: '/usuario/carregarModulosSite/'+<?php echo e($site->id); ?>,
         type: 'get',
         dataType: 'json',
         success: function(response){
@@ -110,7 +110,7 @@ $(function(){
                 </div>
                 <div class="col-md-12" id="list-area">
                     <div class="form-group has-feedback">
-                    <label>Selecione quais módulos da igreja o perfil irá acessar:</label>
+                    <label>Selecione quais módulos da site o perfil irá acessar:</label>
                     <select id="select_2_modulos" name="modulos[]" data-placeholder="Selecione os módulos" class="form-control select2" style="width: 100%;" multiple="multiple"></select>
                     <div class="help-block with-errors"></div>
                     </div>

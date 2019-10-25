@@ -88,8 +88,8 @@ $(function(){
     $("#modal-incluir #noticias_area").css('display', 'none');
     $("#modal-incluir #noticia").attr('data-validate', 'false');
 
-    $("#modal-incluir #sermoes_area").css('display', 'none');
-    $("#modal-incluir #sermao").attr('data-validate', 'false');
+    $("#modal-incluir #midias_area").css('display', 'none');
+    $("#modal-incluir #midia").attr('data-validate', 'false');
     
     $("#modal-incluir #galerias_area").css('display', 'none');
     $("#modal-incluir #galeria").attr('data-validate', 'false');
@@ -116,8 +116,8 @@ $(function(){
         $("#modal-incluir #noticias_area").css('display', 'none');
         $("#modal-incluir #noticia").attr('data-validate', 'false');
 
-        $("#modal-incluir #sermoes_area").css('display', 'none');
-        $("#modal-incluir #sermao").attr('data-validate', 'false');
+        $("#modal-incluir #midias_area").css('display', 'none');
+        $("#modal-incluir #midia").attr('data-validate', 'false');
 
         $("#modal-incluir #galerias_area").css('display', 'none');
         $("#modal-incluir #galeria").attr('data-validate', 'false');
@@ -142,8 +142,8 @@ $(function(){
             $("#modal-incluir #noticias_area").css('display', 'block');
             $("#modal-incluir #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-incluir #sermoes_area").css('display', 'block');
-            $("#modal-incluir #sermao").attr('data-validate', 'true');
+            $("#modal-incluir #midias_area").css('display', 'block');
+            $("#modal-incluir #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-incluir #galerias_area").css('display', 'block');
             $("#modal-incluir #galeria").attr('data-validate', 'true');
@@ -286,7 +286,7 @@ $(function(){
 <div class="modal fade" id="modal-incluir">
 <form id="incluirBannerFormulario" data-toggle="validator" method="POST" role="form" action="{{route('usuario.incluirBanner')}}" enctype="multipart/form-data">
 @csrf
-    <input type="hidden" name="igreja" id="igreja" value="{{$igreja->id}}">
+    <input type="hidden" name="site" id="site" value="{{$site->id}}">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -344,7 +344,7 @@ $(function(){
                     <div class="form-group has-feedback">
                     <label >Módulos</label>
                     <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                        @foreach ($modulos_igreja as $modulo)
+                        @foreach ($modulos_site as $modulo)
                             <option value="{{$modulo->id}}">{{$modulo->nome}}</option>
                         @endforeach
                     </select>
@@ -355,7 +355,7 @@ $(function(){
                     <div class="form-group has-feedback">
                     <label >Publicações</label>
                     <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                        <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         @foreach ($publicacoes as $publicacao)
                             <option value="{{$publicacao->id}}">{{$publicacao->nome}}</option>
                         @endforeach
@@ -367,7 +367,7 @@ $(function(){
                     <div class="form-group has-feedback">
                     <label >Eventos</label>
                     <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                        <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         @foreach ($eventos as $evento)
                             <option value="{{$evento->id}}">{{$evento->nome}}</option>
                         @endforeach
@@ -379,7 +379,7 @@ $(function(){
                     <div class="form-group has-feedback">
                     <label >Eventos fixos</label>
                     <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                        <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         @foreach ($eventosfixos as $eventofixo)
                             <option value="{{$eventofixo->id}}">{{$eventofixo->nome}}</option>
                         @endforeach
@@ -391,7 +391,7 @@ $(function(){
                     <div class="form-group has-feedback">
                     <label >Notícias</label>
                     <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                        <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         @foreach ($noticias as $noticia)
                             <option value="{{$noticia->id}}">{{$noticia->nome}}</option>
                         @endforeach
@@ -399,13 +399,13 @@ $(function(){
                     <div class="help-block with-errors"></div>
                     </div>
                 </div>
-                <div id="sermoes_area" class="col-md-12">
+                <div id="midias_area" class="col-md-12">
                     <div class="form-group has-feedback">
                     <label >Vídeos</label>
-                    <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                        <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                        @foreach ($sermoes as $sermao)
-                            <option value="{{$sermao->id}}">{{$sermao->nome}}</option>
+                    <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                        <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                        @foreach ($midias as $midia)
+                            <option value="{{$midia->id}}">{{$midia->nome}}</option>
                         @endforeach
                     </select>
                     <div class="help-block with-errors"></div>
@@ -415,7 +415,7 @@ $(function(){
                     <div class="form-group has-feedback">
                     <label >Galerias</label>
                     <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                        <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         @foreach ($galerias as $galeria)
                             <option value="{{$galeria->id}}">{{$galeria->nome}}</option>
                         @endforeach

@@ -1,9 +1,9 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template6/galeria.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template6/galeria.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
-<script type="text/javascript" src="<?php echo e(asset('template_igreja/template-branco/vendor/galleria/galleria-1.3.5.min.js')); ?>"></script><!-- Galleria -->
+<script type="text/javascript" src="<?php echo e(asset('template_site/template-branco/vendor/galleria/galleria-1.3.5.min.js')); ?>"></script><!-- Galleria -->
 <script>
 	// Galleria Gallery Call
-	Galleria.loadTheme('<?php echo e(asset('template_igreja/template-branco/vendor/galleria/themes/classic/galleria.classic.min.js')); ?>');
+	Galleria.loadTheme('<?php echo e(asset('template_site/template-branco/vendor/galleria/themes/classic/galleria.classic.min.js')); ?>');
 	Galleria.configure({
 		imageCrop: true,
 		lightbox: true

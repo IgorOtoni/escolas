@@ -21,7 +21,7 @@
 					
 					<div class="l-grid-9 l-float-left">
 
-						<form method="get" action="/{{$igreja->url}}/enviaContato" id="contactform" class="contactForm">
+						<form method="get" action="/{{$site->url}}/enviaContato" id="contactform" class="contactForm">
 							
 							<fieldset>
 								<div class="row"> 
@@ -63,7 +63,7 @@
 							
 							<div class="border-shadow">
 								<figure>
-									<iframe id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($igreja->cep)}}&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
+									<iframe id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($site->cep)}}&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
 								</figure>
 							</div>
 							
@@ -72,15 +72,15 @@
 						<div class="contact-address">
 							<h1>Informações de contato</h1>
 							<address>
-                                Cidade: {{$igreja->cidade}} - {{$igreja->estado}}<br />
-                                Bairro: {{$igreja->bairro}}<br />
-                                Rua: {{$igreja->rua}}, {{$igreja->num}}
+                                Cidade: {{$site->cidade}} - {{$site->estado}}<br />
+                                Bairro: {{$site->bairro}}<br />
+                                Rua: {{$site->rua}}, {{$site->num}}
 							</address>
 							<address> 
-								<?php if($igreja->telefone != null){ ?> <span>{{$igreja->telefone}}</span> <?php } ?>
+								<?php if($site->telefone != null){ ?> <span>{{$site->telefone}}</span> <?php } ?>
 							</address>
 							<address>
-								<?php if($igreja->email != null){ ?> <span>{{$igreja->email}}</span> <?php } ?>
+								<?php if($site->email != null){ ?> <span>{{$site->email}}</span> <?php } ?>
 							</address>
 						</div><!--/ contact-address-->
 					</div><!--/ l-grid-5-->

@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/usuario/banners.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/usuario/banners.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- Select2 -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/select2/dist/css/select2.min.css')); ?>">
@@ -88,8 +88,8 @@ $(function(){
     $("#modal-incluir #noticias_area").css('display', 'none');
     $("#modal-incluir #noticia").attr('data-validate', 'false');
 
-    $("#modal-incluir #sermoes_area").css('display', 'none');
-    $("#modal-incluir #sermao").attr('data-validate', 'false');
+    $("#modal-incluir #midias_area").css('display', 'none');
+    $("#modal-incluir #midia").attr('data-validate', 'false');
     
     $("#modal-incluir #galerias_area").css('display', 'none');
     $("#modal-incluir #galeria").attr('data-validate', 'false');
@@ -116,8 +116,8 @@ $(function(){
         $("#modal-incluir #noticias_area").css('display', 'none');
         $("#modal-incluir #noticia").attr('data-validate', 'false');
 
-        $("#modal-incluir #sermoes_area").css('display', 'none');
-        $("#modal-incluir #sermao").attr('data-validate', 'false');
+        $("#modal-incluir #midias_area").css('display', 'none');
+        $("#modal-incluir #midia").attr('data-validate', 'false');
 
         $("#modal-incluir #galerias_area").css('display', 'none');
         $("#modal-incluir #galeria").attr('data-validate', 'false');
@@ -142,8 +142,8 @@ $(function(){
             $("#modal-incluir #noticias_area").css('display', 'block');
             $("#modal-incluir #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-incluir #sermoes_area").css('display', 'block');
-            $("#modal-incluir #sermao").attr('data-validate', 'true');
+            $("#modal-incluir #midias_area").css('display', 'block');
+            $("#modal-incluir #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-incluir #galerias_area").css('display', 'block');
             $("#modal-incluir #galeria").attr('data-validate', 'true');
@@ -286,7 +286,7 @@ $(function(){
 <div class="modal fade" id="modal-incluir">
 <form id="incluirBannerFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.incluirBanner')); ?>" enctype="multipart/form-data">
 <?php echo csrf_field(); ?>
-    <input type="hidden" name="igreja" id="igreja" value="<?php echo e($igreja->id); ?>">
+    <input type="hidden" name="site" id="site" value="<?php echo e($site->id); ?>">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -344,7 +344,7 @@ $(function(){
                     <div class="form-group has-feedback">
                     <label >Módulos</label>
                     <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                        <?php $__currentLoopData = $modulos_igreja; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php $__currentLoopData = $modulos_site; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $modulo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option value="<?php echo e($modulo->id); ?>"><?php echo e($modulo->nome); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
@@ -355,7 +355,7 @@ $(function(){
                     <div class="form-group has-feedback">
                     <label >Publicações</label>
                     <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                        <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         <?php $__currentLoopData = $publicacoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $publicacao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option value="<?php echo e($publicacao->id); ?>"><?php echo e($publicacao->nome); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -367,7 +367,7 @@ $(function(){
                     <div class="form-group has-feedback">
                     <label >Eventos</label>
                     <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                        <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option value="<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -379,7 +379,7 @@ $(function(){
                     <div class="form-group has-feedback">
                     <label >Eventos fixos</label>
                     <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                        <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         <?php $__currentLoopData = $eventosfixos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $eventofixo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option value="<?php echo e($eventofixo->id); ?>"><?php echo e($eventofixo->nome); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -391,7 +391,7 @@ $(function(){
                     <div class="form-group has-feedback">
                     <label >Notícias</label>
                     <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                        <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         <?php $__currentLoopData = $noticias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $noticia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option value="<?php echo e($noticia->id); ?>"><?php echo e($noticia->nome); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -399,13 +399,13 @@ $(function(){
                     <div class="help-block with-errors"></div>
                     </div>
                 </div>
-                <div id="sermoes_area" class="col-md-12">
+                <div id="midias_area" class="col-md-12">
                     <div class="form-group has-feedback">
                     <label >Vídeos</label>
-                    <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                        <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                        <?php $__currentLoopData = $sermoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sermao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($sermao->id); ?>"><?php echo e($sermao->nome); ?></option>
+                    <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                        <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $__currentLoopData = $midias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $midia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($midia->id); ?>"><?php echo e($midia->nome); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <div class="help-block with-errors"></div>
@@ -415,7 +415,7 @@ $(function(){
                     <div class="form-group has-feedback">
                     <label >Galerias</label>
                     <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                        <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         <?php $__currentLoopData = $galerias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $galeria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option value="<?php echo e($galeria->id); ?>"><?php echo e($galeria->nome); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

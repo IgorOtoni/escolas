@@ -8,7 +8,7 @@ return [
         'eventosfixosg' => '17',
         'noticiasg' => '18',
         'bannersg' => '19',
-        'sermoesg' => '20',
+        'midiasg' => '20',
         'publicacoesg' => '21',
         'configuracoesg' => '22',
         'funcoesg' => '24',

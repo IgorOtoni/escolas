@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/template1/eventodetalhado.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/template1/eventodetalhado.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- InputMask -->
 <script src="<?php echo e(asset('template_adm/plugins/input-mask/jquery.inputmask.js')); ?>"></script>
@@ -22,8 +22,8 @@ $(function(){
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/<?php echo e($igreja->url); ?>/">Home</a></li>
-        <li><a href="/<?php echo e($igreja->url); ?>/eventos">Linha do tempo</a></li>
+        <li><a href="/<?php echo e($site->url); ?>/">Home</a></li>
+        <li><a href="/<?php echo e($site->url); ?>/eventos">Linha do tempo</a></li>
         <li class="active">Evento</li>
         </ol>
     </div>
@@ -69,7 +69,7 @@ $(function(){
             </div>
             <section class="post-comment-form">
             <h3><i class="fa fa-share"></i> Inscrever me</h3>
-            <form action="/<?php echo e($igreja->url); ?>/inscreveEnvento" method="get" data-toggle="validator" id="subscribeForm">
+            <form action="/<?php echo e($site->url); ?>/inscreveEnvento" method="get" data-toggle="validator" id="subscribeForm">
                 <input type="hidden" name="id_evento" value="<?php echo e($evento->id); ?>">
                 <?php echo csrf_field(); ?>
                 <div class="row">

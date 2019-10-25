@@ -15,7 +15,7 @@
     <div class="wrap">
         <div class="c-8">
             <div class="page">
-                <form method="get" action="/{{$igreja->url}}/enviaContato" id="contactform">
+                <form method="get" action="/{{$site->url}}/enviaContato" id="contactform">
                     <div class="send-form">   
 	                      <p>
 	                      	<label>Nome:</label>
@@ -39,7 +39,7 @@
                  	</div>
              	</form>
              	<div class="google-map">
-                    <iframe width="100%" height="400px" id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($igreja->cep)}}&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
+                    <iframe width="100%" height="400px" id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($site->cep)}}&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
              	</div>
             </div>
         </div>
@@ -50,20 +50,20 @@
                     <li>
                         <p class="meta">Endereço: </p>
                         <p>
-                        	Cidade: {{$igreja->cidade}} - {{$igreja->estado}}<br />
-                            Bairro: {{$igreja->bairro}}<br />
-                            Rua: {{$igreja->rua}}, {{$igreja->num}}
+                        	Cidade: {{$site->cidade}} - {{$site->estado}}<br />
+                            Bairro: {{$site->bairro}}<br />
+                            Rua: {{$site->rua}}, {{$site->num}}
                         </p>
                     </li>
-                    <?php if($igreja->telefone != null){ ?>  
+                    <?php if($site->telefone != null){ ?>  
 	                    <li>
 	                        <p class="meta">Telefone: </p>
-	                        <p>{{$igreja->telefone}}</p>
+	                        <p>{{$site->telefone}}</p>
 	                    </li>
                     <?php } ?>  
                     <li>    
                         <p class="meta">Email: </p>
-                        <p><a href="mailto:{{$igreja->email}}">{{$igreja->email}}</a></p>
+                        <p><a href="mailto:{{$site->email}}">{{$site->email}}</a></p>
                     </li>
                 </ul>
             </div><!--end widget-address-->

@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/template3/eventodetalhado.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/template3/eventodetalhado.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- InputMask -->
 <script src="<?php echo e(asset('template_adm/plugins/input-mask/jquery.inputmask.js')); ?>"></script>
@@ -65,7 +65,7 @@ $(function(){
         <div class="row">
             <div class="col-12">
                 <div class="cta-text d-flex justify-content-between align-items-center">
-                    <form id="subscribeForm" name="subscribeForm" method="get" action="/<?php echo e($igreja->url); ?>/inscreveEnvento" class="contact-form-area">
+                    <form id="subscribeForm" name="subscribeForm" method="get" action="/<?php echo e($site->url); ?>/inscreveEnvento" class="contact-form-area">
                         <input type="hidden" name="id_evento" value="<?php echo e($evento->id); ?>">
                         <?php echo csrf_field(); ?>
                         <h5>Me inscrever</h5>

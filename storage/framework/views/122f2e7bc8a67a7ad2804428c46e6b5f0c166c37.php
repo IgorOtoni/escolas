@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/usuario/membros.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/usuario/membros.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- Select2 -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/select2/dist/css/select2.min.css')); ?>">
@@ -208,8 +208,8 @@ $(function(){
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-    Equipe
-    <small>Lista de todos os membros da equipe</small>
+    Membros
+    <small>Lista de todos os membros da membros</small>
     </h1>
 </section>
 
@@ -259,7 +259,7 @@ $(function(){
 <div class="modal fade" id="modal-incluir">
 <form id="incluirMembroFormulario" data-toggle="validator" method="POST" role="form" action="<?php echo e(route('usuario.incluirMembro')); ?>" enctype="multipart/form-data">
 <?php echo csrf_field(); ?>
-    <input type="hidden" name="igreja" id="igreja" value="<?php echo e($igreja->id); ?>">
+    <input type="hidden" name="site" id="site" value="<?php echo e($site->id); ?>">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -285,7 +285,7 @@ $(function(){
                         <label >Função</label>
                         <select id="funcao" name="funcao" class="form-control select2" style="width: 100%;" required>
                             <option value="0">Sem função</option>
-                            <?php $funcoes = App\TblFuncoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                            <?php $funcoes = App\TblFuncoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                             <?php $__currentLoopData = $funcoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $funcao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option value="<?php echo e($funcao->id); ?>"><?php echo e($funcao->nome); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

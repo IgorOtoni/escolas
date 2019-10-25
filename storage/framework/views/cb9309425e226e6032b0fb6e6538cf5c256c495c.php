@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/template1/sermaodetalhado.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/template1/midiadetalhado.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <script>
 
@@ -12,8 +12,8 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/<?php echo e($igreja->url); ?>/">Home</a></li>
-        <li><a href="/<?php echo e($igreja->url); ?>/sermoes">Vídeos</a></li>
+        <li><a href="/<?php echo e($site->url); ?>/">Home</a></li>
+        <li><a href="/<?php echo e($site->url); ?>/midias">Vídeos</a></li>
         <li class="active">Vídeo</li>
         </ol>
     </div>
@@ -26,7 +26,7 @@
 <div class="container">
     <div class="row">
     <div class="col-md-12">
-        <h1><?php echo e($sermao->nome); ?></h1>
+        <h1><?php echo e($midia->nome); ?></h1>
     </div>
     </div>
 </div>
@@ -40,13 +40,13 @@
                 <!-- Post Details Area -->
                 <div class="single-post-details-area">
                     <div class="post-content">
-                        <p><?php echo e($sermao->descricao); ?></p>
+                        <p><?php echo e($midia->descricao); ?></p>
                         <ul class="info-table">
-                        <li><i class="fa fa-calendar" id="dth_publicacao"></i> Publicado <?php echo e(\Carbon\Carbon::parse($sermao->created_at)->diffForHumans()); ?></li>
+                        <li><i class="fa fa-calendar" id="dth_publicacao"></i> Publicado <?php echo e(\Carbon\Carbon::parse($midia->created_at)->diffForHumans()); ?></li>
                         <?php
-                        if($sermao->updated_at != null && $sermao->updated_at != $sermao->created_at){
+                        if($midia->updated_at != null && $midia->updated_at != $midia->created_at){
                             ?>
-                            <li><i class="fa fa-clock-o" id="dth_atualizacao"></i> Editado <?php echo e(\Carbon\Carbon::parse($sermao->updated_at)->diffForHumans()); ?></li>
+                            <li><i class="fa fa-clock-o" id="dth_atualizacao"></i> Editado <?php echo e(\Carbon\Carbon::parse($midia->updated_at)->diffForHumans()); ?></li>
                             <?php
                         }
                         ?>
@@ -54,7 +54,7 @@
                         </ul>
                     </div>
                     <div class="post-thumbnail mb-30">
-                        <iframe frameborder="0" src="<?php echo e($sermao->link); ?>"></iframe>
+                        <iframe frameborder="0" src="<?php echo e($midia->link); ?>"></iframe>
                     </div>
                 </div>
             </div>

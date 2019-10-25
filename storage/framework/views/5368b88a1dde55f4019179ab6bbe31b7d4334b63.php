@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template4/index.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template4/index.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -58,7 +58,7 @@
                             <article class="kids_post_block l-grid-4">
                                 <h1><img width="71" height="41" class="icon" src="<?php echo e(($evento->foto != null) ? "/storage/timeline/".$evento->foto : "/storage/no-event.jpg"); ?>" alt="" /><a class="link" href="#"><?php echo e($evento->nome); ?></a></h1>
                                 <div class="kids_post_content">
-                                    <p><?php echo e($evento->descricao); ?></p> <h3 class="l-float-right"><a class="link" href="/<?php echo e($igreja->url); ?>/evento/<?php echo e($evento->id); ?>">Detalhes</a></h3>
+                                    <p><?php echo e($evento->descricao); ?></p> <h3 class="l-float-right"><a class="link" href="/<?php echo e($site->url); ?>/evento/<?php echo e($evento->id); ?>">Detalhes</a></h3>
                                 </div>
                             </article>
 
@@ -108,7 +108,7 @@
 
                                 </p>
                                 <footer class="aligncenter">
-                                    <a href="/<?php echo e($igreja->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="button button-centering medium button-style1">Detalhes</a>
+                                    <a href="/<?php echo e($site->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="button button-centering medium button-style1">Detalhes</a>
                                 </footer>
                             </li>
 

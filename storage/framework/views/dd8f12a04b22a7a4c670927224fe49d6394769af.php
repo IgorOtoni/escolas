@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template5/apresentacao.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template5/apresentacao.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -17,7 +17,7 @@
             <div class="page">
                 <h2>Sobre nós</h2>
                 <p>
-                	<?php echo e($igreja->texto_apresentativo); ?>
+                	<?php echo e($site->texto_apresentativo); ?>
 
                 </p>
             </div>
@@ -29,7 +29,7 @@
     	<div class="l-page-width clearfix">
 		    <div class="wrap">
 		        <div class="c-12">
-	                <h2>Nossa equipe</h2>
+	                <h2>Nossa membros</h2>
 	                
 	                <ul class="portfolio-menu">
 		                <?php $x=0; foreach ($funcoes as $funcao){ $x++; ?>

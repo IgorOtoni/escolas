@@ -68,16 +68,8 @@ $(function(){
                 <div class="form-group has-feedback">
                 <label>Selecione o perfil do usuário:</label>
                 <select id="perfil" name="perfil" class="form-control select2" style="width: 100%;" required>
-                    <?php 
-                    //$perfis = App\TblPerfil::orderBy('nome','ASC')->get();
-                    $perfis = \DB::table('tbl_perfis')
-                        ->select('tbl_perfis.*', 'tbl_igrejas.nome as nome_congregacao')
-                        ->leftJoin('tbl_igrejas','tbl_igrejas.id','=','tbl_perfis.id_igreja')
-                        ->orderBy('nome', 'ASC')
-                        ->get();
-                    ?>
                     <?php $__currentLoopData = $perfis; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $perfil): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <option value="<?php echo e($perfil->id); ?>" <?php echo e(($perfil->id == $usuario->id_perfil) ? 'selected' : ''); ?>><?php echo e($perfil->nome); ?> - <?php echo e(($perfil->id_igreja == null || $perfil->id_igreja == 1) ? "Administador" : $perfil->nome_congregacao); ?></option>
+                    <option value="<?php echo e($perfil->id); ?>" <?php echo e(($perfil->id == $usuario->id_perfil) ? 'selected' : ''); ?>><?php echo e($perfil->nome); ?> - <?php echo e(($perfil->id_site == null || $perfil->id_site == 1) ? "Administador" : $perfil->nome_congregacao); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
                 <div class="help-block with-errors"></div>

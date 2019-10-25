@@ -7,7 +7,7 @@
     <h1>Conta</h1>
 
     <div>
-    	<form data-toggle="validator" method="POST" action="{{ route('comprador.alterar_conta', $igreja->url) }}" class="form-group">
+    	<form data-toggle="validator" method="POST" action="{{ route('comprador.alterar_conta', $site->url) }}" class="form-group">
         @csrf
         	 <div class="panel panel-primary">
                 <div class="panel-heading"><h3 class="panel-title">Dados:</h3></div>

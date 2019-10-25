@@ -18,11 +18,11 @@
                                 	<img src="{{($evento->foto != null) ? '/carrega_imagem/330,206,eventos,'.$evento->foto : '/carrega_imagem/330,206,X,no-event.jpg'}}" alt="">
                                 </a>
                                 <div class="grid-content">
-                                	<h3><a href="/{{$igreja->url}}/eventofixo/{{$evento->id}}" class="event-title">{{$evento->nome}}</a></h3>
+                                	<h3><a href="/{{$site->url}}/eventofixo/{{$evento->id}}" class="event-title">{{$evento->nome}}</a></h3>
                                     <span class="meta-data event-location-address"><i class="fa fa-calendar"></i> <i class="fa fa-map-marker"></i> {{$evento->dados_horario_local}}</span>
                                 </div>
                                 <div class="grid-footer clearfix">
-                            		<a href="/{{$igreja->url}}/eventofixo/{{$evento->id}}" class="pull-right btn btn-primary btn-sm">Detalhes</a>
+                            		<a href="/{{$site->url}}/eventofixo/{{$evento->id}}" class="pull-right btn btn-primary btn-sm">Detalhes</a>
                                 </div>
                             </div>
                         </li>

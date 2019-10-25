@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template8/sermoes.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template8/midias.blade.php */ ?>
 <?php $__env->startPush('script-x'); ?>
 <script type="text/javascript">
 (function($) {
@@ -31,21 +31,21 @@
         <div class="content">
             <article class="post_item post_item_single page">
                 <section class="post_content">
-                	<?php for($x = 0; $x < sizeof($sermoes); $x += 2){
-                		$sermao_1 = $sermoes[$x];
-                		$sermao_2 = (isset($sermoes[$x + 1])) ? $sermoes[$x + 1] : null; ?>
+                	<?php for($x = 0; $x < sizeof($midias); $x += 2){
+                		$midia_1 = $midias[$x];
+                		$midia_2 = (isset($midias[$x + 1])) ? $midias[$x + 1] : null; ?>
 						<div class="columns_wrap sc_columns columns_nofluid sc_columns_count_2">
 							<div class="column-1_2 sc_column_item sc_column_item_1 odd first">
-								<h4 class="sc_title sc_title_regular margin_top_0 margin_bottom_075em"><?php echo e($sermao_1->nome); ?></h4>
+								<h4 class="sc_title sc_title_regular margin_top_0 margin_bottom_075em"><?php echo e($midia_1->nome); ?></h4>
 								<div class="sc_video_player">
-									<iframe alt="" width="515" height="290" src="<?php echo e($sermao_1->link); ?>"></iframe>
+									<iframe alt="" width="515" height="290" src="<?php echo e($midia_1->link); ?>"></iframe>
 								</div>
 							</div>
-							<?php if($sermao_2 != null) { ?>
+							<?php if($midia_2 != null) { ?>
 								<div class="column-1_2 sc_column_item sc_column_item_2 even">
-									<h4 class="sc_title sc_title_regular margin_top_0 margin_bottom_075em"><?php echo e($sermao_2->nome); ?></h4>
+									<h4 class="sc_title sc_title_regular margin_top_0 margin_bottom_075em"><?php echo e($midia_2->nome); ?></h4>
 									<div class="sc_video_player">
-										<iframe alt="" width="515" height="290" src="<?php echo e($sermao_2->link); ?>"></iframe>
+										<iframe alt="" width="515" height="290" src="<?php echo e($midia_2->link); ?>"></iframe>
 									</div>
 								</div>
 							<?php } ?>
@@ -61,7 +61,7 @@
                         <a href="#" class="pager_last "></a>-->
                     </nav>
 					<center id="pagination_area">
-				        <?php echo e($sermoes->appends(request()->query())->links()); ?>
+				        <?php echo e($midias->appends(request()->query())->links()); ?>
 
 				    </center>
                 </section>

@@ -48,9 +48,9 @@
 									<div class="gallery__hover__action">
 										<ul class="gallery__zoom">
 											<li><a href="/storage/galerias/{{ $foto->foto }}" data-lightbox="grportimg" data-title="My caption"><i class="fa fa-search"></i></a></li>
-											<li><a href="/{{ $igreja->url }}/galeria"><i class="fa fa-link"></i></a></li>
+											<li><a href="/{{ $site->url }}/galeria"><i class="fa fa-link"></i></a></li>
 										</ul>
-										<h4 class="gallery__title"><a href="/{{ $igreja->url }}/galeria">{{ $galeria->nome }}</a></h4>
+										<h4 class="gallery__title"><a href="/{{ $site->url }}/galeria">{{ $galeria->nome }}</a></h4>
 									</div>
 								</div>
 							</div>	

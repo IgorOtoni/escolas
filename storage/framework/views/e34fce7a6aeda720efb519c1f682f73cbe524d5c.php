@@ -48,7 +48,7 @@ $('#modal-noticia').on('show.bs.modal', function (event) {
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/<?php echo e($igreja->url); ?>"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item"><a href="/<?php echo e($site->url); ?>"><i class="fa fa-home"></i> Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Notícias</li>
                     </ol>
                 </nav>
@@ -99,7 +99,7 @@ $('#modal-noticia').on('show.bs.modal', function (event) {
                                 <h4>{{$noticia->nome}}</h4>
                             </a>
                             <?php */ ?>
-                            <a href="/<?php echo e($igreja->url); ?>/noticia/<?php echo e($noticia->id); ?>"><h4><?php echo e($noticia->nome); ?></h4></a>
+                            <a href="/<?php echo e($site->url); ?>/noticia/<?php echo e($noticia->id); ?>"><h4><?php echo e($noticia->nome); ?></h4></a>
                             <div class="post-meta d-flex">
                                 <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> Publicada <?php echo e(\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()); ?></a>
                                 <?php

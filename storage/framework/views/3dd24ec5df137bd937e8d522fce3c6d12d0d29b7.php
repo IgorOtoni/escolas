@@ -145,7 +145,7 @@ $(function(){
                             <label >Função</label>
                             <select id="funcao" name="funcao" class="form-control select2" style="width: 100%;" required>
                                 <option value="0">Sem função</option>
-                                <?php $funcoes = App\TblFuncoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                                <?php $funcoes = App\TblFuncoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                                 <?php $__currentLoopData = $funcoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $funcao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($funcao->id); ?>" <?php echo e(($membro->id_funcao != null && $membro->id_funcao == $funcao->id) ? "selected" : ""); ?>><?php echo e($funcao->nome); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

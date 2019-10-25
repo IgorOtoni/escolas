@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template4/noticias.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template4/noticias.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -32,7 +32,7 @@
 
                             </p>
                             <footer class="aligncenter">
-                                <a href="/<?php echo e($igreja->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="button button-centering medium button-style1">Detalhes</a>
+                                <a href="/<?php echo e($site->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="button button-centering medium button-style1">Detalhes</a>
                             </footer>
                         </li>
 

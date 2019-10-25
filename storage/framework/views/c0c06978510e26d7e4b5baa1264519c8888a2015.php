@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/template2/eventos.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/template2/eventos.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <script>
 $('#modal-evento').on('hide.bs.modal', function (event) {
@@ -52,7 +52,7 @@ $('#modal-evento').on('show.bs.modal', function (event) {
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/<?php echo e($igreja->url); ?>"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item"><a href="/<?php echo e($site->url); ?>"><i class="fa fa-home"></i> Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Linha do tempo</li>
                     </ol>
                 </nav>
@@ -65,7 +65,7 @@ $('#modal-evento').on('show.bs.modal', function (event) {
 <!-- ##### Upcoming Events Area Start ##### -->
 <section class="upcoming-events-area section-padding-0-100">
     <!-- Upcoming Events Heading Area -->
-    <div class="upcoming-events-heading bg-img bg-overlay bg-fixed" style="background-image: url(<?php echo e(asset('template_igreja/template-vermelho/img/bg-img/1.jpg')); ?>);">
+    <div class="upcoming-events-heading bg-img bg-overlay bg-fixed" style="background-image: url(<?php echo e(asset('template_site/template-vermelho/img/bg-img/1.jpg')); ?>);">
         <div class="container">
             <div class="row">
                 <!-- Section Heading -->
@@ -127,7 +127,7 @@ $('#modal-evento').on('show.bs.modal', function (event) {
                                     </div>
                                     <?php */ ?>
                                     <div class="find-out-more-btn">
-                                        <a href="/<?php echo e($igreja->url); ?>/evento/<?php echo e($evento->id); ?>" class="btn crose-btn btn-2">Ver em detalhe</a>
+                                        <a href="/<?php echo e($site->url); ?>/evento/<?php echo e($evento->id); ?>" class="btn crose-btn btn-2">Ver em detalhe</a>
                                     </div>
                                 </div>
                             </div>

@@ -13,20 +13,20 @@
                 	<hr class="sm">
                 	<h4 class="short accent-color">Endereço:</h4>
                 	<p>
-                		Cidade: {{$igreja->cidade}} - {{$igreja->estado}}<br />
-                        Bairro: {{$igreja->bairro}}<br />
-                        Rua: {{$igreja->rua}}, {{$igreja->num}}
+                		Cidade: {{$site->cidade}} - {{$site->estado}}<br />
+                        Bairro: {{$site->bairro}}<br />
+                        Rua: {{$site->rua}}, {{$site->num}}
                     </p>
                     <hr class="fw cont">
                     <h4 class="short accent-color">Telefone:</h4>
-                	<p>{{$igreja->telefone}}</p>
+                	<p>{{$site->telefone}}</p>
                     <hr class="fw cont">
                     <h4 class="short accent-color">Email:</h4>
-                	<p>{{$igreja->email}}</p>
+                	<p>{{$site->email}}</p>
                	</div>
                 <div class="col-md-8 col-sm-7">
                 	<h3>Enviar uma mensagem</h3>
-                   	<form method="get" class="contact-form clearfix" action="/{{$igreja->url}}/enviaContato">
+                   	<form method="get" class="contact-form clearfix" action="/{{$site->url}}/enviaContato">
                     	<div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -67,7 +67,7 @@
        		<div class="row">
                 <div class="col-md-12">
 		            <div id=gmap>
-		            	<iframe width="100%" height="400px" id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($igreja->cep)}}&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
+		            	<iframe width="100%" height="400px" id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($site->cep)}}&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
 		            </div>
 	            </div>
             </div>

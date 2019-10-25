@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template5/eventosfixos.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template5/eventosfixos.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -21,7 +21,7 @@
 	                    	<span class="post-image-mask"></span>
 	                        <img src="<?php echo e(($evento->foto != null) ? "/storage/eventos/".$evento->foto : "/storage/no-event.jpg"); ?>" width="172" height="140" alt="" title="" />
 	                    </a>
-	                    <h2 class="title"><a href="/<?php echo e($igreja->url); ?>/eventofixo/<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></a></h2>
+	                    <h2 class="title"><a href="/<?php echo e($site->url); ?>/eventofixo/<?php echo e($evento->id); ?>"><?php echo e($evento->nome); ?></a></h2>
 	                    <p class="meta">
                             <span>Horário e local: <a class="author" title="" href="#"><?php echo e($evento->dados_horario_local); ?></a></span>
 	                    </p>
@@ -29,7 +29,7 @@
 	                        <p><?php echo e($evento->descricao); ?></p>
 	                    </div>
 	                    <p class="actions">
-	                    	<a href="/<?php echo e($igreja->url); ?>/eventofixo/<?php echo e($evento->id); ?>" class="read-more">Detalhes<span class="circle-arrow"></span></a>
+	                    	<a href="/<?php echo e($site->url); ?>/eventofixo/<?php echo e($evento->id); ?>" class="read-more">Detalhes<span class="circle-arrow"></span></a>
 	                    </p>
 	                </div>
             	<?php } ?>

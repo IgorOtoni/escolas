@@ -1,11 +1,11 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/admin_site/index.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/admin_site/index.blade.php */ ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Language" content="pt-br">
-  <title>Escolas</title>
+  <title>Sites</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -50,9 +50,9 @@
     <!-- Logo -->
       <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>Escolas</b></span>
+      <span class="logo-mini"><b>Sites</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"> <b>Escolas</b></span>
+      <span class="logo-lg"> <b>Sites</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -99,7 +99,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">BARRA DE NAVEGAÇÃO</li>
         <li><a href="/admin/home"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="/admin/igrejas"><i class="fa fa-institution "></i> <span>Escolas</span></a></li>
+        <li><a href="/admin/sites"><i class="fa fa-institution "></i> <span>Sites</span></a></li>
         <li><a href="/admin/perfis"><i class="fa fa-users"></i> <span>Perfis</span></a></li>
         <!--<li><a href="/admin/publicacoes"><i class="fa fa-sticky-note"></i> <span>Publicacoes</span></a></li>-->
         <li><a href="/admin/usuarios"><i class="fa fa-user"></i> <span>Usuários</span></a></li>
@@ -113,7 +113,7 @@
   <?php echo $__env->yieldContent('content'); ?>
 
   <footer class="main-footer">
-    <strong>Escolas
+    <strong>Sites
   </footer>
 
 </div>

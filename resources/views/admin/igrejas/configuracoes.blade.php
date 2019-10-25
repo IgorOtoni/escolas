@@ -33,18 +33,18 @@ $(function(){
         //minImageCount: 0,
         //maxImageCount: 1,
         allowedFileExtensions: ["jpeg", "jpg", "png", "gif"],
-        <?php if($igreja->logo != null){ ?>
+        <?php if($site->logo != null){ ?>
         initialPreview: [
-            "{{'data:image;base64,'.base64_encode($igreja->logo)}}"
+            "{{'data:image;base64,'.base64_encode($site->logo)}}"
         ],
         <?php } ?>
         deleteUrl: "{{'/storage'}}",
         uploadExtraData:{'_token':$("#csrf_token").val()},
         initialPreviewAsData: true,
         //initialPreviewFileType: "image",
-        <?php if($igreja->logo != null){ ?>
+        <?php if($site->logo != null){ ?>
         initialPreviewConfig: [
-            {caption: "{{$igreja->logo}}", extra: {id: {{$igreja->id}}, logo: "{{$igreja->logo}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "{{route('igrejas.excluirLogo')}}", key: 1},
+            {caption: "{{$site->logo}}", extra: {id: {{$site->id}}, logo: "{{$site->logo}}", _token: $("#csrf_token").val()}, size: 215000, width: "120px", url: "{{route('sites.excluirLogo')}}", key: 1},
         ],
         <?php } ?>
         //overwriteInitial: false,
@@ -193,8 +193,8 @@ $(function(){
     $("#modal-incluir-menu #noticias_area").css('display', 'none');
     $("#modal-incluir-menu #noticia").attr('data-validate', 'false');
 
-    $("#modal-incluir-menu #sermoes_area").css('display', 'none');
-    $("#modal-incluir-menu #sermao").attr('data-validate', 'false');
+    $("#modal-incluir-menu #midias_area").css('display', 'none');
+    $("#modal-incluir-menu #midia").attr('data-validate', 'false');
 
     $("#modal-incluir-menu #galerias_area").css('display', 'none');
     $("#modal-incluir-menu #galeria").attr('data-validate', 'false');
@@ -221,8 +221,8 @@ $(function(){
         $("#modal-incluir-menu #noticias_area").css('display', 'none');
         $("#modal-incluir-menu #noticia").attr('data-validate', 'false');
 
-        $("#modal-incluir-menu #sermoes_area").css('display', 'none');
-        $("#modal-incluir-menu #sermao").attr('data-validate', 'false');
+        $("#modal-incluir-menu #midias_area").css('display', 'none');
+        $("#modal-incluir-menu #midia").attr('data-validate', 'false');
 
         $("#modal-incluir-menu #galerias_area").css('display', 'none');
         $("#modal-incluir-menu #galeria").attr('data-validate', 'false');
@@ -247,8 +247,8 @@ $(function(){
             $("#modal-incluir-menu #noticias_area").css('display', 'block');
             $("#modal-incluir-menu #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-incluir-menu #sermoes_area").css('display', 'block');
-            $("#modal-incluir-menu #sermao").attr('data-validate', 'true');
+            $("#modal-incluir-menu #midias_area").css('display', 'block');
+            $("#modal-incluir-menu #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-incluir-menu #galerias_area").css('display', 'block');
             $("#modal-incluir-menu #galeria").attr('data-validate', 'true');
@@ -276,8 +276,8 @@ $(function(){
     $("#modal-editar-menu #noticias_area").css('display', 'none');
     $("#modal-editar-menu #noticia").attr('data-validate', 'false');
 
-    $("#modal-editar-menu #sermoes_area").css('display', 'none');
-    $("#modal-editar-menu #sermao").attr('data-validate', 'false');
+    $("#modal-editar-menu #midias_area").css('display', 'none');
+    $("#modal-editar-menu #midia").attr('data-validate', 'false');
 
     $("#modal-editar-menu #galerias_area").css('display', 'none');
     $("#modal-editar-menu #galeria").attr('data-validate', 'false');
@@ -301,8 +301,8 @@ $(function(){
         $("#modal-editar-menu #noticias_area").css('display', 'none');
         $("#modal-editar-menu #noticia").attr('data-validate', 'false');
 
-        $("#modal-editar-menu #sermoes_area").css('display', 'none');
-        $("#modal-editar-menu #sermao").attr('data-validate', 'false');
+        $("#modal-editar-menu #midias_area").css('display', 'none');
+        $("#modal-editar-menu #midia").attr('data-validate', 'false');
 
         $("#modal-editar-menu #galerias_area").css('display', 'none');
         $("#modal-editar-menu #galeria").attr('data-validate', 'false');
@@ -327,8 +327,8 @@ $(function(){
             $("#modal-editar-menu #noticias_area").css('display', 'block');
             $("#modal-editar-menu #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-editar-menu #sermoes_area").css('display', 'block');
-            $("#modal-editar-menu #sermao").attr('data-validate', 'true');
+            $("#modal-editar-menu #midias_area").css('display', 'block');
+            $("#modal-editar-menu #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-editar-menu #galerias_area").css('display', 'block');
             $("#modal-editar-menu #galeria").attr('data-validate', 'true');
@@ -358,8 +358,8 @@ $(function(){
     $("#modal-incluir-submenu #noticias_area").css('display', 'none');
     $("#modal-incluir-submenu #noticia").attr('data-validate', 'false');
 
-    $("#modal-incluir-submenu #sermoes_area").css('display', 'none');
-    $("#modal-incluir-submenu #sermao").attr('data-validate', 'false');
+    $("#modal-incluir-submenu #midias_area").css('display', 'none');
+    $("#modal-incluir-submenu #midia").attr('data-validate', 'false');
 
     $("#modal-incluir-submenu #galerias_area").css('display', 'none');
     $("#modal-incluir-submenu #galeria").attr('data-validate', 'false');
@@ -386,8 +386,8 @@ $(function(){
         $("#modal-incluir-submenu #noticias_area").css('display', 'none');
         $("#modal-incluir-submenu #noticia").attr('data-validate', 'false');
 
-        $("#modal-incluir-submenu #sermoes_area").css('display', 'none');
-        $("#modal-incluir-submenu #sermao").attr('data-validate', 'false');
+        $("#modal-incluir-submenu #midias_area").css('display', 'none');
+        $("#modal-incluir-submenu #midia").attr('data-validate', 'false');
 
         $("#modal-incluir-submenu #galerias_area").css('display', 'none');
         $("#modal-incluir-submenu #galeria").attr('data-validate', 'false');
@@ -412,8 +412,8 @@ $(function(){
             $("#modal-incluir-submenu #noticias_area").css('display', 'block');
             $("#modal-incluir-submenu #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-incluir-submenu #sermoes_area").css('display', 'block');
-            $("#modal-incluir-submenu #sermao").attr('data-validate', 'true');
+            $("#modal-incluir-submenu #midias_area").css('display', 'block');
+            $("#modal-incluir-submenu #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-incluir-submenu #galerias_area").css('display', 'block');
             $("#modal-incluir-submenu #galeria").attr('data-validate', 'true');
@@ -441,8 +441,8 @@ $(function(){
     $("#modal-editar-submenu #noticias_area").css('display', 'none');
     $("#modal-editar-submenu #noticia").attr('data-validate', 'false');
 
-    $("#modal-editar-submenu #sermoes_area").css('display', 'none');
-    $("#modal-editar-submenu #sermao").attr('data-validate', 'false');
+    $("#modal-editar-submenu #midias_area").css('display', 'none');
+    $("#modal-editar-submenu #midia").attr('data-validate', 'false');
 
     $("#modal-editar-submenu #galerias_area").css('display', 'none');
     $("#modal-editar-submenu #galeria").attr('data-validate', 'false');
@@ -466,8 +466,8 @@ $(function(){
         $("#modal-editar-submenu #noticias_area").css('display', 'none');
         $("#modal-editar-submenu #noticia").attr('data-validate', 'false');
 
-        $("#modal-editar-submenu #sermoes_area").css('display', 'none');
-        $("#modal-editar-submenu #sermao").attr('data-validate', 'false');
+        $("#modal-editar-submenu #midias_area").css('display', 'none');
+        $("#modal-editar-submenu #midia").attr('data-validate', 'false');
 
         $("#modal-editar-submenu #galerias_area").css('display', 'none');
         $("#modal-editar-submenu #galeria").attr('data-validate', 'false');
@@ -492,8 +492,8 @@ $(function(){
             $("#modal-editar-submenu #noticias_area").css('display', 'block');
             $("#modal-editar-submenu #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-editar-submenu #sermoes_area").css('display', 'block');
-            $("#modal-editar-submenu #sermao").attr('data-validate', 'true');
+            $("#modal-editar-submenu #midias_area").css('display', 'block');
+            $("#modal-editar-submenu #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-editar-submenu #galerias_area").css('display', 'block');
             $("#modal-editar-submenu #galeria").attr('data-validate', 'true');
@@ -523,8 +523,8 @@ $(function(){
     $("#modal-incluir-subsubmenu #noticias_area").css('display', 'none');
     $("#modal-incluir-subsubmenu #noticia").attr('data-validate', 'false');
 
-    $("#modal-incluir-subsubmenu #sermoes_area").css('display', 'none');
-    $("#modal-incluir-subsubmenu #sermao").attr('data-validate', 'false');
+    $("#modal-incluir-subsubmenu #midias_area").css('display', 'none');
+    $("#modal-incluir-subsubmenu #midia").attr('data-validate', 'false');
 
     $("#modal-incluir-subsubmenu #galerias_area").css('display', 'none');
     $("#modal-incluir-subsubmenu #galeria").attr('data-validate', 'false');
@@ -551,8 +551,8 @@ $(function(){
         $("#modal-incluir-subsubmenu #noticias_area").css('display', 'none');
         $("#modal-incluir-subsubmenu #noticia").attr('data-validate', 'false');
 
-        $("#modal-incluir-subsubmenu #sermoes_area").css('display', 'none');
-        $("#modal-incluir-subsubmenu #sermao").attr('data-validate', 'false');
+        $("#modal-incluir-subsubmenu #midias_area").css('display', 'none');
+        $("#modal-incluir-subsubmenu #midia").attr('data-validate', 'false');
 
         $("#modal-incluir-subsubmenu #galerias_area").css('display', 'none');
         $("#modal-incluir-subsubmenu #galeria").attr('data-validate', 'false');
@@ -577,8 +577,8 @@ $(function(){
             $("#modal-incluir-subsubmenu #noticias_area").css('display', 'block');
             $("#modal-incluir-subsubmenu #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-incluir-subsubmenu #sermoes_area").css('display', 'block');
-            $("#modal-incluir-subsubmenu #sermao").attr('data-validate', 'true');
+            $("#modal-incluir-subsubmenu #midias_area").css('display', 'block');
+            $("#modal-incluir-subsubmenu #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-incluir-subsubmenu #galerias_area").css('display', 'block');
             $("#modal-incluir-subsubmenu #galeria").attr('data-validate', 'true');
@@ -606,8 +606,8 @@ $(function(){
     $("#modal-editar-subsubmenu #noticias_area").css('display', 'none');
     $("#modal-editar-subsubmenu #noticia").attr('data-validate', 'false');
 
-    $("#modal-editar-subsubmenu #sermoes_area").css('display', 'none');
-    $("#modal-editar-subsubmenu #sermao").attr('data-validate', 'false');
+    $("#modal-editar-subsubmenu #midias_area").css('display', 'none');
+    $("#modal-editar-subsubmenu #midia").attr('data-validate', 'false');
 
     $("#modal-editar-subsubmenu #galerias_area").css('display', 'none');
     $("#modal-editar-subsubmenu #galeria").attr('data-validate', 'false');
@@ -634,8 +634,8 @@ $(function(){
         $("#modal-editar-subsubmenu #noticias_area").css('display', 'none');
         $("#modal-editar-subsubmenu #noticia").attr('data-validate', 'false');
 
-        $("#modal-editar-subsubmenu #sermoes_area").css('display', 'none');
-        $("#modal-editar-subsubmenu #sermao").attr('data-validate', 'false');
+        $("#modal-editar-subsubmenu #midias_area").css('display', 'none');
+        $("#modal-editar-subsubmenu #midia").attr('data-validate', 'false');
 
         $("#modal-editar-subsubmenu #galerias_area").css('display', 'none');
         $("#modal-editar-subsubmenu #galeria").attr('data-validate', 'false');
@@ -660,8 +660,8 @@ $(function(){
             $("#modal-editar-subsubmenu #noticias_area").css('display', 'block');
             $("#modal-editar-subsubmenu #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-editar-subsubmenu #sermoes_area").css('display', 'block');
-            $("#modal-editar-subsubmenu #sermao").attr('data-validate', 'true');
+            $("#modal-editar-subsubmenu #midias_area").css('display', 'block');
+            $("#modal-editar-subsubmenu #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-editar-subsubmenu #galerias_area").css('display', 'block');
             $("#modal-editar-subsubmenu #galeria").attr('data-validate', 'true');
@@ -687,8 +687,8 @@ $(function(){
     $("#modal-incluir-menu-aplicativo #noticias_area").css('display', 'none');
     $("#modal-incluir-menu-aplicativo #noticia").attr('data-validate', 'false');
 
-    $("#modal-incluir-menu-aplicativo #sermoes_area").css('display', 'none');
-    $("#modal-incluir-menu-aplicativo #sermao").attr('data-validate', 'false');
+    $("#modal-incluir-menu-aplicativo #midias_area").css('display', 'none');
+    $("#modal-incluir-menu-aplicativo #midia").attr('data-validate', 'false');
 
     $("#modal-incluir-menu-aplicativo #galerias_area").css('display', 'none');
     $("#modal-incluir-menu-aplicativo #galeria").attr('data-validate', 'false');
@@ -715,8 +715,8 @@ $(function(){
         $("#modal-incluir-menu-aplicativo #noticias_area").css('display', 'none');
         $("#modal-incluir-menu-aplicativo #noticia").attr('data-validate', 'false');
 
-        $("#modal-incluir-menu-aplicativo #sermoes_area").css('display', 'none');
-        $("#modal-incluir-menu-aplicativo #sermao").attr('data-validate', 'false');
+        $("#modal-incluir-menu-aplicativo #midias_area").css('display', 'none');
+        $("#modal-incluir-menu-aplicativo #midia").attr('data-validate', 'false');
 
         $("#modal-incluir-menu-aplicativo #galerias_area").css('display', 'none');
         $("#modal-incluir-menu-aplicativo #galeria").attr('data-validate', 'false');
@@ -741,8 +741,8 @@ $(function(){
             $("#modal-incluir-menu-aplicativo #noticias_area").css('display', 'block');
             $("#modal-incluir-menu-aplicativo #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-incluir-menu-aplicativo #sermoes_area").css('display', 'block');
-            $("#modal-incluir-menu-aplicativo #sermao").attr('data-validate', 'true');
+            $("#modal-incluir-menu-aplicativo #midias_area").css('display', 'block');
+            $("#modal-incluir-menu-aplicativo #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-incluir-menu-aplicativo #galerias_area").css('display', 'block');
             $("#modal-incluir-menu-aplicativo #galeria").attr('data-validate', 'true');
@@ -767,8 +767,8 @@ $(function(){
     $("#modal-editar-menu-aplicativo #noticias_area").css('display', 'none');
     $("#modal-editar-menu-aplicativo #noticia").attr('data-validate', 'false');
 
-    $("#modal-editar-menu-aplicativo #sermoes_area").css('display', 'none');
-    $("#modal-editar-menu-aplicativo #sermao").attr('data-validate', 'false');
+    $("#modal-editar-menu-aplicativo #midias_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #midia").attr('data-validate', 'false');
 
     $("#modal-editar-menu-aplicativo #galerias_area").css('display', 'none');
     $("#modal-editar-menu-aplicativo #galeria").attr('data-validate', 'false');
@@ -792,8 +792,8 @@ $(function(){
         $("#modal-editar-menu-aplicativo #noticias_area").css('display', 'none');
         $("#modal-editar-menu-aplicativo #noticia").attr('data-validate', 'false');
 
-        $("#modal-editar-menu-aplicativo #sermoes_area").css('display', 'none');
-        $("#modal-editar-menu-aplicativo #sermao").attr('data-validate', 'false');
+        $("#modal-editar-menu-aplicativo #midias_area").css('display', 'none');
+        $("#modal-editar-menu-aplicativo #midia").attr('data-validate', 'false');
 
         $("#modal-editar-menu-aplicativo #galerias_area").css('display', 'none');
         $("#modal-editar-menu-aplicativo #galeria").attr('data-validate', 'false');
@@ -818,8 +818,8 @@ $(function(){
             $("#modal-editar-menu-aplicativo #noticias_area").css('display', 'block');
             $("#modal-editar-menu-aplicativo #noticia").attr('data-validate', 'true');
         }else if(op == 6){
-            $("#modal-editar-menu-aplicativo #sermoes_area").css('display', 'block');
-            $("#modal-editar-menu-aplicativo #sermao").attr('data-validate', 'true');
+            $("#modal-editar-menu-aplicativo #midias_area").css('display', 'block');
+            $("#modal-editar-menu-aplicativo #midia").attr('data-validate', 'true');
         }else if(op == 7){
             $("#modal-editar-menu-aplicativo #galerias_area").css('display', 'block');
             $("#modal-editar-menu-aplicativo #galeria").attr('data-validate', 'true');
@@ -900,8 +900,8 @@ $('#modal-editar-menu').on('hide.bs.modal', function (event) {
     $("#modal-editar-menu #publicacoes_area").css('display', 'none');
     $("#modal-editar-menu #publicacao").attr('data-validate', 'false');
 
-    $("#modal-editar-menu #sermoes_area").css('display', 'none');
-    $("#modal-editar-menu #sermao").attr('data-validate', 'false');
+    $("#modal-editar-menu #midias_area").css('display', 'none');
+    $("#modal-editar-menu #midia").attr('data-validate', 'false');
 
     $("#modal-editar-menu #url_externa_area").css('display', 'none');
     $("#modal-editar-menu #url").attr('data-validate', 'false');
@@ -956,8 +956,8 @@ $('#modal-editar-submenu').on('hide.bs.modal', function (event) {
     $("#modal-editar-submenu #galerias_area").css('display', 'none');
     $("#modal-editar-submenu #galeria").attr('data-validate', 'false');
 
-    $("#modal-editar-submenu #sermoes_area").css('display', 'none');
-    $("#modal-editar-submenu #sermao").attr('data-validate', 'false');
+    $("#modal-editar-submenu #midias_area").css('display', 'none');
+    $("#modal-editar-submenu #midia").attr('data-validate', 'false');
 
     $("#modal-editar-submenu #url_externa_area").css('display', 'none');
     $("#modal-editar-submenu #url").attr('data-validate', 'false');
@@ -1014,8 +1014,8 @@ $('#modal-editar-subsubmenu').on('hide.bs.modal', function (event) {
     $("#modal-editar-subsubmenu #galerias_area").css('display', 'none');
     $("#modal-editar-subsubmenu #galeria").attr('data-validate', 'false');
     
-    $("#modal-editar-subsubmenu #sermoes_area").css('display', 'none');
-    $("#modal-editar-subsubmenu #sermao").attr('data-validate', 'false');
+    $("#modal-editar-subsubmenu #midias_area").css('display', 'none');
+    $("#modal-editar-subsubmenu #midia").attr('data-validate', 'false');
     
     $("#modal-editar-subsubmenu #url_externa_area").css('display', 'none');
     $("#modal-editar-subsubmenu #url").attr('data-validate', 'false');
@@ -1070,8 +1070,8 @@ $('#modal-editar-menu-aplicativo').on('hide.bs.modal', function (event) {
     $("#modal-editar-menu-aplicativo #galerias_area").css('display', 'none');
     $("#modal-editar-menu-aplicativo #galeria").attr('data-validate', 'false');
 
-    $("#modal-editar-menu-aplicativo #sermoes_area").css('display', 'none');
-    $("#modal-editar-menu-aplicativo #sermao").attr('data-validate', 'false');
+    $("#modal-editar-menu-aplicativo #midias_area").css('display', 'none');
+    $("#modal-editar-menu-aplicativo #midia").attr('data-validate', 'false');
     
     $("#modal-editar-menu-aplicativo #url_externa_area").css('display', 'none');
     $("#modal-editar-menu-aplicativo #url").attr('data-validate', 'false');
@@ -1105,7 +1105,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-    Configuração do site da escola
+    Configuração do site da site
     <!--<small>it all starts here</small>-->
     </h1>
 </section>
@@ -1113,9 +1113,9 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 <!-- Main content -->
 <section class="content">
 
-    <form id="editarConfiguracoesIgrejaFormulario" data-toggle="validator" method="POST" role="form" action="{{route('igrejas.salvarConfiguracoes')}}" enctype="multipart/form-data">
+    <form id="editarConfiguracoesSiteFormulario" data-toggle="validator" method="POST" role="form" action="{{route('sites.salvarConfiguracoes')}}" enctype="multipart/form-data">
     @csrf
-    <input type="hidden" name="id" value="{{$igreja->id_configuracao}}">
+    <input type="hidden" name="id" value="{{$site->id_configuracao}}">
     <div class="box">
         <div class="box-body">
 
@@ -1123,7 +1123,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-12">
             <div class="form-group has-feedback">
                 <label >Nome</label>
-                <input name="nome" type="text" class="form-control" placeholder="Nome" value="{{$igreja->nome}}" required>
+                <input name="nome" type="text" class="form-control" placeholder="Nome" value="{{$site->nome}}" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1131,7 +1131,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-4">
             <div class="form-group has-feedback">
                 <label >CEP</label>
-                <input id="cep" name="cep" type="text" class="form-control" placeholder="CEP" data-inputmask='"mask": "99.999-999"' value="{{$igreja->cep}}" data-mask required>
+                <input id="cep" name="cep" type="text" class="form-control" placeholder="CEP" data-inputmask='"mask": "99.999-999"' value="{{$site->cep}}" data-mask required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1139,7 +1139,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-4">
             <div class="form-group has-feedback">
                 <label >Estado</label>
-                <input id="uf" name="estado" type="text" class="form-control" placeholder="Estado" value="{{$igreja->estado}}" required>
+                <input id="uf" name="estado" type="text" class="form-control" placeholder="Estado" value="{{$site->estado}}" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1147,7 +1147,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-4">
             <div class="form-group has-feedback">
                 <label >Cidade</label>
-                <input id="cidade" name="cidade" type="text" class="form-control" placeholder="Cidade" value="{{$igreja->cidade}}" required>
+                <input id="cidade" name="cidade" type="text" class="form-control" placeholder="Cidade" value="{{$site->cidade}}" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1155,7 +1155,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-4">
             <div class="form-group has-feedback">
                 <label >Bairro</label>
-                <input id="bairro" name="bairro" type="text" class="form-control" placeholder="Bairro" value="{{$igreja->bairro}}" required>
+                <input id="bairro" name="bairro" type="text" class="form-control" placeholder="Bairro" value="{{$site->bairro}}" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1163,7 +1163,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-4">
             <div class="form-group has-feedback">
                 <label >Rua</label>
-                <input id="rua" name="rua" type="text" class="form-control" placeholder="Rua" value="{{$igreja->rua}}" required>
+                <input id="rua" name="rua" type="text" class="form-control" placeholder="Rua" value="{{$site->rua}}" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1171,13 +1171,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-8">
             <div class="form-group">
                 <label >Complemento</label>
-                <input name="complemento" type="text" class="form-control" placeholder="Complemento" value="{{$igreja->complemento}}">
+                <input name="complemento" type="text" class="form-control" placeholder="Complemento" value="{{$site->complemento}}">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group has-feedback">
                 <label >Número</label>
-                <input name="num" type="number" class="form-control" placeholder="Número" value="{{$igreja->num}}" required>
+                <input name="num" type="number" class="form-control" placeholder="Número" value="{{$site->num}}" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1185,7 +1185,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-4">
             <div class="form-group has-feedback">
                 <label >Telefone</label>
-                <input name="telefone" type="text" class="form-control" placeholder="Telefone" data-inputmask='"mask": "(99) 99999-9999"' data-mask value="{{$igreja->telefone}}">
+                <input name="telefone" type="text" class="form-control" placeholder="Telefone" data-inputmask='"mask": "(99) 99999-9999"' data-mask value="{{$site->telefone}}">
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1193,7 +1193,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
         <div class="col-md-8">
             <div class="form-group has-feedback">
                 <label >Email</label>
-                <input name="email" type="text" class="form-control" placeholder="Email" value="{{$igreja->email}}" required>
+                <input name="email" type="text" class="form-control" placeholder="Email" value="{{$site->email}}" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
             </div>
@@ -1214,7 +1214,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
             <div class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Url</label>
-                <input name="url" type="text" class="form-control" placeholder="Url" value="{{$igreja->url}}" required>
+                <input name="url" type="text" class="form-control" placeholder="Url" value="{{$site->url}}" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
                 </div>
@@ -1225,7 +1225,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <select id="id_template" name="id_template" class="form-control select2" style="width: 100%;" required>
                     <?php $templates = App\TblTemplates::orderBy('nome','ASC')->get(); ?>
                     @foreach ($templates as $template)
-                    <option value="{{$template->id}}" {{($template->id == $igreja->id_template) ? 'selected' : ''}}>{{$template->nome}}</option>
+                    <option value="{{$template->id}}" {{($template->id == $site->id_template) ? 'selected' : ''}}>{{$template->nome}}</option>
                     @endforeach
                 </select>
                 <div class="help-block with-errors"></div>
@@ -1234,7 +1234,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
             <div class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Cor</label>
-                <input name="cor" type="text" class="form-control" placeholder="Cor" value="{{$igreja->cor}}" required>
+                <input name="cor" type="text" class="form-control" placeholder="Cor" value="{{$site->cor}}" required>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
                 </div>
@@ -1248,7 +1248,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
             <div class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Texto da congregação sobre suas missões e valores</label>
-                <textarea name="texto_apresentativo" class="form-control" rows="10" required>{{$igreja->texto_apresentativo}}</textarea>
+                <textarea name="texto_apresentativo" class="form-control" rows="10" required>{{$site->texto_apresentativo}}</textarea>
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors"></div>
                 </div>
@@ -1268,7 +1268,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 
             <div class="row">
             <div class="col-md-12">
-                <h4>Termo de compromisso:</h4> <a href="/gerar_termo_compromisso/{{$igreja->id}}" class="btn btn-primary" target="_blank">Gerar</a>
+                <h4>Termo de compromisso:</h4> <a href="/gerar_termo_compromisso/{{$site->id}}" class="btn btn-primary" target="_blank">Gerar</a>
             </div>
             </div>
         </div>
@@ -1292,32 +1292,32 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                                 <?php foreach($menus as $menu){ ?>
                                     <li>
                                         <div><span><i class="icon-folder-open"></i> {{$menu->ordem}} - {{$menu->nome}}</span> 
-                                            <?php echo ($menu->link != null) ? '<a target="_blank" href="/'.$igreja->url.'/'.$menu->link.'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>' ?>
+                                            <?php echo ($menu->link != null) ? '<a target="_blank" href="/'.$site->url.'/'.$menu->link.'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>' ?>
                                             <div class="pull-right">
                                                 <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-incluir-submenu" data-idmenu="{{$menu->id}}"><i class="fa fa-plus"></i> Submenu</a>
                                                 <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-editar-menu" data-id="{{$menu->id}}" data-nome="{{$menu->nome}}" data-link="{{$menu->link}}" data-ordem="{{$menu->ordem}}"><i class="fa fa-edit"></i> Menu</a>
-                                                <a class="btn btn-danger btn-sm" href="/usuario/igrejas/excluirMenu/{{$menu->id}}"><i class="fa fa-trash"></i> Menu</a>
+                                                <a class="btn btn-danger btn-sm" href="/usuario/sites/excluirMenu/{{$menu->id}}"><i class="fa fa-trash"></i> Menu</a>
                                             </div>
                                         </div>
                                         <ul>
                                             <?php if(isset($submenus[$menu->id])) foreach($submenus[$menu->id] as $submenu){ ?>
                                                 <li>
                                                     <div><span><i class="icon-minus-sign"></i> {{$submenu->ordem}} - {{$submenu->nome}}</span>
-                                                        <?php echo ($submenu->link != null) ? '<a target="_blank" href="/'.$igreja->url.'/'.$submenu->link.'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>' ?>
+                                                        <?php echo ($submenu->link != null) ? '<a target="_blank" href="/'.$site->url.'/'.$submenu->link.'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>' ?>
                                                         <div class="pull-right">
                                                             <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-incluir-subsubmenu" data-idsubmenu="{{$submenu->id}}"><i class="fa fa-plus"></i> Sub-Submenu</a>
                                                             <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-editar-submenu" data-id="{{$submenu->id}}" data-nome="{{$submenu->nome}}" data-link="{{$submenu->link}}" data-ordem="{{$submenu->ordem}}" data-idmenu="{{$submenu->id_menu}}"><i class="fa fa-edit"></i> Submenu</a>
-                                                            <a class="btn btn-danger btn-sm" href="/usuario/igrejas/excluirSubMenu/{{$submenu->id}}"><i class="fa fa-trash"></i> Submenu</a>
+                                                            <a class="btn btn-danger btn-sm" href="/usuario/sites/excluirSubMenu/{{$submenu->id}}"><i class="fa fa-trash"></i> Submenu</a>
                                                         </div>
                                                     </div>
                                                     <ul>
                                                         <?php if(isset($subsubmenus[$submenu->id])) foreach($subsubmenus[$submenu->id] as $subsubmenu){ ?>
                                                             <li>
                                                                 <div><span><i class="icon-leaf"></i> {{$subsubmenu->ordem}} - {{$subsubmenu->nome}}</span> 
-                                                                    <?php echo ($subsubmenu->link != null) ? '<a target="_blank" href="/'.$igreja->url.'/'.$subsubmenu->link.'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>' ?>
+                                                                    <?php echo ($subsubmenu->link != null) ? '<a target="_blank" href="/'.$site->url.'/'.$subsubmenu->link.'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>' ?>
                                                                     <div class="pull-right">
                                                                         <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-editar-subsubmenu" data-id="{{$subsubmenu->id}}" data-nome="{{$subsubmenu->nome}}" data-link="{{$subsubmenu->link}}" data-ordem="{{$subsubmenu->ordem}}" data-idsubmenu="{{$subsubmenu->id_submenu}}"><i class="fa fa-edit"></i> Sub-Submenu</a> 
-                                                                        <a class="btn btn-danger btn-sm" href="/usuario/igrejas/excluirSubSubMenu/{{$subsubmenu->id}}"><i class="fa fa-trash"></i> Sub-Submenu</a>
+                                                                        <a class="btn btn-danger btn-sm" href="/usuario/sites/excluirSubSubMenu/{{$subsubmenu->id}}"><i class="fa fa-trash"></i> Sub-Submenu</a>
                                                                     </div>
                                                                 </div>
                                                             </li>
@@ -1360,14 +1360,14 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                                                 $pos = strpos($menu->link, "http");
                                                 if($pos === false){
                                                     if(false !== strpos($menu->link, "modulo")){
-                                                        echo ($menu->link != null) ? '<a target="_blank" href="/'.$igreja->url.'/'.str_replace("modulo-","",$menu->link).'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>';
-                                                    }else echo ($menu->link != null) ? '<a target="_blank" href="/'.$igreja->url.'/'.str_replace("-","/",$menu->link).'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>';
+                                                        echo ($menu->link != null) ? '<a target="_blank" href="/'.$site->url.'/'.str_replace("modulo-","",$menu->link).'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>';
+                                                    }else echo ($menu->link != null) ? '<a target="_blank" href="/'.$site->url.'/'.str_replace("-","/",$menu->link).'"><span class="bg-blue">Possui link</span></a>' : '<span class="bg-gray">Não possui link</span>';
                                                 }else{
                                                     echo '<a target="_blank" href="'.$menu->link.'"><span class="bg-blue">Possui link</span></a>';
                                                 } ?>
                                             <div class="pull-right">
                                                 <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-editar-menu-aplicativo" data-id="{{$menu->id}}" data-nome="{{$menu->nome}}" data-link="{{$menu->link}}" data-ordem="{{$menu->ordem}}"><i class="fa fa-edit"></i> Menu</a>
-                                                <a class="btn btn-danger btn-sm" href="/usuario/igrejas/excluirMenuAplicativo/{{$menu->id}}"><i class="fa fa-trash"></i> Menu</a>
+                                                <a class="btn btn-danger btn-sm" href="/usuario/sites/excluirMenuAplicativo/{{$menu->id}}"><i class="fa fa-trash"></i> Menu</a>
                                             </div>
                                         </div>
                                     </li>
@@ -1390,9 +1390,9 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 <!-- modals -->
 <!-- Adicionar Menu -->
 <div class="modal fade" id="modal-incluir-menu">
-<form id="adicionarMenuFormulario" data-toggle="validator" method="POST" role="form" action="{{route('igrejas.adicionarMenu')}}" enctype="multipart/form-data">
+<form id="adicionarMenuFormulario" data-toggle="validator" method="POST" role="form" action="{{route('sites.adicionarMenu')}}" enctype="multipart/form-data">
 @csrf
-    <input type="hidden" name="id_configuracao" value="{{$igreja->id_configuracao}}">
+    <input type="hidden" name="id_configuracao" value="{{$site->id_configuracao}}">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -1440,7 +1440,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    @foreach ($modulos_igreja as $modulo)
+                    @foreach ($modulos_site as $modulo)
                         @if (!$modulo->gerencial)
                             <option value="{{$modulo->id}}">{{$modulo->nome}}</option>
                         @endif
@@ -1453,7 +1453,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($publicacoes as $publicacao)
                         <option value="{{$publicacao->id}}">{{$publicacao->nome}}</option>
                     @endforeach
@@ -1465,7 +1465,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventos as $evento)
                         <option value="{{$evento->id}}">{{$evento->nome}}</option>
                     @endforeach
@@ -1477,7 +1477,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventosfixos as $eventofixo)
                         <option value="{{$eventofixo->id}}">{{$eventofixo->nome}}</option>
                     @endforeach
@@ -1489,7 +1489,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícias</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($noticias as $noticia)
                         <option value="{{$noticia->id}}">{{$noticia->nome}}</option>
                     @endforeach
@@ -1497,13 +1497,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Sermões</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    @foreach ($sermoes as $sermao)
-                        <option value="{{$sermao->id}}">{{$sermao->nome}}</option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    @foreach ($midias as $midia)
+                        <option value="{{$midia->id}}">{{$midia->nome}}</option>
                     @endforeach
                 </select>
                 <div class="help-block with-errors"></div>
@@ -1513,7 +1513,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($galerias as $galeria)
                         <option value="{{$galeria->id}}">{{$galeria->nome}}</option>
                     @endforeach
@@ -1544,7 +1544,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 
 <!-- Adicionar Sub Menu -->
 <div class="modal fade" id="modal-incluir-submenu">
-<form id="adicionarSubMenuFormulario" data-toggle="validator" method="POST" role="form" action="{{route('igrejas.adicionarSubMenu')}}" enctype="multipart/form-data">
+<form id="adicionarSubMenuFormulario" data-toggle="validator" method="POST" role="form" action="{{route('sites.adicionarSubMenu')}}" enctype="multipart/form-data">
 @csrf
     <input type="hidden" name="id_menu" id="id_menu">
     <div class="modal-dialog modal-lg">
@@ -1594,7 +1594,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    @foreach ($modulos_igreja as $modulo)
+                    @foreach ($modulos_site as $modulo)
                         @if (!$modulo->gerencial)
                             <option value="{{$modulo->id}}">{{$modulo->nome}}</option>
                         @endif
@@ -1607,7 +1607,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($publicacoes as $publicacao)
                         <option value="{{$publicacao->id}}">{{$publicacao->nome}}</option>
                     @endforeach
@@ -1619,7 +1619,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventos as $evento)
                         <option value="{{$evento->id}}">{{$evento->nome}}</option>
                     @endforeach
@@ -1631,7 +1631,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventosfixos as $eventofixo)
                         <option value="{{$eventofixo->id}}">{{$eventofixo->nome}}</option>
                     @endforeach
@@ -1643,7 +1643,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícias</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($noticias as $noticia)
                         <option value="{{$noticia->id}}">{{$noticia->nome}}</option>
                     @endforeach
@@ -1651,13 +1651,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Sermões</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    @foreach ($sermoes as $sermao)
-                        <option value="{{$sermao->id}}">{{$sermao->nome}}</option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    @foreach ($midias as $midia)
+                        <option value="{{$midia->id}}">{{$midia->nome}}</option>
                     @endforeach
                 </select>
                 <div class="help-block with-errors"></div>
@@ -1667,7 +1667,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($galerias as $galeria)
                         <option value="{{$galeria->id}}">{{$galeria->nome}}</option>
                     @endforeach
@@ -1698,7 +1698,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 
 <!-- Adicionar Sub Sub Menu -->
 <div class="modal fade" id="modal-incluir-subsubmenu">
-<form id="adicionarSubSubMenuFormulario" data-toggle="validator" method="POST" role="form" action="{{route('igrejas.adicionarSubSubMenu')}}" enctype="multipart/form-data">
+<form id="adicionarSubSubMenuFormulario" data-toggle="validator" method="POST" role="form" action="{{route('sites.adicionarSubSubMenu')}}" enctype="multipart/form-data">
 @csrf
     <input type="hidden" name="id_submenu" id="id_submenu">
     <div class="modal-dialog modal-lg">
@@ -1748,7 +1748,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    @foreach ($modulos_igreja as $modulo)
+                    @foreach ($modulos_site as $modulo)
                         @if (!$modulo->gerencial)
                             <option value="{{$modulo->id}}">{{$modulo->nome}}</option>
                         @endif
@@ -1761,7 +1761,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($publicacoes as $publicacao)
                         <option value="{{$publicacao->id}}">{{$publicacao->nome}}</option>
                     @endforeach
@@ -1773,7 +1773,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventos as $evento)
                         <option value="{{$evento->id}}">{{$evento->nome}}</option>
                     @endforeach
@@ -1785,7 +1785,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventosfixos as $eventofixo)
                         <option value="{{$eventofixo->id}}">{{$eventofixo->nome}}</option>
                     @endforeach
@@ -1797,7 +1797,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícias</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($noticias as $noticia)
                         <option value="{{$noticia->id}}">{{$noticia->nome}}</option>
                     @endforeach
@@ -1805,13 +1805,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Sermões</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    @foreach ($sermoes as $sermao)
-                        <option value="{{$sermao->id}}">{{$sermao->nome}}</option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    @foreach ($midias as $midia)
+                        <option value="{{$midia->id}}">{{$midia->nome}}</option>
                     @endforeach
                 </select>
                 <div class="help-block with-errors"></div>
@@ -1821,7 +1821,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($galerias as $galeria)
                         <option value="{{$galeria->id}}">{{$galeria->nome}}</option>
                     @endforeach
@@ -1852,7 +1852,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 
 <!-- Editar Menu -->
 <div class="modal fade" id="modal-editar-menu">
-<form id="editarMenuFormulario" data-toggle="validator" method="POST" role="form" action="{{route('igrejas.editarMenu')}}" enctype="multipart/form-data">
+<form id="editarMenuFormulario" data-toggle="validator" method="POST" role="form" action="{{route('sites.editarMenu')}}" enctype="multipart/form-data">
 @csrf
     <input type="hidden" name="id" id="id">
     <div class="modal-dialog modal-lg">
@@ -1908,7 +1908,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    @foreach ($modulos_igreja as $modulo)
+                    @foreach ($modulos_site as $modulo)
                         @if (!$modulo->gerencial)
                             <option value="{{$modulo->id}}">{{$modulo->nome}}</option>
                         @endif
@@ -1921,7 +1921,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($publicacoes as $publicacao)
                         <option value="{{$publicacao->id}}">{{$publicacao->nome}}</option>
                     @endforeach
@@ -1933,7 +1933,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventos as $evento)
                         <option value="{{$evento->id}}">{{$evento->nome}}</option>
                     @endforeach
@@ -1945,7 +1945,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventosfixos as $eventofixo)
                         <option value="{{$eventofixo->id}}">{{$eventofixo->nome}}</option>
                     @endforeach
@@ -1957,7 +1957,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícia</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($noticias as $noticia)
                         <option value="{{$noticia->id}}">{{$noticia->nome}}</option>
                     @endforeach
@@ -1965,13 +1965,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Sermões</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    @foreach ($sermoes as $sermao)
-                        <option value="{{$sermao->id}}">{{$sermao->nome}}</option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    @foreach ($midias as $midia)
+                        <option value="{{$midia->id}}">{{$midia->nome}}</option>
                     @endforeach
                 </select>
                 <div class="help-block with-errors"></div>
@@ -1981,7 +1981,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($galerias as $galeria)
                         <option value="{{$galeria->id}}">{{$galeria->nome}}</option>
                     @endforeach
@@ -2012,7 +2012,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 
 <!-- Editar Sub Menu -->
 <div class="modal fade" id="modal-editar-submenu">
-<form id="editarSubMenuFormulario" data-toggle="validator" method="POST" role="form" action="{{route('igrejas.editarSubMenu')}}" enctype="multipart/form-data">
+<form id="editarSubMenuFormulario" data-toggle="validator" method="POST" role="form" action="{{route('sites.editarSubMenu')}}" enctype="multipart/form-data">
 @csrf
     <input type="hidden" name="id" id="id">
     <div class="modal-dialog modal-lg">
@@ -2079,7 +2079,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    @foreach ($modulos_igreja as $modulo)
+                    @foreach ($modulos_site as $modulo)
                         @if (!$modulo->gerencial)
                             <option value="{{$modulo->id}}">{{$modulo->nome}}</option>
                         @endif
@@ -2092,7 +2092,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($publicacoes as $publicacao)
                         <option value="{{$publicacao->id}}">{{$publicacao->nome}}</option>
                     @endforeach
@@ -2104,7 +2104,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventos as $evento)
                         <option value="{{$evento->id}}">{{$evento->nome}}</option>
                     @endforeach
@@ -2116,7 +2116,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventosfixos as $eventofixo)
                         <option value="{{$eventofixo->id}}">{{$eventofixo->nome}}</option>
                     @endforeach
@@ -2128,7 +2128,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícias</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($noticias as $noticia)
                         <option value="{{$noticia->id}}">{{$noticia->nome}}</option>
                     @endforeach
@@ -2136,13 +2136,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Sermões</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    @foreach ($sermoes as $sermao)
-                        <option value="{{$sermao->id}}">{{$sermao->nome}}</option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    @foreach ($midias as $midia)
+                        <option value="{{$midia->id}}">{{$midia->nome}}</option>
                     @endforeach
                 </select>
                 <div class="help-block with-errors"></div>
@@ -2152,7 +2152,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($galerias as $galeria)
                         <option value="{{$galeria->id}}">{{$galeria->nome}}</option>
                     @endforeach
@@ -2183,7 +2183,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 
 <!-- Editar Sub Sub Menu -->
 <div class="modal fade" id="modal-editar-subsubmenu">
-<form id="editarSubSubMenuFormulario" data-toggle="validator" method="POST" role="form" action="{{route('igrejas.editarSubMenu')}}" enctype="multipart/form-data">
+<form id="editarSubSubMenuFormulario" data-toggle="validator" method="POST" role="form" action="{{route('sites.editarSubMenu')}}" enctype="multipart/form-data">
 @csrf
     <input type="hidden" name="id" id="id">
     <div class="modal-dialog modal-lg">
@@ -2212,7 +2212,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                     $submenus = \DB::table('tbl_sub_menus')
                         ->select('tbl_sub_menus.*', 'tbl_menus.nome as menu')
                         ->leftJoin('tbl_menus', 'tbl_sub_menus.id_menu', '=', 'tbl_menus.id')
-                        ->where('tbl_menus.id_configuracao','=',$igreja->id_configuracao)
+                        ->where('tbl_menus.id_configuracao','=',$site->id_configuracao)
                         ->orderBy('tbl_sub_menus.nome', 'ASC')
                         ->get();
                     ?>
@@ -2258,7 +2258,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Módulos</label>
                 <select id="modulo" name="modulo" class="form-control select2" style="width: 100%;" required>
-                    @foreach ($modulos_igreja as $modulo)
+                    @foreach ($modulos_site as $modulo)
                         @if (!$modulo->gerencial)
                             <option value="{{$modulo->id}}">{{$modulo->nome}}</option>
                         @endif
@@ -2271,7 +2271,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($publicacoes as $publicacao)
                         <option value="{{$publicacao->id}}">{{$publicacao->nome}}</option>
                     @endforeach
@@ -2283,7 +2283,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventos as $evento)
                         <option value="{{$evento->id}}">{{$evento->nome}}</option>
                     @endforeach
@@ -2295,7 +2295,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventosfixos as $eventofixo)
                         <option value="{{$eventofixo->id}}">{{$eventofixo->nome}}</option>
                     @endforeach
@@ -2307,7 +2307,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícias</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($noticias as $noticia)
                         <option value="{{$noticia->id}}">{{$noticia->nome}}</option>
                     @endforeach
@@ -2315,13 +2315,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Sermões</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    @foreach ($sermoes as $sermao)
-                        <option value="{{$sermao->id}}">{{$sermao->nome}}</option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    @foreach ($midias as $midia)
+                        <option value="{{$midia->id}}">{{$midia->nome}}</option>
                     @endforeach
                 </select>
                 <div class="help-block with-errors"></div>
@@ -2331,7 +2331,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($galerias as $galeria)
                         <option value="{{$galeria->id}}">{{$galeria->nome}}</option>
                     @endforeach
@@ -2365,9 +2365,9 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 <!-- modals -->
 <!-- Adicionar Menu Aplicativo -->
 <div class="modal fade" id="modal-incluir-menu-aplicativo">
-<form id="adicionarMenuAplicativoFormulario" data-toggle="validator" method="POST" role="form" action="{{route('igrejas.adicionarMenuAplicativo')}}" enctype="multipart/form-data">
+<form id="adicionarMenuAplicativoFormulario" data-toggle="validator" method="POST" role="form" action="{{route('sites.adicionarMenuAplicativo')}}" enctype="multipart/form-data">
 @csrf
-    <input type="hidden" name="id_configuracao" value="{{$igreja->id_configuracao}}">
+    <input type="hidden" name="id_configuracao" value="{{$site->id_configuracao}}">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -2427,7 +2427,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($publicacoes as $publicacao)
                         <option value="{{$publicacao->id}}">{{$publicacao->nome}}</option>
                     @endforeach
@@ -2439,7 +2439,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventos as $evento)
                         <option value="{{$evento->id}}">{{$evento->nome}}</option>
                     @endforeach
@@ -2451,7 +2451,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventosfixos as $eventofixo)
                         <option value="{{$eventofixo->id}}">{{$eventofixo->nome}}</option>
                     @endforeach
@@ -2463,7 +2463,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícias</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($noticias as $noticia)
                         <option value="{{$noticia->id}}">{{$noticia->nome}}</option>
                     @endforeach
@@ -2471,13 +2471,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Sermões</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    @foreach ($sermoes as $sermao)
-                        <option value="{{$sermao->id}}">{{$sermao->nome}}</option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    @foreach ($midias as $midia)
+                        <option value="{{$midia->id}}">{{$midia->nome}}</option>
                     @endforeach
                 </select>
                 <div class="help-block with-errors"></div>
@@ -2487,7 +2487,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($galerias as $galeria)
                         <option value="{{$galeria->id}}">{{$galeria->nome}}</option>
                     @endforeach
@@ -2518,7 +2518,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 
 <!-- Editar Menu Aplicativo -->
 <div class="modal fade" id="modal-editar-menu-aplicativo">
-<form id="editarMenuAplicativoFormulario" data-toggle="validator" method="POST" role="form" action="{{route('igrejas.editarMenuAplicativo')}}" enctype="multipart/form-data">
+<form id="editarMenuAplicativoFormulario" data-toggle="validator" method="POST" role="form" action="{{route('sites.editarMenuAplicativo')}}" enctype="multipart/form-data">
 @csrf
     <input type="hidden" name="id" id="id">
     <div class="modal-dialog modal-lg">
@@ -2586,7 +2586,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Publicações</label>
                 <select id="publicacao" name="publicacao" class="form-control select2" style="width: 100%;" required>
-                    <?php $publicacoes = App\TblPublicacoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $publicacoes = App\TblPublicacoes::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($publicacoes as $publicacao)
                         <option value="{{$publicacao->id}}">{{$publicacao->nome}}</option>
                     @endforeach
@@ -2598,7 +2598,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos</label>
                 <select id="evento" name="evento" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventos = App\TblEventos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventos = App\TblEventos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventos as $evento)
                         <option value="{{$evento->id}}">{{$evento->nome}}</option>
                     @endforeach
@@ -2610,7 +2610,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Eventos fixos</label>
                 <select id="eventofixo" name="eventofixo" class="form-control select2" style="width: 100%;" required>
-                    <?php $eventosfixos = App\TblEventosFixos::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $eventosfixos = App\TblEventosFixos::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($eventosfixos as $eventofixo)
                         <option value="{{$eventofixo->id}}">{{$eventofixo->nome}}</option>
                     @endforeach
@@ -2622,7 +2622,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Notícia</label>
                 <select id="noticia" name="noticia" class="form-control select2" style="width: 100%;" required>
-                    <?php $noticias = App\TblNoticias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $noticias = App\TblNoticias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($noticias as $noticia)
                         <option value="{{$noticia->id}}">{{$noticia->nome}}</option>
                     @endforeach
@@ -2630,13 +2630,13 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div id="sermoes_area" class="col-md-12">
+            <div id="midias_area" class="col-md-12">
                 <div class="form-group has-feedback">
                 <label >Sermões</label>
-                <select id="sermao" name="sermao" class="form-control select2" style="width: 100%;" required>
-                    <?php $sermoes = App\TblSermoes::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
-                    @foreach ($sermoes as $sermao)
-                        <option value="{{$sermao->id}}">{{$sermao->nome}}</option>
+                <select id="midia" name="midia" class="form-control select2" style="width: 100%;" required>
+                    <?php $midias = App\TblMidias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
+                    @foreach ($midias as $midia)
+                        <option value="{{$midia->id}}">{{$midia->nome}}</option>
                     @endforeach
                 </select>
                 <div class="help-block with-errors"></div>
@@ -2646,7 +2646,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
                 <div class="form-group has-feedback">
                 <label >Galerias</label>
                 <select id="galeria" name="galeria" class="form-control select2" style="width: 100%;" required>
-                    <?php $galerias = App\TblGalerias::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                    <?php $galerias = App\TblGalerias::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                     @foreach ($galerias as $galeria)
                         <option value="{{$galeria->id}}">{{$galeria->nome}}</option>
                     @endforeach

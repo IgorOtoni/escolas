@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use DataTables;
-use App\TblIgreja;
+use App\TblSites;
 use App\TblConfiguracoes;
 use App\TblPerfisPermissoes;
-use App\TblPerfisIgrejasModulos;
-use App\TblIgrejasModulos;
+use App\TblPerfisSitesModulos;
+use App\TblSitessModulos;
 use App\TblModulo;
 use App\TblMenu;
 use App\TblSubMenu;
@@ -21,36 +21,36 @@ use App\User;
 
 class AdminController extends Controller{
 
-	// IGREJAS CRUD ===================================================================================================
-	public function igrejas(){ return view('admin.igrejas.index'); }
+	// SITES CRUD ====================================================================================================
+	public function sites(){ return view('admin.sites.index'); }
 
-    public function modulos_igreja($id){
+    public function modulos_site($id){
         $modulos['data'] = \DB::table('tbl_modulos')
             ->select('tbl_modulos.*')
-            ->leftJoin('tbl_igrejas_modulos', 'tbl_igrejas_modulos.id_modulo', '=', 'tbl_modulos.id')
-            ->where('tbl_igrejas_modulos.id_igreja','=',$id)
+            ->leftJoin('tbl_sites_modulos', 'tbl_sites_modulos.id_modulo', '=', 'tbl_modulos.id')
+            ->where('tbl_sites_modulos.id_site','=',$id)
             ->get();
         return json_encode($modulos);
     }
 
-    public function tbl_igrejas(){
-        $igrejas = \DB::table('tbl_igrejas')
-            ->select('tbl_igrejas.*', 'tbl_configuracoes.id as id_configuracao', 'tbl_configuracoes.url','tbl_configuracoes.id_template')
-            ->leftJoin('tbl_configuracoes', 'tbl_igrejas.id', '=', 'tbl_configuracoes.id_igreja')
+    public function tbl_sites(){
+        $sites = \DB::table('tbl_sites')
+            ->select('tbl_sites.*', 'tbl_configuracoes.id as id_configuracao', 'tbl_configuracoes.url','tbl_configuracoes.id_template')
+            ->leftJoin('tbl_configuracoes', 'tbl_sites.id', '=', 'tbl_configuracoes.id_site')
             ->orderBy('nome', 'ASC')
             ->get();
-        return DataTables::of($igrejas)->addColumn('action',function($igrejas){
-            return '<a href="igrejas/editarIgreja/'.$igrejas->id.'" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>'.'&nbsp'.
-            '<a href="igrejas/configuracoes/'.$igrejas->id.'" class="btn btn-xs btn-warning"><i class="fa fa-cog"></i></a>'.'&nbsp'.
-            '<label title="Status da Igreja" class="switch"><input onClick="switch_status(this)" name="'.$igrejas->nome.'" class="status" id="'.$igrejas->id.'" type="checkbox" '.(($igrejas->status == 1) ? "checked" : "").'><span class="slider"></span></label>';
-        })->editColumn('created_at', function($igrejas) {
-            if($igrejas->created_at != null)
-                return Carbon::parse($igrejas->created_at)->format('d/m/Y');
+        return DataTables::of($sites)->addColumn('action',function($sites){
+            return '<a href="sites/editarSite/'.$sites->id.'" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>'.'&nbsp'.
+            '<a href="sites/configuracoes/'.$sites->id.'" class="btn btn-xs btn-warning"><i class="fa fa-cog"></i></a>'.'&nbsp'.
+            '<label title="Status da Site" class="switch"><input onClick="switch_status(this)" name="'.$sites->nome.'" class="status" id="'.$sites->id.'" type="checkbox" '.(($sites->status == 1) ? "checked" : "").'><span class="slider"></span></label>';
+        })->editColumn('created_at', function($sites) {
+            if($sites->created_at != null)
+                return Carbon::parse($sites->created_at)->format('d/m/Y');
             else
                 return null;
-        })->editColumn('updated_at', function($igrejas) {
-            if($igrejas->updated_at != null){
-                $upd = Carbon::parse($igrejas->updated_at)->diffForHumans();
+        })->editColumn('updated_at', function($sites) {
+            if($sites->updated_at != null){
+                $upd = Carbon::parse($sites->updated_at)->diffForHumans();
                 return $upd;
             }else
                 return null;
@@ -58,53 +58,53 @@ class AdminController extends Controller{
     }
 
     public function switchStatus(Request $request){
-        $igreja = TblIgreja::find($request->id);
-        ($igreja->status == 1) ? $igreja->status = 0 : $igreja->status = 1 ;
-        $igreja->save();
+        $site = TblSites::find($request->id);
+        ($site->status == 1) ? $site->status = 0 : $site->status = 1 ;
+        $site->save();
     }
 
-    public function salvarIgreja(Request $request)
+    public function salvarSite(Request $request)
     {
-        $igreja = new TblIgreja();
-        $igreja->nome = fistCharFromWord_toUpper($request->nome);        
-        $igreja->cep = $request->cep;
-        $igreja->num = $request->num;
-        $igreja->rua = $request->rua;
-        $igreja->cidade = $request->cidade;
-        $igreja->complemento = $request->complemento;
-        $igreja->bairro = $request->bairro;
-        $igreja->estado = $request->estado;
-        $igreja->telefone = $request->telefone;
-        $igreja->email = $request->email;
-        $igreja->logo = file_get_contents($request->file($logo));
+        $site = new TblSites();
+        $site->nome = fistCharFromWord_toUpper($request->nome);        
+        $site->cep = $request->cep;
+        $site->num = $request->num;
+        $site->rua = $request->rua;
+        $site->cidade = $request->cidade;
+        $site->complemento = $request->complemento;
+        $site->bairro = $request->bairro;
+        $site->estado = $request->estado;
+        $site->telefone = $request->telefone;
+        $site->email = $request->email;
+        $site->logo = file_get_contents($request->file($logo));
 
-        $count = TblIgreja::where("nome", "=", $igreja->nome)->count();
+        $count = TblSites::where("nome", "=", $site->nome)->count();
         if($count == 0){
-            $igreja->save();
+            $site->save();
 
-            $modulo = new TblIgrejasModulos();
+            $modulo = new TblSitessModulos();
 
             foreach ($request->modulos as $key => $value) {
                 $data = [
-                    'id_igreja' => $igreja->id,
+                    'id_site' => $site->id,
                     'id_modulo' => $value
                 ];
                 $modulo->create($data);
             }
 
             $configuracao = new TblConfiguracoes();
-            $configuracao->id_igreja = $igreja->id;
+            $configuracao->id_site = $site->id;
             $configuracao->cor = 'white';
             $configuracao->id_template = 1;
             $configuracao->save();
 
             $notification = array(
-                'message' => $igreja->nome . ' foi incluído(a) com sucesso!', 
+                'message' => $site->nome . ' foi incluído(a) com sucesso!', 
                 'alert-type' => 'success'
             );
 
-            //return view('igrejas.index')->with($notification);
-            return redirect()->route('igrejas')->with($notification);
+            //return view('sites.index')->with($notification);
+            return redirect()->route('sites')->with($notification);
 
         }else{
 
@@ -118,34 +118,34 @@ class AdminController extends Controller{
         }
     }
 
-    public function editarIgreja($id)
+    public function editarSite($id)
     {
-        $igreja = TblIgreja::findOrfail($id);
-        $modulos_igreja = TblIgrejasModulos::where('id_igreja', '=', $id)->get();
-        return view('admin.igrejas.edit', compact('igreja','modulos_igreja'));
+        $site = TblSites::findOrfail($id);
+        $modulos_site = TblSitessModulos::where('id_site', '=', $id)->get();
+        return view('admin.sites.edit', compact('site','modulos_site'));
     }
 
-    public function atualizarIgreja(Request $request){
-        $igreja = TblIgreja::find($request->id);
-        $igreja->nome = fistCharFromWord_toUpper($request->nome);
-        $igreja->cep = $request->cep;
-        $igreja->num = $request->num;
-        $igreja->rua = $request->rua;
-        $igreja->cidade = $request->cidade;
-        $igreja->complemento = $request->complemento;
-        $igreja->bairro = $request->bairro;
-        $igreja->estado = $request->estado;
-        $igreja->telefone = $request->telefone;
-        $igreja->email = $request->email;
+    public function atualizarSite(Request $request){
+        $site = TblSites::find($request->id);
+        $site->nome = fistCharFromWord_toUpper($request->nome);
+        $site->cep = $request->cep;
+        $site->num = $request->num;
+        $site->rua = $request->rua;
+        $site->cidade = $request->cidade;
+        $site->complemento = $request->complemento;
+        $site->bairro = $request->bairro;
+        $site->estado = $request->estado;
+        $site->telefone = $request->telefone;
+        $site->email = $request->email;
         if($request->logo){
-            $igreja->logo = file_get_contents($request->file($logo));
+            $site->logo = file_get_contents($request->file($logo));
         }
 
-        $count = TblIgreja::where("nome", "=", $igreja->nome)->where("id", "<>", $request->id)->count();
+        $count = TblSites::where("nome", "=", $site->nome)->where("id", "<>", $request->id)->count();
         if($count == 0){
-            $igreja->save();
+            $site->save();
 
-            $imsb = TblIgrejasModulos::where('id_igreja', '=',  $request->id)->get();
+            $imsb = TblSitessModulos::where('id_site', '=',  $request->id)->get();
             $modulos_ingorados = null;
             $x = 0;
 
@@ -154,21 +154,21 @@ class AdminController extends Controller{
                     $modulos_ingorados[$x] = $imb->id_modulo;
                     $x++;
                 }else{
-                    $pimsb = TblPerfisIgrejasModulos::where('id_modulo_igreja', '=', $imb->id)->get();
+                    $pimsb = TblPerfisSitesModulos::where('id_modulo_site', '=', $imb->id)->get();
                     foreach($pimsb as $pimb){
-                        TblPerfisPermissoes::where('id_perfil_igreja_modulo', '=', $pimb->id)->delete();
+                        TblPerfisPermissoes::where('id_perfil_site_modulo', '=', $pimb->id)->delete();
                         $pimb->delete();
                     }
                     $imb->delete();
                 }
             }
 
-            $modulo = new TblIgrejasModulos();
+            $modulo = new TblSitessModulos();
 
             foreach ($request->modulos as $key => $value) {
                 if($modulos_ingorados == null || !in_array($value, $modulos_ingorados)){
                     $data = [
-                        'id_igreja' => $igreja->id,
+                        'id_site' => $site->id,
                         'id_modulo' => $value
                     ];
                     $modulo->create($data);
@@ -176,11 +176,11 @@ class AdminController extends Controller{
             }
 
             $notification = array(
-                'message' => $igreja->nome . ' foi atualizado(a) com sucesso!', 
+                'message' => $site->nome . ' foi atualizado(a) com sucesso!', 
                 'alert-type' => 'success'
             );
 
-            return redirect()->route('igrejas')->with($notification);
+            return redirect()->route('sites')->with($notification);
 
         }else{
 
@@ -195,22 +195,22 @@ class AdminController extends Controller{
     }
 
     public function excluirLogo(Request $request){
-        $igreja = TblIgreja::find($request->id);
-        $igreja->logo = null;
-        $igreja->save();
+        $site = TblSites::find($request->id);
+        $site->logo = null;
+        $site->save();
         return \Response::json(['message' => 'File successfully delete'], 200);
     }
 
     public function configuracoes($id){
-        $igreja = obter_dados_igreja_id($id);
-        $modulos_igreja = obter_modulos_apresentativos_igreja($igreja);
-        $retorno = obter_menus_configuracao($igreja->id_configuracao);
+        $site = obter_dados_site_id($id);
+        $modulos_site = obter_modulos_apresentativos_site($site);
+        $retorno = obter_menus_configuracao($site->id_configuracao);
         $menus = $retorno[0];
         $submenus = $retorno[1];
         $subsubmenus = $retorno[2];
-        $menus_aplicativo = obter_menus_aplicativo_configuracao($igreja->id_configuracao);
-        $modulos_aplicativo = obter_modulos_igreja_aplicativo($igreja);
-        return view('admin.igrejas.configuracoes', compact('igreja','modulos_igreja','modulos_aplicativo','menus','submenus','subsubmenus','menus_aplicativo'));
+        $menus_aplicativo = obter_menus_aplicativo_configuracao($site->id_configuracao);
+        $modulos_aplicativo = obter_modulos_site_aplicativo($site);
+        return view('admin.sites.configuracoes', compact('site','modulos_site','modulos_aplicativo','menus','submenus','subsubmenus','menus_aplicativo'));
     }
 
     public function adicionarMenu(Request $request){
@@ -230,7 +230,7 @@ class AdminController extends Controller{
         }else if($request->link == 5){
             $menu->link = 'noticia/'.$request->noticia;
         }else if($request->link == 6){
-            $menu->link = 'sermao/'.$request->sermao;
+            $menu->link = 'midia/'.$request->midia;
         }else if($request->link == 7){
             $menu->link = 'galeria/'.$request->galeria;
         }else if($request->link == 8){
@@ -260,7 +260,7 @@ class AdminController extends Controller{
         }else if($request->link == 5){
             $menu->link = 'noticia/'.$request->noticia;
         }else if($request->link == 6){
-            $menu->link = 'sermao/'.$request->sermao;
+            $menu->link = 'midia/'.$request->midia;
         }else if($request->link == 7){
             $menu->link = 'galeria/'.$request->galeria;
         }else if($request->link == 8){
@@ -323,7 +323,7 @@ class AdminController extends Controller{
         }else if($request->link == 5){
             $submenu->link = 'noticia/'.$request->noticia;
         }else if($request->link == 6){
-            $submenu->link = 'sermao/'.$request->sermao;
+            $submenu->link = 'midia/'.$request->midia;
         }else if($request->link == 7){
             $submenu->link = 'galeria/'.$request->galeria;
         }else if($request->link == 8){
@@ -356,7 +356,7 @@ class AdminController extends Controller{
         }else if($request->link == 5){
             $submenu->link = 'noticia/'.$request->noticia;
         }else if($request->link == 6){
-            $submenu->link = 'sermao/'.$request->sermao;
+            $submenu->link = 'midia/'.$request->midia;
         }else if($request->link == 7){
             $submenu->link = 'galeria/'.$request->galeria;
         }else if($request->link == 8){
@@ -410,7 +410,7 @@ class AdminController extends Controller{
         }else if($request->link == 5){
             $subsubmenu->link = 'noticia/'.$request->noticia;
         }else if($request->link == 6){
-            $subsubmenu->link = 'sermao/'.$request->sermao;
+            $subsubmenu->link = 'midia/'.$request->midia;
         }else if($request->link == 7){
             $subsubmenu->link = 'galeria/'.$request->galeria;
         }else if($request->link == 8){
@@ -443,7 +443,7 @@ class AdminController extends Controller{
         }else if($request->link == 5){
             $subsubmenu->link = 'noticia/'.$request->noticia;
         }else if($request->link == 6){
-            $subsubmenu->link = 'sermao/'.$request->sermao;
+            $subsubmenu->link = 'midia/'.$request->midia;
         }else if($request->link == 7){
             $subsubmenu->link = 'galeria/'.$request->galeria;
         }else if($request->link == 8){
@@ -477,30 +477,30 @@ class AdminController extends Controller{
         $configuracao->cor = $request->cor;
         $configuracao->texto_apresentativo = $request->texto_apresentativo;
 
-        $igreja = TblIgreja::find($configuracao->id_igreja);
-        $igreja->nome = fistCharFromWord_toUpper($request->nome);
-        $igreja->cep = $request->cep;
-        $igreja->num = $request->num;
-        $igreja->rua = $request->rua;
-        $igreja->cidade = $request->cidade;
-        $igreja->complemento = $request->complemento;
-        $igreja->bairro = $request->bairro;
-        $igreja->estado = $request->estado;
-        $igreja->telefone = $request->telefone;
-        $igreja->email = $request->email;
+        $site = TblSites::find($configuracao->id_site);
+        $site->nome = fistCharFromWord_toUpper($request->nome);
+        $site->cep = $request->cep;
+        $site->num = $request->num;
+        $site->rua = $request->rua;
+        $site->cidade = $request->cidade;
+        $site->complemento = $request->complemento;
+        $site->bairro = $request->bairro;
+        $site->estado = $request->estado;
+        $site->telefone = $request->telefone;
+        $site->email = $request->email;
         if($request->logo){
-            $igreja->logo = file_get_contents($request->file($logo));
+            $site->logo = file_get_contents($request->file($logo));
         }
         if($request->custom_style){
             $configuracao->custom_style = file_get_contents($request->custom_style);
         }
 
-        $count = TblIgreja::where("nome", "=", $igreja->nome)->where("id", "<>", $igreja->id)->count();
+        $count = TblSites::where("nome", "=", $site->nome)->where("id", "<>", $site->id)->count();
         if($count == 0){
-            $count_ = TblConfiguracoes::where("url", "=", $igreja->nome)->where("id_igreja", "<>", $igreja->id)->count();
+            $count_ = TblConfiguracoes::where("url", "=", $site->nome)->where("id_site", "<>", $site->id)->count();
             if($count_ == 0){
 
-                $igreja->save();
+                $site->save();
 
                 $configuracao->save();
 
@@ -549,10 +549,10 @@ class AdminController extends Controller{
             $menu->link = 'eventofixo-'.$request->eventofixo;
         }else if($request->link == 5){ // notica
             $menu->link = 'noticia-'.$request->noticia;
-        }else if($request->link == 6){ // sermao
-            $menu->link = 'sermao-'.$request->sermao;
+        }else if($request->link == 6){ // midia
+            $menu->link = 'midia-'.$request->midia;
         }else if($request->link == 7){ // galeria
-            $menu->link = 'galeria-'.$request->sermao;
+            $menu->link = 'galeria-'.$request->midia;
         }else if($request->link == 8){ // link
             $menu->link = $request->url;
         }
@@ -581,10 +581,10 @@ class AdminController extends Controller{
             $menu->link = 'eventofixo-'.$request->eventofixo;
         }else if($request->link == 5){ // notica
             $menu->link = 'noticia-'.$request->noticia;
-        }else if($request->link == 6){ // sermao
-            $menu->link = 'sermao-'.$request->sermao;
+        }else if($request->link == 6){ // midia
+            $menu->link = 'midia-'.$request->midia;
         }else if($request->link == 7){ // galeria
-            $menu->link = 'galeria-'.$request->sermao;
+            $menu->link = 'galeria-'.$request->midia;
         }else if($request->link == 8){ // link
             $menu->link = $request->url;
         }
@@ -612,7 +612,10 @@ class AdminController extends Controller{
     // ================================================================================================================
 
     // PERFIS CRUD ====================================================================================================
-    public function perfis(){ return view('admin.perfis.index'); }
+    public function perfis(){
+        $sites = TblSites::orderBy('nome','ASC')->get();
+        return view('admin.perfis.index', compact('sites'));
+    }
 
     public function tbl_perfis(){
         $perfis = TblPerfil::orderBy('nome', 'ASC');
@@ -620,9 +623,9 @@ class AdminController extends Controller{
             return '<a href="perfis/editarPerfil/'.$perfis->id.'" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>'.'&nbsp'.
             '<a href="perfis/carregarPermissoes/'.$perfis->id.'" class="btn btn-xs btn-warning"><i class="fa fa-cog"></i></button></a>'.'&nbsp'.
             '<label title="Status do Perfil" class="switch"><input onClick="switch_status(this)" name="'.$perfis->nome.'" class="status" id="'.$perfis->id.'" type="checkbox" '.(($perfis->status == 1) ? "checked" : "").'><span class="slider"></span></label>';
-        })->addColumn('igreja',function($perfis){
-            if($perfis->id_igreja != null && $perfis->id_igreja != 1)
-                return (TblIgreja::find($perfis->id_igreja))->nome;
+        })->addColumn('site',function($perfis){
+            if($perfis->id_site != null && $perfis->id_site != 1)
+                return (TblSites::find($perfis->id_site))->nome;
             else
                 return 'Administrador da Plataforma';
         })->editColumn('created_at', function($perfis) {
@@ -646,10 +649,10 @@ class AdminController extends Controller{
             ->get();
         $perfil = $perfil[0];
         $modulos = \DB::table('tbl_modulos')
-            ->select('tbl_modulos.*', 'tbl_perfis_igrejas_modulos.id as id_perfis_igrejas_modulos')
-            ->leftJoin('tbl_igrejas_modulos', 'tbl_modulos.id', '=', 'tbl_igrejas_modulos.id_modulo')
-            ->leftJoin('tbl_perfis_igrejas_modulos', 'tbl_igrejas_modulos.id', '=', 'tbl_perfis_igrejas_modulos.id_modulo_igreja')
-            ->leftJoin('tbl_perfis', 'tbl_perfis_igrejas_modulos.id_perfil', '=', 'tbl_perfis.id')
+            ->select('tbl_modulos.*', 'tbl_perfis_sites_modulos.id as id_perfis_sites_modulos')
+            ->leftJoin('tbl_sites_modulos', 'tbl_modulos.id', '=', 'tbl_sites_modulos.id_modulo')
+            ->leftJoin('tbl_perfis_sites_modulos', 'tbl_sites_modulos.id', '=', 'tbl_perfis_sites_modulos.id_modulo_site')
+            ->leftJoin('tbl_perfis', 'tbl_perfis_sites_modulos.id_perfil', '=', 'tbl_perfis.id')
             ->where('tbl_perfis.id','=',$perfil->id)
             //->groupBy('tbl_modulos.id')
             ->orderBy('nome', 'ASC')
@@ -659,10 +662,10 @@ class AdminController extends Controller{
             $permissoes_ativas = \DB::table('tbl_permissoes')
                 ->select('tbl_permissoes.*')
                 ->leftJoin('tbl_perfis_permissoes', 'tbl_permissoes.id', '=', 'tbl_perfis_permissoes.id_permissao')
-                ->leftJoin('tbl_perfis_igrejas_modulos', 'tbl_perfis_permissoes.id_perfil_igreja_modulo', '=', 'tbl_perfis_igrejas_modulos.id')
-                ->leftJoin('tbl_igrejas_modulos', 'tbl_perfis_igrejas_modulos.id_modulo_igreja', '=', 'tbl_igrejas_modulos.id')
-                ->where('tbl_igrejas_modulos.id_modulo','=',$modulo->id)
-                ->where('tbl_perfis_igrejas_modulos.id_perfil','=',$id)
+                ->leftJoin('tbl_perfis_sites_modulos', 'tbl_perfis_permissoes.id_perfil_site_modulo', '=', 'tbl_perfis_sites_modulos.id')
+                ->leftJoin('tbl_sites_modulos', 'tbl_perfis_sites_modulos.id_modulo_site', '=', 'tbl_sites_modulos.id')
+                ->where('tbl_sites_modulos.id_modulo','=',$modulo->id)
+                ->where('tbl_perfis_sites_modulos.id_perfil','=',$id)
                 ->get();
             $permissoes[$modulo->id]['ativas'] = $permissoes_ativas;
             $permissoes_todas = \DB::table('tbl_permissoes')
@@ -681,13 +684,13 @@ class AdminController extends Controller{
         unset($request["_token"]);
         $id_perfil = $request["id_perfil"];
         unset($request["id_perfil"]);
-        foreach ($request->all() as $id_perfil_modulo_igreja => $permissao) {
-            TblPerfisPermissoes::where('id_perfil_igreja_modulo', '=', $id_perfil_modulo_igreja)->delete();
+        foreach ($request->all() as $id_perfil_modulo_site => $permissao) {
+            TblPerfisPermissoes::where('id_perfil_site_modulo', '=', $id_perfil_modulo_site)->delete();
             foreach($permissao as $posicao => $id_permissao){
                 $perfil_permissao = new TblPerfisPermissoes();
 
                 $data = [
-                    'id_perfil_igreja_modulo' => $id_perfil_modulo_igreja,
+                    'id_perfil_site_modulo' => $id_perfil_modulo_site,
                     'id_permissao' => $id_permissao,
                 ];
 
@@ -719,20 +722,20 @@ class AdminController extends Controller{
         $perfil = new TblPerfil();
         $perfil->nome = $request->nome;
         $perfil->descricao = $request->descricao;
-        $perfil->id_igreja = $request->igreja;
+        $perfil->id_site = $request->site;
 
-        $count = TblPerfil::where("nome", "=", $perfil->nome)->where("id_igreja", "=", $perfil->id_igreja)->count();
+        $count = TblPerfil::where("nome", "=", $perfil->nome)->where("id_site", "=", $perfil->id_site)->count();
         if($count == 0){
             $perfil->save();
-            $perfil_modulo = new TblPerfisIgrejasModulos();
+            $perfil_modulo = new TblPerfisSitesModulos();
 
             foreach ($request->modulos as $key => $value) {
-                $modulo_igreja = TblIgrejasModulos::where('id_modulo', '=', $value)->where('id_igreja', '=', $perfil->id_igreja)->get();
-                $modulo_igreja = $modulo_igreja[0];
+                $modulo_site = TblSitessModulos::where('id_modulo', '=', $value)->where('id_site', '=', $perfil->id_site)->get();
+                $modulo_site = $modulo_site[0];
 
                 $data = [
                     'id_perfil' => $perfil->id,
-                    'id_modulo_igreja' => $modulo_igreja->id,
+                    'id_modulo_site' => $modulo_site->id,
                 ];
                 $perfil_modulo->create($data);
             }
@@ -756,49 +759,50 @@ class AdminController extends Controller{
     public function editarPerfil($id){
         $perfil = TblPerfil::find($id);
         $modulos = obter_modulos_perfil($perfil);
-        return view('admin.perfis.edit', compact('perfil','modulos'));
+        $sites = TblSites::orderBy('nome','ASC')->get();
+        return view('admin.perfis.edit', compact('perfil','modulos','sites'));
     }
 
     public function atualizarPerfil(Request $request){
         $perfil = TblPerfil::find($request->id);
         $perfil->nome = $request->nome;
         $perfil->descricao = $request->descricao;
-        $igreja_backup = $perfil->id_igreja;
-        $perfil->id_igreja = $request->igreja;
+        $site_backup = $perfil->id_site;
+        $perfil->id_site = $request->site;
 
-        $count = TblPerfil::where("nome", "=", $perfil->nome)->where("id_igreja", "=", $perfil->id_igreja)->where("id","<>",$perfil->id)->count();
+        $count = TblPerfil::where("nome", "=", $perfil->nome)->where("id_site", "=", $perfil->id_site)->where("id","<>",$perfil->id)->count();
         if($count == 0){
             $perfil->save();
 
             $permissoes_backup = null;
             $cp = 0;
 
-            $modulos_do_perfil = TblPerfisIgrejasModulos::where("id_perfil","=",$perfil->id)->get();
+            $modulos_do_perfil = TblPerfisSitesModulos::where("id_perfil","=",$perfil->id)->get();
             if(count($modulos_do_perfil) > 0) foreach($modulos_do_perfil as $modulo_perfil){
-                $permissoes_perfil = TblPerfisPermissoes::where("id_perfil_igreja_modulo","=",$modulo_perfil->id)->get();
+                $permissoes_perfil = TblPerfisPermissoes::where("id_perfil_site_modulo","=",$modulo_perfil->id)->get();
                 foreach($permissoes_perfil as $permisssao_perfil){
-                    $permissoes_backup[$modulo_perfil->id_modulo_igreja][$cp] = $permisssao_perfil->id_permissao;
+                    $permissoes_backup[$modulo_perfil->id_modulo_site][$cp] = $permisssao_perfil->id_permissao;
                     $cp++;
                 }
                 $cp = 0;
 
-                TblPerfisPermissoes::where("id_perfil_igreja_modulo","=",$modulo_perfil->id)->delete();
+                TblPerfisPermissoes::where("id_perfil_site_modulo","=",$modulo_perfil->id)->delete();
             }
-            TblPerfisIgrejasModulos::where("id_perfil","=",$perfil->id)->delete();
+            TblPerfisSitesModulos::where("id_perfil","=",$perfil->id)->delete();
 
             foreach ($request->modulos as $key => $value) {
-                $perfil_modulo = new TblPerfisIgrejasModulos();
+                $perfil_modulo = new TblPerfisSitesModulos();
 
-                $modulo_igreja = TblIgrejasModulos::where('id_modulo', '=', $value)->where('id_igreja', '=', $perfil->id_igreja)->get();
-                $modulo_igreja = $modulo_igreja[0];
+                $modulo_site = TblSitessModulos::where('id_modulo', '=', $value)->where('id_site', '=', $perfil->id_site)->get();
+                $modulo_site = $modulo_site[0];
 
                 $perfil_modulo->id_perfil = $perfil->id;
-                $perfil_modulo->id_modulo_igreja = $modulo_igreja->id;
+                $perfil_modulo->id_modulo_site = $modulo_site->id;
                 $perfil_modulo->save();
 
-                if(isset($permissoes_backup[$modulo_igreja->id])) foreach($permissoes_backup[$modulo_igreja->id] as $permissao_preservada_id){
+                if(isset($permissoes_backup[$modulo_site->id])) foreach($permissoes_backup[$modulo_site->id] as $permissao_preservada_id){
                     $permissao_nova = new TblPerfisPermissoes();
-                    $permissao_nova->id_perfil_igreja_modulo = $perfil_modulo->id;
+                    $permissao_nova->id_perfil_site_modulo = $perfil_modulo->id;
                     $permissao_nova->id_permissao = $permissao_preservada_id;
                     $permissao_nova->save();
                 }
@@ -824,7 +828,12 @@ class AdminController extends Controller{
     // USUARIOS CRUD =================================================================================================
     public function usuarios()
     {
-        return view('admin.usuarios.index');
+        $perfis = \DB::table('tbl_perfis')
+            ->select('tbl_perfis.*', 'tbl_sites.nome as nome_congregacao')
+            ->leftJoin('tbl_sites','tbl_sites.id','=','tbl_perfis.id_site')
+            ->orderBy('nome', 'ASC')
+            ->get();
+        return view('admin.usuarios.index', compact('perfis'));
     }
 
     public function tbl_usuarios(){
@@ -834,10 +843,10 @@ class AdminController extends Controller{
             '<label title="Status do Usuário" class="switch"><input onClick="switch_status(this)" name="'.$usuarios->nome.'" class="status" id="'.$usuarios->id.'" type="checkbox" '.(($usuarios->status == 1) ? "checked" : "").'><span class="slider"></span></label>';
         })->addColumn('perfil',function($usuarios){
             return (TblPerfil::find($usuarios->id_perfil))->nome;
-        })->addColumn('igreja',function($usuarios){
+        })->addColumn('site',function($usuarios){
             $perfil = TblPerfil::find($usuarios->id_perfil);
-            if($perfil->id_igreja != null && $perfil->id_igreja != 1)
-                return (TblIgreja::find($perfil->id_igreja))->nome;
+            if($perfil->id_site != null && $perfil->id_site != 1)
+                return (TblSites::find($perfil->id_site))->nome;
             else
                 return 'Administrador da Plataforma';
         })->addColumn('status',function($usuarios){
@@ -862,7 +871,12 @@ class AdminController extends Controller{
 
     public function editarUsuario($id){
         $usuario = User::find($id);
-        return view('admin.usuarios.edit', compact('usuario'));
+        $perfis = \DB::table('tbl_perfis')
+            ->select('tbl_perfis.*', 'tbl_sites.nome as nome_congregacao')
+            ->leftJoin('tbl_sites','tbl_sites.id','=','tbl_perfis.id_site')
+            ->orderBy('nome', 'ASC')
+            ->get();
+        return view('admin.usuarios.edit', compact('usuario','perfis'));
     }
 
     public function conta(){

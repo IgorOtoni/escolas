@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <!-- Title -->
-    <title><?php echo e($igreja->nome); ?></title>
+    <title><?php echo e($site->nome); ?></title>
 
     <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8">
@@ -16,24 +16,24 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Barlow:300,400,400i,500,700%7CAlegreya:400" rel="stylesheet">
 
-	<link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/icon-awesome/css/font-awesome.min.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/icon-line-pro/style.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/icon-hs/style.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/icon-material/material-icons.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/animate.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/hs-megamenu/src/hs.megamenu.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/hamburgers/hamburgers.min.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/slick-carousel/slick/slick.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/fancybox/jquery.fancybox.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/dzsparallaxer/dzsparallaxer.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/dzsparallaxer/dzsscroller/scroller.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/dzsparallaxer/advancedscroller/plugin.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/hs-bg-video/hs-bg-video.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/chosen/chosen.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/jquery-ui/themes/base/jquery-ui.min.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/vendor/bootstrap/bootstrap.min.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/css/styles.multipage-education.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('template_igreja/template-azul/assets/css/custom.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/icon-awesome/css/font-awesome.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/icon-line-pro/style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/icon-hs/style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/icon-material/material-icons.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/animate.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/hs-megamenu/src/hs.megamenu.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/hamburgers/hamburgers.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/slick-carousel/slick/slick.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/fancybox/jquery.fancybox.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/dzsparallaxer/dzsparallaxer.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/dzsparallaxer/dzsscroller/scroller.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/dzsparallaxer/advancedscroller/plugin.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/hs-bg-video/hs-bg-video.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/chosen/chosen.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/jquery-ui/themes/base/jquery-ui.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/vendor/bootstrap/bootstrap.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/css/styles.multipage-education.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('template_site/template-azul/assets/css/custom.css')); ?>">
 	
   </head>
 
@@ -48,13 +48,13 @@
             <nav class="js-mega-menu navbar navbar-expand-lg g-px-0 g-py-5 g-py-0--lg">
               <!-- Logo -->
               <a class="navbar-brand g-max-width-170 g-max-width-200--lg" href="home-page-1.html">
-                <img width="70px" class="img-fluid g-hidden-lg-down" src="/storage/igrejas/<?php echo e($igreja->logo); ?>" alt="Logo">
+                <img width="70px" class="img-fluid g-hidden-lg-down" src="/storage/sites/<?php echo e($site->logo); ?>" alt="Logo">
                 <img class="img-fluid g-width-80 g-hidden-md-down g-hidden-xl-up" src="assets/img/logo/logo-mini.png" alt="Logo">
                 <img class="img-fluid g-hidden-lg-up" src="assets/img/logo/logo.png" alt="Logo">
               </a>
               <!-- End Logo -->
 
-              <h3 class="g-color-white"><?php echo e($igreja->nome); ?></h3>
+              <h3 class="g-color-white"><?php echo e($site->nome); ?></h3>
 
               <!-- Responsive Toggle Button -->
               <button class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pa-0" type="button"
@@ -80,7 +80,7 @@
                     $dropdowm_name = "menu-";
                     foreach($menus as $menu){
                         if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
-                            <li class="list-inline-item g-pos-rel ml-lg-auto"><a id="<?php echo e($dropdowm_name.$x."-invoker"); ?>" href="/<?php echo e($igreja->url); ?>/<?php echo e(($menu->link != null) ? $menu->link != null : "#"); ?>" class="nav-link g-color-white-opacity-0_7 g-color-white--hover g-font-size-15 g-font-size-17--xl g-px-15--lg g-py-10 g-py-30--lg"
+                            <li class="list-inline-item g-pos-rel ml-lg-auto"><a id="<?php echo e($dropdowm_name.$x."-invoker"); ?>" href="/<?php echo e($site->url); ?>/<?php echo e(($menu->link != null) ? $menu->link != null : "#"); ?>" class="nav-link g-color-white-opacity-0_7 g-color-white--hover g-font-size-15 g-font-size-17--xl g-px-15--lg g-py-10 g-py-30--lg"
                                 aria-controls="<?php echo e($dropdowm_name.$x); ?>"
                                 aria-haspopup="true"
                                 aria-expanded="false"
@@ -97,11 +97,11 @@
                                     <?php foreach($submenus[$menu->id] as $submenu){
                                         if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
                                             <li class="dropdown-item g-brd-bottom g-brd-2 g-brd-white g-px-0 g-py-2">
-                                                <a href="/<?php echo e($igreja->url); ?>/<?php echo e(($submenu->link != null) ? $submenu->link != null : "#"); ?>" class="nav-link g-color-white-opacity-0_7 g-color-white--hover g-font-size-15 g-font-size-17--xl g-px-15--lg g-py-10 g-py-30--lg"><?php echo e($submenu->nome); ?></a></li>
+                                                <a href="/<?php echo e($site->url); ?>/<?php echo e(($submenu->link != null) ? $submenu->link != null : "#"); ?>" class="nav-link g-color-white-opacity-0_7 g-color-white--hover g-font-size-15 g-font-size-17--xl g-px-15--lg g-py-10 g-py-30--lg"><?php echo e($submenu->nome); ?></a></li>
                                         <?php }else if($submenu->link != null){
-                                            ?> <li class="dropdown-item g-brd-bottom g-brd-2 g-brd-white g-px-0 g-py-2"><a href="/<?php echo e($igreja->url); ?>/<?php echo e($submenu->link); ?>" class="nav-link g-color-white-opacity-0_7 g-color-white--hover g-font-size-15 g-font-size-17--xl g-px-15--lg g-py-10 g-py-30--lg"><?php echo e($submenu->nome); ?></a></li> <?php
+                                            ?> <li class="dropdown-item g-brd-bottom g-brd-2 g-brd-white g-px-0 g-py-2"><a href="/<?php echo e($site->url); ?>/<?php echo e($submenu->link); ?>" class="nav-link g-color-white-opacity-0_7 g-color-white--hover g-font-size-15 g-font-size-17--xl g-px-15--lg g-py-10 g-py-30--lg"><?php echo e($submenu->nome); ?></a></li> <?php
                                         }else{
-                                            ?> <li class="dropdown-item g-brd-bottom g-brd-2 g-brd-white g-px-0 g-py-2"><a href="/<?php echo e($igreja->url); ?>/#" class="nav-link g-color-white-opacity-0_7 g-color-white--hover g-font-size-15 g-font-size-17--xl g-px-15--lg g-py-10 g-py-30--lg"><?php echo e($submenu->nome); ?></a></li> <?php
+                                            ?> <li class="dropdown-item g-brd-bottom g-brd-2 g-brd-white g-px-0 g-py-2"><a href="/<?php echo e($site->url); ?>/#" class="nav-link g-color-white-opacity-0_7 g-color-white--hover g-font-size-15 g-font-size-17--xl g-px-15--lg g-py-10 g-py-30--lg"><?php echo e($submenu->nome); ?></a></li> <?php
                                         }
                                     } ?>
                                 </ul>
@@ -109,9 +109,9 @@
                             </li>
                             <?php
                         }else if($menu->link != null){
-                            ?> <li><a href="/<?php echo e($igreja->url); ?>/<?php echo e($menu->link); ?>"><?php echo e($menu->nome); ?></a></li> <?php
+                            ?> <li><a href="/<?php echo e($site->url); ?>/<?php echo e($menu->link); ?>"><?php echo e($menu->nome); ?></a></li> <?php
                         }else{
-                            ?> <li><a href="/<?php echo e($igreja->url); ?>/#"><?php echo e($menu->nome); ?></a></li> <?php
+                            ?> <li><a href="/<?php echo e($site->url); ?>/#"><?php echo e($menu->nome); ?></a></li> <?php
                         }
                         $x++;
                     }
@@ -129,9 +129,9 @@
 
                     <?php /*foreach($subsubmenus[$submenu->id] as $subsubmenu){
                         if($subsubmenu->link != null){
-                            ?> <li><a href="/{{$igreja->url}}/{{$subsubmenu->link}}" class="nav-link g-color-white-opacity-0_7 g-color-white--hover g-font-size-15 g-font-size-17--xl g-px-15--lg g-py-10 g-py-30--lg">{{$subsubmenu->nome}}</a></li> <?php
+                            ?> <li><a href="/{{$site->url}}/{{$subsubmenu->link}}" class="nav-link g-color-white-opacity-0_7 g-color-white--hover g-font-size-15 g-font-size-17--xl g-px-15--lg g-py-10 g-py-30--lg">{{$subsubmenu->nome}}</a></li> <?php
                         }else{
-                            ?> <li><a href="/{{$igreja->url}}/#" class="nav-link g-color-white-opacity-0_7 g-color-white--hover g-font-size-15 g-font-size-17--xl g-px-15--lg g-py-10 g-py-30--lg">{{$subsubmenu->nome}}</a></li> <?php
+                            ?> <li><a href="/{{$site->url}}/#" class="nav-link g-color-white-opacity-0_7 g-color-white--hover g-font-size-15 g-font-size-17--xl g-px-15--lg g-py-10 g-py-30--lg">{{$subsubmenu->nome}}</a></li> <?php
                         }
                     } */?>
                 </ul>
@@ -216,34 +216,34 @@
 
     <?php echo $__env->yieldPushContent('script'); ?>
 
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/vendor/jquery/jquery.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/vendor/jquery-migrate/jquery-migrate.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/vendor/popper.js/popper.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/vendor/bootstrap/bootstrap.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/vendor/hs-megamenu/src/hs.megamenu.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/vendor/chosen/chosen.jquery.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/vendor/fancybox/jquery.fancybox.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/vendor/slick-carousel/slick/slick.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/vendor/hs-bg-video/hs-bg-video.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/vendor/hs-bg-video/vendor/player.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/vendor/jquery-ui/ui/widgets/datepicker.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/vendor/dzsparallaxer/dzsparallaxer.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/vendor/dzsparallaxer/dzsscroller/scroller.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/vendor/dzsparallaxer/advancedscroller/plugin.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/js/hs.core.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/js/helpers/hs.bg-video.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/js/helpers/hs.hamburgers.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/js/helpers/hs.height-calc.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/js/components/hs.header.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/js/components/hs.popup.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/js/components/hs.dropdown.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/js/components/hs.select.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/js/components/hs.scroll-nav.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/js/components/hs.sticky-block.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/js/components/hs.go-to.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/js/components/hs.carousel.js')); ?>"></script>
-    <script src="<?php echo e(asset('template_igreja/template-azul/assets/js/components/hs.datepicker.js')); ?>"></script>
-	<script src="<?php echo e(asset('template_igreja/template-azul/assets/js/custom.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/vendor/jquery/jquery.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/vendor/jquery-migrate/jquery-migrate.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/vendor/popper.js/popper.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/vendor/bootstrap/bootstrap.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/vendor/hs-megamenu/src/hs.megamenu.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/vendor/chosen/chosen.jquery.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/vendor/fancybox/jquery.fancybox.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/vendor/slick-carousel/slick/slick.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/vendor/hs-bg-video/hs-bg-video.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/vendor/hs-bg-video/vendor/player.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/vendor/jquery-ui/ui/widgets/datepicker.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/vendor/dzsparallaxer/dzsparallaxer.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/vendor/dzsparallaxer/dzsscroller/scroller.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/vendor/dzsparallaxer/advancedscroller/plugin.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/js/hs.core.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/js/helpers/hs.bg-video.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/js/helpers/hs.hamburgers.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/js/helpers/hs.height-calc.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/js/components/hs.header.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/js/components/hs.popup.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/js/components/hs.dropdown.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/js/components/hs.select.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/js/components/hs.scroll-nav.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/js/components/hs.sticky-block.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/js/components/hs.go-to.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/js/components/hs.carousel.js')); ?>"></script>
+    <script src="<?php echo e(asset('template_site/template-azul/assets/js/components/hs.datepicker.js')); ?>"></script>
+	<script src="<?php echo e(asset('template_site/template-azul/assets/js/custom.js')); ?>"></script>
 
     <!-- JS Plugins Init. -->
     <script>

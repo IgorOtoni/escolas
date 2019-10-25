@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/layouts/template2/contato.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/layouts/template2/contato.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- InputMask -->
 <script src="<?php echo e(asset('template_adm/plugins/input-mask/jquery.inputmask.js')); ?>"></script>
@@ -20,7 +20,7 @@ $(function(){
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/<?php echo e($igreja->url); ?>"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item"><a href="/<?php echo e($site->url); ?>"><i class="fa fa-home"></i> Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Contato</li>
                     </ol>
                 </nav>
@@ -32,7 +32,7 @@ $(function(){
 
 <!-- ##### Google Maps Start ##### -->
 <div class="map-area mt-30">
-    <iframe src="https://maps.google.com/?ie=UTF8&amp;q=<?php echo e(muda_cep($igreja->cep)); ?>&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
+    <iframe src="https://maps.google.com/?ie=UTF8&amp;q=<?php echo e(muda_cep($site->cep)); ?>&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
 </div>
 <!-- ##### Google Maps End ##### -->
 
@@ -46,16 +46,16 @@ $(function(){
                         <div class="col-12 col-md-6">
                             <div class="contact-content contact-information">
                                 <h4>Contatos</h4>
-                                <p>Email: <?php if($igreja->email != null){ echo $igreja->email; }else{ ?> <span class="text-red">Não informado</span> <?php } ?> </p>
-                                <p>Telefone: <?php if($igreja->telefone != null){ echo $igreja->telefone; }else{ ?> <span class="text-red">Não informado</span> <?php } ?> </p>
+                                <p>Email: <?php if($site->email != null){ echo $site->email; }else{ ?> <span class="text-red">Não informado</span> <?php } ?> </p>
+                                <p>Telefone: <?php if($site->telefone != null){ echo $site->telefone; }else{ ?> <span class="text-red">Não informado</span> <?php } ?> </p>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="contact-content contact-information">
                                 <h4>Endereço</h4>
-                                <p>Cidade: <?php echo e($igreja->cidade); ?> - <?php echo e($igreja->estado); ?></p>
-                                <p>Bairro: <?php echo e($igreja->bairro); ?></p>
-                                <p>Rua: <?php echo e($igreja->rua); ?>, n°: <?php echo e($igreja->num); ?></p>
+                                <p>Cidade: <?php echo e($site->cidade); ?> - <?php echo e($site->estado); ?></p>
+                                <p>Bairro: <?php echo e($site->bairro); ?></p>
+                                <p>Rua: <?php echo e($site->rua); ?>, n°: <?php echo e($site->num); ?></p>
                             </div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@ $(function(){
             <div class="col-12">
                 <!-- Contact Form Area -->
                 <div class="contact-form-area">
-                    <form action="/<?php echo e($igreja->url); ?>/enviaContato" id="contactForm" name="contactForm" method="get">
+                    <form action="/<?php echo e($site->url); ?>/enviaContato" id="contactForm" name="contactForm" method="get">
                         <?php echo csrf_field(); ?>
                         <div class="row">
                             <div class="col-12 col-lg-4">

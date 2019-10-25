@@ -1,4 +1,3 @@
-<?php /* E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/usuario/usuarios.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 <!-- Select2 -->
 <link rel="stylesheet" href="<?php echo e(asset('template_adm/bower_components/select2/dist/css/select2.min.css')); ?>">
@@ -251,7 +250,7 @@ $(function () {
                     <div class="form-group has-feedback">
                       <label>Selecione o perfil do usuário:</label>
                       <select id="perfil" name="perfil" class="form-control select2" style="width: 100%;" required>
-                        <?php $perfis = App\TblPerfil::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $perfis = App\TblPerfil::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         <?php $__currentLoopData = $perfis; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $perfil): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($perfil->id); ?>"><?php echo e($perfil->nome); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -263,7 +262,7 @@ $(function () {
                     <div class="form-group has-feedback">
                       <label>Selecione o membro do usuário: (o nome do usuário será substituído pelo nome do membro)</label>
                       <select id="membro" name="membro" class="form-control select2" style="width: 100%;" required>
-                        <?php $membros = App\TblMembros::where('id_igreja','=',$igreja->id)->orderBy('nome','ASC')->get(); ?>
+                        <?php $membros = App\TblMembros::where('id_site','=',$site->id)->orderBy('nome','ASC')->get(); ?>
                         <option value="0">Sem membro</option>
                         <?php $__currentLoopData = $membros; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $membro): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($membro->id); ?>"><?php echo e($membro->nome); ?></option>
@@ -287,4 +286,4 @@ $(function () {
 </div>
 <!-- /.modal -->
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.usuario.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.usuario.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/usuario/usuarios.blade.php ENDPATH**/ ?>

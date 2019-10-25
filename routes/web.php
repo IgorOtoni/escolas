@@ -1,7 +1,7 @@
 <?php
 
 use App\TblPerfil;
-use App\TblIgreja;
+use App\TblSite;
 
 // Authentication Routes...
 Route::get('/login', 'PlataformaController@login')->name('login');
@@ -11,10 +11,10 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::post('/{url}/logout', 'Auth\LoginController@logout')->name('logout_');
 
 Route::get('/formulario', 'PlataformaController@formulario')->name('plataforma.formulario');
-Route::post('/cadastro', 'PlataformaController@cadastro')->name('plataforma.incluirIgreja');
+Route::post('/cadastro', 'PlataformaController@cadastro')->name('plataforma.incluirSite');
 
 Route::get('/congregacoes', 'PlataformaController@gratunos')->name('plataforma.congregacoes');
-Route::get('/filtrarIgreja', 'PlataformaController@filtrarIgreja')->name('plataforma.filtrarIgreja');
+Route::get('/filtrarSite', 'PlataformaController@filtrarSite')->name('plataforma.filtrarSite');
 
 Route::get('/', 'PlataformaController@index')->name('plataforma.home');
 
@@ -53,50 +53,50 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
         // CRUD IGREJAS ===============================================================================================
-        Route::get('igrejas', 'AdminController@igrejas')
-            ->name('igrejas');
-        Route::get('igrejas/tbl_igrejas', 'AdminController@tbl_igrejas')
-            ->name('igrejas.tbl_igrejas');
-        Route::get('igrejas/switchStatus/{id}', 'AdminController@switchStatusIgreja')
-            ->name('igrejas.switchStatus');
-        Route::get('igrejas/editarIgreja/{id}', 'AdminController@editarIgreja')
-            ->name('igrejas.editar');
-        Route::post('igrejas/incluir', 'AdminController@salvarIgreja')
-            ->name('igrejas.incluir');
-        Route::post('igrejas/atualizar', 'AdminController@atualizarIgreja')
-            ->name('igrejas.atualizar');
-        Route::post('igrejas/excluirLogo', 'AdminController@excluirLogo')
-            ->name('igrejas.excluirLogo');
-        Route::post('igrejas/salvarConfiguracoes', 'AdminController@salvarConfiguracoes')
-            ->name('igrejas.salvarConfiguracoes');
-        Route::get('igrejas/carregarModulos/{id}', 'AdminController@modulos_igreja')
-            ->name('igrejas.carregarModulos');
-        Route::get('igrejas/configuracoes/{id}', 'AdminController@configuracoes')
-            ->name('igrejas.configuracoes');
-        Route::post('igrejas/adicionarMenu', 'AdminController@adicionarMenu')
-            ->name('igrejas.adicionarMenu');
-        Route::post('igrejas/editarMenu', 'AdminController@editarMenu')
-            ->name('igrejas.editarMenu');
-        Route::get('igrejas/excluirMenu/{id}', 'AdminController@excluirMenu')
-            ->name('igrejas.excluirMenu');
-        Route::post('igrejas/adicionarSubMenu', 'AdminController@adicionarSubMenu')
-            ->name('igrejas.adicionarSubMenu');
-        Route::post('igrejas/editarSubMenu', 'AdminController@editarSubMenu')
-            ->name('igrejas.editarSubMenu');
-        Route::get('igrejas/excluirSubMenu/{id}', 'AdminController@excluirSubMenu')
-            ->name('igrejas.excluirSubMenu');
-        Route::post('igrejas/adicionarSubSubMenu', 'AdminController@adicionarSubSubMenu')
-            ->name('igrejas.adicionarSubSubMenu');
-        Route::post('igrejas/editarSubSubMenu', 'AdminController@editarSubSubMenu')
-            ->name('igrejas.editarSubSubMenu');
-        Route::get('igrejas/excluirSubSubMenu/{id}', 'AdminController@excluirSubSubMenu')
-            ->name('igrejas.excluirSubSubMenu');
-        Route::post('igrejas/adicionarMenuAplicativo', 'AdminController@adicionarMenuAplicativo')
-            ->name('igrejas.adicionarMenuAplicativo');
-        Route::post('igrejas/editarMenuAplicativo', 'AdminController@editarMenuAplicativo')
-            ->name('igrejas.editarMenuAplicativo');
-        Route::get('igrejas/excluirMenuAplicativo/{id}', 'AdminController@excluirMenuAplicativo')
-            ->name('igrejas.excluirMenuAplicativo');
+        Route::get('sites', 'AdminController@sites')
+            ->name('sites');
+        Route::get('sites/tbl_sites', 'AdminController@tbl_sites')
+            ->name('sites.tbl_sites');
+        Route::get('sites/switchStatus/{id}', 'AdminController@switchStatusSite')
+            ->name('sites.switchStatus');
+        Route::get('sites/editarSite/{id}', 'AdminController@editarSite')
+            ->name('sites.editar');
+        Route::post('sites/incluir', 'AdminController@salvarSite')
+            ->name('sites.incluir');
+        Route::post('sites/atualizar', 'AdminController@atualizarSite')
+            ->name('sites.atualizar');
+        Route::post('sites/excluirLogo', 'AdminController@excluirLogo')
+            ->name('sites.excluirLogo');
+        Route::post('sites/salvarConfiguracoes', 'AdminController@salvarConfiguracoes')
+            ->name('sites.salvarConfiguracoes');
+        Route::get('sites/carregarModulos/{id}', 'AdminController@modulos_site')
+            ->name('sites.carregarModulos');
+        Route::get('sites/configuracoes/{id}', 'AdminController@configuracoes')
+            ->name('sites.configuracoes');
+        Route::post('sites/adicionarMenu', 'AdminController@adicionarMenu')
+            ->name('sites.adicionarMenu');
+        Route::post('sites/editarMenu', 'AdminController@editarMenu')
+            ->name('sites.editarMenu');
+        Route::get('sites/excluirMenu/{id}', 'AdminController@excluirMenu')
+            ->name('sites.excluirMenu');
+        Route::post('sites/adicionarSubMenu', 'AdminController@adicionarSubMenu')
+            ->name('sites.adicionarSubMenu');
+        Route::post('sites/editarSubMenu', 'AdminController@editarSubMenu')
+            ->name('sites.editarSubMenu');
+        Route::get('sites/excluirSubMenu/{id}', 'AdminController@excluirSubMenu')
+            ->name('sites.excluirSubMenu');
+        Route::post('sites/adicionarSubSubMenu', 'AdminController@adicionarSubSubMenu')
+            ->name('sites.adicionarSubSubMenu');
+        Route::post('sites/editarSubSubMenu', 'AdminController@editarSubSubMenu')
+            ->name('sites.editarSubSubMenu');
+        Route::get('sites/excluirSubSubMenu/{id}', 'AdminController@excluirSubSubMenu')
+            ->name('sites.excluirSubSubMenu');
+        Route::post('sites/adicionarMenuAplicativo', 'AdminController@adicionarMenuAplicativo')
+            ->name('sites.adicionarMenuAplicativo');
+        Route::post('sites/editarMenuAplicativo', 'AdminController@editarMenuAplicativo')
+            ->name('sites.editarMenuAplicativo');
+        Route::get('sites/excluirMenuAplicativo/{id}', 'AdminController@excluirMenuAplicativo')
+            ->name('sites.excluirMenuAplicativo');
         // =========================================================================================================== 
 
         // CRUD PERFIS ===============================================================================================
@@ -150,8 +150,8 @@ Route::group(['middleware' => 'auth'], function () {
             ->name('usuario.home');
 
         // FUNÇÕES ==================================================================
-        Route::get('/carregarModulosIgreja/{id}', 'HomeController@modulos_igreja')
-            ->name('usuario.carregarModulosIgreja');
+        Route::get('/carregarModulosSite/{id}', 'HomeController@modulos_site')
+            ->name('usuario.carregarModulosSite');
         /////////////////////////////////////////////////////////////////////////////
 
         // CRUD BANNERS =============================================================
@@ -255,19 +255,19 @@ Route::group(['middleware' => 'auth'], function () {
             ->name('usuario.excluirMenuAplicativo');
         /////////////////////////////////////////////////////////////////////////////
 
-        // CRUD SERMOES =============================================================
-        Route::get('/sermoes', 'HomeController@sermoes')
-            ->name('usuario.sermoes');
-        Route::get('/tbl_sermoes', 'HomeController@tbl_sermoes')
-            ->name('usuario.tbl_sermoes');
-        Route::post('/incluirSermao', 'HomeController@incluirSermao')
-            ->name('usuario.incluirSermao');
-        Route::get('/editarSermao/{id}', 'HomeController@editarSermao')
-            ->name('usuario.editarSermao');
-        Route::post('/atualizarSermao', 'HomeController@atualizarSermao')
-            ->name('usuario.atualizarSermao');
-        Route::get('/excluirSermao/{id}', 'HomeController@excluirSermao')
-            ->name('usuario.excluirSermao');
+        // CRUD MIDIAS =============================================================
+        Route::get('/midias', 'HomeController@midias')
+            ->name('usuario.midias');
+        Route::get('/tbl_midias', 'HomeController@tbl_midias')
+            ->name('usuario.tbl_midias');
+        Route::post('/incluirMidia', 'HomeController@incluirMidia')
+            ->name('usuario.incluirMidia');
+        Route::get('/editarMidia/{id}', 'HomeController@editarMidia')
+            ->name('usuario.editarMidia');
+        Route::post('/atualizarMidia', 'HomeController@atualizarMidia')
+            ->name('usuario.atualizarMidia');
+        Route::get('/excluirMidia/{id}', 'HomeController@excluirMidia')
+            ->name('usuario.excluirMidia');
         /////////////////////////////////////////////////////////////////////////////
 
         // CRUD EVENTOS =============================================================
@@ -383,6 +383,19 @@ Route::group(['middleware' => 'auth'], function () {
             ->name('usuario.switchStatusMembro');
         /////////////////////////////////////////////////////////////////////////////
 
+        // CRUD COMUNIDADES ==========================================================================
+        Route::get('/comunidades', 'HomeController@comunidades')->name('usuario.comunidades');
+        Route::get('/tbl_comunidades', 'HomeController@tbl_comunidades')->name('usuario.tbl_comunidades');
+        Route::post('/incluirComunidade', 'HomeController@incluirComunidade')->name('usuario.incluirComunidade');
+        Route::get('/editarComunidade/{id}', 'HomeController@editarComunidade')->name('usuario.editarComunidade');
+        Route::post('/atualizarComunidade', 'HomeController@atualizarComunidade')->name('usuario.atualizarComunidade');
+        Route::get('/excluirComunidade/{id}', 'HomeController@excluirComunidade')->name('usuario.excluirComunidade');
+        Route::get('/listarReunioes/{id}', 'HomeController@listarReunioes')->name('usuario.listarReunioes');
+        Route::get('/tbl_reunioes/', 'HomeController@tbl_reunioes')->name('usuario.tbl_reunioes');
+        Route::get('/listarPresencas/{id}', 'HomeController@listarPresencas')->name('usuario.listarPresencas');
+        Route::get('/tbl_presencas/', 'HomeController@tbl_presencas')->name('usuario.tbl_presencas');
+        //////////////////////////////////////////////////////////////////////////////////////////
+
         // CRUD CARRINHO ============================================================
         // CATEGORIAS
         Route::get('/categorias', 'HomeController@categorias')
@@ -447,83 +460,83 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 // FUNCIONALIDADES BASICAS ============================================================================================
-/*Route::get('/{url}', 'IgrejaController@index')
-    ->name('igreja.index');*/
-Route::get('/{url}/home/', 'IgrejaController@index')
-    ->name('igreja.index');
-Route::get('/{url}/contato', 'IgrejaController@contato')
-    ->name('igreja.contato');
-Route::get('/{url}/enviaContato', 'IgrejaController@enviaContato')
-    ->name('igreja.enviaContato');
-Route::get('/{url}/eventos', 'IgrejaController@eventos')
-    ->name('igreja.eventos');
-Route::get('/{url}/evento/{id}', 'IgrejaController@evento')
-    ->name('igreja.evento');
-Route::get('/{url}/inscreveEnvento', 'IgrejaController@inscreveEnvento')
-    ->name('igreja.inscreveEnvento');
-Route::get('/{url}/eventosfixos', 'IgrejaController@eventosfixos')
-    ->name('igreja.eventosfixos');
-Route::get('/{url}/eventofixo/{id}', 'IgrejaController@eventofixo')
-    ->name('igreja.eventofixo');
-Route::get('/{url}/noticias', 'IgrejaController@noticias')
-    ->name('igreja.noticias');
-Route::get('/{url}/noticia/{id}', 'IgrejaController@noticia')
-    ->name('igreja.noticia');
-Route::get('/{url}/apresentacao', 'IgrejaController@apresentacao')
-    ->name('igreja.apresentacao');
-Route::get('/{url}/sermoes', 'IgrejaController@sermoes')
-    ->name('igreja.sermoes');
-Route::get('/{url}/sermao/{id}', 'IgrejaController@sermao')
-    ->name('igreja.sermao');
-Route::get('/{url}/galeria','IgrejaController@galeria')
-    ->name('igreja.galeria');
-Route::get('/{url}/publicacao/{id}','IgrejaController@publicacao')
-    ->name('igreja.publicacao');
-Route::get('/{url}/login','IgrejaController@login')
-    ->name('igreja.login');
-Route::get('/carrega_imagem/{largura},{altura},{pasta},{arquivo}','IgrejaController@carrega_imagem')
-    ->name('igreja.carrega_imagem');
-Route::get('/gerar_termo_compromisso/{id}','IgrejaController@gerar_termo_compromisso')
-    ->name('igreja.gerar_termo_compromisso');
+/*Route::get('/{url}', 'SiteController@index')
+    ->name('site.index');*/
+Route::get('/{url}/home/', 'SiteController@index')
+    ->name('site.index');
+Route::get('/{url}/contato', 'SiteController@contato')
+    ->name('site.contato');
+Route::get('/{url}/enviaContato', 'SiteController@enviaContato')
+    ->name('site.enviaContato');
+Route::get('/{url}/eventos', 'SiteController@eventos')
+    ->name('site.eventos');
+Route::get('/{url}/evento/{id}', 'SiteController@evento')
+    ->name('site.evento');
+Route::get('/{url}/inscreveEnvento', 'SiteController@inscreveEnvento')
+    ->name('site.inscreveEnvento');
+Route::get('/{url}/eventosfixos', 'SiteController@eventosfixos')
+    ->name('site.eventosfixos');
+Route::get('/{url}/eventofixo/{id}', 'SiteController@eventofixo')
+    ->name('site.eventofixo');
+Route::get('/{url}/noticias', 'SiteController@noticias')
+    ->name('site.noticias');
+Route::get('/{url}/noticia/{id}', 'SiteController@noticia')
+    ->name('site.noticia');
+Route::get('/{url}/apresentacao', 'SiteController@apresentacao')
+    ->name('site.apresentacao');
+Route::get('/{url}/midias', 'SiteController@midias')
+    ->name('site.midias');
+Route::get('/{url}/midia/{id}', 'SiteController@midia')
+    ->name('site.midia');
+Route::get('/{url}/galeria','SiteController@galeria')
+    ->name('site.galeria');
+Route::get('/{url}/publicacao/{id}','SiteController@publicacao')
+    ->name('site.publicacao');
+Route::get('/{url}/login','SiteController@login')
+    ->name('site.login');
+Route::get('/carrega_imagem/{largura},{altura},{pasta},{arquivo}','SiteController@carrega_imagem')
+    ->name('site.carrega_imagem');
+Route::get('/gerar_termo_compromisso/{id}','SiteController@gerar_termo_compromisso')
+    ->name('site.gerar_termo_compromisso');
 // ====================================================================================================================
 
 // CARRINHO ===========================================================================================================
-Route::get('/{url}/produtos', 'IgrejaController@produtos')
-    ->name('igreja.produtos');
-Route::get('/{url}/produto/{id}', 'IgrejaController@produto')
-    ->name('igreja.produto');
-Route::get('/{url}/filtrarProdutos', 'IgrejaController@filtrarProdutos')
-    ->name('igreja.filtrarProdutos');
-Route::get('/{url}/adicionarProduto', 'IgrejaController@adicionarProduto')
-    ->name('igreja.adicionarProduto');
-Route::get('/{url}/alterarProduto', 'IgrejaController@alterarProduto')
-    ->name('igreja.alterarProduto');
-Route::get('/{url}/removerProduto', 'IgrejaController@removerProduto')
-    ->name('igreja.removerProduto');
-Route::get('/{url}/limparCarrinho', 'IgrejaController@limparCarrinho')
-    ->name('igreja.limparCarrinho');
-Route::get('/{url}/carrinho', 'IgrejaController@carrinho')
-    ->name('igreja.carrinho');
-Route::get('/{url}/finalizarCompra', 'IgrejaController@finalizarCompra')
-    ->name('igreja.finalizarCompra');
-Route::post('/{url}/salvarCompra', 'IgrejaController@salvarCompra')
-    ->name('igreja.salvarCompra');
-Route::get('/{url}/salvarCompra', 'IgrejaController@salvarCompra')
-    ->name('igreja.salvarCompra');
-Route::get('/nota_encomenda/{id}','IgrejaController@nota_encomenda')
-    ->name('igreja.nota_encomenda');
-Route::get('/{url}/cadastro', 'IgrejaController@cadastro')
-    ->name('igreja.cadastro');
-Route::post('/{url}/cadastrar', 'IgrejaController@cadastrar')
-    ->name('igreja.cadastrar');
+Route::get('/{url}/produtos', 'SiteController@produtos')
+    ->name('site.produtos');
+Route::get('/{url}/produto/{id}', 'SiteController@produto')
+    ->name('site.produto');
+Route::get('/{url}/filtrarProdutos', 'SiteController@filtrarProdutos')
+    ->name('site.filtrarProdutos');
+Route::get('/{url}/adicionarProduto', 'SiteController@adicionarProduto')
+    ->name('site.adicionarProduto');
+Route::get('/{url}/alterarProduto', 'SiteController@alterarProduto')
+    ->name('site.alterarProduto');
+Route::get('/{url}/removerProduto', 'SiteController@removerProduto')
+    ->name('site.removerProduto');
+Route::get('/{url}/limparCarrinho', 'SiteController@limparCarrinho')
+    ->name('site.limparCarrinho');
+Route::get('/{url}/carrinho', 'SiteController@carrinho')
+    ->name('site.carrinho');
+Route::get('/{url}/finalizarCompra', 'SiteController@finalizarCompra')
+    ->name('site.finalizarCompra');
+Route::post('/{url}/salvarCompra', 'SiteController@salvarCompra')
+    ->name('site.salvarCompra');
+Route::get('/{url}/salvarCompra', 'SiteController@salvarCompra')
+    ->name('site.salvarCompra');
+Route::get('/nota_encomenda/{id}','SiteController@nota_encomenda')
+    ->name('site.nota_encomenda');
+Route::get('/{url}/cadastro', 'SiteController@cadastro')
+    ->name('site.cadastro');
+Route::post('/{url}/cadastrar', 'SiteController@cadastrar')
+    ->name('site.cadastrar');
 // COMPRADOR
-Route::get('/{url}/conta', 'IgrejaController@conta')
+Route::get('/{url}/conta', 'SiteController@conta')
     ->name('comprador.conta');
-Route::get('/{url}/desativar_conta', 'IgrejaController@desativar_conta')
+Route::get('/{url}/desativar_conta', 'SiteController@desativar_conta')
     ->name('comprador.desativar_conta');
-Route::get('/{url}/alterar_conta', 'IgrejaController@alterar_conta')
+Route::get('/{url}/alterar_conta', 'SiteController@alterar_conta')
     ->name('comprador.alterar_conta');
-Route::get('/{url}/compras', 'IgrejaController@compras')
+Route::get('/{url}/compras', 'SiteController@compras')
     ->name('comprador.compras');
 // ====================================================================================================================
 
@@ -542,10 +555,10 @@ Route::get('/api/galeria/{url}/{id}', 'ApiController@galeria')
     ->name('api.galeria');
 Route::get('/api/galerias/{url}', 'ApiController@galerias')
     ->name('api.galerias');
-Route::get('/api/sermoes/{url}', 'ApiController@sermoes')
-    ->name('api.sermoes');
-Route::get('/api/sermao/{url}/{id}', 'ApiController@sermao')
-    ->name('api.sermao');
+Route::get('/api/midias/{url}', 'ApiController@midias')
+    ->name('api.midias');
+Route::get('/api/midia/{url}/{id}', 'ApiController@midia')
+    ->name('api.midia');
 Route::get('/api/eventos/{url}', 'ApiController@eventos')
     ->name('api.eventos');
 Route::get('/api/evento/{url}/{id}', 'ApiController@evento')

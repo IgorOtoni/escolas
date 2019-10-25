@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/carrinho/carrinho.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/carrinho/carrinho.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -69,7 +69,7 @@ if(null !== \Session()->get('carrinho') && is_array(\Session()->get('carrinho'))
         
         echo '<td style="text-align: center;" width="20%">';
         echo '<div class="form_settings">'
-                . '<form method="get" action="/'.$igreja->url.'/alterarProduto" name="form'.$x.'">'
+                . '<form method="get" action="/'.$site->url.'/alterarProduto" name="form'.$x.'">'
                         . '<input type="hidden" name="id" value="'.$produto->id.'">'
                         . '<div class="input-group">'
                             . '<input name="qtd" class="form-control" type="number" value="'.\Session()->get('carrinho_qtd')[$x].'">'
@@ -90,7 +90,7 @@ if(null !== \Session()->get('carrinho') && is_array(\Session()->get('carrinho'))
         echo '</td>';
 
         echo '<td style="text-align: center;" width="20%">'
-                . '<form style="padding-bottom: 5px;" method="get" action="/'.$igreja->url.'/removerProduto">'
+                . '<form style="padding-bottom: 5px;" method="get" action="/'.$site->url.'/removerProduto">'
                     . '<input type="hidden" name="id" value="'.$produto->id.'">'
                     . '<input type="submit" value="Remover" class="btn btn-danger">'
                 . '</form>';
@@ -124,8 +124,8 @@ if(null !== \Session()->get('carrinho') && is_array(\Session()->get('carrinho'))
                 <div class="bggray">
                     <div class="form_settings">
                         <center>
-                            <a href="<?php echo e(route('igreja.limparCarrinho', $igreja->url)); ?>" class="btn btn-danger">Cancelar compra</a>
-                            <a class="btn btn-info" href="<?php echo e(route('igreja.finalizarCompra', $igreja->url)); ?>">Finalizar compra</a>
+                            <a href="<?php echo e(route('site.limparCarrinho', $site->url)); ?>" class="btn btn-danger">Cancelar compra</a>
+                            <a class="btn btn-info" href="<?php echo e(route('site.finalizarCompra', $site->url)); ?>">Finalizar compra</a>
                         </center>
                     </div>
                 </div>

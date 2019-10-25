@@ -14,7 +14,7 @@ $(function(){
 @endpush
 @section('content')
 <!-- ##### Breadcumb Area Start ##### -->
-<div class="breadcumb-area bg-img" style="background-image: url({{asset('template_igreja/template-escuro/img/bg-img/bg-7.jpg')}});">
+<div class="breadcumb-area bg-img" style="background-image: url({{asset('template_site/template-escuro/img/bg-img/bg-7.jpg')}});">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12 col-md-6">
@@ -41,21 +41,21 @@ $(function(){
                                 <!-- Single Contact Area -->
                                 <div class="single-contact-area mb-30">
                                     <p>Endereço:</p>
-                                    <span>Cidade: {{$igreja->cidade}} - {{$igreja->estado}}<br />
-                                    Bairro: {{$igreja->bairro}}<br />
-                                    Rua: {{$igreja->rua}}, {{$igreja->num}}</span>
+                                    <span>Cidade: {{$site->cidade}} - {{$site->estado}}<br />
+                                    Bairro: {{$site->bairro}}<br />
+                                    Rua: {{$site->rua}}, {{$site->num}}</span>
                                 </div>
 
                                 <!-- Single Contact Area -->
                                 <div class="single-contact-area mb-30">
                                     <p>Telefone:</p>
-                                    <?php if($igreja->telefone != null){ ?> <span>{{$igreja->telefone}}</span> <?php }else{ ?> <span class="text-red">Não informado</span> <?php } ?>
+                                    <?php if($site->telefone != null){ ?> <span>{{$site->telefone}}</span> <?php }else{ ?> <span class="text-red">Não informado</span> <?php } ?>
                                 </div>
 
                                 <!-- Single Contact Area -->
                                 <div class="single-contact-area mb-30">
                                     <p>Email:</p>
-                                    <?php if($igreja->email != null){ ?> <span>{{$igreja->email}}</span> <?php }else{ ?> <span class="text-red">Não informado</span> <?php } ?>
+                                    <?php if($site->email != null){ ?> <span>{{$site->email}}</span> <?php }else{ ?> <span class="text-red">Não informado</span> <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,7 @@ $(function(){
                         <div class="col-12 col-lg-6">
                             <div class="contact-form-area">
                                 <h5>Envie uma mensagem</h5>
-                                <form action="/{{$igreja->url}}/enviaContato" id="contactForm" name="contactForm" method="get">
+                                <form action="/{{$site->url}}/enviaContato" id="contactForm" name="contactForm" method="get">
                                     @csrf
                                     <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome" required>
                                     <input name="email" type="email" class="form-control" id="email" placeholder="Email" required>
@@ -84,6 +84,6 @@ $(function(){
 
 <!-- ##### Google Maps ##### -->
 <div class="map-area">
-    <iframe id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($igreja->cep)}}&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
+    <iframe id="googleMap" src="https://maps.google.com/?ie=UTF8&amp;q={{muda_cep($site->cep)}}&amp;t=m&amp;z=14&amp;output=embed" allowfullscreen></iframe>
 </div>
 @endsection

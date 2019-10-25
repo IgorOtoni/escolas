@@ -21,7 +21,7 @@
 	                    	<span class="post-image-mask"></span>
 	                        <img src="{{($evento->foto != null) ? "/storage/timeline/".$evento->foto : "/storage/no-event.jpg"}}" width="172" height="140" alt="" title="" />
 	                    </a>
-	                    <h2 class="title"><a href="/{{$igreja->url}}/evento/{{$evento->id}}">{{$evento->nome}}</a></h2>
+	                    <h2 class="title"><a href="/{{$site->url}}/evento/{{$evento->id}}">{{$evento->nome}}</a></h2>
 	                    <p class="meta">
 	                        <span>Início: <a class="date" title="" href="#">{{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YY h:mm A')}}</a></span>
 	                        <span>Fim: <a class="date" title="" href="#">{{\Carbon\Carbon::parse($evento->dados_horario_fim, 'UTC')->isoFormat('Do MMMM YY h:mm A')}}</a></span>
@@ -31,7 +31,7 @@
 	                        <p>{{$evento->descricao}}</p>
 	                    </div>
 	                    <p class="actions">
-	                    	<a href="/{{$igreja->url}}/evento/{{$evento->id}}" class="read-more">Detalhes<span class="circle-arrow"></span></a>
+	                    	<a href="/{{$site->url}}/evento/{{$evento->id}}" class="read-more">Detalhes<span class="circle-arrow"></span></a>
 	                    </p>
 	                </div>
             	<?php } ?>

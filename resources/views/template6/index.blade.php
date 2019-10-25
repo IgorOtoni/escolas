@@ -1,6 +1,6 @@
 @extends('layouts.template6')
 @push('script')
-<script src="{{asset('template_igreja/template-branco/js/home.js')}}"></script> 
+<script src="{{asset('template_site/template-branco/js/home.js')}}"></script> 
 @endpush
 @section('banner')
 <?php
@@ -17,7 +17,7 @@ if($banners != null && sizeof($banners)){
                     <div class="flex-caption" data-appear-animation="fadeInRight" data-appear-animation-delay="500">
                         <?php
                         if($banner->link != null){
-                            ?> <a href="{{verifica_link($banner->link, $igreja)}}"> <?php
+                            ?> <a href="{{verifica_link($banner->link, $site)}}"> <?php
                         }
                         ?>
                         <strong>{{$banner->nome}}</strong>
@@ -106,7 +106,7 @@ if($eventos != null && sizeof($eventos) != 0){
                                         </div>
                                         <div class="event-list-item-info">
                                             <div class="lined-info">
-                                                <h4><a href="/{{$igreja->url}}/evento/{{$evento->id}}" class="event-title">{{$evento->nome}}</a></h4>
+                                                <h4><a href="/{{$site->url}}/evento/{{$evento->id}}" class="event-title">{{$evento->nome}}</a></h4>
                                             </div>
                                             <div class="lined-info">
                                                 <span class="meta-data"><i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}</span>
@@ -116,7 +116,7 @@ if($eventos != null && sizeof($eventos) != 0){
                                             </div>
                                         </div>
                                         <div class="event-list-item-actions">
-                                            <a href="/{{$igreja->url}}/evento/{{$evento->id}}" class="btn btn-default btn-transparent event-tickets event-register-button">Detalhes</a>
+                                            <a href="/{{$site->url}}/evento/{{$evento->id}}" class="btn btn-default btn-transparent event-tickets event-register-button">Detalhes</a>
                                         </div>
                                     </div>
                                 <?php } ?>

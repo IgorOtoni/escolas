@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/eglise/template.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/eglise/template.blade.php */ ?>
 <!DOCTYPE html>
 <html>
 <head>

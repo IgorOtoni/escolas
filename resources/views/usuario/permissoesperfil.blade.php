@@ -60,7 +60,7 @@
                                     ?>
                                     <div class="col-md-3">
                                       <label>
-                                        <input name="{{$modulo->id_perfis_igrejas_modulos}}[]" value="{{$permissao->id}}" type="checkbox" class="flat-red" {{$marcacao}}>
+                                        <input name="{{$modulo->id_perfis_sites_modulos}}[]" value="{{$permissao->id}}" type="checkbox" class="flat-red" {{$marcacao}}>
                                       </label>
                                       <label>{{$permissao->nome}}</label>
                                     </div>

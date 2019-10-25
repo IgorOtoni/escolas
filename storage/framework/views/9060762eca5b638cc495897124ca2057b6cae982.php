@@ -20,8 +20,8 @@ $(function(){
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/<?php echo e($igreja->url); ?>"><i class="fa fa-home"></i> Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><a href="/<?php echo e($igreja->url); ?>/eventos">Linha do tempo</a></li>
+                        <li class="breadcrumb-item"><a href="/<?php echo e($site->url); ?>"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="/<?php echo e($site->url); ?>/eventos">Linha do tempo</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Evento</li>
                     </ol>
                 </nav>
@@ -77,7 +77,7 @@ $(function(){
             <!-- Subscribe Form -->
             <div class="col-12 col-lg-6">
                 <div class="subscribe-form text-right">
-                    <form action="/<?php echo e($igreja->url); ?>/inscreveEnvento" method="get" id="subscribeForm" name="subscribeForm">
+                    <form action="/<?php echo e($site->url); ?>/inscreveEnvento" method="get" id="subscribeForm" name="subscribeForm">
                         <input type="hidden" name="id_evento" value="<?php echo e($evento->id); ?>">
                         <?php echo csrf_field(); ?>
                         <input type="text" data-inputmask='"mask": "(99) 99999-9999"' data-mask name="telefone" id="subscribeTel" placeholder="Telefone" required>

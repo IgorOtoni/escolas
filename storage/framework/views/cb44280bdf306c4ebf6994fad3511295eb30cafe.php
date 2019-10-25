@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\resources\views/template6/noticias.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\resources\views/template6/noticias.blade.php */ ?>
 <?php $__env->startPush('script'); ?>
 
 <?php $__env->stopPush(); ?>
@@ -19,7 +19,7 @@
 	                            	<img src="<?php echo e(($noticia->foto != null) ? '/carrega_imagem/330,206,noticias,'.$noticia->foto : '/carrega_imagem/330,206,X,no-news.jpg'); ?>" alt="">
 	                            </a>
 	                            <div class="grid-content">
-	                            	<h3><a href="/<?php echo e($igreja->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="event-title"><?php echo e($noticia->nome); ?></a></h3>
+	                            	<h3><a href="/<?php echo e($site->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="event-title"><?php echo e($noticia->nome); ?></a></h3>
 	                                <span class="meta-data"><i class="fa fa-calendar"></i>
 	                                	Publicada <?php echo e(\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()); ?>
 
@@ -32,7 +32,7 @@
 	                                <?php } ?>
 	                            </div>
 	                            <div class="grid-footer clearfix">
-	                        		<a href="/<?php echo e($igreja->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="pull-right btn btn-primary btn-sm">Detalhes</a>
+	                        		<a href="/<?php echo e($site->url); ?>/noticia/<?php echo e($noticia->id); ?>" class="pull-right btn btn-primary btn-sm">Detalhes</a>
 	                            </div>
 	                        </div>
 	                    </li>

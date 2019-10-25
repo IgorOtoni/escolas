@@ -200,7 +200,7 @@ $(function(){
 <div class="modal fade" id="modal-incluir">
 <form id="incluirGaleriaFormulario" data-toggle="validator" method="POST" role="form" action="{{route('usuario.incluirGaleria')}}" enctype="multipart/form-data">
 @csrf
-    <input type="hidden" name="igreja" id="igreja" value="{{$igreja->id}}">
+    <input type="hidden" name="site" id="site" value="{{$site->id}}">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">

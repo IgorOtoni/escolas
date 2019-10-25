@@ -7,8 +7,8 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('igreja.index',['url'=>$igreja->url])}}"><i class="fa fa-home"></i> Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><a href="{{route('igreja.sermoes',['url'=>$igreja->url])}}">Vídeos</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('site.index',['url'=>$site->url])}}"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="{{route('site.midias',['url'=>$site->url])}}">Vídeos</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Vídeo</li>
                     </ol>
                 </nav>
@@ -29,18 +29,18 @@
                     <!-- Sermons Details Area -->
                     <div class="single-post-details-area">
                         <div class="post-content">
-                            <h2 class="post-title mb-30">{{$sermao->nome}}</h2>
-                            <iframe style="width: 100%; min-height: 400px;" frameborder="0" src="{{$sermao->link}}"></iframe>
-                            <h6>Publicado {{\Carbon\Carbon::parse($sermao->created_at)->diffForHumans()}}</h6>
+                            <h2 class="post-title mb-30">{{$midia->nome}}</h2>
+                            <iframe style="width: 100%; min-height: 400px;" frameborder="0" src="{{$midia->link}}"></iframe>
+                            <h6>Publicado {{\Carbon\Carbon::parse($midia->created_at)->diffForHumans()}}</h6>
                             <?php
-                            if($sermao->updated_at != null && $sermao->updated_at != $sermao->created_at){
+                            if($midia->updated_at != null && $midia->updated_at != $midia->created_at){
                                 ?>
-                                <h6> Editado {{\Carbon\Carbon::parse($sermao->updated_at)->diffForHumans()}}</h6>
+                                <h6> Editado {{\Carbon\Carbon::parse($midia->updated_at)->diffForHumans()}}</h6>
                                 <?php
                             }
                             ?>
-                            <p>{{$sermao->descricao}}</p>
-                            <a class="btn crose-btn mt-15" href="{{$sermao->link}}">Assistir</a>
+                            <p>{{$midia->descricao}}</p>
+                            <a class="btn crose-btn mt-15" href="{{$midia->link}}">Assistir</a>
                         </div>
                     </div>
 

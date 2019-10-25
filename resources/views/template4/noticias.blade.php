@@ -31,7 +31,7 @@
                                 {{$noticia->descricao}}
                             </p>
                             <footer class="aligncenter">
-                                <a href="/{{$igreja->url}}/noticia/{{$noticia->id}}" class="button button-centering medium button-style1">Detalhes</a>
+                                <a href="/{{$site->url}}/noticia/{{$noticia->id}}" class="button button-centering medium button-style1">Detalhes</a>
                             </footer>
                         </li>
 

@@ -21,7 +21,7 @@ $(function(){
     ?>
 
     $.ajax({
-        url: 'route('usuario.carregarModulosIgreja',['id'=>''])/'+{{$igreja->id}},
+        url: 'route('usuario.carregarModulosSite',['id'=>''])/'+{{$site->id}},
         type: 'get',
         dataType: 'json',
         success: function(response){
@@ -110,7 +110,7 @@ $(function(){
                 </div>
                 <div class="col-md-12" id="list-area">
                     <div class="form-group has-feedback">
-                    <label>Selecione quais módulos da igreja o perfil irá acessar:</label>
+                    <label>Selecione quais módulos da site o perfil irá acessar:</label>
                     <select id="select_2_modulos" name="modulos[]" data-placeholder="Selecione os módulos" class="form-control select2" style="width: 100%;" multiple="multiple"></select>
                     <div class="help-block with-errors"></div>
                     </div>

@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions/views/minimal.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\vendor\laravel\framework\src\Illuminate\Foundation\Exceptions/views/minimal.blade.php */ ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

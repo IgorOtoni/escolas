@@ -1,4 +1,4 @@
-<?php /* C:\xampp\htdocs\apresentacao_escolas\vendor\laravel\framework\src\Illuminate\Pagination/resources/views/bootstrap-4.blade.php */ ?>
+<?php /* C:\xampp\htdocs\apresentacao_sites\vendor\laravel\framework\src\Illuminate\Pagination/resources/views/bootstrap-4.blade.php */ ?>
 <?php if($paginator->hasPages()): ?>
     <ul class="pagination" role="navigation">
         
