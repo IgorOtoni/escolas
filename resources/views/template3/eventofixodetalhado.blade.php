@@ -29,13 +29,11 @@
                     <div class="single-post-details-area">
                         <div class="post-content">
                             <h2 class="post-title">{{$eventofixo->nome}}</h2>
-                            <p>{{$eventofixo->descricao}}</p>
-                            <p><i class="fa fa-calendar"></i> <i class="fa fa-map-marker"></i> {{$eventofixo->dados_horario_local}}</li></p>
+                            <p><?php echo htmlentities($eventofixo->descricao); ?></p>
+                            <p><i class="fa fa-calendar"></i> <i class="fa fa-map-marker"></i> <?php echo htmlentities($eventofixo->dados_horario_local); ?></li></p>
                         </div>
                         <div class="post-thumbnail mb-30">
-                            @if ($eventofixo->foto != null)
                             <img src="{{($eventofixo->foto != null) ? 'data:image;base64,'.base64_encode($eventofixo->foto) : asset('/storage/no-event.jpg')}}" alt="">
-                            @endif
                         </div>
                     </div>
                 </div>

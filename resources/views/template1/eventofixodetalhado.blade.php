@@ -26,7 +26,7 @@
 <div class="container">
     <div class="row">
     <div class="col-md-12">
-        <h1><?php echo $eventofixo->nome ?></h1>
+        <h1><?php echo htmlentities($eventofixo->nome); ?></h1>
     </div>
     </div>
 </div>
@@ -40,15 +40,13 @@
                 <!-- Post Details Area -->
                 <div class="single-post-details-area">
                     <div class="post-content">
-                        <p><?php echo $eventofixo->descricao ?></p>
+                        <p><?php echo htmlentities($eventofixo->descricao); ?></p>
                         <ul class="info-table">
-                        <li><i class="fa fa-calendar"></i><i class="fa fa-map-marker"></i> <?php echo $eventofixo->dados_horario_local ?></li>
+                        <li><i class="fa fa-calendar"></i><i class="fa fa-map-marker"></i> <?php echo htmlentities($eventofixo->dados_horario_local); ?></li>
                         </ul>
                     </div>
                     <div class="post-thumbnail mb-30">
-                        @if ($eventofixo->foto != null)
-                            <img src="{{($eventofixo->foto != null) ? 'data:image;base64,'.base64_encode($eventofixo->foto) : asset('/storage/no-event.jpg')}}" alt="">
-                        @endif
+                        <img src="{{($eventofixo->foto != null) ? 'data:image;base64,'.base64_encode($eventofixo->foto) : asset('/storage/no-event.jpg')}}" alt="">
                     </div>
                 </div>
             </div>

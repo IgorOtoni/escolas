@@ -37,9 +37,9 @@
                             </div>
                             <!-- Events Content -->
                             <div class="events-content">
-                                <a href="{{route('site.eventofixo', ['url'=>$site->url,'id'=>$evento->id])}}"><h6>{{$evento->nome}}</h6></a>
-                                <p>{{$evento->dados_horario_local}}</p>
-                                <p>{{$evento->descricao}}</p>
+                                <a href="{{route('site.eventofixo', ['url'=>$site->url,'id'=>$evento->id])}}"><h6><?php echo htmlentities($evento->nome); ?></h6></a>
+                                <p><?php echo htmlentities($evento->dados_horario_local); ?></p>
+                                <p><?php echo htmlentities($evento->descricao); ?></p>
                             </div>
                         </div>
 

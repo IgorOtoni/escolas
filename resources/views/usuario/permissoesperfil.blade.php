@@ -73,7 +73,7 @@
       
                 </div>
                 <div class="box-footer">
-                  <a href="/usuario/perfis" class="btn btn-warning pull-left">Cancelar</a>
+                  <a href="{{route('usuario.perfis')}}" class="btn btn-warning pull-left">Cancelar</a>
                   <button type="submit" class="btn btn-primary pull-right">Salvar alteração</button>
                 </div>
               </div>

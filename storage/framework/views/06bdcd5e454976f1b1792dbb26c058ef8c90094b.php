@@ -11,8 +11,8 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/<?php echo e($site->url); ?>/">Home</a></li>
-        <li><a href="/<?php echo e($site->url); ?>/eventosfixos">Eventos fixos</a></li>
+        <li><a href="<?php echo e(route('site.index',['url'=>$site->url])); ?>">Home</a></li>
+        <li><a href="<?php echo e(route('site.eventosfixos',['url'=>$site->url])); ?>">Eventos fixos</a></li>
         <li class="active">Evento fixo</li>
         </ol>
     </div>
@@ -25,7 +25,7 @@
 <div class="container">
     <div class="row">
     <div class="col-md-12">
-        <h1><?php echo e($eventofixo->nome); ?></h1>
+        <h1><?php echo $eventofixo->nome ?></h1>
     </div>
     </div>
 </div>
@@ -39,15 +39,13 @@
                 <!-- Post Details Area -->
                 <div class="single-post-details-area">
                     <div class="post-content">
-                        <p><?php echo e($eventofixo->descricao); ?></p>
+                        <p><?php echo $eventofixo->descricao ?></p>
                         <ul class="info-table">
-                        <li><i class="fa fa-calendar"></i><i class="fa fa-map-marker"></i> <?php echo e($eventofixo->dados_horario_local); ?></li>
+                        <li><i class="fa fa-calendar"></i><i class="fa fa-map-marker"></i> <?php echo $eventofixo->dados_horario_local ?></li>
                         </ul>
                     </div>
                     <div class="post-thumbnail mb-30">
-                        <?php if($eventofixo->foto != null): ?>
                         <img src="<?php echo e(($eventofixo->foto != null) ? 'data:image;base64,'.base64_encode($eventofixo->foto) : asset('/storage/no-event.jpg')); ?>" alt="">
-                        <?php endif; ?>
                     </div>
                 </div>
             </div>

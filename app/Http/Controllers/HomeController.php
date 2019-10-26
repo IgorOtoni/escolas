@@ -2976,8 +2976,7 @@ class HomeController extends Controller
         }
     }
 
-    public function listarReunioes($id)
-    {
+    public function listarReunioes($id){
         if( valida_modulo(\Auth::user()->id_perfil, \Config::get('constants.modulos.comunidadesg')) == false){
             return view('error');
         }else{
@@ -2999,7 +2998,7 @@ class HomeController extends Controller
                         // Add color and link on event
                         [
                             'color' => cor_aleatoria(),
-                            'url' => route('usuario.listarPresencas',['id'=>$data->id]),
+                            'url' => route('usuario.listarPresencas',['id'=>$value->id]),
                         ]
                     );
                 }

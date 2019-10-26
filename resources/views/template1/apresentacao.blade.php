@@ -32,7 +32,7 @@
     <div class="container">
     <div class="row">
         <div class="col-md-12">
-        <p>{{$site->texto_apresentativo}}</p>
+        <p><?php echo htmlentities($site->texto_apresentativo); ?></p>
         <hr>
         @if ($funcoes != null && sizeof($funcoes) > 0)
             <h3>Membros</h3>
@@ -51,7 +51,7 @@
                         @endif
                     </div>
                     <div class="grid-content">
-                        <h3>{{$membro->nome}} ({{$funcao->nome}})</h3>
+                        <h3><?php echo htmlentities($membro->nome); ?> (<?php echo htmlentities($funcao->nome); ?>)</h3>
                         <nav class="social-icons"> 
                             @if ($membro->facebook != null)
                                 <a href="{{$membro->facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -63,7 +63,7 @@
                                 <a href="{{$membro->youtube}}" target="_blank"><i class="fa fa-youtube"></i></a>
                             @endif
                         </nav>
-                        <p>{{$membro->descricao}}</p>
+                        <p><?php echo htmlentities($membro->descricao); ?></p>
                     </div>
                     </div>
                 </div>

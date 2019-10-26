@@ -49,13 +49,13 @@
                         <div class="grid-content">
                         <h3>
                             <a href="{{route('site.eventofixo', ['url'=>$site->url,'id'=>$evento->id])}}">
-                                <?php echo $evento->nome ?>
+                                <?php echo htmlentities(echo $evento->nome); ?>
                             </a>
                         </h3>
-                        <?php if($evento->descricao != null){ ?> <p><?php echo $evento->descricao ?></p> <?php } ?>
+                        <?php if($evento->descricao != null){ ?> <p><?php echo htmlentities($evento->descricao); ?></p> <?php } ?>
                         </div>
                         <ul class="info-table">
-                        <li><i class="fa fa-calendar"></i><i class="fa fa-map-marker"></i> {{$evento->dados_horario_local}}</li>
+                        <li><i class="fa fa-calendar"></i><i class="fa fa-map-marker"></i> <?php echo htmlentities($evento->dados_horario_local); ?></li>
                         </ul>
                     </div>
                     </li>

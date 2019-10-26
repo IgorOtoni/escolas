@@ -121,7 +121,7 @@ if($banners != null && sizeof($banners)){
                                 
                     data-endspeed="300" 
                 
-                            style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;"><?php echo $banner->nome ?> 
+                            style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;"><?php echo htmlentities($banner->nome); ?> 
                         </div>
                         <?php
                         if($banner->link != null){
@@ -146,7 +146,7 @@ if($banners != null && sizeof($banners)){
                             
                     data-endspeed="300" 
                 
-                            style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;"><?php echo $banner->descricao ?> 
+                            style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;"><?php echo htmlentities($banner->descricao); ?> 
                         </div>
                         <?php
                         if($banner->link != null){
@@ -197,10 +197,7 @@ if($noticias != null && sizeof($noticias) != 0){
                             <img src="{{asset('/storage/no-news.jpg')}}" alt=""> 
                         <?php } ?>
                         <div class="grid-content">
-                        <?php /* ?>
-                        <h3><a data-publicacao="{{\Carbon\Carbon::parse($noticia->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}" data-atualizacao="{{(($noticia->updated_at != null) ? \Carbon\Carbon::parse($noticia->updated_at)->diffForHumans() : '')}}" data-foto="{{$noticia->foto}}" data-nome="{{$noticia->nome}}" data-descricao="{{$noticia->descricao}}" data-toggle="modal" data-target="#modal-noticia" href="">{{$noticia->nome}}</a></h3>
-                        <?php */ ?>
-                        <h3><a href="{{route('site.noticia', ['url'=>$site->url,'id'=>$noticia->id])}}"><?php echo $noticia->nome ?></a></h3>
+                        <h3><a href="{{route('site.noticia', ['url'=>$site->url,'id'=>$noticia->id])}}"><?php echo htmlentities($noticia->nome); ?></a></h3>
                         <span class="meta-data"><span><i class="fa fa-calendar"></i> Publicada {{\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()}}</span><!--<span><a href="#"><i class="fa fa-tag"></i>Uncategoried</a></span>--></span>
                         <?php
                         if($noticia->updated_at != null && $noticia->updated_at != $noticia->created_at){
@@ -209,7 +206,7 @@ if($noticias != null && sizeof($noticias) != 0){
                             <?php
                         }
                         ?>
-                        <p><?php echo $noticia->descricao ?></p>
+                        <p><?php echo htmlentities($noticia->descricao) ?></p>
                         </div>
                     </div>
                     </li>
@@ -254,7 +251,7 @@ if($eventos != null && sizeof($eventos) != 0){
                     <div class="timeline-panel">
                     <div class="timeline-heading">
                         <h3 class="timeline-title">
-                        <a href="{{route('site.evento', ['url'=>$site->url,'id'=>$evento->id])}}"><?php echo $evento->nome ?></a>
+                        <a href="{{route('site.evento', ['url'=>$site->url,'id'=>$evento->id])}}"><?php echo htmlentities($evento->nome); ?></a>
                         </h3>
                     </div>
                     <div class="timeline-body">
@@ -263,7 +260,7 @@ if($eventos != null && sizeof($eventos) != 0){
                             <?php if($evento->dados_horario_fim != null){ ?>
                                 <li><i class="fa fa-clock-o"></i> Final previsto para {{\Carbon\Carbon::parse($evento->dados_horario_fim)->diffForHumans($evento->dados_horario_inicio)}}</li>
                             <?php } ?>
-                            <li><i class="fa fa-map-marker"></i> <?php echo $evento->dados_local ?></li>
+                            <li><i class="fa fa-map-marker"></i> <?php echo htmlentities($evento->dados_local); ?></li>
                             <!--<li><i class="fa fa-phone"></i> 1 800 321 4321</li>-->
                         </ul>
                     </div>
@@ -301,13 +298,13 @@ if($galerias != null && sizeof($galerias) != 0){
                 if(count($fotos[$galeria->id]) == 1){
                     $foto = $fotos[$galeria->id][0]; ?>
                     <div class="col-md-4 col-sm-4">
-                        <h3><?php $galeria->nome ?></h3>
+                        <h3><?php echo htmlentities($galeria->nome); ?></h3>
                         <a href="{{'data:image;base64,'.base64_encode($foto->foto)}}" data-rel="prettyPhoto" class="media-box">
                             <img src="{{'data:image;base64,'.base64_encode($foto->foto)}}" alt="">
                         </a>
                     </div>
                 <?php }else{ ?>
-                    <div class="col-md-4 col-sm-4"><h3><?php echo $galeria->nome ?></h3>
+                    <div class="col-md-4 col-sm-4"><h3><?php echo htmlentities($galeria->nome); ?></h3>
                         <div class="row">
                             <div class="col-md-12 col-sm-12">
                                 <div class="flexslider" data-autoplay="yes" data-pagination="yes" data-arrows="yes" data-style="slide" data-pause="yes">

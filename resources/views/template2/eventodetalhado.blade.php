@@ -42,18 +42,16 @@ $(function(){
                     <!-- Post Details Area -->
                     <div class="single-post-details-area">
                         <div class="post-content">
-                            <h2 class="post-title">{{$evento->nome}}</h2>
-                            <p>{{$evento->descricao}}</p>
+                            <h2 class="post-title"><?php echo htmlentities($evento->nome0) ?></h2>
+                            <p><?php echo htmlentities($evento->descricao) ?></p>
                             <p><i class="fa fa-calendar"></i> {{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}</p>
                             <?php if($evento->dados_horario_fim != null){ ?>
                                 <p><i class="fa fa-clock-o"></i> Final previsto para {{\Carbon\Carbon::parse($evento->dados_horario_fim)->diffForHumans($evento->dados_horario_inicio)}}</p>
                             <?php } ?>
-                            <p><i class="fa fa-map-marker"></i> {{$evento->dados_local}}</p>
+                            <p><i class="fa fa-map-marker"></i> <?php echo htmlentities($evento->dados_local); ?></p>
                         </div>
                         <div class="post-thumbnail mb-30">
-                            @if ($evento->foto != null)
                             <img src="{{($evento->foto != null) ? 'data:image;base64,'.base64_encode($evento->foto) : asset('/storage/no-event.jpg')}}" alt="">
-                            @endif
                         </div>
                     </div>
                 </div>

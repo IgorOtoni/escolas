@@ -1,4 +1,3 @@
-<?php /* E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/template1/eventosfixos.blade.php */ ?>
 <?php $__env->startSection('content'); ?>
 <!-- Start Nav Backed Header -->
 <<div class="nav-backed-header parallax">
@@ -6,7 +5,7 @@
     <div class="row">
     <div class="col-md-12">
         <ol class="breadcrumb">
-        <li><a href="/<?php echo e($site->url); ?>/">Home</a></li>
+        <li><a href="<?php echo e(route('site.index',['url'=>$site->url])); ?>">Home</a></li>
         <li class="active">Eventos fixos</li>
         </ol>
     </div>
@@ -45,11 +44,15 @@
                         <?php if($evento->foto != null){ ?>
                             <img src="<?php echo e('data:image;base64,'.base64_encode($evento->foto)); ?>" alt="">
                         <?php }else{ ?>
-                            <img src="/storage/no-event.jpg" alt="">
+                            <img src="<?php echo e(asset('/storage/no-event.jpg')); ?>" alt="">
                         <?php } ?>
                         <div class="grid-content">
-                        <h3><a href="<?php echo e(route('site.eventofixo', ['url'=>$site->url,'id'=>$evento->id])); ?>"><?php echo e($evento->nome); ?></a></h3>
-                        <?php if($evento->descricao != null){ ?> <p><?php echo e($evento->descricao); ?></p> <?php } ?>
+                        <h3>
+                            <a href="<?php echo e(route('site.eventofixo', ['url'=>$site->url,'id'=>$evento->id])); ?>">
+                                <?php echo $evento->nome ?>
+                            </a>
+                        </h3>
+                        <?php if($evento->descricao != null){ ?> <p><?php echo $evento->descricao ?></p> <?php } ?>
                         </div>
                         <ul class="info-table">
                         <li><i class="fa fa-calendar"></i><i class="fa fa-map-marker"></i> <?php echo e($evento->dados_horario_local); ?></li>
@@ -77,4 +80,4 @@
 </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.template1', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.template1', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Programacao\usbwebserver_v8.6.2\root\Gratunos\resources\views/template1/eventosfixos.blade.php ENDPATH**/ ?>

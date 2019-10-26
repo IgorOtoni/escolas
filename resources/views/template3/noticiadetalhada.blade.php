@@ -28,8 +28,8 @@
                     <!-- Post Details Area -->
                     <div class="single-post-details-area">
                         <div class="post-content">
-                            <h2 class="post-title">{{$noticia->nome}}</h2>
-                            <p>{{$noticia->descricao}}</p>
+                            <h2 class="post-title"><?php echo htmlentities($noticia->nome); ?></h2>
+                            <p><?php echo htmlentities($noticia->descricao); ?></p>
                             <p><i class="fa fa-calendar" id="dth_publicacao"></i> Publicada {{\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()}}</p>
                             <?php
                             if($noticia->updated_at != null && $noticia->updated_at != $noticia->created_at){
@@ -40,9 +40,7 @@
                             ?>
                         </div>
                         <div class="post-thumbnail mb-30">
-                            @if ($noticia->foto != null)
                             <img src="{{($noticia->foto != null) ? 'data:image;base64,'.base64_encode($noticia->foto) : asset('/storage/no-news.jpg')}}" alt="">
-                            @endif
                         </div>
                     </div>
                 </div>

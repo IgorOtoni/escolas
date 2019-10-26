@@ -24,7 +24,7 @@
             <div class="col-12 col-lg-12">
                 <div class="about-content">
                     <h2>Sobre nós/Visões e valores</h2>
-                    <p>{{$site->texto_apresentativo}}</p>
+                    <p><?php echo htmlentities($site->texto_apresentativo); ?></p>
                 </div>
             </div>
             <!--<div class="col-12 col-lg-6">
@@ -69,8 +69,8 @@
                                         @endif
                                     </div>
                                 </div>
-                                <h6>{{$membro->nome}} ({{$funcao->nome}})</h6>
-                                <span>{{$membro->descricao}}</span>
+                                <h6><?php echo htmlentities($membro->nome); ?> (<?php echo htmlentities($funcao->nome); ?>)</h6>
+                                <span><?php echo htmlentities($membro->descricao); ?></span>
                             </div>
                         </div>
                     @endforeach

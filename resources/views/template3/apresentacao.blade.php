@@ -24,7 +24,7 @@
             <div class="col-12">
                 <div class="section-heading text-center mx-auto">
                     <h3>Sobre nós/Visões e valores</h3>
-                    <p>{{$site->texto_apresentativo}}</p>
+                    <p><?php echo htmlentities($site->texto_apresentativo); ?></p>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
                             <div class="single-pastor-area mb-100">
                                 <img width="250" height="250" src="{{$membro->foto != null ? 'data:image;base64,'.base64_encode($membro->foto) : asset('/storage/no-foto.png')}}" alt="">
                                 <div class="pastor-content">
-                                    <h5>{{$membro->nome}} ({{$funcao->nome}})</h5>
+                                    <h5><?php echo htmlentities($membro->nome); ?> (<?php echo htmlentities($funcao->nome); ?>)</h5>
                                     <h6>{{$membro->descricao}}</h6>
                                     <div class="pastor-meta d-flex align-items-center justify-content-between">
                                         @if ($membro->facebook != null)

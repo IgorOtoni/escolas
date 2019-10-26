@@ -9,10 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title><?php echo strip_tags($site->nome) ?></title>
-
-    <!-- Favicon -->
-    <link rel="icon" href="{{asset('template_site/template-vermelho/img/core-img/favicon.ico')}}">
+    <title><?php echo strip_tags(htmlentities($site->nome)) ?></title>
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="{{asset('template_site/template-vermelho/style.css')}}">
@@ -40,7 +37,7 @@
                     <nav class="classy-navbar justify-content-between" id="croseNav">
 
                         <!-- Nav brand -->
-                        <a href="{{route('site.index', ['url' => $site->url])}}" class="nav-brand"><img style="witdh: 120px; height: 50px;" src="{{($site->logo != null) ? 'data:image;base64,'.base64_encode($site->logo) : asset('/storage/no-logo.jpg')}}" alt=""></a><h3><?php echo $site->nome ?></h3>
+                        <a href="{{route('site.index', ['url' => $site->url])}}" class="nav-brand"><img style="witdh: 120px; height: 50px;" src="{{($site->logo != null) ? 'data:image;base64,'.base64_encode($site->logo) : asset('/storage/no-logo.jpg')}}" alt=""></a><h3><?php echo htmlentities($site->nome); ?></h3>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -60,15 +57,15 @@
                                 <ul>
                                     <?php
                                     foreach($menus as $menu){
-                                        ?><li><a href="{{verifica_link($menu->link, $site)}}">{{$menu->nome}}</a><?php
+                                        ?><li><a href="{{verifica_link($menu->link, $site)}}"><?php echo htmlentities($menu->nome); ?></a><?php
                                             if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
                                                 <ul class="dropdown">
                                                     <?php foreach($submenus[$menu->id] as $submenu){
-                                                        ?><li><a href="{{verifica_link($submenu->link, $site)}}">{{$submenu->nome}}</a><?php
+                                                        ?><li><a href="{{verifica_link($submenu->link, $site)}}"><?php echo htmlentities($submenu->nome); ?></a><?php
                                                         if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
                                                             <ul class="dropdown">
                                                                 <?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-                                                                    ?> <li><a href="{{verifica_link($subsubmenu->link, $site)}}">{{$subsubmenu->nome}}</a></li> <?php
+                                                                    ?> <li><a href="{{verifica_link($subsubmenu->link, $site)}}"><?php echo htmlentities($subsubmenu->nome); ?></a></li> <?php
                                                                 } ?>
                                                             </ul>
                                                         <?php
@@ -110,7 +107,7 @@
                     <!-- Copywrite Text -->
                     <div class="col-12 col-md-6">
                         <div class="copywrite-text">
-                            <p><?php echo strip_tags($site->nome) ?> - <b> powered by hotsystems</b></p>
+                            <p><?php echo strip_tags(htmlentities($site->nome)) ?></p>
                         </div>
                     </div>
 

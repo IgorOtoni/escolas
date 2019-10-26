@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-	<title><?php echo strip_tags($site->nome) ?></title>
+	<title><?php echo strip_tags(htmlentities($site->nome)); ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description" content="A small sentence describing your website's subject" />
 	<meta name="keywords" content="some, keywords, separated, by, comas" />
@@ -71,7 +71,7 @@
             <h2 style="font-family: TOONISH,Georgia,'Times New Roman',Times,serif;
                 text-transform: uppercase;
                 color: #f55029;">
-                {{$site->nome}}
+                <?php echo htmlentities($site->nome); ?>
             </h2>
         </a>
         
@@ -79,15 +79,15 @@
             <ul class="dd-menu">
                 <?php
                 foreach($menus as $menu){
-                    ?><li><a href="{{verifica_link($menu->link, $site)}}"><?php echo $menu->nome ?></a><?php
+                    ?><li><a href="{{verifica_link($menu->link, $site)}}"><?php echo htmlentities($menu->nome); ?></a><?php
                         if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
                             <ul class="dropdown">
                                 <?php foreach($submenus[$menu->id] as $submenu){
-                                    ?><li><a href="{{verifica_link($submenu->link, $site)}}"><?php echo $submenu->nome ?></a><?php
+                                    ?><li><a href="{{verifica_link($submenu->link, $site)}}"><?php echo htmlentities($submenu->nome); ?></a><?php
                                     if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
                                         <ul class="dropdown">
                                             <?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-                                                ?> <li><a href="{{verifica_link($subsubmenu->link, $site)}}"><?php echo $subsubmenu->nome ?></a></li> <?php
+                                                ?> <li><a href="{{verifica_link($subsubmenu->link, $site)}}"><?php echo htmlentities($subsubmenu->nome); ?></a></li> <?php
                                             } ?>
                                         </ul>
                                     <?php
@@ -114,7 +114,7 @@
     
         <div id="sub-footer" class="clearfix">
             
-            <p id="copyright"><?php echo strip_tags($site->nome) ?> - <b> powered by hotsystems</b></p>
+            <p id="copyright"><?php echo strip_tags(htmlentities($site->nome)); ?></p>
             <ul class="subfooter-menu">
                 <?php if($site->twitter != null){ ?>
                     <li><a href="{{$site->twitter}}" title="Twitter">Twitter</a></li>

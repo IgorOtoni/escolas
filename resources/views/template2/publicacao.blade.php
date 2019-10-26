@@ -29,13 +29,13 @@
             <!-- Section Heading -->
             <div class="col-12">
                 <div class="section-heading">
-                    <h2>{{$publicacao->nome}}</h2>
+                    <h2><?php echo htmlentities($publicacao->nome); ?></h2>
                 </div>
             </div>
         </div>
 
         <div class="row justify-content-center">
-            <div class="blog-posts-area"><?php echo $publicacao->html; ?></div>
+            <div class="blog-posts-area"><?php echo htmlentities($publicacao->html); ?></div>
         </div>
 
         <div class="row justify-content-center">

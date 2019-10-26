@@ -52,10 +52,7 @@
                     <div class="timeline-panel">
                     <div class="timeline-heading">
                         <h3 class="timeline-title">
-                        <?php /* ?>
-                        <a href="/{{$site->url}}/evento/{{$site->id}}" data-toggle="modal" data-target="#modal-evento" data-foto="{{$evento->foto}}" data-local="{{$evento->dados_local}}" data-nome="{{$evento->nome}}" data-descricao="{{$evento->descricao}}" data-inicio="{{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}" data-fim="{{(($evento->dados_horario_fim != null) ? \Carbon\Carbon::parse($evento->dados_horario_fim)->diffForHumans($evento->dados_horario_inicio) : '')}}">{{$evento->nome}}</a>
-                        */ ?>
-                        <a href="{{route('site.evento', ['url'=>$site->url,'id'=>$evento->id])}}"><?php echo $evento->nome ?></a>
+                        <a href="{{route('site.evento', ['url'=>$site->url,'id'=>$evento->id])}}"><?php echo htmlentities($evento->nome); ?></a>
                         </h3>
                     </div>
                     <div class="timeline-body">
@@ -64,7 +61,7 @@
                             <?php if($evento->dados_horario_fim != null){ ?>
                                 <li><i class="fa fa-clock-o"></i> Final previsto para {{\Carbon\Carbon::parse($evento->dados_horario_fim)->diffForHumans($evento->dados_horario_inicio)}}</li>
                             <?php } ?>
-                            <li><i class="fa fa-map-marker"></i> <?php echo $evento->dados_local ?></li>
+                            <li><i class="fa fa-map-marker"></i> <?php echo htmlentities($evento->dados_local); ?></li>
                             <!--<li><i class="fa fa-phone"></i> 1 800 321 4321</li>-->
                         </ul>
                     </div>

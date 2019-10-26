@@ -20,7 +20,7 @@
 
         <div class="row">
             <?php foreach($galerias as $galeria){ ?>
-                <h4>{{$galeria->nome}}</h4>
+                <h4><?php echo htmlentities($galeria->nome); ?></h4>
                 <div class="col-12">
                     <h5><i class="fa fa-calendar"></i> {{\Carbon\Carbon::parse($galeria->data)->diffForHumans()}}</h5>
                 </div>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <p>{{$galeria->descricao}}</p>
+                    <p><?php echo htmlentities($galeria->descricao); ?></p>
                 </div>
             <?php } ?>
         </div>

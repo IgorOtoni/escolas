@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\TblSites;
 use App\TblConfiguracoes;
-use App\TblSitessModulos;
+use App\TblSitesModulos;
 use App\TblContatos;
 use App\TblInscricoes;
 use App\TblMembros;
@@ -20,6 +20,8 @@ use App\TblVendasProdutos;
 use App\TblPerfil;
 use App\TblMenusAndroid;
 use App\User;
+use App\TblMembrosComunidades;
+use App\TblComunidades;
 use Intervention\Image\ImageManagerStatic as Image;
 
 /**
@@ -1037,9 +1039,43 @@ class ApiController extends Controller{
 									    $constraint->upsize();
 									}
 								)->encode()->encoded);
-	                            return response()->json(
-						        	['usuario'=>$user,'perfil'=>$perfil,'membro'=>$membro,'funcao'=>$funcao]
-						        , 200);
+                        		$modulo_comunidade_site = TblSitesModulos::where('id_site','=',$site->id)
+                        			->where('id_modulo','=',26)
+                        			->get();
+                    			if($modulo_comunidade_site != null && sizeof($modulo_comunidade_site) == 1){
+	                        		$comunidades_lider_ = TblMembrosComunidades::where('ativo','=',true)
+	                        			->where('lider','=',true)
+	                        			->where('id_membro','=',$membro->id)
+	                        			->get();
+                        			$comunidades_lider = [];
+                        			if($comunidades_lider_ != null) foreach($comunidades_lider_ as $comunidade_lider_){
+                        				$comunidades_lider[] = TblComunidades::find($comunidade_lider_->id_comunidade);
+                        			}
+	                    			$comunidades_membro_ = TblMembrosComunidades::where('ativo','=',true)
+	                        			->where('lider','=',false)
+	                        			->where('id_membro','=',$membro->id)
+	                        			->get();
+                        			$comunidades_membro = [];
+                        			if($comunidades_membro_ != null) foreach($comunidades_membro_ as $comunidade_membro_){
+                        				$comunidades_membro = TblComunidades::find($comunidade_membro_->id_comunidade);
+                        			}
+                    				return response()->json(
+							        	[
+							        		'usuario'=>$user,
+							        		'perfil'=>$perfil,
+							        		'membro'=>$membro,
+							        		'funcao'=>$funcao,
+							        		'modulo_comunidades'=>true,
+							        		'comunidades_lider'=>$comunidades_lider,
+							        		'comunidades_membro'=>$comunidades_membro
+							        	]
+							        , 200);
+                    			}else{
+                    				return response()->json(
+							        	['msg'=>'Dados inválidos!']
+							        , 400);
+                    			}
+	                            
                             }else{
 								return response()->json(
 						        	['msg'=>'Dados inválidos!']

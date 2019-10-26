@@ -60,7 +60,7 @@
                                 <h4>{{$noticia->nome}}</h4>
                             </a>
                             <?php */ ?>
-                            <a href="{{route('site.noticia', ['url'=>$site->url,'id'=>$noticia->id])}}"><h4>{{$noticia->nome}}</h4></a>
+                            <a href="{{route('site.noticia', ['url'=>$site->url,'id'=>$noticia->id])}}"><h4><?php echo htmlentities($noticia->nome); ?></h4></a>
                             <div class="post-meta d-flex">
                                 <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> Publicada {{\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()}}</a>
                                 <?php
@@ -71,7 +71,7 @@
                                 }
                                 ?>
                             </div>
-                            <p class="post-excerpt">{{$noticia->descricao}}</p>
+                            <p class="post-excerpt"><?php echo htmlentities($noticia->descricao); ?></p>
                         </div>
                     </div>
                 </div>

@@ -50,7 +50,7 @@
                     <?php /* ?>
                     <h3><a data-publicacao="{{\Carbon\Carbon::parse($noticia->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}" data-atualizacao="{{(($noticia->updated_at != null) ? \Carbon\Carbon::parse($noticia->updated_at)->diffForHumans() : '')}}" data-foto="{{$noticia->foto}}" data-nome="{{$noticia->nome}}" data-descricao="{{$noticia->descricao}}" data-toggle="modal" data-target="#modal-noticia" href="">{{$noticia->nome}}</a></h3>
                     <?php */ ?>
-                    <h3><a href="{{route('site.noticia', ['url'=>$site->url,'id'=>$noticia->id])}}"><?php echo $noticia->nome ?></a></h3>
+                    <h3><a href="{{route('site.noticia', ['url'=>$site->url,'id'=>$noticia->id])}}"><?php echo htmlentities($noticia->nome); ?></a></h3>
                     <span class="meta-data"><span><i class="fa fa-calendar"></i> Publicada {{\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()}}</span><!--<span><a href="#"><i class="fa fa-tag"></i>Uncategoried</a></span>--></span>
                     <?php
                     if($noticia->updated_at != null && $noticia->updated_at != $noticia->created_at){
@@ -59,7 +59,7 @@
                         <?php
                     }
                     ?>
-                    <p><?php echo $noticia->descricao ?></p>
+                    <p><?php echo htmlentities($noticia->descricao); ?></p>
                     </div>
                 </div>
                 </li>

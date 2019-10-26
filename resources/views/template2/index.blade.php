@@ -22,8 +22,8 @@ if($banners != null && sizeof($banners)){
                     <div class="row">
                         <div class="col-12">
                             <div class="hero-slides-content">
-                                <h2 data-animation="fadeInUp" data-delay="100ms">{{$banner->nome}}</h2>
-                                <p data-animation="fadeInUp" data-delay="300ms">{{$banner->descricao}}</p>
+                                <h2 data-animation="fadeInUp" data-delay="100ms"><?php echo htmlentities($banner->nome); ?></h2>
+                                <p data-animation="fadeInUp" data-delay="300ms"><?php echo htmlentities($banner->descricao); ?></p>
                             </div>
                         </div>
                     </div>
@@ -71,12 +71,7 @@ if($noticias != null && sizeof($noticias) != 0){
                                 </a>
                             </div>
                             <div class="post-content">
-                                <?php /* ?>
-                                <a data-publicacao="{{\Carbon\Carbon::parse($noticia->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}" data-atualizacao="{{(($noticia->updated_at != null) ? \Carbon\Carbon::parse($noticia->updated_at)->diffForHumans() : '')}}" data-foto="{{$noticia->foto}}" data-nome="{{$noticia->nome}}" data-descricao="{{$noticia->descricao}}" data-toggle="modal" data-target="#modal-noticia" href="#" class="post-title">
-                                    <h4>{{$noticia->nome}}</h4>
-                                </a>
-                                <?php */ ?>
-                                <a href="{{route('site.noticia', ['url'=>$site->url,'id'=>$noticia->id])}}"><h4>{{$noticia->nome}}</h4></a>
+                                <a href="{{route('site.noticia', ['url'=>$site->url,'id'=>$noticia->id])}}"><h4><?php echo htmlentities($noticia->nome); ?></h4></a>
                                 <div class="post-meta d-flex">
                                     <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> Publicada {{\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()}}</a>
                                     <?php
@@ -87,7 +82,7 @@ if($noticias != null && sizeof($noticias) != 0){
                                     }
                                     ?>
                                 </div>
-                                <p class="post-excerpt">{{$noticia->descricao}}</p>
+                                <p class="post-excerpt"><?php echo htmlentities($noticia->descricao); ?></p>
                             </div>
                         </div>
                     </div>
@@ -146,15 +141,15 @@ if($eventos != null && sizeof($eventos) != 0){
                                     <!-- Content -->
                                     <div class="upcoming-events-content d-flex flex-wrap align-items-center">
                                         <div class="events-text">
-                                            <h4>{{$evento->nome}}</h4>
+                                            <h4><?php echo htmlentities($evento->nome); ?></h4>
                                             <div class="events-meta">
                                                 <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> {{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}</a>
                                                 <?php if($evento->dados_horario_fim != null){ ?>
                                                     <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> Final previsto para {{\Carbon\Carbon::parse($evento->dados_horario_fim)->diffForHumans($evento->dados_horario_inicio)}}</a>
                                                 <?php } ?>
-                                                <a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> {{$evento->dados_local}}</a>
+                                                <a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo htmlentities($evento->dados_local); ?></a>
                                             </div>
-                                            <p>{{$evento->descricao}}</p>
+                                            <p><?php echo htmlentities($evento->descricao); ?></p>
                                             <!--<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>-->
                                         </div>
                                         <div class="find-out-more-btn">
@@ -203,7 +198,7 @@ if($galerias != null && sizeof($galerias) != 0){
             </div>
 
         <?php foreach($galerias as $galeria){ ?>
-            <h3>{{$galeria->nome}}</h3>
+            <h3><?php echo htmlentities($galeria->nome); ?></h3>
             <!-- ##### Gallery Area Start ##### -->
             <div class="gallery-area d-flex flex-wrap">
                 <?php $fotos_ = $fotos[$galeria->id];

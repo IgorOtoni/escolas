@@ -26,7 +26,7 @@
 <div class="container">
     <div class="row">
     <div class="col-md-12">
-        <h1><?php echo $noticia->nome ?></h1>
+        <h1><?php echo htmlentities($noticia->nome); ?></h1>
     </div>
     </div>
 </div>
@@ -40,7 +40,7 @@
                 <!-- Post Details Area -->
                 <div class="single-post-details-area">
                     <div class="post-content">
-                        <p><?php echo $noticia->descricao ?></p>
+                        <p><?php echo htmlentities($noticia->descricao); ?></p>
                         <ul class="info-table">
                         <li><i class="fa fa-calendar" id="dth_publicacao"></i> Publicada {{\Carbon\Carbon::parse($noticia->created_at)->diffForHumans()}}</li>
                         <?php
@@ -54,9 +54,7 @@
                         </ul>
                     </div>
                     <div class="post-thumbnail mb-30">
-                        @if ($noticia->foto != null)
                         <img src="{{($noticia->foto != null) ? 'data:image;base64,'.base64_encode($noticia->foto) : asset('/storage/no-news.jpg')}}" alt="">
-                        @endif
                     </div>
                 </div>
             </div>

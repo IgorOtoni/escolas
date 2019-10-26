@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-md-10 col-sm-8 col-xs-8">
                         <ul class="top-navigation pull-right">
-                            <h5><?php echo $site->nome ?></h5>
+                            <h5><?php echo htmlentities($site->nome); ?></h5>
                         </ul>
                     </div>
                     <div class="col-sm-2 col-xs-2">
@@ -60,15 +60,15 @@
                     <ul class="sf-menu">
                         <?php
                         foreach($menus as $menu){
-                            ?><li><a href="{{verifica_link($menu->link, $site)}}"><?php echo $menu->nome ?></a><?php
+                            ?><li><a href="{{verifica_link($menu->link, $site)}}"><?php echo htmlentities($menu->nome); ?></a><?php
                                 if($submenus != null && array_key_exists($menu->id, $submenus) && count($submenus[$menu->id]) > 0){ ?>
                                     <ul class="dropdown">
                                         <?php foreach($submenus[$menu->id] as $submenu){
-                                            ?><li><a href="{{verifica_link($submenu->link, $site)}}"><?php echo $submenu->nome ?></a><?php
+                                            ?><li><a href="{{verifica_link($submenu->link, $site)}}"><?php echo htmlentities($submenu->nome); ?></a><?php
                                             if($subsubmenus != null && array_key_exists($submenu->id, $subsubmenus) && count($subsubmenus[$submenu->id]) > 0){ ?>
                                                 <ul class="dropdown">
                                                     <?php foreach($subsubmenus[$submenu->id] as $subsubmenu){
-                                                        ?> <li><a href="{{verifica_link($subsubmenu->link, $site)}}"><?php echo $subsubmenu->nome ?></a></li> <?php
+                                                        ?> <li><a href="{{verifica_link($subsubmenu->link, $site)}}"><?php echo htmlentities($subsubmenu->nome); ?></a></li> <?php
                                                     } ?>
                                                 </ul>
                                             <?php
@@ -93,7 +93,7 @@
             <div class="container">
             <div class="row">
                 <div class="copyrights-col-left col-md-6 col-sm-6">
-                <p><?php echo strip_tags($site->nome) ?> - <b> powered by hotsystems</b></p>
+                <p><?php echo strip_tags(htmlentities($site->nome)) ?></p>
                 </div>
                 <div class="copyrights-col-right col-md-6 col-sm-6">
                 <div class="social-icons"> 
@@ -105,16 +105,10 @@
                         <a href="{{$site->twitter}}" target="_blank">
                             <i class="fa fa-twitter"></i></a> 
                     <?php } ?>
-                    <!--<a href="http://www.pinterest.com/" target="_blank">
-                        <i class="fa fa-pinterest"></i></a>-->
-                    <!--<a href="https://plus.google.com/" target="_blank">
-                        <i class="fa fa-google-plus"></i></a>-->
                     <?php if($site->youtube != null){ ?>
                         <a href="{{$site->youtube}}" target="_blank">
                             <i class="fa fa-youtube"></i></a>
                     <?php } ?>
-                    <!--<a href="#">
-                        <i class="fa fa-rss"></i></a>--> 
                 </div>
                 </div>
             </div>

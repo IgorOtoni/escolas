@@ -144,6 +144,76 @@ $(function(){
     <!-- Default box -->
     <div class="box">
     <div class="box-body">
+        <div class="row">
+            <div class="col-md-12">
+                <h3><label>Sobre<label></h3>
+            </div>
+            <div class="col-md-12">
+                @if($reuniao->descricao != null)
+                    <h4><label>Descrição:</label> {{$reuniao->descricao}}</h4>
+                @else
+                    <h4><label>Descrição:</label> <span class="label bg-red">Não informado</span></h4>
+                @endif
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @if($reuniao->observacao != null)
+                    <h4><label>Observação:</label> {{$reuniao->observacao}}</h4>
+                @else
+                    <h4><label>Observação:</label> <span class="label bg-red">Não informado</span></h4>
+                @endif
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <h3><label>Dados de endereço<label></h3>
+            </div>
+            <div class="col-md-3">
+                @if($reuniao->cidade != null)
+                    <h4><label>Cidade:</label> {{$reuniao->cidade}}</h4>
+                @else
+                    <h4><label>Cidade:</label> <span class="label bg-red">Não informado</span></h4>
+                @endif
+            </div>
+            <div class="col-md-3">
+                @if($reuniao->cidade != null)
+                    <h4><label>Bairro:</label> {{$reuniao->bairro}}</h4>
+                @else
+                    <h4><label>Bairro:</label> <span class="label bg-red">Não informado</span></h4>
+                @endif
+            </div>
+            <div class="col-md-3">
+                @if($reuniao->rua != null)
+                    <h4><label>Rua:</label> {{$reuniao->rua}}</h4>
+                @else
+                    <h4><label>Rua:</label> <span class="label bg-red">Não informado</span></h4>
+                @endif
+            </div>
+            <div class="col-md-3">
+                @if($reuniao->num != null)
+                    <h4><label>Número:</label> {{$reuniao->num}}</h4>
+                @else
+                    <h4><label>Número:</label> <span class="label bg-red">Não informado</span></h4>
+                @endif
+            </div>
+            <div class="col-md-3">
+                @if($reuniao->complemento != null)
+                    <h4><label>Complemento:</label> {{$reuniao->complemento}}</h4>
+                @else
+                    <h4><label>Complemento:</label> <span class="label bg-red">Não informado</span></h4>
+                @endif
+            </div>
+            <div class="col-md-3">
+                @if($reuniao->cep != null)
+                    <h4><label>Cep:</label> {{$reuniao->cep}}</h4>
+                @else
+                    <h4><label>Cpe:</label> <span class="label bg-red">Não informado</span></h4>
+                @endif
+            </div>
+        </div>
+        <hr>
         <table id="tbl_presencas" class="table table-bordered table-striped">
         <thead>
         <tr>

@@ -64,22 +64,16 @@
                                 <!-- Content -->
                                 <div class="upcoming-events-content d-flex flex-wrap align-items-center">
                                     <div class="events-text">
-                                        <h4>{{$evento->nome}}</h4>
+                                        <h4><?php echo htmlentities($evento->nome); ?></h4>
                                         <div class="events-meta">
                                             <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> {{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}</a>
                                             <?php if($evento->dados_horario_fim != null){ ?>
                                                 <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> Final previsto para {{\Carbon\Carbon::parse($evento->dados_horario_fim)->diffForHumans($evento->dados_horario_inicio)}}</a>
                                             <?php } ?>
-                                            <a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> {{$evento->dados_local}}</a>
+                                            <a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo htmlentities($evento->dados_local); ?></a>
                                         </div>
-                                        <p>{{$evento->descricao}}</p>
-                                        <!--<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>-->
+                                        <p><?php echo htmlentities($evento->descricao); ?></p>
                                     </div>
-                                    <?php /* ?>
-                                    <div class="find-out-more-btn">
-                                        <a href="#" data-toggle="modal" data-target="#modal-evento" data-foto="{{$evento->foto}}" data-local="{{$evento->dados_local}}" data-nome="{{$evento->nome}}" data-descricao="{{$evento->descricao}}" data-inicio="{{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}" data-fim="{{(($evento->dados_horario_fim != null) ? \Carbon\Carbon::parse($evento->dados_horario_fim)->diffForHumans($evento->dados_horario_inicio) : '')}}" class="btn crose-btn btn-2">Ver em detalhe</a>
-                                    </div>
-                                    <?php */ ?>
                                     <div class="find-out-more-btn">
                                         <a href="{{route('site.evento', ['url'=>$site->url,'id'=>$evento->id])}}" class="btn crose-btn btn-2">Ver em detalhe</a>
                                     </div>

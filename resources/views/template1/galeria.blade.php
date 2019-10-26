@@ -42,7 +42,7 @@
                 if(count($fotos[$galeria->id]) == 1){
                     $foto = $fotos[$galeria->id][0]; ?>
                     <div class="col-md-4 col-sm-4">
-                        <h3><?php echo $galeria->nome ?></h3>
+                        <h3><?php echo htmlentities($galeria->nome); ?></h3>
                         <h4>
                             <i class="fa fa-calendar"></i> 
                             {{\Carbon\Carbon::parse($galeria->data)->diffForHumans()}}
@@ -52,11 +52,11 @@
                                 <img width="480" height="320" src="{{'data:image;base64,'.base64_encode($foto->foto)}}"> <!--<img src="/storage/galerias/{{$foto->foto}}" alt="">-->
                             </a>
                         </div>
-                        <p><?php echo $galeria->descricao ?></p>
+                        <p><?php echo htmlentities($galeria->descricao); ?></p>
                     </div>
                 <?php }else{ ?>
                     <div class="col-md-4 col-sm-4">
-                        <h3><?php echo $galeria->nome ?></h3>
+                        <h3><?php echo htmlentities($galeria->nome) ?></h3>
                         <h4>
                             <i class="fa fa-calendar"></i> 
                             {{\Carbon\Carbon::parse($galeria->data)->diffForHumans()}}
@@ -75,7 +75,7 @@
                                     <?php } ?>
                                     </ul>
                                 </div>
-                                <p><?php echo $galeria->descricao ?></p>
+                                <p><?php echo htmlentities($galeria->descricao); ?></p>
                             </div>
                         </div>
                     </div>

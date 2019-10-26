@@ -459,7 +459,7 @@ Route::group(['middleware' => 'auth'], function () {
         /////////////////////////////////////////////////////////////////////////////
     });
 });
-// FUNCIONALIDADES BASICAS ============================================================================================
+// FUNCIONALIDADES BASICAS ========================================================================================
 /*Route::get('/{url}', 'SiteController@index')
     ->name('site.index');*/
 Route::get('/{url}/home/', 'SiteController@index')
@@ -498,9 +498,9 @@ Route::get('/carrega_imagem/{largura},{altura},{pasta},{arquivo}','SiteControlle
     ->name('site.carrega_imagem');
 Route::get('/gerar_termo_compromisso/{id}','SiteController@gerar_termo_compromisso')
     ->name('site.gerar_termo_compromisso');
-// ====================================================================================================================
+// ================================================================================================================
 
-// CARRINHO ===========================================================================================================
+// CARRINHO =======================================================================================================
 Route::get('/{url}/produtos', 'SiteController@produtos')
     ->name('site.produtos');
 Route::get('/{url}/produto/{id}', 'SiteController@produto')
@@ -538,9 +538,9 @@ Route::get('/{url}/alterar_conta', 'SiteController@alterar_conta')
     ->name('comprador.alterar_conta');
 Route::get('/{url}/compras', 'SiteController@compras')
     ->name('comprador.compras');
-// ====================================================================================================================
+// ================================================================================================================
 
-// API ================================================================================================================
+// API ============================================================================================================
 Route::get('/api/noticias/{url}', 'ApiController@noticias')
     ->name('api.noticias');
 Route::get('/api/noticia/{url}/{id}', 'ApiController@noticia')
@@ -579,4 +579,4 @@ Route::get('/api/sites/', 'ApiController@sites')
     ->name('api.sites');
 Route::get('/api/site/{url}', 'ApiController@site')
     ->name('api.site');
-// ====================================================================================================================
+// ================================================================================================================

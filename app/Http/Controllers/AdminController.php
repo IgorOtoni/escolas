@@ -21,7 +21,7 @@ use App\User;
 
 class AdminController extends Controller{
 
-	// SITES CRUD ====================================================================================================
+	// SITES CRUD ================================================================================================
 	public function sites(){ return view('admin.sites.index'); }
 
     public function modulos_site($id){

@@ -4,7 +4,7 @@
 <!-- Basic Page Needs
   ================================================== -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title><?php echo strip_tags($site->nome) ?></title>
+<title><?php echo strip_tags(htmlentities($site->nome)); ?></title>
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
@@ -44,7 +44,7 @@
             <h1>
                 <a href="/{{$site->url}}">
                     <img style="witdh: 120px; height: 50px;" src="{{asset('/storage/'.(($site->logo != null) ? 'sites/'.$site->logo : 'no-logo.jpg' ))}}" alt="" />
-                    <span class="logo-text"><span>{{$site->nome}}</span></span>
+                    <span class="logo-text"><span><?php echo htmlentities($site->nome); ?></span></span>
                     <span class="logo-tagline"></span>
                 </a>
             </h1>

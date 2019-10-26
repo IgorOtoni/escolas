@@ -1306,7 +1306,7 @@ $('#modal-editar-menu-aplicativo').on('show.bs.modal', function (event) {
 
             <div class="row">
             <div class="col-md-12">
-                <h4>Termo de compromisso:</h4> <a href="/gerar_termo_compromisso/{{$site->id}}" class="btn btn-primary" target="_blank">Gerar</a>
+                <h4>Termo de compromisso:</h4> <a href="{{route('site.gerar_termo_compromisso',['id'=>$site->id])}}" class="btn btn-primary" target="_blank">Gerar</a>
             </div>
             </div>
         </div>

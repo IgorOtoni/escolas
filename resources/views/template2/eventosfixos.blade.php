@@ -64,11 +64,11 @@
                                 <!-- Content -->
                                 <div class="upcoming-events-content d-flex flex-wrap align-items-center">
                                     <div class="events-text">
-                                        <h4>{{$evento->nome}}</h4>
+                                        <h4><?php echo htmlentities($evento->nome); ?></h4>
                                         <div class="events-meta">
-                                            <a href="#"><i class="fa fa-calendar"></i><i class="fa fa-map-marker"></i> {{$evento->dados_horario_local}}</a>
+                                            <a href="#"><i class="fa fa-calendar"></i><i class="fa fa-map-marker"></i> <?php echo htmlentities($evento->dados_horario_local); ?></a>
                                         </div>
-                                        <p>{{$evento->descricao}}</p>
+                                        <p><?php echo htmlentities($evento->descricao); ?></p>
                                         <!--<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>-->
                                     </div>
                                     <div class="find-out-more-btn">

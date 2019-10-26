@@ -9,14 +9,14 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-heading text-center mx-auto">
-                    <h3>{{$publicacao->nome}}</h3>
+                    <h3><?php echo htmlentities($publicacao->nome); ?></h3>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-12" id="html-append">
-                <?php echo $publicacao->html; ?>
+                <?php echo htmlentities($publicacao->html); ?>
             </div>
         </div>
 

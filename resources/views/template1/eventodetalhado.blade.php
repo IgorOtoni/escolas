@@ -36,7 +36,7 @@ $(function(){
 <div class="container">
     <div class="row">
     <div class="col-md-12">
-        <h1><?php echo $evento->nome ?></h1>
+        <h1><?php echo htmlentities($evento->nome); ?></h1>
     </div>
     </div>
 </div>
@@ -50,7 +50,7 @@ $(function(){
                 <!-- Post Details Area -->
                 <div class="single-post-details-area">
                     <div class="post-content">
-                        <p><?php echo $evento->descricao ?></p>
+                        <p><?php echo htmlentities($evento->descricao); ?></p>
                         <ul class="info-table">
                             <li><i class="fa fa-calendar"></i> {{\Carbon\Carbon::parse($evento->dados_horario_inicio, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}</li>
                             <?php if($evento->dados_horario_fim != null){ ?>
@@ -58,15 +58,13 @@ $(function(){
                             <?php } ?>
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                <?php echo $evento->dados_local ?>
+                                <?php echo htmlentities($evento->dados_local); ?>
                             </li>
                             <!--<li><i class="fa fa-phone"></i> 1 800 321 4321</li>-->
                         </ul>
                     </div>
                     <div class="post-thumbnail mb-30">
-                        @if ($evento->foto != null)
-                            <img src="{{($evento->foto != null) ? 'data:image;base64,'.base64_encode($evento->foto) : asset('/storage/no-event.jpg')}}" alt="">
-                        @endif
+                        <img src="{{($evento->foto != null) ? 'data:image;base64,'.base64_encode($evento->foto) : asset('/storage/no-event.jpg')}}" alt="">
                     </div>
                 </div>
             </div>
