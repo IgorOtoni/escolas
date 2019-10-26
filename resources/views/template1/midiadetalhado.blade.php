@@ -26,7 +26,7 @@
 <div class="container">
     <div class="row">
     <div class="col-md-12">
-        <h1><?php echo $midia->nome ?></h1>
+        <h1><?php echo htmlentities($midia->nome); ?></h1>
     </div>
     </div>
 </div>
@@ -40,7 +40,7 @@
                 <!-- Post Details Area -->
                 <div class="single-post-details-area">
                     <div class="post-content">
-                        <p><?php echo $midia->descricao ?></p>
+                        <p><?php echo htmlentities($midia->descricao); ?></p>
                         <ul class="info-table">
                         <li><i class="fa fa-calendar" id="dth_publicacao"></i> Publicado {{\Carbon\Carbon::parse($midia->created_at)->diffForHumans()}}</li>
                         <?php

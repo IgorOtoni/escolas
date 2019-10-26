@@ -44,7 +44,7 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
                         <h3>
-                            <a href="{{route('site.midia', ['url'=>$site->url,'id'=>$midia->id])}}"><?php echo $midia->nome ?>
+                            <a href="{{route('site.midia', ['url'=>$site->url,'id'=>$midia->id])}}"><?php echo htmlentities($midia->nome); ?>
                             </a>
                         </h3>
                         <span class="meta-data"><i class="fa fa-calendar"></i> {{\Carbon\Carbon::parse($midia->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}} </div>
@@ -54,7 +54,7 @@
                     <div class="row">
                         <div class="col-md-5"> <iframe frameborder="0" src="{{$midia->link}}"></iframe> </div>
                         <div class="col-md-7">
-                        <p><?php echo $midia->descricao ?></p>
+                        <p><?php echo htmlentities($midia->descricao); ?></p>
                         <p><a href="{{$midia->link}}" class="btn btn-primary">Assistir vídeo <i class="fa fa-long-arrow-right"></i></a></p>
                         </div>
                     </div>

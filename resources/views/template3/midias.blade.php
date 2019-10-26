@@ -32,9 +32,9 @@
                                 <!-- Sermons Content -->
                                 <div class="sermons-text">
                                     <a href="{{route('site.midia', ['url'=>$site->url,'id'=>$midia->id])}}">
-                                        <h6>{{$midia->nome}}</h6>
+                                        <h6><?php echo htmlentities($midia->nome); ?></h6>
                                     </a>
-                                    <p>{{$midia->descricao}}</p>
+                                    <p><?php echo htmlentities($midia->descricao); ?></p>
                                     <p class="date">{{\Carbon\Carbon::parse($midia->created_at, 'UTC')->isoFormat('Do MMMM YYYY, h:mm:ss A')}}</p>
                                 </div>
                             </div>

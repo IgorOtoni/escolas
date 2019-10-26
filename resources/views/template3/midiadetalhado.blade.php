@@ -28,7 +28,7 @@
                     <!-- Sermons Details Area -->
                     <div class="single-post-details-area">
                         <div class="post-content">
-                            <h2 class="post-title mb-30">{{$midia->nome}}</h2>
+                            <h2 class="post-title mb-30"><?php echo htmlentities($midia->nome); ?></h2>
                             <iframe style="width: 100%; min-height: 400px;" frameborder="0" src="{{$midia->link}}"></iframe>
                             <h6>Publicado {{\Carbon\Carbon::parse($midia->created_at)->diffForHumans()}}</h6>
                             <?php
@@ -38,7 +38,7 @@
                                 <?php
                             }
                             ?>
-                            <p>{{$midia->descricao}}</p>
+                            <p><?php echo htmlentities($midia->descricao); ?></p>
                             <a href="{{$midia->link}}">Assistir</a>
                         </div>
                     </div>
